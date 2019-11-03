@@ -23,7 +23,7 @@ class Captain : public GameObject
 	static vector<Animation *> animations;
 	DWORD lastFrameTime;
 
-	Shield *shield;
+	//Shield *shield;
 	bool bImortal;
 	float timeCount;
 	bool trueImortal;

@@ -61,12 +61,14 @@ enum ObjectType
 #define CAPTAIN_GRAVITY			0.04f
 #define CAPTAIN_JUMP_MAX		85
 
-#define CAPTAIN_TEXTURE_LOCATION L"Resources\\Captain\\Captain.png"
+//#define CAPTAIN_TEXTURE_LOCATION L"Resources\\Captain\\Captain.png"
 #define TEXTURE_TRANS_COLOR D3DCOLOR_XRGB(255, 0, 255)
 #define TEXTURE_TRANS_COLOR_1 D3DCOLOR_XRGB(0, 91, 127)
 #define TEXTURE_TRANS_COLOR_2 D3DCOLOR_XRGB(0, 166, 81)
 #define CAPTAIN_SPRITE_WIDTH 25
 #define CAPTAIN_SPRITE_HEIGHT 45
+
+#define CAPTAIN_TEXTURE_LOCATION L"Resource\\Character\\Aladdin_.png"
 
 //Animation của Shield
 #define SHIELD_SIDE 0

@@ -1,4 +1,5 @@
 #include "LoadTXT.h"
+#include "Debug.h"
 LoadTXT* LoadTXT::instance;
 
 
@@ -16,7 +17,7 @@ LoadTXT * LoadTXT::Instance()
 RECT* LoadTXT::LoadRect(char * path)
 {
 	vector<RECT*> listRect;
-	RECT* arrayRect = new RECT[120];
+	RECT* arrayRect = new RECT[300];
 	fstream f;
 
 	f.open(path, ios::in);
@@ -56,6 +57,7 @@ RECT* LoadTXT::LoadRect(char * path)
 		arrayRect[i] = rect;
 	}
 	f.close();
+
 	return arrayRect;
 }
 

@@ -47,8 +47,6 @@ void Grid::GetCameraPosOnGrid(int &l, int &r, int &t, int &b) {
 		r = mapSize - 1;
 	if (t >= mapSize)
 		t = mapSize - 1;
-
-	DebugOut(L"[INFO] L T R B %d %d %d %d \n" , rect.left, rect.top, rect.right, rect.bottom);
 }
 
 void Grid::UpdateCurrentTiles()
@@ -163,8 +161,6 @@ void Grid::Render()
 {
 	int lCell, rCell, tCell, bCell;
 	this->GetCameraPosOnGrid(lCell, rCell, tCell, bCell);
-
-	DebugOut(L"[INFO] lCell tCell rCell bCell %d %d %d %d \n", lCell, tCell, rCell, bCell);
 
 	for (int y = bCell; y <= tCell; y++)
 	{

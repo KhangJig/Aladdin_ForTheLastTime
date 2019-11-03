@@ -9,7 +9,7 @@ Captain::Captain()
 
 	state = CaptainState::GetInstance(this);
 
-	shield = new Shield();
+	//shield = new Shield();
 
 	this->x = 50;
 	this->y = 200;
@@ -36,13 +36,13 @@ Captain *Captain::GetInstance()
 void Captain::LoadResources()
 {
 	LoadTXT loadTXT;
-	RECT* listSprite = loadTXT.LoadRect((char*)"Resources\\Captain\\Captain.txt");
+	RECT* listSprite = loadTXT.LoadRect((char*)"Resource\\Character\\Aladdin.txt");
 
 	// CAPTAIN_ANI_IDLE
 	Animation * anim = new Animation(100);
 	for (int i = 0; i < 1; i++)
 	{
-		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR_2);
+		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR);
 		anim->AddFrame(sprite);
 	}
 	animations.push_back(anim);
@@ -57,10 +57,10 @@ void Captain::LoadResources()
 	animations.push_back(anim);
 
 	// CAPTAIN_ANI_WALK
-	anim = new Animation(100);
-	for (int i = 1; i < 5; i++)
+	anim = new Animation(80);
+	for (int i = 142; i < 154; i++)
 	{
-		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR_2);
+		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR);
 		anim->AddFrame(sprite);
 
 	}
@@ -68,10 +68,16 @@ void Captain::LoadResources()
 
 	// CAPTAIN_ANI_JUMP
 	anim = new Animation(100);
-	for (int i = 7; i < 8; i++)
+	for (int i = 91; i < 101; i++)
 	{
-		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR_2);
+		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR);
 		anim->AddFrame(sprite);
+
+		if (i == 100) 
+		{
+			Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[91], TEXTURE_TRANS_COLOR);
+			anim->AddFrame(sprite);
+		}
 
 	}
 	animations.push_back(anim);
@@ -80,7 +86,7 @@ void Captain::LoadResources()
 	anim = new Animation(50);
 	for (int i = 8; i < 10; i++)
 	{
-		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR_2);
+		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR);
 
 		anim->AddFrame(sprite);
 	}
@@ -90,7 +96,7 @@ void Captain::LoadResources()
 	anim = new Animation(100);
 	for (int i = 6; i < 7; i++)
 	{
-		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR_2);
+		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR);
 
 		anim->AddFrame(sprite);
 	}
@@ -100,7 +106,7 @@ void Captain::LoadResources()
 	anim = new Animation(100);
 	for (int i = 44; i < 46; i++)
 	{
-		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR_2);
+		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR);
 
 		anim->AddFrame(sprite);
 	}
@@ -109,11 +115,11 @@ void Captain::LoadResources()
 	// CAPTAIN_ANI_THROW_SHIELD
 	anim = new Animation(100);
 
-	Sprite * sprite3 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[11], TEXTURE_TRANS_COLOR_2);
+	Sprite * sprite3 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[11], TEXTURE_TRANS_COLOR);
 	sprite3->SetOffSetX(-4);
 	anim->AddFrame(sprite3);
 
-	Sprite * sprite4 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[12], TEXTURE_TRANS_COLOR_2);
+	Sprite * sprite4 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[12], TEXTURE_TRANS_COLOR);
 
 	sprite4->SetOffSetX(12);
 	anim->AddFrame(sprite4);
@@ -123,11 +129,11 @@ void Captain::LoadResources()
 	// CAPTAIN_ANI_PUNCH
 	anim = new Animation(100);
 
-	Sprite * sprite1 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[13], TEXTURE_TRANS_COLOR_2);
+	Sprite * sprite1 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[13], TEXTURE_TRANS_COLOR);
 	sprite1->SetOffSetX(12);
 	anim->AddFrame(sprite1);
 
-	Sprite * sprite2 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[14], TEXTURE_TRANS_COLOR_2);
+	Sprite * sprite2 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[14], TEXTURE_TRANS_COLOR);
 	sprite2->SetOffSetX(3);
 	anim->AddFrame(sprite2);
 
@@ -137,7 +143,7 @@ void Captain::LoadResources()
 	anim = new Animation(500);
 	for (int i = 10; i < 11; i++)
 	{
-		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR_2);
+		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR);
 
 		sprite->SetOffSetX(12);
 		anim->AddFrame(sprite);
@@ -147,11 +153,11 @@ void Captain::LoadResources()
 	// CAPTAIN_ANI_CROUCH_PUNCH
 	anim = new Animation(100);
 
-	Sprite * sprite5 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[15], TEXTURE_TRANS_COLOR_2);
+	Sprite * sprite5 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[15], TEXTURE_TRANS_COLOR);
 	sprite5->SetOffSetX(9);
 	anim->AddFrame(sprite5);
 
-	Sprite * sprite6 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[16], TEXTURE_TRANS_COLOR_2);
+	Sprite * sprite6 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[16], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(sprite6);
 
 	animations.push_back(anim);
@@ -160,7 +166,7 @@ void Captain::LoadResources()
 	anim = new Animation(300);
 	for (int i = 19; i < 20; i++)
 	{
-		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR_2);
+		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR);
 		anim->AddFrame(sprite);
 	}
 	animations.push_back(anim);
@@ -169,7 +175,7 @@ void Captain::LoadResources()
 	anim = new Animation(300);
 	for (int i = 18; i < 19; i++)
 	{
-		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR_2);
+		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR);
 		anim->AddFrame(sprite);
 	}
 	animations.push_back(anim);
@@ -178,7 +184,7 @@ void Captain::LoadResources()
 	anim = new Animation(300);
 	for (int i = 11; i < 13; i++)
 	{
-		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR_2);
+		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR);
 		anim->AddFrame(sprite);
 	}
 	animations.push_back(anim);
@@ -187,7 +193,7 @@ void Captain::LoadResources()
 	anim = new Animation(100);
 	for (int i = 33; i < 34; i++)
 	{
-		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR_2);
+		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR);
 		anim->AddFrame(sprite);
 	}
 	animations.push_back(anim);
@@ -196,7 +202,7 @@ void Captain::LoadResources()
 	anim = new Animation(300);
 	for (int i = 34; i < 36; i++)
 	{
-		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR_2);
+		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR);
 		anim->AddFrame(sprite);
 	}
 	animations.push_back(anim);
@@ -205,7 +211,7 @@ void Captain::LoadResources()
 	anim = new Animation(200);
 	for (int i = 41; i < 44; i++)
 	{
-		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR_2);
+		Sprite * sprite = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[i], TEXTURE_TRANS_COLOR);
 		anim->AddFrame(sprite);
 	}
 	animations.push_back(anim);
@@ -213,15 +219,15 @@ void Captain::LoadResources()
 	// CAPTAIN_ANI_SWING
 	anim = new Animation(200);
 
-	Sprite * sprite9 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[27], TEXTURE_TRANS_COLOR_2);
+	Sprite * sprite9 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[27], TEXTURE_TRANS_COLOR);
 	sprite9->SetOffSetX(4);
 	anim->AddFrame(sprite9);
 
-	Sprite * sprite10 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[28], TEXTURE_TRANS_COLOR_2);
+	Sprite * sprite10 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[28], TEXTURE_TRANS_COLOR);
 	sprite10->SetOffSetX(5);
 	anim->AddFrame(sprite10);
 
-	Sprite * sprite11 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[29], TEXTURE_TRANS_COLOR_2);
+	Sprite * sprite11 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[29], TEXTURE_TRANS_COLOR);
 	sprite11->SetOffSetX(1);
 	anim->AddFrame(sprite11);
 
@@ -230,10 +236,10 @@ void Captain::LoadResources()
 	// CAPTAIN_ANI_BLEEING_2
 	anim = new Animation(10);
 
-	Sprite * sprite7 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[30], TEXTURE_TRANS_COLOR_2);
+	Sprite * sprite7 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[30], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(sprite7);
 
-	Sprite * sprite8 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[0], TEXTURE_TRANS_COLOR_2);
+	Sprite * sprite8 = new Sprite(CAPTAIN_TEXTURE_LOCATION, listSprite[0], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(sprite8);
 	animations.push_back(anim);
 }
@@ -376,8 +382,8 @@ void Captain::Update(DWORD dt)
 		delete coEvents[i];
 #pragma endregion
 
-	shield->UpdateObjectCollider();
-	shield->Update(dt);
+	//shield->UpdateObjectCollider();
+	//shield->Update(dt);
 	state->Colision();
 	state->Update(dt);
 }
@@ -399,5 +405,5 @@ void Captain::UpdateCollision(DWORD dt)
 void Captain::Render()
 {
 	state->Render();
-	shield->Render();
+	//shield->Render();
 }

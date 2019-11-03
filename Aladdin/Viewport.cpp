@@ -64,7 +64,6 @@ void Viewport::Update(DWORD dt)
 	{
 		this->y = captain->GetPositionY() + top;
 	}
-	DebugOut(L"[INFO] asdasdasd  %d = %d\n", this->x, this->y);
 }
 
 bool Viewport::IsObjectInCamera(GameObject *gameobject)

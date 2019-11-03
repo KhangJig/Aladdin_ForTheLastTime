@@ -581,7 +581,7 @@ void CaptainState::Render()
 		spriteData.scale = 1;
 		spriteData.angle = 0;
 		spriteData.isLeft = captain->IsLeft();
-		spriteData.isFlipped = captain->IsFlipped();
+		spriteData.isFlipped = !captain->IsFlipped();
 	}
 
 	anim->Render(spriteData);
