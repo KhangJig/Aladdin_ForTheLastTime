@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{33c99d8b-8330-4fb8-887f-f2fa95622248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Configs">
+      <UniqueIdentifier>{e2ed7bc9-8b36-432e-bc13-f53f428ddb9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameComponents">
+      <UniqueIdentifier>{01868446-8055-479f-964e-e5bbeafa2fba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{6919ac0d-c94e-4836-a92b-391c9d34117b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Captain">
+      <UniqueIdentifier>{70701ec4-5526-4d7b-a4ee-f90f28277ebb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyBoard.cpp">
+      <Filter>GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnProjectTile.cpp">
+      <Filter>GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Viewport.cpp">
+      <Filter>GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Shield.cpp">
+      <Filter>GameObjects\Captain</Filter>
+    </ClCompile>
+    <ClCompile Include="Captain.cpp">
+      <Filter>GameObjects\Captain</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainState.cpp">
+      <Filter>GameObjects\Captain</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dxutil.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Loadtxt.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Constants.h">
+      <Filter>Configs</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.h">
+      <Filter>GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="CollideEvent.h">
+      <Filter>GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnProjectTile.h">
+      <Filter>GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewport.h">
+      <Filter>GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Shield.h">
+      <Filter>GameObjects\Captain</Filter>
+    </ClInclude>
+    <ClInclude Include="Captain.h">
+      <Filter>GameObjects\Captain</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainState.h">
+      <Filter>GameObjects\Captain</Filter>
+    </ClInclude>
+    <ClInclude Include="Loadtxt.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="dsutil.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="dxutil.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+</Project>
