@@ -18,12 +18,6 @@ AladdinState::AladdinState(Aladdin *aladdin)
 	this->startJumpY = 95;
 }
 
-AladdinState::~AladdinState()
-{
-	delete anim;
-	delete listSprite;
-}
-
 StateAladdin AladdinState::GetState()
 {
 	return this->stateAladdin;
@@ -76,16 +70,18 @@ void AladdinState::stateStanding()
 
 	aladdin->SetSpeedX(0);
 	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
-	anim = aladdin->GetAnimationsList()[STATE_STAND];
+	anim = aladdin->GetAnimationsList()[IDLE_STAND];
 }
 
+// con xu ly tiep
 void AladdinState::stateHeadUp()
 {
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) || Keyboard::GetInstance()->IsKeyDown(DIK_LEFT) ||
-		Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT) || Keyboard::GetInstance()->IsKeyDown(DIK_X) ||
-		!Keyboard::GetInstance()->IsKeyDown(DIK_UP))
+		Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT) || Keyboard::GetInstance()->IsKeyDown(DIK_LCONTROL) ||
+		Keyboard::GetInstance()->IsKeyDown(DIK_DOWN) || !Keyboard::GetInstance()->IsKeyDown(DIK_UP) ||
+		Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
 	{
-		this->SetState(STATE_STAND);
+		this->SetState(IDLE_STAND);
 		anim->isSetFrame(false);
 		anim->Reset();
 		return;
@@ -101,20 +97,13 @@ void AladdinState::stateHeadUp()
 	}
 }
 
+// con xu ly tiep
 void AladdinState::stateWalking()
 {
 	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) || Keyboard::GetInstance()->IsKeyDown(DIK_LEFT))
 	{
-		if (Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT) || Keyboard::GetInstance()->IsKeyDown(DIK_X))
-		{
-			anim->isSetAniRunning(false);
-			anim->Reset();
-			this->SetState(STATE_STAND);
-			return;
-		}
-
 		anim = aladdin->GetAnimationsList()[STATE_RUN];
 		if (anim->IsDone())
 		{
@@ -125,10 +114,11 @@ void AladdinState::stateWalking()
 	if (!Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) && !Keyboard::GetInstance()->IsKeyDown(DIK_LEFT))
 	{
 		anim->Reset();
-		this->SetState(STATE_STAND);
+		this->SetState(IDLE_STAND);
 	}
 }
 
+// con xu ly tiep
 void AladdinState::stateJumping()
 {
 	if (!Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
@@ -151,6 +141,7 @@ void AladdinState::stateJumping()
 	this->SetState(STATE_STAND_JUMP);
 }
 
+// con xu ly tiep
 void AladdinState::stateFalling()
 {
 	if ((int)aladdin->GetPositionY() == (int)this->startJumpY)
@@ -171,18 +162,48 @@ void AladdinState::stateTouchGround()
 	if (anim->IsDone())
 	{
 		anim->Reset();
-		this->SetState(STATE_STAND);
+		this->SetState(IDLE_STAND);
 		return;
 	}
 }
 
 void AladdinState::stateSitting()
 {
-	if (Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) || Keyboard::GetInstance()->IsKeyDown(DIK_LEFT) ||
-		Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT) || Keyboard::GetInstance()->IsKeyDown(DIK_X) || 
-		Keyboard::GetInstance()->IsKeyDown(DIK_UP) || !Keyboard::GetInstance()->IsKeyDown(DIK_DOWN))
+	if (!Keyboard::GetInstance()->IsKeyDown(DIK_DOWN))
 	{
-		this->SetState(STATE_STAND);
+		this->SetState(IDLE_STAND);
+		anim->isSetFrame(false);
+		anim->Reset();
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
+	{
+		this->SetState(STATE_STAND_JUMP);
+		anim->isSetFrame(false);
+		anim->Reset();
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_LCONTROL))
+	{
+		this->SetState(STATE_SIT_THROW);
+		anim->isSetFrame(false);
+		anim->Reset();
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
+	{
+		this->SetState(STATE_SIT_HIT);
+		anim->isSetFrame(false);
+		anim->Reset();
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_UP))
+	{
+		this->SetState(STATE_HEAD_UP);
 		anim->isSetFrame(false);
 		anim->Reset();
 		return;
@@ -194,8 +215,58 @@ void AladdinState::stateSitting()
 
 	if (anim->IsDone())
 	{
-		anim->SetCurFrame(3);
+		this->SetState(IDLE_SIT);
+		anim->isSetFrame(false);
+		anim->Reset();
+		return;
 	}
+}
+
+void AladdinState::stateSittingIdle()
+{
+	if (!Keyboard::GetInstance()->IsKeyDown(DIK_DOWN))
+	{
+		this->SetState(IDLE_STAND);
+		anim->isSetFrame(false);
+		anim->Reset();
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
+	{
+		this->SetState(STATE_STAND_JUMP);
+		anim->isSetFrame(false);
+		anim->Reset();
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_LCONTROL))
+	{
+		this->SetState(STATE_SIT_THROW);
+		anim->isSetFrame(false);
+		anim->Reset();
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
+	{
+		this->SetState(STATE_SIT_HIT);
+		anim->isSetFrame(false);
+		anim->Reset();
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_UP))
+	{
+		this->SetState(STATE_HEAD_UP);
+		anim->isSetFrame(false);
+		anim->Reset();
+		return;
+	}
+
+	aladdin->SetSpeedX(0);
+	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	anim = aladdin->GetAnimationsList()[IDLE_SIT];
 }
 
 void AladdinState::stateStandHit()
@@ -207,7 +278,7 @@ void AladdinState::stateStandHit()
 	if (anim->IsDone())
 	{
 		anim->Reset();
-		this->SetState(STATE_STAND);
+		this->SetState(IDLE_STAND);
 		return;
 	}
 }
@@ -221,19 +292,37 @@ void AladdinState::stateStandThrow()
 	if (anim->IsDone())
 	{
 		anim->Reset();
-		this->SetState(STATE_STAND);
+		this->SetState(IDLE_STAND);
 		return;
 	}
 }
 
 void AladdinState::stateSitHit()
 {
+	aladdin->SetSpeedX(0);
+	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	anim = aladdin->GetAnimationsList()[STATE_SIT_HIT];
 
+	if (anim->IsDone())
+	{
+		anim->Reset();
+		this->SetState(IDLE_SIT);
+		return;
+	}
 }
 
 void AladdinState::stateSitThrow()
 {
+	aladdin->SetSpeedX(0);
+	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	anim = aladdin->GetAnimationsList()[STATE_SIT_THROW];
 
+	if (anim->IsDone())
+	{
+		anim->Reset();
+		this->SetState(IDLE_SIT);
+		return;
+	}
 }
 
 void AladdinState::KeyHandle()
@@ -250,7 +339,7 @@ void AladdinState::Colision()
 	{
 		if (aladdin->GetSpeedY() < 0)
 		{
-			this->SetState(STATE_STAND);
+			this->SetState(IDLE_STAND);
 			this->stateStanding();
 		}
 	}
@@ -280,7 +369,7 @@ void AladdinState::Update(DWORD dt)
 
 	switch (stateAladdin)
 	{
-	case STATE_STAND:
+	case IDLE_STAND:
 		this->stateStanding();
 		break;
 
@@ -308,12 +397,24 @@ void AladdinState::Update(DWORD dt)
 		this->stateSitting();
 		break;
 
+	case IDLE_SIT:
+		this->stateSittingIdle();
+		break;
+
 	case STATE_STAND_HIT:
 		this->stateStandHit();
 		break;
 
 	case STATE_STAND_THROW:
 		this->stateStandThrow();
+		break;
+
+	case STATE_SIT_HIT:
+		this->stateSitHit();
+		break;
+
+	case STATE_SIT_THROW:
+		this->stateSitThrow();
 		break;
 
 	default:
@@ -339,3 +440,8 @@ void AladdinState::Render()
 	anim->Render(spriteData);
 }
 
+AladdinState::~AladdinState()
+{
+	delete anim;
+	delete listSprite;
+}

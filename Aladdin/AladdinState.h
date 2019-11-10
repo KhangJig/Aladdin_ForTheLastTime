@@ -6,18 +6,18 @@
 
 enum StateAladdin
 {
-	STATE_STAND,
+	IDLE_STAND,
 	STATE_HEAD_UP,
 	STATE_RUN,
 	STATE_STAND_JUMP,
 	STATE_FALL,
 	STATE_TOUCH_GROUND,
 	STATE_SIT,
+	IDLE_SIT,
 	STATE_STAND_HIT,
 	STATE_STAND_THROW,
-	STATE_SIT_HIT,
 	STATE_SIT_THROW,
-	STATE_RUN_JUMP,
+	STATE_SIT_HIT,
 };
 
 class AladdinState : public State
@@ -48,6 +48,7 @@ public:
 	void stateFalling();
 	void stateTouchGround();
 	void stateSitting();
+	void stateSittingIdle();
 	void stateStandHit();
 	void stateStandThrow();
 	void stateSitHit();

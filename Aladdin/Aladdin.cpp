@@ -200,6 +200,17 @@ void Aladdin::LoadResources()
 	animations.push_back(anim);
 #pragma endregion
 
+#pragma region IDLE_SIT
+	anim = new Animation(100);
+
+	Sprite * sit_idle = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[77], TEXTURE_TRANS_COLOR);
+	sit_idle->SetOffSetX(3);
+	sit_idle->SetOffSetY(-15);
+	anim->AddFrame(sit_idle);
+
+	animations.push_back(anim);
+#pragma endregion
+
 #pragma region STAND-HIT
 	anim = new Animation(100);
 
@@ -251,6 +262,61 @@ void Aladdin::LoadResources()
 	anim->AddFrame(stand_throw_6);
 
 	animations.push_back(anim); 
+#pragma endregion
+
+#pragma region SIT-THROW
+	anim = new Animation(80);
+
+	Sprite * sit_throw_1 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[78], TEXTURE_TRANS_COLOR);
+	sit_throw_1->SetOffSetX(0);
+	sit_throw_1->SetOffSetY(-6);
+	anim->AddFrame(sit_throw_1);
+	Sprite * sit_throw_2 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[79], TEXTURE_TRANS_COLOR);
+	sit_throw_2->SetOffSetX(0);
+	sit_throw_2->SetOffSetY(-2);
+	anim->AddFrame(sit_throw_2);
+	Sprite * sit_throw_3 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[80], TEXTURE_TRANS_COLOR);
+	sit_throw_3->SetOffSetX(0);
+	sit_throw_3->SetOffSetY(-2);
+	anim->AddFrame(sit_throw_3);
+	Sprite * sit_throw_4 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[81], TEXTURE_TRANS_COLOR);
+	sit_throw_4->SetOffSetX(12);
+	sit_throw_4->SetOffSetY(-13);
+	anim->AddFrame(sit_throw_4);
+	Sprite * sit_throw_5 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[82], TEXTURE_TRANS_COLOR);
+	sit_throw_5->SetOffSetX(7);
+	sit_throw_5->SetOffSetY(-13);
+	anim->AddFrame(sit_throw_5);
+
+	animations.push_back(anim);
+#pragma endregion
+
+#pragma region SIT-HIT
+	anim = new Animation(80);
+
+	Sprite * sit_hit_1 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[83], TEXTURE_TRANS_COLOR);
+	sit_hit_1->SetOffSetY(-17);
+	anim->AddFrame(sit_hit_1);
+	Sprite * sit_hit_2 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[84], TEXTURE_TRANS_COLOR);
+	sit_hit_2->SetOffSetY(-19);
+	anim->AddFrame(sit_hit_2);
+	Sprite * sit_hit_3 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[85], TEXTURE_TRANS_COLOR);
+	sit_hit_3->SetOffSetY(-17);
+	anim->AddFrame(sit_hit_3);
+	Sprite * sit_hit_4 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[86], TEXTURE_TRANS_COLOR);
+	sit_hit_4->SetOffSetY(-16);
+	anim->AddFrame(sit_hit_4);
+	Sprite * sit_hit_5 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[87], TEXTURE_TRANS_COLOR);
+	sit_hit_5->SetOffSetY(-17);
+	anim->AddFrame(sit_hit_5);
+	Sprite * sit_hit_6 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[88], TEXTURE_TRANS_COLOR);
+	sit_hit_6->SetOffSetY(-17);
+	anim->AddFrame(sit_hit_6);
+	Sprite * sit_hit_7 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[89], TEXTURE_TRANS_COLOR);
+	sit_hit_7->SetOffSetY(-19);
+	anim->AddFrame(sit_hit_7);
+
+	animations.push_back(anim);
 #pragma endregion
 
 }
