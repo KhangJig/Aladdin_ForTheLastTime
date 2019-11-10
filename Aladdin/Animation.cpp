@@ -24,6 +24,29 @@ void Animation::Render(SpriteData spriteData)
 		this->done = false;
 	}
 
+	if (this->isDoubleHit)
+	{
+		frames[curFrame].first->SetData(spriteData);
+
+		Graphics::GetInstance()->Draw(frames[curFrame].first);
+
+		DWORD t = frames[curFrame].second;
+
+		if (now - lastFrameTime > t)
+		{
+			this->curFrame++;
+			lastFrameTime = now;
+
+			if (curFrame == frames.size())
+			{
+				this->curFrame = 1;
+				this->done = true;
+			}
+			else
+				this->done = false;
+		}
+	}
+
 	if (!this->isSetCurentFrame)
 	{
 		if (this->isAniRunning)

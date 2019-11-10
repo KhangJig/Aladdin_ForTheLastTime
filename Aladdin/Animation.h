@@ -17,6 +17,7 @@ class Animation
 	bool done = false;
 	bool isSetCurentFrame = false;
 	bool isAniRunning = false;
+	bool isDoubleHit = false;
 
 public:
 	Animation(DWORD defaultDelayTime) { this->defaultDelayTime = defaultDelayTime; };
@@ -30,6 +31,8 @@ public:
 	void isSetFrame(bool isSet) { this->isSetCurentFrame = isSet; }
 
 	void isSetAniRunning(bool isSetRunning) { this->isAniRunning = isSetRunning; }
+
+	void isSetDoubleHit(bool isDoubleHit) { this->isDoubleHit = isDoubleHit; }
 
 	int GetCurFrame() { isSetCurentFrame = true; return curFrame; }
 
