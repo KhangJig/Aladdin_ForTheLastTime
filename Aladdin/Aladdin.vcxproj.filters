@@ -25,7 +25,7 @@
     <Filter Include="GameObjects">
       <UniqueIdentifier>{6919ac0d-c94e-4836-a92b-391c9d34117b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObjects\Captain">
+    <Filter Include="GameObjects\Aladdin">
       <UniqueIdentifier>{70701ec4-5526-4d7b-a4ee-f90f28277ebb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -69,15 +69,6 @@
     <ClCompile Include="State.cpp">
       <Filter>GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="Shield.cpp">
-      <Filter>GameObjects\Captain</Filter>
-    </ClCompile>
-    <ClCompile Include="Captain.cpp">
-      <Filter>GameObjects\Captain</Filter>
-    </ClCompile>
-    <ClCompile Include="CaptainState.cpp">
-      <Filter>GameObjects\Captain</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -89,6 +80,12 @@
     </ClCompile>
     <ClCompile Include="Debug.cpp">
       <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Aladdin.cpp">
+      <Filter>GameObjects\Aladdin</Filter>
+    </ClCompile>
+    <ClCompile Include="AladdinState.cpp">
+      <Filter>GameObjects\Aladdin</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,15 +134,6 @@
     <ClInclude Include="State.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Shield.h">
-      <Filter>GameObjects\Captain</Filter>
-    </ClInclude>
-    <ClInclude Include="Captain.h">
-      <Filter>GameObjects\Captain</Filter>
-    </ClInclude>
-    <ClInclude Include="CaptainState.h">
-      <Filter>GameObjects\Captain</Filter>
-    </ClInclude>
     <ClInclude Include="Loadtxt.h">
       <Filter>Helpers</Filter>
     </ClInclude>
@@ -157,6 +145,12 @@
     </ClInclude>
     <ClInclude Include="Debug.h">
       <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Aladdin.h">
+      <Filter>GameObjects\Aladdin</Filter>
+    </ClInclude>
+    <ClInclude Include="AladdinState.h">
+      <Filter>GameObjects\Aladdin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

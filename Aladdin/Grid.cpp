@@ -13,7 +13,7 @@ Grid* Grid::GetInstance()
 
 Grid::Grid()
 {
-	captain = Captain::GetInstance();
+	aladdin = Aladdin::GetInstance();
 	viewport = Viewport::GetInstance();
 }
 
@@ -52,7 +52,7 @@ void Grid::GetCameraPosOnGrid(int &l, int &r, int &t, int &b) {
 void Grid::UpdateCurrentTiles()
 {
 	currentTile.clear();
-	RECT rect = captain->GetRect();
+	RECT rect = aladdin->GetRect();
 	int left = (int)(rect.left / GRID_SIZE);
 	int right = (int)(rect.right / GRID_SIZE);
 	int top = (int)(rect.top % GRID_SIZE == 0 ? rect.top / GRID_SIZE - 1 : rect.top / GRID_SIZE);
@@ -140,8 +140,8 @@ bool Grid::CheckObjectInsideCamera(GameObject* object)
 void Grid::Update(DWORD dt)
 {
 	timeCount += dt;
-	captain->Update(dt);
-	captain->UpdateCollision(dt);
+	aladdin->Update(dt);
+	aladdin->UpdateCollision(dt);
 
 	for (int i = 0; i < listObject.size(); i++)
 	{
@@ -189,5 +189,5 @@ void Grid::Render()
 			continue;
 		listObject.at(i).object->Render();
 	}
-	captain->Render();
+	aladdin->Render();
 }

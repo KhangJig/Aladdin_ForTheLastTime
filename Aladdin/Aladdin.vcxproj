@@ -166,15 +166,14 @@
     <ClCompile Include="Loadtxt.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Animation.cpp" />
-    <ClCompile Include="Captain.cpp" />
-    <ClCompile Include="CaptainState.cpp" />
+    <ClCompile Include="Aladdin.cpp" />
+    <ClCompile Include="AladdinState.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="KeyBoard.cpp" />
-    <ClCompile Include="Shield.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="SpawnProjectTile.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -184,8 +183,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
-    <ClInclude Include="Captain.h" />
-    <ClInclude Include="CaptainState.h" />
+    <ClInclude Include="Aladdin.h" />
+    <ClInclude Include="AladdinState.h" />
     <ClInclude Include="CollideEvent.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Constants.h" />
@@ -198,7 +197,6 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Loadtxt.h" />
-    <ClInclude Include="Shield.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="SpawnProjectTile.h" />
     <ClInclude Include="Sprite.h" />

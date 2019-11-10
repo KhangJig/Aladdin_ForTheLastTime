@@ -90,8 +90,8 @@ void Game::LoadResources()
 
 	Grid::GetInstance()->InitializeMapGrid(tileMap);
 
-	if (NULL == captain)
-		captain = Captain::GetInstance();
+	if (NULL == aladdin)
+		aladdin = Aladdin::GetInstance();
 
 	if (viewport == NULL)
 		viewport = Viewport::GetInstance();
@@ -169,9 +169,9 @@ int Game::Run()
 	return 1;
 }
 
-Captain* Game::GetCaptain()
+Aladdin* Game::GetAladdin()
 {
-	return captain;
+	return aladdin;
 }
 
 LRESULT CALLBACK Game::WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

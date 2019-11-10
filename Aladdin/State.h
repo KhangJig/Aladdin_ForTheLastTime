@@ -2,7 +2,7 @@
 #include "d3d9.h"
 #include "Keyboard.h"
 
-class Captain;
+class Aladdin;
 class State
 {
 public:

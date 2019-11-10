@@ -4,7 +4,7 @@
 #include "Keyboard.h"
 #include "TileMap.h"
 #include "Grid.h"
-#include "Captain.h"
+#include "Aladdin.h"
 #include <chrono>
 
 class Graphics;
@@ -20,7 +20,7 @@ class Game
 
 	Keyboard *keyboard;
 	Graphics *graphics;
-	Captain *captain;
+	Aladdin *aladdin;
 	Viewport *viewport;
 	TileMap *tileMap;
 	Stage stage;
@@ -39,7 +39,7 @@ public:
 	void Render();
 	int Run();
 
-	Captain *GetCaptain();
+	Aladdin *GetAladdin();
 
 	static Game *GetInstance();
 	~Game();

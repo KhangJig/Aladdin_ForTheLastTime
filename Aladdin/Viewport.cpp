@@ -50,19 +50,19 @@ void Viewport::Reset()
 }
 void Viewport::Update(DWORD dt)
 {
-	Captain * captain = Captain::GetInstance();
+	Aladdin * aladdin = Aladdin::GetInstance();
 	int right = (int)(TileMap::GetInstance()->currentMap->size * 100 - SCREEN_WIDTH / 2);
 	int left = (int)SCREEN_WIDTH / 2;
 	int bottom = (int)(TileMap::GetInstance()->currentMap->height * 100 - SCREEN_HEIGHT / 2 );
 	int top = (int)SCREEN_HEIGHT / 2;
 
-	if (captain->GetPositionX() > left && captain->GetPositionX() < right)
+	if (aladdin->GetPositionX() > left && aladdin->GetPositionX() < right)
 	{
-		this->x = captain->GetPositionX() - left;
+		this->x = aladdin->GetPositionX() - left;
 	}
-	if (captain->GetPositionY() > top && captain->GetPositionY() < bottom)
+	if (aladdin->GetPositionY() > top && aladdin->GetPositionY() < bottom)
 	{
-		this->y = captain->GetPositionY() + top;
+		this->y = aladdin->GetPositionY() + top;
 	}
 }
 

@@ -108,10 +108,10 @@ void GameObject::MapCollisions(vector<Tile *> &tiles, vector<ColliedEvent*> &coE
 		}
 		else if (tiles[i]->type == ObjectType::ROPE_SWING)
 		{
-			float topCaptainEdge = this->collider.y;
+			float topAladdinEdge = this->collider.y;
 			float topRope = tileCollider.y;
 
-			float distance = topCaptainEdge - topRope;
+			float distance = topAladdinEdge - topRope;
 
 			if (distance < 16 && distance > 0 && abs(this->collider.x - tileCollider.x) < 16)
 				int a = 0;

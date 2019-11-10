@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "SpawnProjectTile.h"
 #include "Constants.h" 
-#include "Captain.h"
+#include "Aladdin.h"
 #include <vector>
 #include <fstream>
 #include <string>
@@ -47,7 +47,7 @@ private:
 
 	Viewport* viewport;
 
-	Captain* captain;
+	Aladdin* aladdin;
 
 	vector <OnUpdateObject> listObject;
 

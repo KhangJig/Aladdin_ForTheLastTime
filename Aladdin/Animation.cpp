@@ -10,8 +10,8 @@ void Animation::AddFrame(Sprite *sprite, DWORD time)
 	pair <Sprite *, DWORD> frame(sprite, t);
 
 	frames.push_back(frame);
-	curFrame = -1;
-	done = false;
+	this->curFrame = -1;
+	this->done = false;
 }
 void Animation::Render(SpriteData spriteData)
 {
@@ -19,27 +19,57 @@ void Animation::Render(SpriteData spriteData)
 
 	if (this->curFrame == -1)
 	{
-		curFrame = 0;
-		lastFrameTime = now;
-		done = false;
+		this->curFrame = 0;
+		this->lastFrameTime = now;
+		this->done = false;
 	}
 
-	frames[curFrame].first->SetData(spriteData);
-
-	Graphics::GetInstance()->Draw(frames[curFrame].first);
-
-	DWORD t = frames[curFrame].second;
-
-	if (now - lastFrameTime > t)
+	if (!this->isSetCurentFrame)
 	{
-		curFrame++;
-		lastFrameTime = now;
-		if (curFrame == frames.size())
+		if (this->isAniRunning)
 		{
-			curFrame = -1;
-			done = true;
+			frames[curFrame].first->SetData(spriteData);
+
+			Graphics::GetInstance()->Draw(frames[curFrame].first);
+
+			DWORD t = frames[curFrame].second;
+
+			if (now - lastFrameTime > t)
+			{
+				this->curFrame++;
+				lastFrameTime = now;
+				if (curFrame == frames.size())
+				{
+					this->curFrame = 2;
+					this->done = true;
+				}
+				else
+					this->done = false;
+			}
 		}
 		else
-			done = false;
+		{
+			frames[curFrame].first->SetData(spriteData);
+
+			Graphics::GetInstance()->Draw(frames[curFrame].first);
+
+			DWORD t = frames[curFrame].second;
+
+			if (now - lastFrameTime > t)
+			{
+				this->curFrame++;
+				lastFrameTime = now;
+				if (curFrame == frames.size())
+				{
+					this->curFrame = -1;
+					this->done = true;
+				}
+				else
+					this->done = false;
+			}
+		}
+	}
+	else {
+		Graphics::GetInstance()->Draw(frames[curFrame].first);
 	}
 }
