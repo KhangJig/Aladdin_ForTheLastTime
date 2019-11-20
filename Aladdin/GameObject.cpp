@@ -50,7 +50,8 @@ void GameObject::MapCollisions(vector<Tile *> &tiles, vector<ColliedEvent*> &coE
 	for (int i = 0; i < tiles.size(); i++)
 	{
 		tileCollider.x = tiles[i]->x * TILE_SIZE;
-		tileCollider.y = tiles[i]->y * TILE_SIZE - TILE_SIZE / 2;
+		// tileCollider.y = tiles[i]->y * TILE_SIZE - TILE_SIZE / 2;
+		tileCollider.y = tiles[i]->y * TILE_SIZE;
 
 		if (tiles[i]->type == ObjectType::BRICK)
 		{

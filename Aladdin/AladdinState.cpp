@@ -509,14 +509,14 @@ void AladdinState::Colision()
 	{
 		this->stateFalling();
 	}
-	else if (this->GetState() == STATE_FALL)
-	{
-		if (aladdin->GetSpeedY() < 0)
-		{
-			this->SetState(IDLE_STAND);
-			this->stateStanding();
-		}
-	}
+	//else if (this->GetState() == STATE_FALL)
+	//{
+	//	if (aladdin->GetSpeedY() < 0)
+	//	{
+	//		this->SetState(IDLE_STAND);
+	//		this->stateStanding();
+	//	}
+	//}
 
 	aladdin->SetIsGrounded(false);
 }

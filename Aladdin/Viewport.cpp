@@ -51,6 +51,9 @@ void Viewport::Reset()
 void Viewport::Update(DWORD dt)
 {
 	Aladdin * aladdin = Aladdin::GetInstance();
+
+	DebugOut(L"%d - %d \n", (int)aladdin->GetPositionX(), (int)aladdin->GetPositionY());
+
 	int right = (int)(TileMap::GetInstance()->currentMap->size * 100 - SCREEN_WIDTH / 2);
 	int left = (int)SCREEN_WIDTH / 2;
 	int bottom = (int)(TileMap::GetInstance()->currentMap->height * 100 - SCREEN_HEIGHT / 2 );
@@ -62,7 +65,7 @@ void Viewport::Update(DWORD dt)
 	}
 	if (aladdin->GetPositionY() > top && aladdin->GetPositionY() < bottom)
 	{
-		this->y = aladdin->GetPositionY() + top;
+		this->y = aladdin->GetPositionY() + top - 50;
 	}
 }
 

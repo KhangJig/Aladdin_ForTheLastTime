@@ -41,6 +41,7 @@ void Grid::GetCameraPosOnGrid(int &l, int &r, int &t, int &b) {
 
 	l = (int)(rect.left / GRID_SIZE);
 	t = (int)(rect.top % GRID_SIZE == 0 ? rect.top / GRID_SIZE - 1 : rect.top / GRID_SIZE);
+	//t = (int)(rect.top / GRID_SIZE);
 	r = (int)(rect.right / GRID_SIZE);
 	b = (int)(rect.bottom / GRID_SIZE);
 	if (r >= mapSize)
@@ -56,6 +57,7 @@ void Grid::UpdateCurrentTiles()
 	int left = (int)(rect.left / GRID_SIZE);
 	int right = (int)(rect.right / GRID_SIZE);
 	int top = (int)(rect.top % GRID_SIZE == 0 ? rect.top / GRID_SIZE - 1 : rect.top / GRID_SIZE);
+	//int top = (int)(rect.top / GRID_SIZE);
 	int bottom = (int)(rect.bottom / GRID_SIZE);
 
 	for (int x = left; x <= right; x++)
