@@ -326,28 +326,6 @@ void Aladdin::LoadResources()
 	animations.push_back(anim);
 #pragma endregion
 
-#pragma region RUN-THROW
-	//anim = new Animation(80);
-	//
-	//Sprite * run_throw_1 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[83], TEXTURE_TRANS_COLOR);
-	//run_throw_1->SetOffSetX(-17);
-	//run_throw_1->SetOffSetY(-17);
-	//anim->AddFrame(run_throw_1);
-
-	//animations.push_back(anim);
-#pragma endregion
-
-#pragma region RUN-HIT
-	//anim = new Animation(80);
-
-	//Sprite * run_hit_1 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[83], TEXTURE_TRANS_COLOR);
-	//run_hit_1->SetOffSetX(-17);
-	//run_hit_1->SetOffSetY(-17);
-	//anim->AddFrame(run_hit_1);
-
-	//animations.push_back(anim);
-#pragma endregion
-
 #pragma region RUN-JUMP
 	anim = new Animation(150);
 
@@ -479,6 +457,66 @@ void Aladdin::LoadResources()
 	animations.push_back(anim);
 #pragma endregion
 
+	listSprite = loadTXT.LoadRect((char*)"Resource\\Character\\run-hit-n-throw.txt");
+
+#pragma region RUN-HIT
+	anim = new Animation(80);
+	
+	Sprite * run_throw_1 = new Sprite(ALADDIN_TEXTURE_LOCATION2, listSprite[0], TEXTURE_TRANS_COLOR_2);
+	run_throw_1->SetOffSetY(2);
+	anim->AddFrame(run_throw_1);
+	Sprite * run_throw_2 = new Sprite(ALADDIN_TEXTURE_LOCATION2, listSprite[1], TEXTURE_TRANS_COLOR_2);
+	run_throw_2->SetOffSetX(6);
+	run_throw_2->SetOffSetY(10);
+	anim->AddFrame(run_throw_2);
+	Sprite * run_throw_3 = new Sprite(ALADDIN_TEXTURE_LOCATION2, listSprite[2], TEXTURE_TRANS_COLOR_2);
+	run_throw_3->SetOffSetX(10);
+	run_throw_3->SetOffSetY(3);
+	anim->AddFrame(run_throw_3);
+	Sprite * run_throw_4 = new Sprite(ALADDIN_TEXTURE_LOCATION2, listSprite[3], TEXTURE_TRANS_COLOR_2);
+	run_throw_4->SetOffSetX(7);
+	run_throw_4->SetOffSetY(10);
+	anim->AddFrame(run_throw_4);
+	Sprite * run_throw_5 = new Sprite(ALADDIN_TEXTURE_LOCATION2, listSprite[4], TEXTURE_TRANS_COLOR_2);
+	run_throw_5->SetOffSetX(5);
+	run_throw_5->SetOffSetY(5);
+	anim->AddFrame(run_throw_5);
+	Sprite * run_throw_6 = new Sprite(ALADDIN_TEXTURE_LOCATION2, listSprite[5], TEXTURE_TRANS_COLOR_2);
+	run_throw_6->SetOffSetX(1);
+	anim->AddFrame(run_throw_6);
+
+	animations.push_back(anim);
+#pragma endregion
+
+#pragma region RUN-THROW
+	anim = new Animation(80);
+
+	Sprite * run_hit_1 = new Sprite(ALADDIN_TEXTURE_LOCATION2, listSprite[6], TEXTURE_TRANS_COLOR_2);
+	run_hit_1->SetOffSetY(6);
+	anim->AddFrame(run_hit_1);
+	Sprite * run_hit_2 = new Sprite(ALADDIN_TEXTURE_LOCATION2, listSprite[7], TEXTURE_TRANS_COLOR_2);
+	run_hit_2->SetOffSetX(16);
+	run_hit_2->SetOffSetY(8);
+	anim->AddFrame(run_hit_2);
+	Sprite * run_hit_3 = new Sprite(ALADDIN_TEXTURE_LOCATION2, listSprite[8], TEXTURE_TRANS_COLOR_2);
+	run_hit_3->SetOffSetX(18);
+	run_hit_3->SetOffSetY(6);
+	anim->AddFrame(run_hit_3);
+	Sprite * run_hit_4 = new Sprite(ALADDIN_TEXTURE_LOCATION2, listSprite[9], TEXTURE_TRANS_COLOR_2);
+	run_hit_4->SetOffSetX(15);
+	run_hit_4->SetOffSetY(12);
+	anim->AddFrame(run_hit_4);
+	Sprite * run_hit_5 = new Sprite(ALADDIN_TEXTURE_LOCATION2, listSprite[10], TEXTURE_TRANS_COLOR_2);
+	run_hit_5->SetOffSetX(11);
+	run_hit_5->SetOffSetY(12);
+	anim->AddFrame(run_hit_5);
+	Sprite * run_hit_6 = new Sprite(ALADDIN_TEXTURE_LOCATION2, listSprite[10], TEXTURE_TRANS_COLOR_2);
+	run_hit_6->SetOffSetX(6);
+	run_hit_6->SetOffSetY(2);
+	anim->AddFrame(run_hit_6);
+
+	animations.push_back(anim);
+#pragma endregion
 }
 
 void Aladdin::Reset()

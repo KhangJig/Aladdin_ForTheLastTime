@@ -147,6 +147,31 @@ void AladdinState::stateWalking()
 		return;
 	}
 
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
+	{
+		this->SetState(STATE_RUN_HIT);
+		anim->isSetFrame(false);
+		anim->Reset();
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_Z))
+	{
+		if (aladdin->GetisApple())
+		{
+			this->SetState(STATE_RUN_THROW);
+			aladdin->SetIsApple(false);
+			anim->isSetFrame(false);
+			anim->Reset();
+			return;
+		}
+
+		//this->SetState(STATE_JUMP_THROW);
+		//anim->isSetFrame(false);
+		//anim->Reset();
+		//return;
+	}
+
 	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 	anim = aladdin->GetAnimationsList()[STATE_RUN];
 
@@ -194,6 +219,7 @@ void AladdinState::stateJumping()
 	}
 
 	anim = aladdin->GetAnimationsList()[STATE_STAND_JUMP];
+
 	if (anim->IsDone())
 	{
 		this->SetState(STATE_FALL);
@@ -406,18 +432,6 @@ void AladdinState::stateSitThrow()
 	}
 }
 
-// con xu ly tiep
-void AladdinState::stateRunHit()
-{
-
-}
-
-// con xu ly tiep
-void AladdinState::stateRunThrow()
-{
-
-}
-
 void AladdinState::stateRunJump()
 {
 	anim = aladdin->GetAnimationsList()[STATE_RUN_JUMP];
@@ -558,6 +572,52 @@ void AladdinState::stateDoubleHit()
 	}
 }
 
+// con xu ly tiep
+void AladdinState::stateRunHit()
+{
+	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	anim = aladdin->GetAnimationsList()[STATE_RUN_HIT];
+
+	if (anim->IsDone())
+	{
+		if (!Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) && !Keyboard::GetInstance()->IsKeyDown(DIK_LEFT))
+		{
+			anim->Reset();
+			anim->isSetAniRunning(false);
+			this->SetState(IDLE_STAND);
+			return;
+		}
+		else {
+			anim->Reset();
+			this->SetState(STATE_RUN);
+			return;
+		}
+	}
+}
+
+// con xu ly tiep
+void AladdinState::stateRunThrow()
+{
+	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	anim = aladdin->GetAnimationsList()[STATE_RUN_THROW];
+
+	if (anim->IsDone())
+	{
+		if (!Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) && !Keyboard::GetInstance()->IsKeyDown(DIK_LEFT))
+		{
+			anim->Reset();
+			anim->isSetAniRunning(false);
+			this->SetState(IDLE_STAND);
+			return;
+		}
+		else {
+			anim->Reset();
+			this->SetState(STATE_RUN);
+			return;
+		}
+	}
+}
+
 void AladdinState::KeyHandle()
 {
 }
@@ -650,14 +710,6 @@ void AladdinState::Update(DWORD dt)
 		this->stateSitThrow();
 		break;
 
-	//case STATE_RUN_HIT:
-	//	this->stateRunHit();
-	//	break;
-
-	//case STATE_RUN_THROW:
-	//	this->stateRunThrow();
-	//	break;
-
 	case STATE_RUN_JUMP:
 		this->stateRunJump();
 		break;
@@ -676,6 +728,14 @@ void AladdinState::Update(DWORD dt)
 
 	case STATE_DOUBLE_HIT:
 		this->stateDoubleHit();
+		break;
+
+	case STATE_RUN_HIT:
+		this->stateRunHit();
+		break;
+
+	case STATE_RUN_THROW:
+		this->stateRunThrow();
 		break;
 
 	default:

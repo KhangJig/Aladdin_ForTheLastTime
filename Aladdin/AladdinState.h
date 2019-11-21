@@ -18,13 +18,13 @@ enum StateAladdin
 	STATE_STAND_THROW,
 	STATE_SIT_THROW,
 	STATE_SIT_HIT,
-	//STATE_RUN_THROW,
-	//STATE_RUN_HIT,
 	STATE_RUN_JUMP,
 	STATE_FALL_2,
 	STATE_JUMP_THROW,
 	STATE_JUMP_HIT,
-	STATE_DOUBLE_HIT
+	STATE_DOUBLE_HIT,
+	STATE_RUN_HIT,
+	STATE_RUN_THROW,
 };
 
 class AladdinState : public State
@@ -60,13 +60,13 @@ public:
 	void stateStandThrow();
 	void stateSitHit();
 	void stateSitThrow();
-	void stateRunHit();
-	void stateRunThrow();
 	void stateRunJump();
 	void stateFall2();
 	void stateJumpHit();
 	void stateJumpThrow();
 	void stateDoubleHit();
+	void stateRunHit();
+	void stateRunThrow();
 
 
 
