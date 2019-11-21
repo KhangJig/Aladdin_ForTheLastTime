@@ -63,7 +63,6 @@ enum ObjectType
 
 #define APPLE_WIDTH 7
 #define APPLE_HEIGHT 6
-#define APPLE_SPEED 0.28f
 
 #define APPLE_FLYING 0
 #define APPLE_BANG 1

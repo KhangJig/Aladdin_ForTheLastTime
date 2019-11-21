@@ -32,7 +32,10 @@ public:
 
 	void AppleFlying();
 
+	void Reset();
+
 	void Update(DWORD dt);
+
 	void Render();
 
 	float GetDistance() { return this->distance; }
