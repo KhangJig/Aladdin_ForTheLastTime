@@ -161,6 +161,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Apple.cpp" />
+    <ClCompile Include="Apple2.cpp" />
+    <ClCompile Include="AppleState.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="dxutil.cpp" />
     <ClCompile Include="Loadtxt.cpp" />
@@ -185,6 +188,9 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Aladdin.h" />
     <ClInclude Include="AladdinState.h" />
+    <ClInclude Include="Apple.h" />
+    <ClInclude Include="Apple2.h" />
+    <ClInclude Include="AppleState.h" />
     <ClInclude Include="CollideEvent.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Constants.h" />

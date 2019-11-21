@@ -20,7 +20,7 @@ Grid::Grid()
 void Grid::InitializeMapGrid(TileMap *tileMap)
 {
 	/*NOTES*/
-	mapSize = tileMap->currentMap->size/4;
+	mapSize = tileMap->currentMap->size/3;
 
 	listCell = new GridData[mapSize*mapSize];
 

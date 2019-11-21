@@ -4,13 +4,17 @@
 #include "Constants.h"
 #include "Game.h"
 #include "State.h"
+#include "Apple2.h"
 
 class Aladdin : public GameObject
 {
 	Aladdin();
 
 	static Aladdin *__instance;
-	State *state;
+	State *state, *stateApple;
+
+	Apple2 *apple;
+
 	bool isGrounded = false;
 	static vector<Animation *> animations;
 	DWORD lastFrameTime;
@@ -18,6 +22,7 @@ class Aladdin : public GameObject
 	bool bImortal;
 	float timeCount;
 	bool trueImortal;
+	bool isApple;
 
 public:
 	void LoadResources();
@@ -28,6 +33,9 @@ public:
 	void SetLastFrameTime(DWORD lastFrameTime) { this->lastFrameTime = lastFrameTime; }
 	void SetIsGrounded(bool isGrounded) { this->isGrounded = isGrounded; }
 	bool GetIsGrounded() { return isGrounded; }
+
+	void SetIsApple(bool isApple) { this->isApple = isApple; }
+	bool GetisApple() { return isApple; }
 
 	void SetColliderDemension(float width, float height)
 	{

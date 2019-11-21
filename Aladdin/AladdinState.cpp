@@ -65,8 +65,14 @@ void AladdinState::stateStanding()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_Z))
 	{
-		this->SetState(STATE_STAND_THROW);
-		return;
+		//this->SetState(STATE_STAND_THROW);
+		if (aladdin->GetisApple())
+		{
+			this->SetState(STATE_STAND_THROW);
+			aladdin->SetIsApple(false);
+			return;
+		}
+		//return;
 	}
 
 	aladdin->SetSpeedX(0);
@@ -509,14 +515,14 @@ void AladdinState::Colision()
 	{
 		this->stateFalling();
 	}
-	//else if (this->GetState() == STATE_FALL)
-	//{
-	//	if (aladdin->GetSpeedY() < 0)
-	//	{
-	//		this->SetState(IDLE_STAND);
-	//		this->stateStanding();
-	//	}
-	//}
+	else if (this->GetState() == STATE_FALL)
+	{
+		if (aladdin->GetSpeedY() < 0)
+		{
+			this->SetState(IDLE_STAND);
+			this->stateStanding();
+		}
+	}
 
 	aladdin->SetIsGrounded(false);
 }

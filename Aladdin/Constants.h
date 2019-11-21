@@ -61,6 +61,13 @@ enum ObjectType
 #define ALADDIN_GRAVITY			0.04f
 #define ALADDIN_JUMP_MAX		110
 
+#define APPLE_WIDTH 7
+#define APPLE_HEIGHT 6
+#define APPLE_SPEED 0.28f
+
+#define APPLE_FLYING 0
+#define APPLE_BANG 1
+
 #define ALADDIN_TEXTURE_LOCATION L"Resource\\Character\\Aladdin_.png"
 #define TEXTURE_TRANS_COLOR D3DCOLOR_XRGB(255, 0, 255)
 #define TEXTURE_TRANS_COLOR_1 D3DCOLOR_XRGB(0, 91, 127)

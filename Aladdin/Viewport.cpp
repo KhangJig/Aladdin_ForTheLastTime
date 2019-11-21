@@ -52,9 +52,7 @@ void Viewport::Update(DWORD dt)
 {
 	Aladdin * aladdin = Aladdin::GetInstance();
 
-	DebugOut(L"%d - %d \n", (int)aladdin->GetPositionX(), (int)aladdin->GetPositionY());
-
-	int right = (int)(TileMap::GetInstance()->currentMap->size * 100 - SCREEN_WIDTH / 2);
+	int right = (int)(TileMap::GetInstance()->currentMap->size * 100 - SCREEN_WIDTH / 2) - 40;
 	int left = (int)SCREEN_WIDTH / 2;
 	int bottom = (int)(TileMap::GetInstance()->currentMap->height * 100 - SCREEN_HEIGHT / 2 );
 	int top = (int)SCREEN_HEIGHT / 2;

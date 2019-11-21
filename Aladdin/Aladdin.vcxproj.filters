@@ -28,6 +28,9 @@
     <Filter Include="GameObjects\Aladdin">
       <UniqueIdentifier>{70701ec4-5526-4d7b-a4ee-f90f28277ebb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\Apple">
+      <UniqueIdentifier>{39895f7d-5ed1-4e97-b2af-ce802ac26017}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graphics.cpp">
@@ -85,6 +88,15 @@
       <Filter>GameObjects\Aladdin</Filter>
     </ClCompile>
     <ClCompile Include="AladdinState.cpp">
+      <Filter>GameObjects\Aladdin</Filter>
+    </ClCompile>
+    <ClCompile Include="Apple.cpp">
+      <Filter>GameObjects\Apple</Filter>
+    </ClCompile>
+    <ClCompile Include="AppleState.cpp">
+      <Filter>GameObjects\Apple</Filter>
+    </ClCompile>
+    <ClCompile Include="Apple2.cpp">
       <Filter>GameObjects\Aladdin</Filter>
     </ClCompile>
   </ItemGroup>
@@ -150,6 +162,15 @@
       <Filter>GameObjects\Aladdin</Filter>
     </ClInclude>
     <ClInclude Include="AladdinState.h">
+      <Filter>GameObjects\Aladdin</Filter>
+    </ClInclude>
+    <ClInclude Include="Apple.h">
+      <Filter>GameObjects\Apple</Filter>
+    </ClInclude>
+    <ClInclude Include="AppleState.h">
+      <Filter>GameObjects\Apple</Filter>
+    </ClInclude>
+    <ClInclude Include="Apple2.h">
       <Filter>GameObjects\Aladdin</Filter>
     </ClInclude>
   </ItemGroup>

@@ -18,7 +18,7 @@ Aladdin::Aladdin()
 	state = AladdinState::GetInstance(this);
 
 	this->x = 50;
-	this->y = 200;
+	this->y = 150;
 	this->width = ALADDIN_SPRITE_WIDTH;
 	this->height = ALADDIN_SPRITE_HEIGHT;
 
@@ -28,6 +28,9 @@ Aladdin::Aladdin()
 	collider.vy = 0;
 	collider.width = ALADDIN_SPRITE_WIDTH;
 	collider.height = ALADDIN_SPRITE_HEIGHT;
+
+	apple = Apple2::GetInstance();
+	this->SetIsApple(true);
 }
 
 void Aladdin::LoadResources()
@@ -598,7 +601,8 @@ void Aladdin::Update(DWORD dt)
 	for (int i = 0; i < coEvents.size(); i++)
 		delete coEvents[i];
 #pragma endregion
-
+	apple->UpdateObjectCollider();
+	apple->Update(dt);
 	state->Colision();
 	state->Update(dt);
 }
@@ -621,5 +625,6 @@ void Aladdin::UpdateCollision(DWORD dt)
 
 void Aladdin::Render()
 {
+	apple->Render();
 	state->Render();
 }
