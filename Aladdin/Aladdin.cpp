@@ -17,7 +17,7 @@ Aladdin::Aladdin()
 	LoadResources();
 	state = AladdinState::GetInstance(this);
 
-	apple = Apple2::GetInstance();
+	apple = Apple::GetInstance();
 	this->SetIsApple(true);
 
 	this->x = 50;

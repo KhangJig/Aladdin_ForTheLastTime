@@ -4,7 +4,7 @@
 #include "Constants.h"
 #include "Game.h"
 #include "State.h"
-#include "Apple2.h"
+#include "Apple.h"
 
 class Aladdin : public GameObject
 {
@@ -13,7 +13,7 @@ class Aladdin : public GameObject
 	static Aladdin *__instance;
 	State *state, *stateApple;
 
-	Apple2 *apple;
+	Apple *apple;
 
 	bool isGrounded = false;
 	static vector<Animation *> animations;
