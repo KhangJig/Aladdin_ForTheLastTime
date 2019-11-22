@@ -24,6 +24,9 @@ class Aladdin : public GameObject
 	bool trueImortal;
 	bool isApple;
 
+	int posXAladdinThrowing;
+	int posYAladdinThrowing;
+
 public:
 	void LoadResources();
 
@@ -33,6 +36,14 @@ public:
 	void SetLastFrameTime(DWORD lastFrameTime) { this->lastFrameTime = lastFrameTime; }
 	void SetIsGrounded(bool isGrounded) { this->isGrounded = isGrounded; }
 	bool GetIsGrounded() { return isGrounded; }
+
+	void SetPosAladdinThrowing(int x, int y) {
+		this->posXAladdinThrowing = x;
+		this->posYAladdinThrowing = y;
+	}
+
+	int GetPosXAladdinThrowing() { return this->posXAladdinThrowing; }
+	int GetPosYAladdinThrowing() { return this->posYAladdinThrowing; }
 
 	void SetIsApple(bool isApple) { this->isApple = isApple; }
 	bool GetisApple() { return isApple; }

@@ -36,6 +36,8 @@ public:
 
 	void Render();
 
+	float ParabolCurrentX(float posX, float posY, float currentX);
+
 	float GetDistance() { return this->distance; }
 
 	~Apple();

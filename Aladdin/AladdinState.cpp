@@ -67,6 +67,7 @@ void AladdinState::stateStanding()
 	{
 		if (aladdin->GetisApple())
 		{
+			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_STAND_THROW);
 			aladdin->SetIsApple(false);
 			return;
@@ -107,6 +108,7 @@ void AladdinState::stateHeadUp()
 	{
 		if (aladdin->GetisApple())
 		{
+			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_STAND_THROW);
 			aladdin->SetIsApple(false);
 			return;
@@ -159,6 +161,7 @@ void AladdinState::stateWalking()
 	{
 		if (aladdin->GetisApple())
 		{
+			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_RUN_THROW);
 			aladdin->SetIsApple(false);
 			anim->isSetFrame(false);
@@ -205,6 +208,7 @@ void AladdinState::stateJumping()
 	{
 		if (aladdin->GetisApple())
 		{
+			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_JUMP_THROW);
 			aladdin->SetIsApple(false);
 			anim->isSetFrame(false);
@@ -278,6 +282,7 @@ void AladdinState::stateSitting()
 	{
 		if (aladdin->GetisApple())
 		{
+			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_SIT_THROW);
 			aladdin->SetIsApple(false);
 			anim->isSetFrame(false);
@@ -342,6 +347,7 @@ void AladdinState::stateSittingIdle()
 	{
 		if (aladdin->GetisApple())
 		{
+			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_SIT_THROW);
 			aladdin->SetIsApple(false);
 			anim->isSetFrame(false);
@@ -452,6 +458,7 @@ void AladdinState::stateRunJump()
 	{
 		if (aladdin->GetisApple())
 		{
+			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_JUMP_THROW);
 			aladdin->SetIsApple(false);
 			anim->isSetFrame(false);
@@ -495,6 +502,7 @@ void AladdinState::stateFall2()
 	{
 		if (aladdin->GetisApple())
 		{
+			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_JUMP_THROW);
 			aladdin->SetIsApple(false);
 			anim->isSetFrame(false);

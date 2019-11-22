@@ -4,8 +4,7 @@
 #define APPLE_NONE 1
 #define APPLE_FLYING 2
 #define APPLE_BOOM 3
-#define APPLE_SPEED_Y 0.089f
-#define APPLE_SPEED 0.179f
+#define APPLE_SPEED 0.279f
 
 Apple * Apple::__instance = NULL;
 
@@ -95,9 +94,20 @@ void Apple::Update(DWORD dt)
 	}
 
 	this->SetPositionX((float)(this->GetPositionX() + this->GetSpeedX()* dt*(isLeft == true ? -1 : 1)));
-	this->SetPositionY((float)(this->GetPositionY() + this->GetSpeedY()* dt));
 
-	DebugOut(L" %d - %d  \n", (int)this->GetPositionX(), (int)this->GetPositionY());
+	this->SetPositionY((float)this->ParabolCurrentX(aladdin->GetPosXAladdinThrowing(), aladdin->GetPosYAladdinThrowing(), this->GetPositionX()));
+
+	//this->SetPositionY((float)(this->GetPositionX() * this->GetPositionX()* -2) / 625 + (this->GetPositionX() * 8 / 25) + 42);
+	//this->SetPositionY((float)(this->GetPositionY() - (this->GetSpeedX()* dt * this->GetSpeedX()* dt)/10));
+	//this->SetPositionY((float)(this->GetPositionY() + this->GetSpeedY()* dt));
+
+	//DebugOut(L" %d - %d  \n", (int)this->GetPositionX(), (int)this->GetPositionY());
+	DebugOut(L" %d - %d  \n", (int)aladdin->GetPositionX(), (int)aladdin->GetPositionY());
+}
+
+float Apple::ParabolCurrentX(float posX, float posY, float currentX) {
+
+	return ((-49 * currentX*currentX) / pow(125, 2)) + ((98 * posX * currentX) / pow(125, 2)) + (posY - (49 * pow(posX, 2)) / pow(125, 2));
 }
 
 void Apple::AppleFlying()
@@ -112,7 +122,6 @@ void Apple::AppleFlying()
 			this->SetPositionX(aladdin->GetPositionX());
 		this->distance = aladdin->GetPositionX() + maxDistance * (isAladdinLeft ? -1 : 1);
 		this->SetSpeedX(APPLE_SPEED * 1 * (isAladdinLeft ? -1 : 1));
-		this->SetSpeedY(-APPLE_SPEED_Y);
 
 		this->SetPositionY(aladdin->GetPositionY() + 10);
 		 
@@ -121,27 +130,6 @@ void Apple::AppleFlying()
 	}
 	else
 	{
-		/*int cpos = aladdin->GetPositionY() - 16;
-		if ((isAladdinLeft ? (this->GetPositionX() < this->distance) : (this->GetPositionX() >= this->distance) && isReturn))
-		{
-			this->SetSpeedX(APPLE_SPEED * -1 * (isAladdinLeft ? -1 : 1));
-			isReturn = false;
-		}
-		if (abs(this->GetPositionY() - cpos) >= 1)
-		{
-			if (this->GetPositionY() > cpos)
-			{
-				float temp = this->GetPositionY() - 2.5;
-				this->SetPositionY(temp);
-			}
-			else
-			{
-				float temp = this->GetPositionY() + 2.5;
-				this->SetPositionY(temp);
-			}
-		}*/
-		this->SetSpeedY(-APPLE_SPEED_Y);
-
 		if (this->GetPositionY() < -5) {
 			this->state = APPLE_BOOM;
 		}
@@ -172,12 +160,13 @@ void Apple::Render()
 	{
 		this->SetSpeedX(0);
 		this->SetSpeedY(0);
+		this->SetPositionX(0);
+		this->SetPositionY(0);
 		this->animations[2]->Render(spriteData);
 	}
 	break;
 	case APPLE_FLYING:
 	{
-		this->SetSpeedY(-APPLE_SPEED_Y);
 		this->animations[0]->Render(spriteData);
 	}
 	break;
