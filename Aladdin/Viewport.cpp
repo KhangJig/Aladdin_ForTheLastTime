@@ -10,7 +10,6 @@ Viewport::Viewport()
 	height = SCREEN_HEIGHT;
 	x = 0;
 	y = 0;
-	this->SetHeadUp(true);
 }
 
 Viewport::~Viewport()
