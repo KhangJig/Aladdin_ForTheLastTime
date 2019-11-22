@@ -10,6 +10,7 @@ Viewport::Viewport()
 	height = SCREEN_HEIGHT;
 	x = 0;
 	y = 0;
+	this->SetHeadUp(true);
 }
 
 Viewport::~Viewport()
@@ -63,7 +64,7 @@ void Viewport::Update(DWORD dt)
 	}
 	if (aladdin->GetPositionY() > top && aladdin->GetPositionY() < bottom)
 	{
-		this->y = aladdin->GetPositionY() + top - 50;
+		this->y = aladdin->GetPositionY() + top - 30;
 	}
 }
 

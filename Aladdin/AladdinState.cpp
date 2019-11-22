@@ -404,9 +404,19 @@ void AladdinState::stateStandThrow()
 
 	if (anim->IsDone())
 	{
-		anim->Reset();
-		this->SetState(IDLE_STAND);
-		return;
+		if (!Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) && !Keyboard::GetInstance()->IsKeyDown(DIK_LEFT))
+		{
+			anim->Reset();
+			this->SetState(IDLE_STAND);
+			return;
+		}
+		else
+		{
+			anim->Reset();
+			this->SetState(STATE_RUN);
+			return;
+		}
+
 	}
 }
 

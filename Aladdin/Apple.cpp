@@ -96,13 +96,6 @@ void Apple::Update(DWORD dt)
 	this->SetPositionX((float)(this->GetPositionX() + this->GetSpeedX()* dt*(isLeft == true ? -1 : 1)));
 
 	this->SetPositionY((float)this->ParabolCurrentX(aladdin->GetPosXAladdinThrowing(), aladdin->GetPosYAladdinThrowing(), this->GetPositionX()));
-
-	//this->SetPositionY((float)(this->GetPositionX() * this->GetPositionX()* -2) / 625 + (this->GetPositionX() * 8 / 25) + 42);
-	//this->SetPositionY((float)(this->GetPositionY() - (this->GetSpeedX()* dt * this->GetSpeedX()* dt)/10));
-	//this->SetPositionY((float)(this->GetPositionY() + this->GetSpeedY()* dt));
-
-	//DebugOut(L" %d - %d  \n", (int)this->GetPositionX(), (int)this->GetPositionY());
-	DebugOut(L" %d - %d  \n", (int)aladdin->GetPositionX(), (int)aladdin->GetPositionY());
 }
 
 float Apple::ParabolCurrentX(float posX, float posY, float currentX) {

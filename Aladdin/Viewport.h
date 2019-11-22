@@ -13,6 +13,7 @@ class Viewport
 	int height;
 	int x;
 	int y;
+
 public:
 	static Viewport *GetInstance();
 	~Viewport();
