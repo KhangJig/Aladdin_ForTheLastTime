@@ -24,6 +24,7 @@ public:
 	bool isFlying = false;
 
 	bool IsFlying() { return this->isFlying; }
+
 	void SetIsFlying(bool isFlying) { this->isFlying = isFlying; }
 
 	static Apple * GetInstance();
