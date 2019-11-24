@@ -61,6 +61,7 @@ void Guard1::LoadResources()
 
 	Sprite * guard1_idle_1 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[14], TEXTURE_TRANS_COLOR_3);
 	anim->AddFrame(guard1_idle_1);
+
 	animations.push_back(anim);
 #pragma endregion
 
@@ -99,6 +100,8 @@ void Guard1::LoadResources()
 	guard1_hurt_9->SetOffSetX(-4);
 	guard1_hurt_9->SetOffSetY(9);
 	anim->AddFrame(guard1_hurt_9);
+
+	animations.push_back(anim);
 #pragma endregion
 
 #pragma region WALKING
@@ -166,6 +169,7 @@ void Guard1::LoadResources()
 	Sprite * guard1_hit_6 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[13], TEXTURE_TRANS_COLOR_3);
 	guard1_hit_6->SetOffSetX(1);
 	guard1_hit_6->SetOffSetY(1);
+	anim->AddFrame(guard1_hit_6);
 
 	animations.push_back(anim);
 #pragma endregion
