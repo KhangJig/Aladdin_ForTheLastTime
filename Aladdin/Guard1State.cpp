@@ -39,7 +39,6 @@ void Guard1State::stateIdle()
 		if (abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) >= 40
 			&& abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) <= 200)
 		{
-			DebugOut(L" GUARD1_WALK \n");
 			anim->Reset();
 			this->SetState(GUARD1_WALK);
 			return;
