@@ -90,11 +90,13 @@ void Game::LoadResources()
 
 	Grid::GetInstance()->InitializeMapGrid(tileMap);
 
-	if (NULL == aladdin)
+	if (aladdin == NULL)
 		aladdin = Aladdin::GetInstance();
 
 	if (viewport == NULL)
 		viewport = Viewport::GetInstance();
+
+	Guard1::LoadResources();
 }
 
 void Game::Update(DWORD dt)
@@ -167,11 +169,6 @@ int Game::Run()
 	}
 
 	return 1;
-}
-
-Aladdin* Game::GetAladdin()
-{
-	return aladdin;
 }
 
 LRESULT CALLBACK Game::WinProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

@@ -5,6 +5,9 @@
 #include "TileMap.h"
 #include "Grid.h"
 #include "Aladdin.h"
+
+#include "Guard1.h"
+
 #include <chrono>
 
 class Graphics;
@@ -38,8 +41,6 @@ public:
 	void Update(DWORD dt);
 	void Render();
 	int Run();
-
-	Aladdin *GetAladdin();
 
 	static Game *GetInstance();
 	~Game();

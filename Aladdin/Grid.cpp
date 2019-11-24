@@ -15,6 +15,8 @@ Grid::Grid()
 {
 	aladdin = Aladdin::GetInstance();
 	viewport = Viewport::GetInstance();
+
+	guard1 = new Guard1(300, 100);
 }
 
 void Grid::InitializeMapGrid(TileMap *tileMap)
@@ -41,7 +43,6 @@ void Grid::GetCameraPosOnGrid(int &l, int &r, int &t, int &b) {
 
 	l = (int)(rect.left / GRID_SIZE);
 	t = (int)(rect.top % GRID_SIZE == 0 ? rect.top / GRID_SIZE - 1 : rect.top / GRID_SIZE);
-	//t = (int)(rect.top / GRID_SIZE);
 	r = (int)(rect.right / GRID_SIZE);
 	b = (int)(rect.bottom / GRID_SIZE);
 	if (r >= mapSize)
@@ -57,7 +58,6 @@ void Grid::UpdateCurrentTiles()
 	int left = (int)(rect.left / GRID_SIZE);
 	int right = (int)(rect.right / GRID_SIZE);
 	int top = (int)(rect.top % GRID_SIZE == 0 ? rect.top / GRID_SIZE - 1 : rect.top / GRID_SIZE);
-	//int top = (int)(rect.top / GRID_SIZE);
 	int bottom = (int)(rect.bottom / GRID_SIZE);
 
 	for (int x = left; x <= right; x++)
@@ -145,6 +145,8 @@ void Grid::Update(DWORD dt)
 	aladdin->Update(dt);
 	aladdin->UpdateCollision(dt);
 
+	guard1->Update(dt);
+
 	for (int i = 0; i < listObject.size(); i++)
 	{
 		if (listObject.at(i).disable)
@@ -192,4 +194,6 @@ void Grid::Render()
 		listObject.at(i).object->Render();
 	}
 	aladdin->Render();
+
+	guard1->Render();
 }

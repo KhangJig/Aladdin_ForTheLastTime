@@ -1,11 +1,13 @@
 #pragma once
+#include <vector>
+#include <fstream>
+#include <string>
 #include "GameObject.h"
 #include "SpawnProjectTile.h"
 #include "Constants.h" 
 #include "Aladdin.h"
-#include <vector>
-#include <fstream>
-#include <string>
+
+#include "Guard1.h"
 
 using namespace std;
 
@@ -38,6 +40,7 @@ struct GridData
 	}
 };
 
+class Guard1;
 class Grid
 {
 private:
@@ -49,11 +52,14 @@ private:
 
 	Aladdin* aladdin;
 
+
 	vector <OnUpdateObject> listObject;
 
 	void UpdateCurrentTiles();
 
 	float timeCount;
+
+	Guard1 *guard1;
 
 public:
 	static Grid* GetInstance();

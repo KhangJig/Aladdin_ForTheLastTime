@@ -164,6 +164,8 @@
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="dxutil.cpp" />
+    <ClCompile Include="Guard1.cpp" />
+    <ClCompile Include="Guard1State.cpp" />
     <ClCompile Include="Loadtxt.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Animation.cpp" />
@@ -197,6 +199,8 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="Guard1.h" />
+    <ClInclude Include="Guard1State.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Loadtxt.h" />
     <ClInclude Include="Sound.h" />

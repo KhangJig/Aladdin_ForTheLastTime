@@ -28,6 +28,12 @@
     <Filter Include="GameObjects\Aladdin">
       <UniqueIdentifier>{70701ec4-5526-4d7b-a4ee-f90f28277ebb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\Enemies">
+      <UniqueIdentifier>{f282e589-45e8-46b6-8653-fbaa1750a831}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Enemies\Guard1">
+      <UniqueIdentifier>{a8598311-ebd2-4252-9983-5312b4221c72}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graphics.cpp">
@@ -89,6 +95,12 @@
     </ClCompile>
     <ClCompile Include="Apple.cpp">
       <Filter>GameObjects\Aladdin</Filter>
+    </ClCompile>
+    <ClCompile Include="Guard1.cpp">
+      <Filter>GameObjects\Enemies\Guard1</Filter>
+    </ClCompile>
+    <ClCompile Include="Guard1State.cpp">
+      <Filter>GameObjects\Enemies\Guard1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +169,12 @@
     </ClInclude>
     <ClInclude Include="Apple.h">
       <Filter>GameObjects\Aladdin</Filter>
+    </ClInclude>
+    <ClInclude Include="Guard1.h">
+      <Filter>GameObjects\Enemies\Guard1</Filter>
+    </ClInclude>
+    <ClInclude Include="Guard1State.h">
+      <Filter>GameObjects\Enemies\Guard1</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
