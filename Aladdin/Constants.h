@@ -80,4 +80,4 @@ enum ObjectType
 // Guard1
 #define GUARD1_SPRITE_WIDTH 44
 #define GUARD1_SPRITE_HEIGHT 57
-#define GUARD1_WALK_SPEED 0.085f
+#define GUARD1_WALK_SPEED 0.075f

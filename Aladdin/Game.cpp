@@ -93,7 +93,7 @@ void Game::LoadResources()
 	if (aladdin == NULL)
 		aladdin = Aladdin::GetInstance();
 
-	if (viewport == NULL)
+	if (NULL == viewport)
 		viewport = Viewport::GetInstance();
 
 	Guard1::LoadResources();

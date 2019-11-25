@@ -3,31 +3,31 @@
 vector<Animation *> Guard1::animations = vector<Animation *>();
 Guard1 *Guard1::__instance = NULL;
 
-Guard1 *Guard1::GetInstance()
-{
-	if (__instance == NULL)
-		__instance = new Guard1();
-	return __instance;
-}
-
-Guard1::Guard1()
-{
-	LoadResources();
-
-	state = Guard1State::GetInstance(this);
-
-	this->x = 250;
-	this->y = 150;
-	this->width = GUARD1_SPRITE_WIDTH;
-	this->height = GUARD1_SPRITE_HEIGHT;
-
-	collider.x = x;
-	collider.y = y;
-	collider.vx = 0;
-	collider.vy = 0;
-	collider.width = GUARD1_SPRITE_WIDTH;
-	collider.height = GUARD1_SPRITE_HEIGHT;
-}
+//Guard1 *Guard1::GetInstance()
+//{
+//	if (__instance == NULL)
+//		__instance = new Guard1();
+//	return __instance;
+//}
+//
+//Guard1::Guard1()
+//{
+//	LoadResources();
+//
+//	state = Guard1State::GetInstance(this);
+//
+//	this->x = 250;
+//	this->y = 150;
+//	this->width = GUARD1_SPRITE_WIDTH;
+//	this->height = GUARD1_SPRITE_HEIGHT;
+//
+//	collider.x = x;
+//	collider.y = y;
+//	collider.vx = 0;
+//	collider.vy = 0;
+//	collider.width = GUARD1_SPRITE_WIDTH;
+//	collider.height = GUARD1_SPRITE_HEIGHT;
+//}
 
 Guard1::Guard1(float x, float y)
 {
@@ -108,36 +108,36 @@ void Guard1::LoadResources()
 	anim = new Animation(100);
 
 	Sprite * guard1_walking_1 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[0], TEXTURE_TRANS_COLOR_3);
-	guard1_walking_1->SetOffSetX(1);
-	guard1_walking_1->SetOffSetY(1);
+	//guard1_walking_1->SetOffSetX(8);
+	guard1_walking_1->SetOffSetY(9);
 	anim->AddFrame(guard1_walking_1);
 	Sprite * guard1_walking_2 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[1], TEXTURE_TRANS_COLOR_3);
-	guard1_walking_2->SetOffSetX(1);
-	guard1_walking_2->SetOffSetY(1);
+	//guard1_walking_2->SetOffSetX(10);
+	guard1_walking_2->SetOffSetY(8);
 	anim->AddFrame(guard1_walking_2);
 	Sprite * guard1_walking_3 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[2], TEXTURE_TRANS_COLOR_3);
-	guard1_walking_3->SetOffSetX(1);
-	guard1_walking_3->SetOffSetY(1);
+	//guard1_walking_3->SetOffSetX(11);
+	guard1_walking_3->SetOffSetY(7);
 	anim->AddFrame(guard1_walking_3);
 	Sprite * guard1_walking_4 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[3], TEXTURE_TRANS_COLOR_3);
-	guard1_walking_4->SetOffSetX(1);
-	guard1_walking_4->SetOffSetY(1);
+	//guard1_walking_4->SetOffSetX(8);
+	guard1_walking_4->SetOffSetY(7);
 	anim->AddFrame(guard1_walking_4);
 	Sprite * guard1_walking_5 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[4], TEXTURE_TRANS_COLOR_3);
-	guard1_walking_5->SetOffSetX(1);
-	guard1_walking_5->SetOffSetY(1);
+	guard1_walking_5->SetOffSetX(2);
+	guard1_walking_5->SetOffSetY(8);
 	anim->AddFrame(guard1_walking_5);
 	Sprite * guard1_walking_6 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[5], TEXTURE_TRANS_COLOR_3);
-	guard1_walking_6->SetOffSetX(1);
-	guard1_walking_6->SetOffSetY(1);
+	//guard1_walking_6->SetOffSetX(12);
+	guard1_walking_6->SetOffSetY(9);
 	anim->AddFrame(guard1_walking_6);
 	Sprite * guard1_walking_7 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[6], TEXTURE_TRANS_COLOR_3);
-	guard1_walking_7->SetOffSetX(1);
-	guard1_walking_7->SetOffSetY(1);
+	guard1_walking_7->SetOffSetX(2);
+	guard1_walking_7->SetOffSetY(9);
 	anim->AddFrame(guard1_walking_7);
 	Sprite * guard1_walking_8 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[7], TEXTURE_TRANS_COLOR_3);
-	guard1_walking_8->SetOffSetX(1);
-	guard1_walking_8->SetOffSetY(1);
+	//guard1_walking_8->SetOffSetX(1);
+	guard1_walking_8->SetOffSetY(7);
 	anim->AddFrame(guard1_walking_8);
 
 	animations.push_back(anim);
@@ -147,28 +147,27 @@ void Guard1::LoadResources()
 	anim = new Animation(100);
 
 	Sprite * guard1_hit_1 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[8], TEXTURE_TRANS_COLOR_3);
-	guard1_hit_1->SetOffSetX(1);
-	guard1_hit_1->SetOffSetY(1);
+	guard1_hit_1->SetOffSetX(-3);
+	guard1_hit_1->SetOffSetY(16);
 	anim->AddFrame(guard1_hit_1);
 	Sprite * guard1_hit_2 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[9], TEXTURE_TRANS_COLOR_3);
 	guard1_hit_2->SetOffSetX(1);
-	guard1_hit_2->SetOffSetY(1);
+	guard1_hit_2->SetOffSetY(2);
 	anim->AddFrame(guard1_hit_2);
 	Sprite * guard1_hit_3 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[10], TEXTURE_TRANS_COLOR_3);
-	guard1_hit_3->SetOffSetX(1);
-	guard1_hit_3->SetOffSetY(1);
+	guard1_hit_3->SetOffSetX(53);
 	anim->AddFrame(guard1_hit_3);
 	Sprite * guard1_hit_4 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[11], TEXTURE_TRANS_COLOR_3);
-	guard1_hit_4->SetOffSetX(1);
+	guard1_hit_4->SetOffSetX(48);
 	guard1_hit_4->SetOffSetY(1);
 	anim->AddFrame(guard1_hit_4);
 	Sprite * guard1_hit_5 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[12], TEXTURE_TRANS_COLOR_3);
-	guard1_hit_5->SetOffSetX(1);
-	guard1_hit_5->SetOffSetY(1);
+	guard1_hit_5->SetOffSetX(37);
+	guard1_hit_5->SetOffSetY(2);
 	anim->AddFrame(guard1_hit_5);
 	Sprite * guard1_hit_6 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[13], TEXTURE_TRANS_COLOR_3);
 	guard1_hit_6->SetOffSetX(1);
-	guard1_hit_6->SetOffSetY(1);
+	guard1_hit_6->SetOffSetY(2);
 	anim->AddFrame(guard1_hit_6);
 
 	animations.push_back(anim);
