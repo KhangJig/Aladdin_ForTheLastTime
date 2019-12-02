@@ -190,7 +190,7 @@ void Guard1::Update(DWORD dt)
 	vector<ColliedEvent*> coEventsResult;
 
 #pragma region	Collide with map
-	vector<Tile *> tiles = Grid::GetInstance()->GetNearbyTiles(this->GetRect());
+	vector<TileObjectMap *> tiles = Grid::GetInstance()->GetNearbyObjectTiles();
 
 	coEvents.clear();
 	this->SetDt(dt);

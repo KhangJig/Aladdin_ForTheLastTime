@@ -16,7 +16,6 @@ using namespace std;
 struct OnUpdateObject
 {
 	GameObject* object;
-	Tile* tile;
 	bool disable = false;
 	float delaySpawn = 10000;
 	float timeCount = 0001;
@@ -27,7 +26,7 @@ struct GridData
 	vector<Tile*> tiles;
 	int x;
 	int y;
-	vector<Tile*> hasSpawnTiles;
+
 	vector<OnUpdateObject> listObject;
 
 	void Render()
@@ -40,7 +39,6 @@ struct GridData
 	}
 };
 
-class Guard1;
 class Grid
 {
 private:
@@ -51,15 +49,12 @@ private:
 	Viewport* viewport;
 
 	Aladdin* aladdin;
-
-
+	
 	vector <OnUpdateObject> listObject;
 
 	void UpdateCurrentTiles();
 
 	float timeCount;
-
-	Guard1 *guard1;
 
 public:
 	static Grid* GetInstance();
@@ -71,23 +66,31 @@ public:
 	void GetCameraPosOnGrid(int &l, int &r, int &t, int &b);
 
 	vector<Tile*> currentTile;
+
 	vector<Tile *> GetCurTiles() { return this->currentTile; }
 
-	vector<Tile *> GetNearbyTiles(int l, int r, int t, int b);
-	vector<Tile *> GetNearbyTiles(RECT rect);
-
 	GridData* listCell;
+
+	vector<TileObjectMap> tileObjectMap22;
+
+	vector<TileObjectMap *> GetNearbyObjectTiles();
+
+	vector<ObjectnEnemies> enemiesnObjects;
+
 
 	GridData* GetCell(int x, int y)
 	{
 		return (listCell + x + y * mapSize);
 	}
 
-	void SpawnObject(int ObjectID, Tile* tile);
+	void SpawnObject(ObjectnEnemies enemies);
+
 	bool CheckObjectInsideCamera(GameObject* object);
+
 	vector <OnUpdateObject> GetListUpdateObject() { return listObject; }
 
 	void Update(DWORD dt);
+
 	void Render();
 
 	void DisableAllObject()

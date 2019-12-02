@@ -16,7 +16,7 @@ Grid::Grid()
 	aladdin = Aladdin::GetInstance();
 	viewport = Viewport::GetInstance();
 
-	guard1 = new Guard1(300, 100);
+	Guard1::LoadResources();
 }
 
 void Grid::InitializeMapGrid(TileMap *tileMap)
@@ -33,22 +33,36 @@ void Grid::InitializeMapGrid(TileMap *tileMap)
 				{
 					Tile* tempTile = tileMap->currentMap->GetTile(xx + x * GRID_SIZE_BY_TILE, yy + y * GRID_SIZE_BY_TILE);
 					(listCell + x + y * mapSize)->tiles.push_back(tempTile);
-					if (tempTile->SpawnObjectID != 0)
-						(listCell + x + y * mapSize)->hasSpawnTiles.push_back(tempTile);
 				}
+
+	// get possion object map
+	for (int i = 0; i < tileMap->GetListTileObj().size(); i++)
+	{
+		this->tileObjectMap22.push_back(tileMap->GetListTileObj()[i]);
+	}
+
+	// get possion object & enemies
+	for (int i = 0; i < tileMap->GetEnemiesAndObjecs().size(); i++)
+	{
+		this->enemiesnObjects.push_back(tileMap->GetEnemiesAndObjecs()[i]);
+		this->SpawnObject(tileMap->GetEnemiesAndObjecs()[i]);
+	}
 }
 
 void Grid::GetCameraPosOnGrid(int &l, int &r, int &t, int &b) {
 	RECT rect = viewport->GetRect();
 
+	//DebugOut(L"rect.top - %d \n", (int)(rect.top));
+	//DebugOut(L"rectGRID_SIZE - %d\n", (int)(rect.top % GRID_SIZE));
+
 	l = (int)(rect.left / GRID_SIZE);
-	t = (int)(rect.top % GRID_SIZE == 0 ? rect.top / GRID_SIZE - 1 : rect.top / GRID_SIZE);
+	t = (int)(rect.top % GRID_SIZE >300 ? rect.top / GRID_SIZE + 1 : rect.top / GRID_SIZE);
 	r = (int)(rect.right / GRID_SIZE);
 	b = (int)(rect.bottom / GRID_SIZE);
-	if (r >= mapSize)
-		r = mapSize - 1;
-	if (t >= mapSize)
-		t = mapSize - 1;
+	//if (r >= mapSize)
+	//	r = mapSize - 1;
+	//if (t >= mapSize)
+	//	t = mapSize - 1;
 }
 
 void Grid::UpdateCurrentTiles()
@@ -69,58 +83,34 @@ void Grid::UpdateCurrentTiles()
 	}
 }
 
-vector<Tile *> Grid::GetNearbyTiles(int l, int r, int t, int b)
+vector<TileObjectMap *> Grid::GetNearbyObjectTiles()
 {
-	vector<Tile*> nearbyTiles;
-	int left = (int)(l / GRID_SIZE);
-	int right = (int)(r / GRID_SIZE);
-	int top = (int)(t % GRID_SIZE == 0 ? t / GRID_SIZE - 1 : t / GRID_SIZE);
-	int bottom = (int)(b / GRID_SIZE);
-
-	for (int x = left; x <= right; x++)
+	vector<TileObjectMap*> nearbyTiles;
+	
+	for (int i = 0; i < this->tileObjectMap22.size(); i++)
 	{
-		for (int y = bottom; y <= top; y++)
+		if (Viewport::GetInstance()->IsObjectInCamera2(&this->tileObjectMap22.at(i)))
 		{
-			nearbyTiles.insert(nearbyTiles.end(), GetCell(x, y)->tiles.begin(), GetCell(x, y)->tiles.end());
+			nearbyTiles.push_back(&this->tileObjectMap22.at(i));
 		}
 	}
 
 	return nearbyTiles;
 }
 
-vector<Tile *> Grid::GetNearbyTiles(RECT rect)
+void Grid::SpawnObject(ObjectnEnemies enemies)
 {
-	vector<Tile*> nearbyTiles;
-	int left = (int)(rect.left / GRID_SIZE);
-	int right = (int)(rect.right / GRID_SIZE);
-	int top = (int)(rect.top % GRID_SIZE == 0 ? rect.top / GRID_SIZE - 1 : rect.top / GRID_SIZE);
-	int bottom = (int)(rect.bottom / GRID_SIZE);
 
-	if (bottom < 0)
-		bottom = 0;
-	if (left < 0)
-		left = 0;
-
-	for (int x = left; x <= right; x++)
+	switch (enemies.SpawnObjectID)
 	{
-		for (int y = bottom; y <= top; y++)
+	case ObjectAndEnemies::GUARD1:
 		{
-			nearbyTiles.insert(nearbyTiles.end(), GetCell(x, y)->tiles.begin(), GetCell(x, y)->tiles.end());
+			Guard1* object = new Guard1(enemies.x, enemies.y);
+			OnUpdateObject temp;
+			temp.object = object;
+
+			listObject.push_back(temp);
 		}
-	}
-
-	return nearbyTiles;
-}
-
-void Grid::SpawnObject(int ObjectID, Tile* tile)
-{
-
-	switch (ObjectID)
-	{
-	case 1:
-	{
-
-	}
 	break;
 	}
 }
@@ -144,8 +134,6 @@ void Grid::Update(DWORD dt)
 	timeCount += dt;
 	aladdin->Update(dt);
 	aladdin->UpdateCollision(dt);
-
-	guard1->Update(dt);
 
 	for (int i = 0; i < listObject.size(); i++)
 	{
@@ -172,18 +160,17 @@ void Grid::Render()
 		{
 			(listCell + x + y * mapSize)->Render();
 
-			if ((listCell + x + y * mapSize)->hasSpawnTiles.size() > 0)
-			{
-				for (int i = 0; i < (listCell + x + y * mapSize)->hasSpawnTiles.size(); i++)
-				{
-					if (!(listCell + x + y * mapSize)->hasSpawnTiles.at(i)->bCanSpawn)
-						continue;
-
-					SpawnObject((listCell + x + y * mapSize)->hasSpawnTiles.at(i)->SpawnObjectID,
-						(listCell + x + y * mapSize)->hasSpawnTiles.at(i));
-					(listCell + x + y * mapSize)->hasSpawnTiles.at(i)->bCanSpawn = false;
-				}
-			}
+			//if ((listCell + x + y * mapSize)->hasSpawnTiles.size() > 0)
+			//{
+			//	for (int i = 0; i < (listCell + x + y * mapSize)->hasSpawnTiles.size(); i++)
+			//	{
+			//		if (!(listCell + x + y * mapSize)->hasSpawnTiles.at(i)->bCanSpawn)
+			//			continue;
+			//		SpawnObject((listCell + x + y * mapSize)->hasSpawnTiles.at(i)->SpawnObjectID,
+			//			(listCell + x + y * mapSize)->hasSpawnTiles.at(i));
+			//		(listCell + x + y * mapSize)->hasSpawnTiles.at(i)->bCanSpawn = false;
+			//	}
+			//}
 		}
 	}
 
@@ -194,6 +181,4 @@ void Grid::Render()
 		listObject.at(i).object->Render();
 	}
 	aladdin->Render();
-
-	guard1->Render();
 }

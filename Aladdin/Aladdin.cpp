@@ -528,6 +528,7 @@ void Aladdin::Reset()
 
 void Aladdin::Update(DWORD dt)
 {
+	//DebugOut(L"Aladdin %d %d \n", (int)this->GetPositionX(), (int)this->GetPositionY());
 	timeCount += dt;
 
 	if (this->GetSpeedX() > 0 && this->GetPositionX() > TileMap::GetInstance()->currentMap->size * 100 - 50)
@@ -583,9 +584,9 @@ void Aladdin::Update(DWORD dt)
 	vector<ColliedEvent*> coEventsResult;
 
 #pragma region	Collide with map
-	vector<Tile *> tiles = Grid::GetInstance()->GetNearbyTiles(this->GetRect());
-
+	vector<TileObjectMap *> tiles = Grid::GetInstance()->GetNearbyObjectTiles();
 	coEvents.clear();
+
 
 	this->SetDt(dt);
 	this->UpdateObjectCollider();
@@ -621,18 +622,19 @@ void Aladdin::Update(DWORD dt)
 
 		if (coEventsResult[0]->collisionID == 2)
 		{
+			if (nx == 1 || nx == -1)
+			{
+				this->SetSpeedX(0);
+				this->SetIsGrounded(true);
+			}
+		}
+
+		if (coEventsResult[0]->collisionID == 3)
+		{
 			if (ny == 1)
 			{
 				this->SetIsGrounded(false);
 				this->SetPositionX(this->GetPositionX() - 1);
-			}
-		}
-
-		if (coEventsResult[0]->collisionID == 5)
-		{
-			if (nx == 1 || nx == -1)
-			{
-				this->SetIsGrounded(true);
 			}
 		}
 	}

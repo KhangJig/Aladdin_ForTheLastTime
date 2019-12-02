@@ -78,6 +78,17 @@ bool Viewport::IsObjectInCamera(GameObject *gameobject)
 	return false;
 }
 
+bool Viewport::IsObjectInCamera2(TileObjectMap* tile)
+{
+	RECT rec = GetRect();
+
+	float GameObjectPosX = tile->x;
+	float GameObjectPosY = tile->y;
+	if (GameObjectPosX >= rec.left && GameObjectPosX <= rec.right && GameObjectPosY >= rec.bottom && GameObjectPosY <= rec.top)
+		return true;
+	return false;
+}
+
 void Viewport::SetRenderData(D3DXVECTOR2 &center, D3DXVECTOR2 &translate, D3DXVECTOR2 &scaling)
 {
 	D3DXMATRIX mt;

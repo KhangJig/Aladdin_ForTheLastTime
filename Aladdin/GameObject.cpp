@@ -13,6 +13,7 @@ GameObject::GameObject()
 	collider.width = 0;
 	collider.height = 0;
 }
+
 GameObject::GameObject(float x, float y, float width, float height)
 {
 	this->x = x;
@@ -42,28 +43,27 @@ void GameObject::Render()
 
 }
 
-void GameObject::MapCollisions(vector<Tile *> &tiles, vector<ColliedEvent*> &coEvents)
+void GameObject::MapCollisions(vector<TileObjectMap *> &tiles, vector<ColliedEvent*> &coEvents)
 {
 	Collider tileCollider;
-	tileCollider.width = TILE_SIZE;
-	tileCollider.height = TILE_SIZE;
 	for (int i = 0; i < tiles.size(); i++)
 	{
-		tileCollider.x = tiles[i]->x * TILE_SIZE;
-		// tileCollider.y = tiles[i]->y * TILE_SIZE - TILE_SIZE / 2;
-		tileCollider.y = tiles[i]->y * TILE_SIZE;
+		tileCollider.width = tiles[i]->width;
+		tileCollider.height = tiles[i]->height;
+
+		tileCollider.x = tiles[i]->x;
+		tileCollider.y = tiles[i]->y;
 
 		if (tiles[i]->type == ObjectType::BRICK)
 		{
 			float time;
 			float normalX;
 			float normalY;
-
 			time = Collision::GetInstance()->SweptAABB(this->GetCollider(), tileCollider, normalX, normalY);
 
 			if (time >= 0 && time < 1.0f && normalY == 1)
 			{
-				coEvents.push_back(new ColliedEvent(EVENT_BRICK, time, normalX, normalY));
+				coEvents.push_back(new ColliedEvent(EventCollison::EVENT_BRICK, time, normalX, normalY));
 			}
 		}
 		else if (tiles[i]->type == ObjectType::WALL)
@@ -74,11 +74,9 @@ void GameObject::MapCollisions(vector<Tile *> &tiles, vector<ColliedEvent*> &coE
 
 			time = Collision::GetInstance()->SweptAABB(this->GetCollider(), tileCollider, normalX, normalY);
 
-			if (time >= 0 && time < 1.0f)
+			if (time >= 0 && time < 1.0f && normalY == 1)
 			{
-				//trường hợp normalY = -1 không được
-				if (normalX == 1 || normalX == -1 || normalY == -1)
-					coEvents.push_back(new ColliedEvent(EVENT_WALL, time, normalX, normalY));
+				coEvents.push_back(new ColliedEvent(EventCollison::EVENT_WALL, time, normalX, normalY));
 			}
 		}
 		else if (tiles[i]->type == ObjectType::THORN)
@@ -91,41 +89,7 @@ void GameObject::MapCollisions(vector<Tile *> &tiles, vector<ColliedEvent*> &coE
 
 			if (time >= 0 && time < 1.0f && normalY == 1)
 			{
-				coEvents.push_back(new ColliedEvent(EVENT_THORN, time, normalX, normalY));
-			}
-		}
-		else if (tiles[i]->type == ObjectType::RIVER)
-		{
-			float time;
-			float normalX;
-			float normalY;
-
-			time = Collision::GetInstance()->SweptAABB(this->GetCollider(), tileCollider, normalX, normalY);
-
-			if (time >= 0 && time < 1.0f && normalY == 1)
-			{
-				coEvents.push_back(new ColliedEvent(EVENT_WATER, time, normalX, normalY));
-			}
-		}
-		else if (tiles[i]->type == ObjectType::ROPE_SWING)
-		{
-			float topAladdinEdge = this->collider.y;
-			float topRope = tileCollider.y;
-
-			float distance = topAladdinEdge - topRope;
-
-			if (distance < 16 && distance > 0 && abs(this->collider.x - tileCollider.x) < 16)
-				int a = 0;
-
-			//time = Collision::GetInstance()->SweptAABB(this->GetCollider(), tileCollider, normalX, normalY);
-			bool isCollide = Collision::GetInstance()->AABB(this->collider, tileCollider);
-
-			if (isCollide)
-				int a = 0;
-
-			if (isCollide && distance < 13 && distance > 0)
-			{
-				coEvents.push_back(new ColliedEvent(EVENT_ROPE_SWING));
+				coEvents.push_back(new ColliedEvent(EventCollison::EVENT_THORN, time, normalX, normalY));
 			}
 		}
 	}

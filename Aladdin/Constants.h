@@ -14,22 +14,30 @@ enum Stage {
 	STAGE_1,
 	STAGE_2,
 };
+
 enum ObjectType
 {
 	DEFAULT,
 	BRICK,
 	WALL,
-	ON_BUTTON,
-	RIVER,
-	ROPE_SWING,
 	THORN
 };
 
-#define EVENT_BRICK 1
-#define EVENT_WATER 2
-#define EVENT_ROPE_SWING 3
-#define EVENT_THORN 4
-#define EVENT_WALL 5
+enum EventCollison
+{
+	EVENT_DEFAULT,
+	EVENT_BRICK,
+	EVENT_WALL,
+	EVENT_THORN,
+	EVENT_ROPE_SWING
+};
+
+enum ObjectAndEnemies
+{
+	NOTHING,
+	GUARD1,
+	GUARD2
+};
 
 //TiledMap
 //
@@ -37,6 +45,8 @@ enum ObjectType
 // MAP
 #define TILES_MATRIX_STAGE_1 L"Resource\\Background\\4x100\\bg-tiled.txt"
 #define TILES_SET_MATRIX_STAGE_1 L"Resource\\Background\\4x100\\bg-tiled.png"
+#define POSSISION_MAPOBJECT_1 L"Resource\\Background\\4x100\\ObjectMap.txt"
+#define POSSISION_ENEMIES_1 L"Resource\\Background\\4x100\\Enemies.txt"
 
 //#define BACKGROUND_1 L"Resources\\Maps\\CharlestonMap.png"
 #define BACKGROUND_2 L"Resources\\Maps\\PittsburghMap.png"

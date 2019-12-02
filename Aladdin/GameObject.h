@@ -14,11 +14,11 @@
 class GameObject;
 typedef GameObject *LPGAMEOBJECT;
 
-struct Tile;
-struct Tile;
+//struct Tile;
+struct TileObjectMap;
 
-typedef vector<Tile> Row;
-typedef vector<Row> Matrix;
+//typedef vector<Tile> Row;
+//typedef vector<Row> Matrix;
 
 class GameObject
 {
@@ -72,7 +72,8 @@ public:
 	float GetDt() { return dt; }
 
 	Collider GetCollider() { return this->collider; }
-	void MapCollisions(vector<Tile *> &tiles, vector<ColliedEvent*> &coEvents);
+
+	void MapCollisions(vector<TileObjectMap *> &tiles, vector<ColliedEvent*> &coEvents);
 
 	bool IsCollide(GameObject *CollisionObject);
 

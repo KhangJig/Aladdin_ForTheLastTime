@@ -642,17 +642,28 @@ void AladdinState::KeyHandle()
 
 void AladdinState::Colision()
 {
-	if (!aladdin->GetIsGrounded() && this->GetState()== STATE_FALL)
+	if (!aladdin->GetIsGrounded())
 	{
-		this->stateFalling();
-	}
-	else if (this->GetState() == STATE_FALL)
-	{
-		if (aladdin->GetSpeedY() < 0)
+		if (this->GetState() == STATE_FALL)
 		{
-			this->SetState(IDLE_STAND);
-			this->stateStanding();
+			this->stateFalling();
 		}
+		else if (this->GetState() == STATE_FALL_2)
+		{
+			this->stateFall2();
+		}
+	}
+	else
+	{
+		if (this->GetState() == STATE_FALL || this->GetState() == STATE_FALL_2)
+		{
+			if (aladdin->GetSpeedY() < 0)
+			{
+				this->SetState(IDLE_STAND);
+				this->stateStanding();
+			}
+		}
+
 	}
 
 	aladdin->SetIsGrounded(false);

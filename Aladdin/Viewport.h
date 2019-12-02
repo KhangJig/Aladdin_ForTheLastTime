@@ -5,6 +5,7 @@
 #include "Debug.h"
 
 class GameObject;
+struct TileObjectMap;
 class Viewport
 {
 	static Viewport *__instance;
@@ -23,5 +24,6 @@ public:
 	void Reset();
 	void Update(DWORD dt);
 	bool IsObjectInCamera(GameObject *gameobject);
+	bool IsObjectInCamera2(TileObjectMap* tile);
 	void SetRenderData(D3DXVECTOR2 &center, D3DXVECTOR2 &translate, D3DXVECTOR2 &scaling);
 };
