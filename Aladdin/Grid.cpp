@@ -21,8 +21,7 @@ Grid::Grid()
 
 void Grid::InitializeMapGrid(TileMap *tileMap)
 {
-	/*NOTES*/
-	mapSize = tileMap->currentMap->size/3;
+	mapSize = tileMap->currentMap->size / 3;
 
 	listCell = new GridData[mapSize*mapSize];
 
@@ -52,17 +51,10 @@ void Grid::InitializeMapGrid(TileMap *tileMap)
 void Grid::GetCameraPosOnGrid(int &l, int &r, int &t, int &b) {
 	RECT rect = viewport->GetRect();
 
-	//DebugOut(L"rect.top - %d \n", (int)(rect.top));
-	//DebugOut(L"rectGRID_SIZE - %d\n", (int)(rect.top % GRID_SIZE));
-
 	l = (int)(rect.left / GRID_SIZE);
 	t = (int)(rect.top % GRID_SIZE >300 ? rect.top / GRID_SIZE + 1 : rect.top / GRID_SIZE);
 	r = (int)(rect.right / GRID_SIZE);
 	b = (int)(rect.bottom / GRID_SIZE);
-	//if (r >= mapSize)
-	//	r = mapSize - 1;
-	//if (t >= mapSize)
-	//	t = mapSize - 1;
 }
 
 void Grid::UpdateCurrentTiles()
@@ -159,18 +151,6 @@ void Grid::Render()
 		for (int x = lCell; x <= rCell; x++)
 		{
 			(listCell + x + y * mapSize)->Render();
-
-			//if ((listCell + x + y * mapSize)->hasSpawnTiles.size() > 0)
-			//{
-			//	for (int i = 0; i < (listCell + x + y * mapSize)->hasSpawnTiles.size(); i++)
-			//	{
-			//		if (!(listCell + x + y * mapSize)->hasSpawnTiles.at(i)->bCanSpawn)
-			//			continue;
-			//		SpawnObject((listCell + x + y * mapSize)->hasSpawnTiles.at(i)->SpawnObjectID,
-			//			(listCell + x + y * mapSize)->hasSpawnTiles.at(i));
-			//		(listCell + x + y * mapSize)->hasSpawnTiles.at(i)->bCanSpawn = false;
-			//	}
-			//}
 		}
 	}
 

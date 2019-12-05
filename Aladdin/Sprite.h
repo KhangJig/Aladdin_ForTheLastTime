@@ -41,7 +41,9 @@ class Sprite
 	RECT rect;
 	LPDIRECT3DTEXTURE9 texture;
 public:
-	Sprite(LPCWSTR filePath, RECT rect, D3DCOLOR transColor);
+
+	Sprite(LPCWSTR filePath, D3DCOLOR transColor);
+	Sprite(LPDIRECT3DTEXTURE9 texture, RECT rect, D3DCOLOR transColor);
 
 	void SetTexture(LPCWSTR filePath, D3DCOLOR transColor);
 	void SetRect(RECT rect);

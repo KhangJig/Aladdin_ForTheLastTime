@@ -1,6 +1,12 @@
 #include "Sprite.h"
 
-Sprite::Sprite(LPCWSTR filePath, RECT rect, D3DCOLOR transColor)
+
+Sprite::Sprite(LPCWSTR filePath, D3DCOLOR transColor)
+{
+	SetTexture(filePath, transColor);
+}
+
+Sprite::Sprite(LPDIRECT3DTEXTURE9 texture, RECT rect, D3DCOLOR transColor)
 {
 	width = 0;
 	height = 0;
@@ -12,8 +18,7 @@ Sprite::Sprite(LPCWSTR filePath, RECT rect, D3DCOLOR transColor)
 	angle = 0;
 	flipHorizontal = false;
 	flipVertical = false;
-
-	SetTexture(filePath, transColor);
+	this->texture = texture;
 	SetRect(rect);
 }
 void Sprite::SetTexture(LPCWSTR filePath, D3DCOLOR transColor)

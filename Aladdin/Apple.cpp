@@ -36,31 +36,32 @@ void Apple::LoadResources()
 {
 	LoadTXT loadTXT;
 	RECT* listSprite = loadTXT.LoadRect((char*)"Resource\\Character\\Apple.txt");
+	Sprite * aladdin2 = new Sprite(ALADDIN_TEXTURE_LOCATION, TEXTURE_TRANS_COLOR);
 
 	// Apple flying
 	Animation * anim = new Animation(100);
-	Sprite * apple_flying = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[0], TEXTURE_TRANS_COLOR);
+	Sprite * apple_flying = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(apple_flying);
 	animations.push_back(anim);
 
 	// Apple collision
 	anim = new Animation(100);
-	Sprite *apple_collision_1 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[1], TEXTURE_TRANS_COLOR);
+	Sprite *apple_collision_1 = new Sprite(aladdin2->GetTexture(), listSprite[1], TEXTURE_TRANS_COLOR);
 	apple_collision_1->SetOffSetY(3);
 	anim->AddFrame(apple_collision_1);
-	Sprite * apple_collision_2 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[2], TEXTURE_TRANS_COLOR);
+	Sprite * apple_collision_2 = new Sprite(aladdin2->GetTexture(), listSprite[2], TEXTURE_TRANS_COLOR);
 	apple_collision_2->SetOffSetX(6);
 	apple_collision_2->SetOffSetY(11);
 	anim->AddFrame(apple_collision_2);
-	Sprite * apple_collision_3 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[3], TEXTURE_TRANS_COLOR);
+	Sprite * apple_collision_3 = new Sprite(aladdin2->GetTexture(), listSprite[3], TEXTURE_TRANS_COLOR);
 	apple_collision_3->SetOffSetX(10);
 	apple_collision_3->SetOffSetY(15);
 	anim->AddFrame(apple_collision_3);
-	Sprite * apple_collision_4 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[4], TEXTURE_TRANS_COLOR);
+	Sprite * apple_collision_4 = new Sprite(aladdin2->GetTexture(), listSprite[4], TEXTURE_TRANS_COLOR);
 	apple_collision_4->SetOffSetX(11);
 	apple_collision_4->SetOffSetY(18);
 	anim->AddFrame(apple_collision_4);
-	Sprite * apple_collision_5 = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[5], TEXTURE_TRANS_COLOR);
+	Sprite * apple_collision_5 = new Sprite(aladdin2->GetTexture(), listSprite[5], TEXTURE_TRANS_COLOR);
 	apple_collision_5->SetOffSetX(10);
 	apple_collision_5->SetOffSetY(20);
 	anim->AddFrame(apple_collision_5);
@@ -68,7 +69,7 @@ void Apple::LoadResources()
 
 	// Apple none
 	anim = new Animation(100);
-	Sprite * apple_none = new Sprite(ALADDIN_TEXTURE_LOCATION, listSprite[280], TEXTURE_TRANS_COLOR);
+	Sprite * apple_none = new Sprite(aladdin2->GetTexture(), listSprite[280], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(apple_none);
 	animations.push_back(anim);
 }

@@ -41,35 +41,16 @@ void TileMap::LoadTilesData(LPCWSTR filePath, LPCWSTR tileSetLocation, int mapId
 			tilesData >> data;
 			(map.tiles + x + y * size)->tileId = stoi(data);
 
-			//switch (mapId)
-			//{
-			//case MAP_1_ID:
-			//{
-			//	if (find(_BrickStage_1.begin(), _BrickStage_1.end(), (map.tiles + x + y * size)->tileId) != _BrickStage_1.end())
-			//	{
-			//		(map.tiles + x + y * size)->type = ObjectType::BRICK;
-			//	}
-			//}
-			//break;
-			//}
-
 			(map.tiles + x + y * size)->x = x;
 			(map.tiles + x + y * size)->y = y;
 		}
-
-	//for (int y = map.size - 1; y > map.height - 1; y--)
-	//	for (int x = 0; x < map.size; x++)
-	//	{
-	//		(map.tiles + x + y * size)->tileId = -1;
-	//		(map.tiles + x + y * size)->x = x;
-	//		(map.tiles + x + y * size)->y = y;
-	//	}
 
 	tilesData.close();
 
 	D3DXIMAGE_INFO info;
 
 	D3DXGetImageInfoFromFile(tileSetLocation, &info);
+	Sprite *tempTile = new Sprite(tileSetLocation, TILES_TRANSCOLOR);
 
 	// add tile (include tileset image) -> maplist
 	for (int i = 0; i < info.Height  / TILE_SIZE; i++)
@@ -82,13 +63,12 @@ void TileMap::LoadTilesData(LPCWSTR filePath, LPCWSTR tileSetLocation, int mapId
 			rect.top = i * TILE_SIZE;
 			rect.bottom = rect.top + TILE_SIZE;
 
-			DebugOut(L"[INFO] i -j  %d - %d\n", i, j);
-
-			Sprite *tempTile = new Sprite(tileSetLocation, rect, TILES_TRANSCOLOR);
-			map.TilesSetSprite.push_back(tempTile);
+			Sprite *tile = new Sprite(tempTile->GetTexture(), rect, TILES_TRANSCOLOR);
+			map.TilesSetSprite.push_back(tile);
 			if (map.TilesSetSprite.size() == map.height*size) break;
 		}
 	}
+
 	mapList.push_back(map);
 
 }
@@ -102,12 +82,12 @@ void TileMap::LoadSpawnData(LPCWSTR filePath, int mapId)
 
 	tilesData >> data;
 
-	for (int y = mapList[mapId].height - 1; y >= 0; y--)
-		for (int x = 0; x < mapList[mapId].size; x++)
-		{
-			tilesData >> data;
-			(mapList[mapId].tiles + x + y * mapList[mapId].size)->SpawnObjectID = stoi(data);
-		}
+	//for (int y = mapList[mapId].height - 1; y >= 0; y--)
+	//	for (int x = 0; x < mapList[mapId].size; x++)
+	//	{
+	//		tilesData >> data;
+	//		(mapList[mapId].tiles + x + y * mapList[mapId].size)->SpawnObjectID = stoi(data);
+	//	}
 
 	tilesData.close();
 }

@@ -55,11 +55,12 @@ void Guard1::LoadResources()
 {
 	LoadTXT loadTXT;
 	RECT* listSprite = loadTXT.LoadRect((char*)"Resource\\Enemies\\Guards.txt");
+	Sprite * guard1 = new Sprite(GUARD_TEXTURE_LOCATION, TEXTURE_TRANS_COLOR_3);
 
 #pragma region IDLE
 	Animation * anim = new Animation(100);
 
-	Sprite * guard1_idle_1 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[14], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_idle_1 = new Sprite(guard1->GetTexture(), listSprite[14], TEXTURE_TRANS_COLOR_3);
 	anim->AddFrame(guard1_idle_1);
 
 	animations.push_back(anim);
@@ -68,35 +69,35 @@ void Guard1::LoadResources()
 #pragma region HURT
 	anim = new Animation(100);
 
-	Sprite * guard1_hurt_2 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[15], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_hurt_2 = new Sprite(guard1->GetTexture(), listSprite[15], TEXTURE_TRANS_COLOR_3);
 	guard1_hurt_2->SetOffSetX(-6);
 	guard1_hurt_2->SetOffSetY(-10);
 	anim->AddFrame(guard1_hurt_2);
-	Sprite * guard1_hurt_3 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[16], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_hurt_3 = new Sprite(guard1->GetTexture(), listSprite[16], TEXTURE_TRANS_COLOR_3);
 	guard1_hurt_3->SetOffSetX(-2);
 	guard1_hurt_3->SetOffSetY(15);
 	anim->AddFrame(guard1_hurt_3);
-	Sprite * guard1_hurt_4 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[17], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_hurt_4 = new Sprite(guard1->GetTexture(), listSprite[17], TEXTURE_TRANS_COLOR_3);
 	guard1_hurt_4->SetOffSetX(-4);
 	guard1_hurt_4->SetOffSetY(10);
 	anim->AddFrame(guard1_hurt_4);
-	Sprite * guard1_hurt_5 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[18], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_hurt_5 = new Sprite(guard1->GetTexture(), listSprite[18], TEXTURE_TRANS_COLOR_3);
 	guard1_hurt_5->SetOffSetX(7);
 	guard1_hurt_5->SetOffSetY(4);
 	anim->AddFrame(guard1_hurt_5);
-	Sprite * guard1_hurt_6 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[19], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_hurt_6 = new Sprite(guard1->GetTexture(), listSprite[19], TEXTURE_TRANS_COLOR_3);
 	guard1_hurt_6->SetOffSetX(4);
 	guard1_hurt_6->SetOffSetY(13);
 	anim->AddFrame(guard1_hurt_6);
-	Sprite * guard1_hurt_7 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[20], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_hurt_7 = new Sprite(guard1->GetTexture(), listSprite[20], TEXTURE_TRANS_COLOR_3);
 	guard1_hurt_7->SetOffSetX(3);
 	guard1_hurt_7->SetOffSetY(-9);
 	anim->AddFrame(guard1_hurt_7);
-	Sprite * guard1_hurt_8 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[21], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_hurt_8 = new Sprite(guard1->GetTexture(), listSprite[21], TEXTURE_TRANS_COLOR_3);
 	guard1_hurt_8->SetOffSetX(-3);
 	guard1_hurt_8->SetOffSetY(-10);
 	anim->AddFrame(guard1_hurt_8);
-	Sprite * guard1_hurt_9 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[22], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_hurt_9 = new Sprite(guard1->GetTexture(), listSprite[22], TEXTURE_TRANS_COLOR_3);
 	guard1_hurt_9->SetOffSetX(-4);
 	guard1_hurt_9->SetOffSetY(9);
 	anim->AddFrame(guard1_hurt_9);
@@ -107,35 +108,35 @@ void Guard1::LoadResources()
 #pragma region WALKING
 	anim = new Animation(100);
 
-	Sprite * guard1_walking_1 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[0], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_walking_1 = new Sprite(guard1->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR_3);
 	//guard1_walking_1->SetOffSetX(8);
 	guard1_walking_1->SetOffSetY(9);
 	anim->AddFrame(guard1_walking_1);
-	Sprite * guard1_walking_2 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[1], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_walking_2 = new Sprite(guard1->GetTexture(), listSprite[1], TEXTURE_TRANS_COLOR_3);
 	//guard1_walking_2->SetOffSetX(10);
 	guard1_walking_2->SetOffSetY(8);
 	anim->AddFrame(guard1_walking_2);
-	Sprite * guard1_walking_3 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[2], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_walking_3 = new Sprite(guard1->GetTexture(), listSprite[2], TEXTURE_TRANS_COLOR_3);
 	//guard1_walking_3->SetOffSetX(11);
 	guard1_walking_3->SetOffSetY(7);
 	anim->AddFrame(guard1_walking_3);
-	Sprite * guard1_walking_4 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[3], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_walking_4 = new Sprite(guard1->GetTexture(), listSprite[3], TEXTURE_TRANS_COLOR_3);
 	//guard1_walking_4->SetOffSetX(8);
 	guard1_walking_4->SetOffSetY(7);
 	anim->AddFrame(guard1_walking_4);
-	Sprite * guard1_walking_5 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[4], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_walking_5 = new Sprite(guard1->GetTexture(), listSprite[4], TEXTURE_TRANS_COLOR_3);
 	guard1_walking_5->SetOffSetX(2);
 	guard1_walking_5->SetOffSetY(8);
 	anim->AddFrame(guard1_walking_5);
-	Sprite * guard1_walking_6 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[5], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_walking_6 = new Sprite(guard1->GetTexture(), listSprite[5], TEXTURE_TRANS_COLOR_3);
 	//guard1_walking_6->SetOffSetX(12);
 	guard1_walking_6->SetOffSetY(9);
 	anim->AddFrame(guard1_walking_6);
-	Sprite * guard1_walking_7 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[6], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_walking_7 = new Sprite(guard1->GetTexture(), listSprite[6], TEXTURE_TRANS_COLOR_3);
 	guard1_walking_7->SetOffSetX(2);
 	guard1_walking_7->SetOffSetY(9);
 	anim->AddFrame(guard1_walking_7);
-	Sprite * guard1_walking_8 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[7], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_walking_8 = new Sprite(guard1->GetTexture(), listSprite[7], TEXTURE_TRANS_COLOR_3);
 	//guard1_walking_8->SetOffSetX(1);
 	guard1_walking_8->SetOffSetY(7);
 	anim->AddFrame(guard1_walking_8);
@@ -146,26 +147,26 @@ void Guard1::LoadResources()
 #pragma region HIT
 	anim = new Animation(100);
 
-	Sprite * guard1_hit_1 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[8], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_hit_1 = new Sprite(guard1->GetTexture(), listSprite[8], TEXTURE_TRANS_COLOR_3);
 	guard1_hit_1->SetOffSetX(-3);
 	guard1_hit_1->SetOffSetY(16);
 	anim->AddFrame(guard1_hit_1);
-	Sprite * guard1_hit_2 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[9], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_hit_2 = new Sprite(guard1->GetTexture(), listSprite[9], TEXTURE_TRANS_COLOR_3);
 	guard1_hit_2->SetOffSetX(1);
 	guard1_hit_2->SetOffSetY(2);
 	anim->AddFrame(guard1_hit_2);
-	Sprite * guard1_hit_3 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[10], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_hit_3 = new Sprite(guard1->GetTexture(), listSprite[10], TEXTURE_TRANS_COLOR_3);
 	guard1_hit_3->SetOffSetX(53);
 	anim->AddFrame(guard1_hit_3);
-	Sprite * guard1_hit_4 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[11], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_hit_4 = new Sprite(guard1->GetTexture(), listSprite[11], TEXTURE_TRANS_COLOR_3);
 	guard1_hit_4->SetOffSetX(48);
 	guard1_hit_4->SetOffSetY(1);
 	anim->AddFrame(guard1_hit_4);
-	Sprite * guard1_hit_5 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[12], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_hit_5 = new Sprite(guard1->GetTexture(), listSprite[12], TEXTURE_TRANS_COLOR_3);
 	guard1_hit_5->SetOffSetX(37);
 	guard1_hit_5->SetOffSetY(2);
 	anim->AddFrame(guard1_hit_5);
-	Sprite * guard1_hit_6 = new Sprite(GUARD_TEXTURE_LOCATION, listSprite[13], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_hit_6 = new Sprite(guard1->GetTexture(), listSprite[13], TEXTURE_TRANS_COLOR_3);
 	guard1_hit_6->SetOffSetX(1);
 	guard1_hit_6->SetOffSetY(2);
 	anim->AddFrame(guard1_hit_6);

@@ -39,24 +39,14 @@ enum ObjectAndEnemies
 	GUARD2
 };
 
-//TiledMap
-//
-
 // MAP
 #define TILES_MATRIX_STAGE_1 L"Resource\\Background\\4x100\\bg-tiled.txt"
 #define TILES_SET_MATRIX_STAGE_1 L"Resource\\Background\\4x100\\bg-tiled.png"
 #define POSSISION_MAPOBJECT_1 L"Resource\\Background\\4x100\\ObjectMap.txt"
 #define POSSISION_ENEMIES_1 L"Resource\\Background\\4x100\\Enemies.txt"
 
-//#define BACKGROUND_1 L"Resources\\Maps\\CharlestonMap.png"
 #define BACKGROUND_2 L"Resources\\Maps\\PittsburghMap.png"
-
-// TILE
-//#define TILES_MATRIX_STAGE_1 L"Resources\\Maps\\CharlestonMapMatrix.txt"
 #define TILES_MATRIX_STAGE_2 L"Resources\\Maps\\PittsburghMapMatrix.txt"
-
-// TILE SET
-//#define TILES_SET_MATRIX_STAGE_1 L"Resources\\Maps\\CharlestonMapTiles.png"
 #define TILES_SET_MATRIX_STAGE_2 L"Resources\\Maps\\PittsburghMapTiles.png"
 
 

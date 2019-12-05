@@ -23,9 +23,9 @@ struct Tile {
 	int x, y;
 	int size = TILE_SIZE; 
 
-	/* Ememies */
-	int SpawnObjectID;  // loai object xuat hien o tile
-	bool bCanSpawn = true;
+	///* Ememies */
+	//int SpawnObjectID;  // loai object xuat hien o tile
+	//bool bCanSpawn = true;
 };
 
 struct TileObjectMap {
