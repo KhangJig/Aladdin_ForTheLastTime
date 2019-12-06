@@ -39,6 +39,12 @@ struct GridData
 	}
 };
 
+struct GridCell
+{
+	vector<TileObjectMap> abc;
+	vector<ObjectnEnemies> xyz;
+};
+
 class Grid
 {
 private:
@@ -77,6 +83,7 @@ public:
 
 	vector<ObjectnEnemies> enemiesnObjects;
 
+	vector<GridCell> gridCell;
 
 	GridData* GetCell(int x, int y)
 	{

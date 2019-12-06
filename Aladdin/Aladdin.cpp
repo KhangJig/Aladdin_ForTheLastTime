@@ -558,7 +558,7 @@ void Aladdin::Update(DWORD dt)
 		Game::GetInstance()->SetStage(STAGE_1);
 
 		this->SetPositionX(50);
-		this->SetPositionY(200);
+		this->SetPositionY(150);
 		Viewport::GetInstance()->Reset();
 
 		TileMap::GetInstance()->SetCurrentMap(STAGE_1);
@@ -569,7 +569,7 @@ void Aladdin::Update(DWORD dt)
 		Grid::GetInstance()->DisableAllObject();
 		Game::GetInstance()->SetStage(STAGE_2);
 
-		this->SetPositionX(5);
+		this->SetPositionX(100);
 		this->SetPositionY(150);
 		Viewport::GetInstance()->Reset();
 

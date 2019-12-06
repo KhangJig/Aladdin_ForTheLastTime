@@ -44,7 +44,7 @@ void Viewport::Reset()
 	}
 	else
 	{
-		x = 0;
+		x = 50;
 		y = 225;
 	}
 }

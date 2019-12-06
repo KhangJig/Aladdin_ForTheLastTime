@@ -42,17 +42,30 @@ void Grid::InitializeMapGrid(TileMap *tileMap)
 	}
 
 	// get possion object map
-	for (int i = 0; i < tileMap->GetListTileObj().size(); i++)
+	for (int i = 0; i < tileMap->currentMap->listTileObjectMap.size(); i++)
 	{
-		this->tileObjectMap22.push_back(tileMap->GetListTileObj()[i]);
+		this->tileObjectMap22.push_back(tileMap->currentMap->listTileObjectMap[i]);
 	}
 
 	// get possion object & enemies
-	for (int i = 0; i < tileMap->GetEnemiesAndObjecs().size(); i++)
+	for (int i = 0; i < tileMap->currentMap->listEnemiesObjects.size(); i++)
 	{
-		this->enemiesnObjects.push_back(tileMap->GetEnemiesAndObjecs()[i]);
-		this->SpawnObject(tileMap->GetEnemiesAndObjecs()[i]);
+		this->enemiesnObjects.push_back(tileMap->currentMap->listEnemiesObjects[i]);
+		this->SpawnObject(tileMap->currentMap->listEnemiesObjects[i]);
 	}
+
+	//// get possion object map
+	//for (int i = 0; i < tileMap->GetListTileObj().size(); i++)
+	//{
+	//	this->tileObjectMap22.push_back(tileMap->GetListTileObj()[i]);
+	//}
+
+	//// get possion object & enemies
+	//for (int i = 0; i < tileMap->GetEnemiesAndObjecs().size(); i++)
+	//{
+	//	this->enemiesnObjects.push_back(tileMap->GetEnemiesAndObjecs()[i]);
+	//	this->SpawnObject(tileMap->GetEnemiesAndObjecs()[i]);
+	//}
 }
 
 void Grid::GetCameraPosOnGrid(int &l, int &r, int &t, int &b) {
@@ -65,6 +78,8 @@ void Grid::GetCameraPosOnGrid(int &l, int &r, int &t, int &b) {
 
 	if (t == 3)
 		t -= 1;
+
+	DebugOut(L" l t r b  %d %d %d %d \n", l, t, r, b);
 }
 
 void Grid::UpdateCurrentTiles()

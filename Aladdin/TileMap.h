@@ -16,7 +16,7 @@
 using namespace std;
 
 #define MAP_1_ID 0
-#define MAP_2_ID 2
+#define MAP_2_ID 1
 
 struct Tile {
 	int tileId;
@@ -44,6 +44,10 @@ struct MapPack {
 
 	vector <Sprite*> TilesSetSprite;
 
+	vector <TileObjectMap> listTileObjectMap;
+
+	vector <ObjectnEnemies> listEnemiesObjects;
+
 	Sprite* GetSpriteByID(int id)
 	{
 		if (id != -1)
@@ -56,6 +60,16 @@ struct MapPack {
 		/*return (tiles + x + y * size);*/
 		return &tiles[x + y * size];
 	}
+
+	void AddTileObjectMap(TileObjectMap tiles)
+	{
+		this->listTileObjectMap.push_back(tiles);
+	}
+
+	void AddEnemiesAndObjects(ObjectnEnemies enemies)
+	{
+		this->listEnemiesObjects.push_back(enemies);
+	}
 };
 
 class TileMap
@@ -66,9 +80,9 @@ private:
 
 	vector <MapPack> mapList;
 
-	vector <TileObjectMap> listTileObjectMap;
+	//vector <TileObjectMap> listTileObjectMap;
 
-	vector <ObjectnEnemies> listEnemiesObjects;
+	//vector <ObjectnEnemies> listEnemiesObjects;
 
 	void LoadTilesData(LPCWSTR filePath, LPCWSTR tileSetLocation, int mapId);
 	void LoadSpawnData(LPCWSTR filePath, int mapId);
@@ -85,13 +99,13 @@ public:
 
 	MapPack* currentMap;
 
-	void AddTileObjectMap(TileObjectMap tiles);
+	//void AddTileObjectMap(TileObjectMap tiles);
 
-	vector <TileObjectMap> GetListTileObj() { return listTileObjectMap; }
+	//vector <TileObjectMap> GetListTileObj() { return listTileObjectMap; }
 
-	void AddEnemiesAndObjects(ObjectnEnemies enemies);
+	//void AddEnemiesAndObjects(ObjectnEnemies enemies);
 
-	vector <ObjectnEnemies> GetEnemiesAndObjecs() { return listEnemiesObjects; }
+	//vector <ObjectnEnemies> GetEnemiesAndObjecs() { return listEnemiesObjects; }
 
 	void SetCurrentMap(int mapID);
 

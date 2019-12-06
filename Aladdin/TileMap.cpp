@@ -94,11 +94,11 @@ void TileMap::LoadSpawnData(LPCWSTR filePath, int mapId)
 
 	tilesData.close();
 }
-
-void TileMap::AddTileObjectMap(TileObjectMap tiles) 
-{
-	this->listTileObjectMap.push_back(tiles);
-}
+//
+//void TileMap::AddTileObjectMap(TileObjectMap tiles) 
+//{
+//	this->listTileObjectMap.push_back(tiles);
+//}
 
 void TileMap::LoadObjectMap(LPCWSTR filePath, int mapId)
 {
@@ -149,16 +149,17 @@ void TileMap::LoadObjectMap(LPCWSTR filePath, int mapId)
 		tilesData >> data;
 		tilesObj.height = stoi(data);
 
-		this->AddTileObjectMap(tilesObj);
+		mapList[mapId].AddTileObjectMap(tilesObj);
+		//this->AddTileObjectMap(tilesObj);
 	}
 
 	tilesData.close();
 }
 
-void TileMap::AddEnemiesAndObjects(ObjectnEnemies enemies)
-{
-	this->listEnemiesObjects.push_back(enemies);
-}
+//void TileMap::AddEnemiesAndObjects(ObjectnEnemies enemies)
+//{
+//	this->listEnemiesObjects.push_back(enemies);
+//}
 
 void TileMap::LoadEnemies(LPCWSTR filePath, int mapId)
 {
@@ -195,7 +196,8 @@ void TileMap::LoadEnemies(LPCWSTR filePath, int mapId)
 		tilesData >> data;
 		enemies.y = stoi(data);
 
-		this->AddEnemiesAndObjects(enemies);
+		mapList[mapId].AddEnemiesAndObjects(enemies);
+		//this->AddEnemiesAndObjects(enemies);
 	}
 
 	tilesData.close();

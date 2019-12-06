@@ -642,6 +642,25 @@ void AladdinState::KeyHandle()
 
 void AladdinState::Colision()
 {
+	// IDLE_STAND,
+	// STATE_HEAD_UP,
+	// STATE_RUN,
+	// STATE_STAND_JUMP,
+	// STATE_FALL,
+	// STATE_TOUCH_GROUND,
+	// STATE_SIT,
+	// IDLE_SIT,
+	// STATE_STAND_HIT,
+	// STATE_STAND_THROW,
+	// STATE_SIT_THROW,
+	// STATE_SIT_HIT,
+	// STATE_RUN_JUMP,
+	// STATE_FALL_2,
+	// STATE_JUMP_THROW,
+	// STATE_JUMP_HIT,
+	// STATE_DOUBLE_HIT,
+	// STATE_RUN_HIT,
+	// STATE_RUN_THROW,
 	if (!aladdin->GetIsGrounded())
 	{
 		if (this->GetState() == STATE_FALL)
