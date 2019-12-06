@@ -21,20 +21,17 @@ Grid::Grid()
 
 void Grid::InitializeMapGrid(TileMap *tileMap)
 {
-	mapSize = 8;
+	mapSize = tileMap->currentMap->size / 3;
 
 	listCell = new GridData[mapSize*mapSize];
 	Tile* tempTile;
 
 	for (int y = 0; y < mapSize; y++)
 	{
-		//DebugOut(L"Y - %d\n", y);
 		for (int x = 0; x < mapSize; x++)
 		{
-			//DebugOut(L"X - %d\n", x);
 			for (int yy = 0; yy < GRID_SIZE_BY_TILE; yy++)
 			{
-				//DebugOut(L"yy - %d\n", yy);
 				for (int xx = 0; xx < GRID_SIZE_BY_TILE; xx++)
 				{
 					tempTile = tileMap->currentMap->GetTile(xx + x * GRID_SIZE_BY_TILE, yy + y * GRID_SIZE_BY_TILE);
@@ -66,12 +63,8 @@ void Grid::GetCameraPosOnGrid(int &l, int &r, int &t, int &b) {
 	r = (int)(rect.right / GRID_SIZE );
 	b = (int)(rect.bottom / GRID_SIZE);
 
-	//if (r == 5 && t == 2)
-	//	r = 4;
 	if (t == 3)
 		t -= 1;
-
-	/*DebugOut(L"l r t b  %d %d %d %d\n", l, r, t, b);*/
 }
 
 void Grid::UpdateCurrentTiles()
