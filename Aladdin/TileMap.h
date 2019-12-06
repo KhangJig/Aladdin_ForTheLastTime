@@ -21,11 +21,7 @@ using namespace std;
 struct Tile {
 	int tileId;
 	int x, y;
-	int size = TILE_SIZE; 
-
-	///* Ememies */
-	//int SpawnObjectID;  // loai object xuat hien o tile
-	//bool bCanSpawn = true;
+	int size = TILE_SIZE;
 };
 
 struct TileObjectMap {
@@ -57,7 +53,8 @@ struct MapPack {
 
 	Tile* GetTile(int x, int y)
 	{
-		return (tiles + x + y * size);
+		/*return (tiles + x + y * size);*/
+		return &tiles[x + y * size];
 	}
 };
 

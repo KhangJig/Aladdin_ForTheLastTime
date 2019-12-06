@@ -21,18 +21,28 @@ Grid::Grid()
 
 void Grid::InitializeMapGrid(TileMap *tileMap)
 {
-	mapSize = tileMap->currentMap->size / 3;
+	mapSize = 8;
 
 	listCell = new GridData[mapSize*mapSize];
+	Tile* tempTile;
 
 	for (int y = 0; y < mapSize; y++)
+	{
+		//DebugOut(L"Y - %d\n", y);
 		for (int x = 0; x < mapSize; x++)
+		{
+			//DebugOut(L"X - %d\n", x);
 			for (int yy = 0; yy < GRID_SIZE_BY_TILE; yy++)
+			{
+				//DebugOut(L"yy - %d\n", yy);
 				for (int xx = 0; xx < GRID_SIZE_BY_TILE; xx++)
 				{
-					Tile* tempTile = tileMap->currentMap->GetTile(xx + x * GRID_SIZE_BY_TILE, yy + y * GRID_SIZE_BY_TILE);
-					(listCell + x + y * mapSize)->tiles.push_back(tempTile);
+					tempTile = tileMap->currentMap->GetTile(xx + x * GRID_SIZE_BY_TILE, yy + y * GRID_SIZE_BY_TILE);
+					listCell[x + y * mapSize].tiles.push_back(tempTile);
 				}
+			}
+		}
+	}
 
 	// get possion object map
 	for (int i = 0; i < tileMap->GetListTileObj().size(); i++)
@@ -52,9 +62,16 @@ void Grid::GetCameraPosOnGrid(int &l, int &r, int &t, int &b) {
 	RECT rect = viewport->GetRect();
 
 	l = (int)(rect.left / GRID_SIZE);
-	t = (int)(rect.top % GRID_SIZE >300 ? rect.top / GRID_SIZE + 1 : rect.top / GRID_SIZE);
-	r = (int)(rect.right / GRID_SIZE);
+	t = (int)(rect.top % GRID_SIZE > 300 ? rect.top / GRID_SIZE + 1 : rect.top / GRID_SIZE);
+	r = (int)(rect.right / GRID_SIZE );
 	b = (int)(rect.bottom / GRID_SIZE);
+
+	//if (r == 5 && t == 2)
+	//	r = 4;
+	if (t == 3)
+		t -= 1;
+
+	/*DebugOut(L"l r t b  %d %d %d %d\n", l, r, t, b);*/
 }
 
 void Grid::UpdateCurrentTiles()
@@ -150,7 +167,8 @@ void Grid::Render()
 	{
 		for (int x = lCell; x <= rCell; x++)
 		{
-			(listCell + x + y * mapSize)->Render();
+			listCell[x + y * mapSize].Render();
+			//(listCell + x + y * mapSize)->Render();
 		}
 	}
 

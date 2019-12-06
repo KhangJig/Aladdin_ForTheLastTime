@@ -11,7 +11,9 @@ TileMap * TileMap::GetInstance()
 		_instance->LoadTilesData(TILES_MATRIX_STAGE_1, TILES_SET_MATRIX_STAGE_1, MAP_1_ID);
 		_instance->LoadObjectMap(POSSISION_MAPOBJECT_1, MAP_1_ID);
 		_instance->LoadEnemies(POSSISION_ENEMIES_1, MAP_1_ID);
+
 		_instance->LoadTilesData(TILES_MATRIX_STAGE_2, TILES_SET_MATRIX_STAGE_2, MAP_2_ID);
+		_instance->LoadObjectMap(POSSISION_MAPOBJECT_2, MAP_2_ID);
 	}
 	return _instance;
 }
@@ -65,6 +67,7 @@ void TileMap::LoadTilesData(LPCWSTR filePath, LPCWSTR tileSetLocation, int mapId
 
 			Sprite *tile = new Sprite(tempTile->GetTexture(), rect, TILES_TRANSCOLOR);
 			map.TilesSetSprite.push_back(tile);
+
 			if (map.TilesSetSprite.size() == map.height*size) break;
 		}
 	}

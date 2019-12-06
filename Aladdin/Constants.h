@@ -45,9 +45,9 @@ enum ObjectAndEnemies
 #define POSSISION_MAPOBJECT_1 L"Resource\\Background\\4x100\\ObjectMap.txt"
 #define POSSISION_ENEMIES_1 L"Resource\\Background\\4x100\\Enemies.txt"
 
-#define BACKGROUND_2 L"Resources\\Maps\\PittsburghMap.png"
-#define TILES_MATRIX_STAGE_2 L"Resources\\Maps\\PittsburghMapMatrix.txt"
-#define TILES_SET_MATRIX_STAGE_2 L"Resources\\Maps\\PittsburghMapTiles.png"
+#define TILES_MATRIX_STAGE_2 L"Resource\\Background\\4x100\\bg-tiled-2.txt"
+#define TILES_SET_MATRIX_STAGE_2 L"Resource\\Background\\4x100\\bg-tiled-2.png"
+#define POSSISION_MAPOBJECT_2 L"Resource\\Background\\4x100\\ObjectMap-2.txt"
 
 
 #define TILES_TRANSCOLOR D3DCOLOR_XRGB(255, 255,255)
