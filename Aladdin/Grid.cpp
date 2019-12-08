@@ -41,31 +41,30 @@ void Grid::InitializeMapGrid(TileMap *tileMap)
 		}
 	}
 
-	// get possion object map
-	for (int i = 0; i < tileMap->currentMap->listTileObjectMap.size(); i++)
+	GridCell gridcell;
+
+	for (int i = 0; i < 18; i++)
 	{
-		this->tileObjectMap22.push_back(tileMap->currentMap->listTileObjectMap[i]);
+		// test grid cell mapobject
+		for (int y = 0; y < tileMap->currentMap->listTileObjectMap.size(); y++)
+		{
+			if (tileMap->currentMap->listTileObjectMap[y].GridCellID == i)
+			{
+				gridcell.abc.push_back(tileMap->currentMap->listTileObjectMap[y]);
+			}
+		}
+
+		// test grid cell enemies
+		for (int y = 0; y < tileMap->currentMap->listEnemiesObjects.size(); y++)
+		{
+			if (tileMap->currentMap->listEnemiesObjects[y].CellID == i)
+			{
+				gridcell.xyz.push_back(tileMap->currentMap->listEnemiesObjects[y]);
+				this->SpawnObject(tileMap->currentMap->listEnemiesObjects[y]);
+			}
+		}
+		this->gridCell.push_back(gridcell);
 	}
-
-	// get possion object & enemies
-	for (int i = 0; i < tileMap->currentMap->listEnemiesObjects.size(); i++)
-	{
-		this->enemiesnObjects.push_back(tileMap->currentMap->listEnemiesObjects[i]);
-		this->SpawnObject(tileMap->currentMap->listEnemiesObjects[i]);
-	}
-
-	//// get possion object map
-	//for (int i = 0; i < tileMap->GetListTileObj().size(); i++)
-	//{
-	//	this->tileObjectMap22.push_back(tileMap->GetListTileObj()[i]);
-	//}
-
-	//// get possion object & enemies
-	//for (int i = 0; i < tileMap->GetEnemiesAndObjecs().size(); i++)
-	//{
-	//	this->enemiesnObjects.push_back(tileMap->GetEnemiesAndObjecs()[i]);
-	//	this->SpawnObject(tileMap->GetEnemiesAndObjecs()[i]);
-	//}
 }
 
 void Grid::GetCameraPosOnGrid(int &l, int &r, int &t, int &b) {
@@ -79,7 +78,7 @@ void Grid::GetCameraPosOnGrid(int &l, int &r, int &t, int &b) {
 	if (t == 3)
 		t -= 1;
 
-	DebugOut(L" l t r b  %d %d %d %d \n", l, t, r, b);
+	//DebugOut(L" l t r b  %d %d %d %d \n", l, t, r, b);
 }
 
 void Grid::UpdateCurrentTiles()
@@ -103,28 +102,45 @@ void Grid::UpdateCurrentTiles()
 vector<TileObjectMap *> Grid::GetNearbyObjectTiles()
 {
 	vector<TileObjectMap*> nearbyTiles;
-	
-	for (int i = 0; i < this->tileObjectMap22.size(); i++)
+	for (set<int>::iterator it = this->listCellNow.begin(); it != this->listCellNow.end(); ++it)
 	{
-		if (Viewport::GetInstance()->IsObjectInCamera2(&this->tileObjectMap22.at(i)))
+		for (int y = 0; y < this->gridCell.at(*it).abc.size(); y++)
 		{
-			nearbyTiles.push_back(&this->tileObjectMap22.at(i));
+			if (Viewport::GetInstance()->IsObjectInCamera2(&this->gridCell.at(*it).abc.at(y)))
+			{
+				nearbyTiles.push_back(&this->gridCell.at(*it).abc.at(y));
+			}
 		}
 	}
+
+
+	return nearbyTiles;
+}
+
+vector<TileObjectMap *> Grid::GetNearbyObjectTilesForEnemies(int CellID)
+{
+	vector<TileObjectMap*> nearbyTiles;
+
+	for (set<int>::iterator it = this->listCellNow.begin(); it != this->listCellNow.end(); ++it)
+	{
+		for (int y = 0; y < this->gridCell.at(*it).abc.size(); y++)
+		{
+			nearbyTiles.push_back(&this->gridCell.at(*it).abc.at(y));
+		}
+	}
+
 
 	return nearbyTiles;
 }
 
 void Grid::SpawnObject(ObjectnEnemies enemies)
 {
-
 	switch (enemies.SpawnObjectID)
 	{
 	case ObjectAndEnemies::GUARD1:
 		{
-			Guard1* object = new Guard1(enemies.x, enemies.y);
 			OnUpdateObject temp;
-			temp.object = object;
+			temp.ene = enemies;
 
 			listObject.push_back(temp);
 		}
@@ -146,24 +162,68 @@ bool Grid::CheckObjectInsideCamera(GameObject* object)
 	return true;
 }
 
+bool Grid::CheckObjectInsideCamera2(int x, int y)
+{
+	if (timeCount < 2000)
+		return true;
+
+	int test = 1;
+
+	RECT rect = viewport->GetRect();
+
+	if (x > rect.left - 62 && x < rect.right + 162 &&
+		y > rect.bottom - 50 && y < rect.top + 50)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+bool Grid::OnCell(int id)
+{
+	for (set<int>::iterator it = this->listCellNow.begin(); it != this->listCellNow.end(); ++it)
+	{
+		if (*it == id)
+			return true;
+	}
+	return false;
+}
+
 void Grid::Update(DWORD dt)
 {
+
 	timeCount += dt;
 	aladdin->Update(dt);
 	aladdin->UpdateCollision(dt);
 
 	for (int i = 0; i < listObject.size(); i++)
 	{
-		if (listObject.at(i).disable)
-			continue;
-
-		listObject.at(i).object->Update(dt);
-
-		if (!CheckObjectInsideCamera(listObject.at(i).object))
+		if (OnCell(listObject.at(i).ene.CellID))
 		{
-			listObject.at(i).disable = true;
+			if (!listObject.at(i).isGenerated)
+			{
+				if (CheckObjectInsideCamera2(listObject.at(i).ene.x, listObject.at(i).ene.y))
+				{
+					DebugOut(L"Guard Created!\n");
+					if (listObject.at(i).ene.SpawnObjectID == 1)
+					{
+						listObject.at(i).object = new Guard1(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID);
+						listObject.at(i).isGenerated = true;
+					}
+				}
+			}
 		}
 	}
+
+	for (int i = 0; i < listObject.size(); i++)
+	{
+		if (listObject.at(i).isGenerated)
+		{
+			this->listObject.at(i).object->Update(dt);
+		}
+	}
+
 }
 
 void Grid::Render()
@@ -171,20 +231,26 @@ void Grid::Render()
 	int lCell, rCell, tCell, bCell;
 	this->GetCameraPosOnGrid(lCell, rCell, tCell, bCell);
 
+	this->listCellNow.clear();
+	this->listCellNow.insert(lCell);
+	this->listCellNow.insert(lCell + 6*tCell);
+	this->listCellNow.insert(rCell);
+	this->listCellNow.insert(rCell + 6*bCell);
+
 	for (int y = bCell; y <= tCell; y++)
 	{
 		for (int x = lCell; x <= rCell; x++)
 		{
 			listCell[x + y * mapSize].Render();
-			//(listCell + x + y * mapSize)->Render();
 		}
 	}
 
+
 	for (int i = 0; i < listObject.size(); i++)
 	{
-		if (listObject.at(i).disable)
-			continue;
-		listObject.at(i).object->Render();
+		if (listObject.at(i).isGenerated)
+			listObject.at(i).object->Render();
 	}
+
 	aladdin->Render();
 }

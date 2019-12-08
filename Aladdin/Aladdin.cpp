@@ -643,6 +643,9 @@ void Aladdin::Update(DWORD dt)
 		delete coEvents[i];
 #pragma endregion
 
+
+
+
 	apple->UpdateObjectCollider();
 	apple->Update(dt);
 	state->Colision();

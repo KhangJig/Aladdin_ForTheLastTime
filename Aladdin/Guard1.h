@@ -19,8 +19,10 @@ class Guard1 : public GameObject
 
 	DWORD lastFrameTime;
 
+	int CellID;
+
 public:
-	Guard1(float x, float y);
+	Guard1(float x, float y, int CellID);
 	static void LoadResources();
 
 	bool isOnGround = false;
@@ -37,6 +39,8 @@ public:
 		this->collider.width = width;
 		this->collider.height = height;
 	}
+
+	int GetCellID() { return this->CellID; }
 
 	vector<Animation *> GetAnimationsList() { return animations; }
 

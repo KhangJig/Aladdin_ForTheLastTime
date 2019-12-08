@@ -29,7 +29,7 @@ Guard1 *Guard1::__instance = NULL;
 //	collider.height = GUARD1_SPRITE_HEIGHT;
 //}
 
-Guard1::Guard1(float x, float y)
+Guard1::Guard1(float x, float y, int CellID)
 {
 	this->state = new Guard1State(this);
 
@@ -49,6 +49,7 @@ Guard1::Guard1(float x, float y)
 	collider.height = GUARD1_SPRITE_HEIGHT;
 
 	this->disable = false;
+	this->CellID = CellID;
 }
 
 void Guard1::LoadResources()
@@ -191,7 +192,7 @@ void Guard1::Update(DWORD dt)
 	vector<ColliedEvent*> coEventsResult;
 
 #pragma region	Collide with map
-	vector<TileObjectMap *> tiles = Grid::GetInstance()->GetNearbyObjectTiles();
+	vector<TileObjectMap *> tiles = Grid::GetInstance()->GetNearbyObjectTilesForEnemies(this->GetCellID());
 
 	coEvents.clear();
 	this->SetDt(dt);

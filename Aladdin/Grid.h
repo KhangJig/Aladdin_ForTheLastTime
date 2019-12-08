@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <set>
 #include <fstream>
 #include <string>
 #include "GameObject.h"
@@ -16,7 +17,8 @@ using namespace std;
 struct OnUpdateObject
 {
 	GameObject* object;
-	bool disable = false;
+	ObjectnEnemies ene;
+	bool isGenerated = false;
 	float delaySpawn = 10000;
 	float timeCount = 0001;
 };
@@ -81,6 +83,8 @@ public:
 
 	vector<TileObjectMap *> GetNearbyObjectTiles();
 
+	vector<TileObjectMap *> GetNearbyObjectTilesForEnemies(int CellID);
+
 	vector<ObjectnEnemies> enemiesnObjects;
 
 	vector<GridCell> gridCell;
@@ -90,9 +94,15 @@ public:
 		return (listCell + x + y * mapSize);
 	}
 
+	set<int> listCellNow;
+
 	void SpawnObject(ObjectnEnemies enemies);
 
 	bool CheckObjectInsideCamera(GameObject* object);
+
+	bool CheckObjectInsideCamera2(int x, int y);
+
+	bool OnCell(int id);
 
 	vector <OnUpdateObject> GetListUpdateObject() { return listObject; }
 
@@ -104,7 +114,7 @@ public:
 	{
 		for (int i = 0; i < listObject.size(); i++)
 		{
-			listObject.at(i).disable = true;
+			listObject.at(i).isGenerated = true;
 		}
 	}
 };

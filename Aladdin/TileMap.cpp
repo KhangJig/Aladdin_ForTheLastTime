@@ -94,11 +94,6 @@ void TileMap::LoadSpawnData(LPCWSTR filePath, int mapId)
 
 	tilesData.close();
 }
-//
-//void TileMap::AddTileObjectMap(TileObjectMap tiles) 
-//{
-//	this->listTileObjectMap.push_back(tiles);
-//}
 
 void TileMap::LoadObjectMap(LPCWSTR filePath, int mapId)
 {
@@ -113,6 +108,7 @@ void TileMap::LoadObjectMap(LPCWSTR filePath, int mapId)
 
 	for (int i = 0; i < lenght ; i++)
 	{
+
 		tilesData >> data;
 		switch (mapId)
 		{
@@ -138,6 +134,9 @@ void TileMap::LoadObjectMap(LPCWSTR filePath, int mapId)
 		}
 
 		tilesData >> data;
+		tilesObj.GridCellID = stoi(data);
+
+		tilesData >> data;
 		tilesObj.x = stoi(data);
 
 		tilesData >> data;
@@ -150,16 +149,13 @@ void TileMap::LoadObjectMap(LPCWSTR filePath, int mapId)
 		tilesObj.height = stoi(data);
 
 		mapList[mapId].AddTileObjectMap(tilesObj);
+
 		//this->AddTileObjectMap(tilesObj);
+		// DebugOut(L"id x y w h %d %d %d %d %d \n", tilesObj.GridCellID, tilesObj.x, tilesObj.y, tilesObj.width, tilesObj.height);
 	}
 
 	tilesData.close();
 }
-
-//void TileMap::AddEnemiesAndObjects(ObjectnEnemies enemies)
-//{
-//	this->listEnemiesObjects.push_back(enemies);
-//}
 
 void TileMap::LoadEnemies(LPCWSTR filePath, int mapId)
 {
@@ -191,6 +187,9 @@ void TileMap::LoadEnemies(LPCWSTR filePath, int mapId)
 		}
 
 		tilesData >> data;
+		enemies.CellID = stoi(data);
+
+		tilesData >> data;
 		enemies.x = stoi(data);
 
 		tilesData >> data;
@@ -213,23 +212,6 @@ void TileMap::soundLock(bool lock)
 {
 
 }
-
-//void TileMap::Render(int x, int y)
-//{
-//	if (currentMap->GetTile(x, y)->tileId == -1)
-//		return;
-//
-//	SpriteData spriteData;
-//	spriteData.width = TILE_SIZE;
-//	spriteData.height = TILE_SIZE;
-//	spriteData.x = x * TILE_SIZE;
-//	spriteData.y = y * TILE_SIZE;
-//	spriteData.isLeft = true;
-//
-//	currentMap->GetSpriteByID(currentMap->GetTile(x, y)->tileId)->SetData(spriteData);
-//
-//	Graphics::GetInstance()->Draw(currentMap->GetSpriteByID(currentMap->GetTile(x, y)->tileId));
-//}
 
 void TileMap::Render(Tile* itile)
 {
