@@ -218,7 +218,7 @@ void Grid::Update(DWORD dt)
 
 	for (int i = 0; i < listObject.size(); i++)
 	{
-		if (listObject.at(i).isGenerated)
+		if (listObject.at(i).isGenerated && listObject.at(i).isLife)
 		{
 			this->listObject.at(i).object->Update(dt);
 		}
@@ -248,7 +248,7 @@ void Grid::Render()
 
 	for (int i = 0; i < listObject.size(); i++)
 	{
-		if (listObject.at(i).isGenerated)
+		if (listObject.at(i).isGenerated && listObject.at(i).isLife)
 			listObject.at(i).object->Render();
 	}
 

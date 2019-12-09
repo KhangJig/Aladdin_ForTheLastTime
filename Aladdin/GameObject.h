@@ -19,7 +19,7 @@ struct TileObjectMap;
 
 //typedef vector<Tile> Row;
 //typedef vector<Row> Matrix;
-
+class Guard1;
 class GameObject
 {
 

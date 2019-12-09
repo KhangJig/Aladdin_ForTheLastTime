@@ -19,6 +19,7 @@ struct OnUpdateObject
 	GameObject* object;
 	ObjectnEnemies ene;
 	bool isGenerated = false;
+	bool isLife = true;
 	float delaySpawn = 10000;
 	float timeCount = 0001;
 };
@@ -105,6 +106,8 @@ public:
 	bool OnCell(int id);
 
 	vector <OnUpdateObject> GetListUpdateObject() { return listObject; }
+
+	void SetisLifeListObject(int pos, bool life) { this->listObject.at(pos).isLife = life; }
 
 	void Update(DWORD dt);
 

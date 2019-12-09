@@ -6,12 +6,14 @@
 #include "State.h"
 #include "Apple.h"
 
+class AladdinState;
 class Aladdin : public GameObject
 {
 	Aladdin();
 
 	static Aladdin *__instance;
-	State *state, *stateApple;
+	State  *stateApple;
+	AladdinState *state;
 
 	Apple *apple;
 
@@ -26,6 +28,11 @@ class Aladdin : public GameObject
 
 	int posXAladdinThrowing;
 	int posYAladdinThrowing;
+
+	int AladdinHP;
+	int DmgAttack;
+
+	bool Attacking;
 
 public:
 	void LoadResources();
@@ -44,6 +51,8 @@ public:
 
 	int GetPosXAladdinThrowing() { return this->posXAladdinThrowing; }
 	int GetPosYAladdinThrowing() { return this->posYAladdinThrowing; }
+	bool GetAttacking() { return this->Attacking; }
+	void SetAttacking(bool isAttack) { this->Attacking = isAttack; }
 
 	void SetIsApple(bool isApple) { this->isApple = isApple; }
 	bool GetisApple() { return isApple; }
@@ -53,6 +62,12 @@ public:
 		this->collider.width = width;
 		this->collider.height = height;
 	}
+
+	int GetAladdinHP() { return this->AladdinHP; }
+	int GetDmgAttack() { return this->DmgAttack; }
+
+	void SetAladdinHP(int hp) { this->AladdinHP = hp; }
+	void SetDmgAttack(int dmg) { this->DmgAttack = dmg; }
 
 	void Reset();
 

@@ -10,7 +10,8 @@ enum StateGuard1
 	GUARD1_IDLE,
 	GUARD1_HURT,
 	GUARD1_WALK,
-	GUARD1_HIT
+	GUARD1_HIT,
+	GUARD1_DEAD
 };
 
 class Guard1State : public State
@@ -35,6 +36,7 @@ public:
 	void stateHurting();
 	void stateWalking();
 	void stateHit();
+	void stateDead();
 
 	void Colision() override;
 	void Update(DWORD dt) override;

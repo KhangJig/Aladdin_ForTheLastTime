@@ -45,14 +45,11 @@ void Guard1State::stateIdle()
 		}
 		if (abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) <= 50 )
 		{
+			this->guard1->SetAttacking(true);
 			anim->Reset();
 			this->SetState(GUARD1_HIT);
 			return;
 		}
-	}
-	else
-	{
-		return;
 	}
 }
 
@@ -61,7 +58,17 @@ void Guard1State::stateHurting()
 	anim = guard1->GetAnimationsList()[GUARD1_HURT];
 	this->guard1->SetSpeedX(0);
 	this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
-	return;
+
+	if (anim->IsDone())
+	{
+		anim->Reset();
+
+		if (this->guard1->GetGuard1HP() <= 0)
+			this->SetState(GUARD1_DEAD);
+		else
+			this->SetState(GUARD1_IDLE);
+		return;
+	}
 }
 
 void Guard1State::stateWalking()
@@ -89,12 +96,11 @@ void Guard1State::stateWalking()
 
 	if (abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) < 50 )
 	{
+		this->guard1->SetAttacking(true);
 		anim->Reset();
 		this->SetState(GUARD1_HIT);
 		return;
 	}
-
-	return;
 }
 
 void Guard1State::stateHit()
@@ -117,8 +123,22 @@ void Guard1State::stateHit()
 		this->SetState(GUARD1_WALK);
 		return;
 	}
+	this->guard1->SetAttacking(false);
+}
 
-	return;
+
+void Guard1State::stateDead() 
+{
+	this->guard1->SetSpeedX(0);
+	this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	anim = guard1->GetAnimationsList()[GUARD1_HURT];
+
+	if (anim->IsDone())
+	{
+		anim->Reset();
+		this->guard1->SetDie(true);
+		return;
+	}
 }
 
 void Guard1State::Colision()
@@ -146,6 +166,10 @@ void Guard1State::Update(DWORD dt)
 
 	case GUARD1_HIT:
 		this->stateHit();
+		break;
+
+	case GUARD1_DEAD:
+		this->stateDead();
 		break;
 
 	default:

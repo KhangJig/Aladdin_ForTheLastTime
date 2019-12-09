@@ -50,6 +50,10 @@ Guard1::Guard1(float x, float y, int CellID)
 
 	this->disable = false;
 	this->CellID = CellID;
+	this->Guard1HP = 50;
+	this->Guard1Dmg = 20;
+	this->Attacking = false;
+	this->Dead = false;
 }
 
 void Guard1::LoadResources()
@@ -175,11 +179,40 @@ void Guard1::LoadResources()
 	animations.push_back(anim);
 #pragma endregion
 
+#pragma region DEAD
+	anim = new Animation(100);
+
+	Sprite * guard1_dead_1 = new Sprite(guard1->GetTexture(), listSprite[8], TEXTURE_TRANS_COLOR_3);
+	guard1_dead_1->SetOffSetX(-3);
+	guard1_dead_1->SetOffSetY(16);
+	anim->AddFrame(guard1_dead_1);
+	Sprite * guard1_dead_2 = new Sprite(guard1->GetTexture(), listSprite[9], TEXTURE_TRANS_COLOR_3);
+	guard1_dead_2->SetOffSetX(1);
+	guard1_dead_2->SetOffSetY(2);
+	anim->AddFrame(guard1_dead_2);
+	Sprite * guard1_dead_3 = new Sprite(guard1->GetTexture(), listSprite[10], TEXTURE_TRANS_COLOR_3);
+	guard1_dead_3->SetOffSetX(53);
+	anim->AddFrame(guard1_dead_3);
+	Sprite * guard1_dead_4 = new Sprite(guard1->GetTexture(), listSprite[11], TEXTURE_TRANS_COLOR_3);
+	guard1_dead_4->SetOffSetX(48);
+	guard1_dead_4->SetOffSetY(1);
+	anim->AddFrame(guard1_dead_4);
+	Sprite * guard1_dead_5 = new Sprite(guard1->GetTexture(), listSprite[12], TEXTURE_TRANS_COLOR_3);
+	guard1_dead_5->SetOffSetX(37);
+	guard1_dead_5->SetOffSetY(2);
+	anim->AddFrame(guard1_dead_5);
+	Sprite * guard1_dead_6 = new Sprite(guard1->GetTexture(), listSprite[13], TEXTURE_TRANS_COLOR_3);
+	guard1_dead_6->SetOffSetX(1);
+	guard1_dead_6->SetOffSetY(2);
+	anim->AddFrame(guard1_dead_6);
+
+	animations.push_back(anim);
+#pragma endregion
 }
 
 void Guard1::Update(DWORD dt)
 {
-
+	this->UpdateCollision(dt);
 	if (this->disable)
 		return;
 
@@ -239,7 +272,26 @@ void Guard1::Render()
 	if (this->disable)
 		return;
 
+	//if (this->Guard1HP <= 0)
+	//{
+	//	DebugOut(L"asdasdasd\n");
+	//}
+
 	state->Render();
+}
+
+void Guard1::UpdateCollision(DWORD dt)
+{
+	bool isCollide = Collision::GetInstance()->AABB(this->GetCollider(), Aladdin::GetInstance()->GetCollider());
+
+	if (isCollide) 
+	{
+		if (Aladdin::GetInstance()->GetAttacking())
+		{
+			this->state->SetState(GUARD1_HURT);
+			this->SetGuard1HP(this->GetGuard1HP() - Aladdin::GetInstance()->GetDmgAttack());
+		}
+	}
 }
 
 void Guard1::OnCollision()

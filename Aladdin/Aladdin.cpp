@@ -22,6 +22,9 @@ Aladdin::Aladdin()
 
 	this->x = 50;
 	this->y = 150;
+	this->AladdinHP = 100;
+	this->DmgAttack = 20;
+	this->Attacking = false;
 	this->width = ALADDIN_SPRITE_WIDTH;
 	this->height = ALADDIN_SPRITE_HEIGHT;
 
@@ -666,6 +669,53 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}
 		return;
 	}
+
+	vector<OnUpdateObject> listUpdateObject = Grid::GetInstance()->GetListUpdateObject();
+
+	for (int i = 0; i < listUpdateObject.size(); i++)
+	{
+		if (!listUpdateObject.at(i).isGenerated)
+			continue;
+
+		float normalX = 0;
+		float normalY = 0;
+
+		bool isCollide = Collision::GetInstance()->AABB(this->GetCollider(), listUpdateObject.at(i).object->GetCollider());
+	
+		if (!isCollide)
+			continue;
+
+		switch (listUpdateObject.at(i).ene.SpawnObjectID)
+		{
+		case ObjectAndEnemies::GUARD1:
+			if (((Guard1*)listUpdateObject.at(i).object)->GetDie())
+			{
+				Grid::GetInstance()->SetisLifeListObject(i, false);
+			}
+			if (this->state->GetState() == StateAladdin::STATE_STAND_HIT ||
+				this->state->GetState() == StateAladdin::STATE_RUN_HIT)
+			{
+				//if (this->Attacking)
+				//{
+				//	((Guard1*)listUpdateObject.at(i).object)->SetGuard1HP(((Guard1*)listUpdateObject.at(i).object)->GetGuard1HP() - this->DmgAttack);
+				//}
+				//
+				//DebugOut(L"qweqw %d \n", ((Guard1*)listUpdateObject.at(i).object)->GetGuard1HP());
+				//
+				//if (((Guard1*)listUpdateObject.at(i).object)->GetGuard1HP() <= 0)
+				//{
+				//	Grid::GetInstance()->SetisLifeListObject(i, false);
+				//}
+
+				//if (((Guard1*)listUpdateObject.at(i).object)->GetDie())
+				//{
+				//	Grid::GetInstance()->SetisLifeListObject(i, false);
+				//}
+			}
+			break;
+		}
+	}
+
 }
 
 void Aladdin::Render()
