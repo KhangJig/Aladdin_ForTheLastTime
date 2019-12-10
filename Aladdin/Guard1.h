@@ -12,8 +12,6 @@ class Guard1 : public GameObject
 {
 	Guard1();
 
-	static Guard1 *__instance;
-
 	Guard1State *state;
 
 	static vector<Animation *> animations;
@@ -30,42 +28,33 @@ class Guard1 : public GameObject
 
 	bool Dead;
 
+	int id;
+
 public:
-	Guard1(float x, float y, int CellID);
+	Guard1(float x, float y, int CellID, int temp);
+
 	static void LoadResources();
 
 	bool isOnGround = false;
 
 	float posx, posy;
 
+#pragma region	GET/SET
 	int GetGuard1HP() { return this->Guard1HP; }
 	int GetGuard1DmgAttack() { return this->Guard1Dmg; }
-
+	int GetID() { return this->id; }
 	void SetGuard1HP(int hp) { this->Guard1HP = hp; }
 	void SetGuard1DmgAttack(int dmg) { this->Guard1Dmg = dmg; }
-
-	static Guard1 *GetInstance();
-
 	DWORD GetLastFrameTime() { return this->lastFrameTime; }
 	void SetLastFrameTime(DWORD lastFrameTime) { this->lastFrameTime = lastFrameTime; }
-
-	void SetColliderDemension(float width, float height)
-	{
-		this->collider.width = width;
-		this->collider.height = height;
-	}
-
-	bool GetAttacking() { return this->Attacking; }
-
-	void SetAttacking(bool attack) { this->Attacking = attack; }
-
-	bool GetDie() { return this->Dead; }
-
-	void SetDie(bool die) { this->Dead = die; }
-
-	int GetCellID() { return this->CellID; }
-
+	void SetColliderDemension(float width, float height) { this->collider.width = width; this->collider.height = height; }
 	vector<Animation *> GetAnimationsList() { return animations; }
+	bool GetAttacking() { return this->Attacking; }
+	void SetAttacking(bool attack) { this->Attacking = attack; }
+	bool GetDie() { return this->Dead; }
+	void SetDie(bool die) { this->Dead = die; }
+	int GetCellID() { return this->CellID; }
+#pragma endregion
 
 	void Update(DWORD dt) override;
 

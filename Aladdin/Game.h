@@ -6,8 +6,6 @@
 #include "Grid.h"
 #include "Aladdin.h"
 
-#include "Guard1.h"
-
 #include <chrono>
 
 class Graphics;

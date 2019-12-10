@@ -206,9 +206,9 @@ void Grid::Update(DWORD dt)
 				if (CheckObjectInsideCamera2(listObject.at(i).ene.x, listObject.at(i).ene.y))
 				{
 					DebugOut(L"Guard Created!\n");
-					if (listObject.at(i).ene.SpawnObjectID == 1)
+					if (listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::GUARD1)
 					{
-						listObject.at(i).object = new Guard1(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID);
+						listObject.at(i).object = new Guard1(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
 						listObject.at(i).isGenerated = true;
 					}
 				}

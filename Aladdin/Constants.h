@@ -36,7 +36,9 @@ enum ObjectAndEnemies
 {
 	NOTHING,
 	GUARD1,
-	GUARD2
+	GUARD2,
+	BOMBBER,
+
 };
 
 // MAP
@@ -77,8 +79,9 @@ enum ObjectAndEnemies
 #define ALADDIN_SPRITE_HEIGHT 49
 
 
+#define ENEMIES_TEXTURE_DEAD  L"Resource\\Enemies\\EnemiesDead.png"
 #define GUARD_TEXTURE_LOCATION L"Resource\\Enemies\\Guards.png"
 // Guard1
 #define GUARD1_SPRITE_WIDTH 44
 #define GUARD1_SPRITE_HEIGHT 57
-#define GUARD1_WALK_SPEED 0.075f
+#define GUARD1_WALK_SPEED 0.045f

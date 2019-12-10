@@ -23,6 +23,7 @@ enum StateAladdin
 	STATE_JUMP_THROW,
 	STATE_JUMP_HIT,
 	STATE_DOUBLE_HIT,
+	STATE_HURT,
 	STATE_RUN_HIT,
 	STATE_RUN_THROW,
 };
@@ -65,6 +66,7 @@ public:
 	void stateJumpHit();
 	void stateJumpThrow();
 	void stateDoubleHit();
+	void stateHurt();
 	void stateRunHit();
 	void stateRunThrow();
 

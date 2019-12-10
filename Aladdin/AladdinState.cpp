@@ -28,7 +28,6 @@ void AladdinState::SetState(StateAladdin state)
 	this->stateAladdin = state;
 }
 
-
 void AladdinState::stateStanding()
 {
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT) && (!Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) && !Keyboard::GetInstance()->IsKeyDown(DIK_LEFT)))
@@ -603,6 +602,20 @@ void AladdinState::stateDoubleHit()
 	aladdin->SetAttacking(true);
 }
 
+void AladdinState::stateHurt()
+{
+	aladdin->SetSpeedX(0);
+	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	anim = aladdin->GetAnimationsList()[STATE_HURT];
+
+	if (anim->IsDone())
+	{
+		anim->Reset();
+		this->SetState(IDLE_STAND);
+		return;
+	}
+}
+
 // con xu ly tiep
 void AladdinState::stateRunHit()
 {
@@ -798,6 +811,10 @@ void AladdinState::Update(DWORD dt)
 
 	case STATE_RUN_THROW:
 		this->stateRunThrow();
+		break;
+
+	case STATE_HURT:
+		this->stateHurt();
 		break;
 
 	default:

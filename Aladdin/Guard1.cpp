@@ -1,35 +1,8 @@
 ﻿#include "Guard1.h"
 
 vector<Animation *> Guard1::animations = vector<Animation *>();
-Guard1 *Guard1::__instance = NULL;
 
-//Guard1 *Guard1::GetInstance()
-//{
-//	if (__instance == NULL)
-//		__instance = new Guard1();
-//	return __instance;
-//}
-//
-//Guard1::Guard1()
-//{
-//	LoadResources();
-//
-//	state = Guard1State::GetInstance(this);
-//
-//	this->x = 250;
-//	this->y = 150;
-//	this->width = GUARD1_SPRITE_WIDTH;
-//	this->height = GUARD1_SPRITE_HEIGHT;
-//
-//	collider.x = x;
-//	collider.y = y;
-//	collider.vx = 0;
-//	collider.vy = 0;
-//	collider.width = GUARD1_SPRITE_WIDTH;
-//	collider.height = GUARD1_SPRITE_HEIGHT;
-//}
-
-Guard1::Guard1(float x, float y, int CellID)
+Guard1::Guard1(float x, float y, int CellID, int id)
 {
 	this->state = new Guard1State(this);
 
@@ -48,8 +21,10 @@ Guard1::Guard1(float x, float y, int CellID)
 	collider.width = GUARD1_SPRITE_WIDTH;
 	collider.height = GUARD1_SPRITE_HEIGHT;
 
-	this->disable = false;
 	this->CellID = CellID;
+	this->id = id;
+
+	this->disable = false;
 	this->Guard1HP = 50;
 	this->Guard1Dmg = 20;
 	this->Attacking = false;
@@ -114,19 +89,15 @@ void Guard1::LoadResources()
 	anim = new Animation(100);
 
 	Sprite * guard1_walking_1 = new Sprite(guard1->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR_3);
-	//guard1_walking_1->SetOffSetX(8);
 	guard1_walking_1->SetOffSetY(9);
 	anim->AddFrame(guard1_walking_1);
 	Sprite * guard1_walking_2 = new Sprite(guard1->GetTexture(), listSprite[1], TEXTURE_TRANS_COLOR_3);
-	//guard1_walking_2->SetOffSetX(10);
 	guard1_walking_2->SetOffSetY(8);
 	anim->AddFrame(guard1_walking_2);
 	Sprite * guard1_walking_3 = new Sprite(guard1->GetTexture(), listSprite[2], TEXTURE_TRANS_COLOR_3);
-	//guard1_walking_3->SetOffSetX(11);
 	guard1_walking_3->SetOffSetY(7);
 	anim->AddFrame(guard1_walking_3);
 	Sprite * guard1_walking_4 = new Sprite(guard1->GetTexture(), listSprite[3], TEXTURE_TRANS_COLOR_3);
-	//guard1_walking_4->SetOffSetX(8);
 	guard1_walking_4->SetOffSetY(7);
 	anim->AddFrame(guard1_walking_4);
 	Sprite * guard1_walking_5 = new Sprite(guard1->GetTexture(), listSprite[4], TEXTURE_TRANS_COLOR_3);
@@ -134,7 +105,6 @@ void Guard1::LoadResources()
 	guard1_walking_5->SetOffSetY(8);
 	anim->AddFrame(guard1_walking_5);
 	Sprite * guard1_walking_6 = new Sprite(guard1->GetTexture(), listSprite[5], TEXTURE_TRANS_COLOR_3);
-	//guard1_walking_6->SetOffSetX(12);
 	guard1_walking_6->SetOffSetY(9);
 	anim->AddFrame(guard1_walking_6);
 	Sprite * guard1_walking_7 = new Sprite(guard1->GetTexture(), listSprite[6], TEXTURE_TRANS_COLOR_3);
@@ -142,7 +112,6 @@ void Guard1::LoadResources()
 	guard1_walking_7->SetOffSetY(9);
 	anim->AddFrame(guard1_walking_7);
 	Sprite * guard1_walking_8 = new Sprite(guard1->GetTexture(), listSprite[7], TEXTURE_TRANS_COLOR_3);
-	//guard1_walking_8->SetOffSetX(1);
 	guard1_walking_8->SetOffSetY(7);
 	anim->AddFrame(guard1_walking_8);
 
@@ -150,7 +119,7 @@ void Guard1::LoadResources()
 #pragma endregion
 
 #pragma region HIT
-	anim = new Animation(100);
+	anim = new Animation(120);
 
 	Sprite * guard1_hit_1 = new Sprite(guard1->GetTexture(), listSprite[8], TEXTURE_TRANS_COLOR_3);
 	guard1_hit_1->SetOffSetX(-3);
@@ -179,32 +148,44 @@ void Guard1::LoadResources()
 	animations.push_back(anim);
 #pragma endregion
 
-#pragma region DEAD
-	anim = new Animation(100);
+	listSprite = loadTXT.LoadRect((char*)"Resource\\Enemies\\EnemiesDead.txt");
+	Sprite * guard1_2 = new Sprite(ENEMIES_TEXTURE_DEAD, TEXTURE_TRANS_COLOR_3);
 
-	Sprite * guard1_dead_1 = new Sprite(guard1->GetTexture(), listSprite[8], TEXTURE_TRANS_COLOR_3);
-	guard1_dead_1->SetOffSetX(-3);
-	guard1_dead_1->SetOffSetY(16);
+#pragma region DEAD
+	anim = new Animation(80);
+
+	Sprite * guard1_dead_1 = new Sprite(guard1_2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR_3);
+	guard1_dead_1->SetOffSetX(-12);
+	guard1_dead_1->SetOffSetY(-45);
 	anim->AddFrame(guard1_dead_1);
-	Sprite * guard1_dead_2 = new Sprite(guard1->GetTexture(), listSprite[9], TEXTURE_TRANS_COLOR_3);
-	guard1_dead_2->SetOffSetX(1);
-	guard1_dead_2->SetOffSetY(2);
+	Sprite * guard1_dead_2 = new Sprite(guard1_2->GetTexture(), listSprite[1], TEXTURE_TRANS_COLOR_3);
+	guard1_dead_2->SetOffSetX(-6);
+	guard1_dead_2->SetOffSetY(-30);
 	anim->AddFrame(guard1_dead_2);
-	Sprite * guard1_dead_3 = new Sprite(guard1->GetTexture(), listSprite[10], TEXTURE_TRANS_COLOR_3);
-	guard1_dead_3->SetOffSetX(53);
+	Sprite * guard1_dead_3 = new Sprite(guard1_2->GetTexture(), listSprite[2], TEXTURE_TRANS_COLOR_3);
+	guard1_dead_3->SetOffSetX(-2);
+	guard1_dead_3->SetOffSetY(-19);
 	anim->AddFrame(guard1_dead_3);
-	Sprite * guard1_dead_4 = new Sprite(guard1->GetTexture(), listSprite[11], TEXTURE_TRANS_COLOR_3);
-	guard1_dead_4->SetOffSetX(48);
-	guard1_dead_4->SetOffSetY(1);
+	Sprite * guard1_dead_4 = new Sprite(guard1_2->GetTexture(), listSprite[3], TEXTURE_TRANS_COLOR_3);
+	guard1_dead_4->SetOffSetX(5);
+	guard1_dead_4->SetOffSetY(-15);
 	anim->AddFrame(guard1_dead_4);
-	Sprite * guard1_dead_5 = new Sprite(guard1->GetTexture(), listSprite[12], TEXTURE_TRANS_COLOR_3);
-	guard1_dead_5->SetOffSetX(37);
-	guard1_dead_5->SetOffSetY(2);
+	Sprite * guard1_dead_5 = new Sprite(guard1_2->GetTexture(), listSprite[4], TEXTURE_TRANS_COLOR_3);
+	guard1_dead_5->SetOffSetX(13);
+	guard1_dead_5->SetOffSetY(-8);
 	anim->AddFrame(guard1_dead_5);
-	Sprite * guard1_dead_6 = new Sprite(guard1->GetTexture(), listSprite[13], TEXTURE_TRANS_COLOR_3);
-	guard1_dead_6->SetOffSetX(1);
-	guard1_dead_6->SetOffSetY(2);
+	Sprite * guard1_dead_6 = new Sprite(guard1_2->GetTexture(), listSprite[5], TEXTURE_TRANS_COLOR_3);
+	guard1_dead_6->SetOffSetX(19);
+	guard1_dead_6->SetOffSetY(-6);
 	anim->AddFrame(guard1_dead_6);
+	Sprite * guard1_dead_7 = new Sprite(guard1_2->GetTexture(), listSprite[6], TEXTURE_TRANS_COLOR_3);
+	guard1_dead_7->SetOffSetX(23);
+	guard1_dead_7->SetOffSetY(1);
+	anim->AddFrame(guard1_dead_7);
+	Sprite * guard1_dead_8 = new Sprite(guard1_2->GetTexture(), listSprite[6], TEXTURE_TRANS_COLOR_3);
+	guard1_dead_8->SetOffSetX(29);
+	guard1_dead_8->SetOffSetY(8);
+	anim->AddFrame(guard1_dead_8);
 
 	animations.push_back(anim);
 #pragma endregion
@@ -272,11 +253,6 @@ void Guard1::Render()
 	if (this->disable)
 		return;
 
-	//if (this->Guard1HP <= 0)
-	//{
-	//	DebugOut(L"asdasdasd\n");
-	//}
-
 	state->Render();
 }
 
@@ -288,8 +264,16 @@ void Guard1::UpdateCollision(DWORD dt)
 	{
 		if (Aladdin::GetInstance()->GetAttacking())
 		{
-			this->state->SetState(GUARD1_HURT);
 			this->SetGuard1HP(this->GetGuard1HP() - Aladdin::GetInstance()->GetDmgAttack());
+
+			if (this->GetGuard1HP() > 0)
+			{
+				this->state->SetState(GUARD1_HURT);
+			}
+			else
+			{
+				this->state->SetState(GUARD1_DEAD);
+			}
 		}
 	}
 }
@@ -297,5 +281,4 @@ void Guard1::UpdateCollision(DWORD dt)
 void Guard1::OnCollision()
 {
 	((Guard1State*)state)->timeCount = 0;
-	((Guard1State*)state)->stateHit();
 }

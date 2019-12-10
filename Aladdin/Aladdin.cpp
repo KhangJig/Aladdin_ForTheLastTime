@@ -22,17 +22,17 @@ Aladdin::Aladdin()
 
 	this->x = 50;
 	this->y = 150;
-	this->AladdinHP = 100;
+	this->AladdinHP = 500;
 	this->DmgAttack = 20;
 	this->Attacking = false;
 	this->width = ALADDIN_SPRITE_WIDTH;
 	this->height = ALADDIN_SPRITE_HEIGHT;
 
-	collider.x = x - 10;
+	collider.x = x;
 	collider.y = y;
 	collider.vx = 0;
 	collider.vy = 0;
-	collider.width = ALADDIN_SPRITE_WIDTH;
+	collider.width = ALADDIN_SPRITE_WIDTH + 20;
 	collider.height = ALADDIN_SPRITE_HEIGHT;
 }
 
@@ -460,6 +460,21 @@ void Aladdin::LoadResources()
 	animations.push_back(anim);
 #pragma endregion
 
+#pragma region HURT
+	anim = new Animation(40);
+
+	Sprite * hurt_1 = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(hurt_1);
+	Sprite * hurt_2 = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(hurt_2);
+	Sprite * hurt_3 = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(hurt_3);
+	Sprite * hurt_4 = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(hurt_4);
+
+	animations.push_back(anim);
+#pragma endregion
+
 	listSprite = loadTXT.LoadRect((char*)"Resource\\Character\\run-hit-n-throw.txt");
 	Sprite * aladdin3 = new Sprite(ALADDIN_TEXTURE_LOCATION2, TEXTURE_TRANS_COLOR_2);
 
@@ -674,11 +689,8 @@ void Aladdin::UpdateCollision(DWORD dt)
 
 	for (int i = 0; i < listUpdateObject.size(); i++)
 	{
-		if (!listUpdateObject.at(i).isGenerated)
+		if (!listUpdateObject.at(i).isGenerated || !listUpdateObject.at(i).isLife)
 			continue;
-
-		float normalX = 0;
-		float normalY = 0;
 
 		bool isCollide = Collision::GetInstance()->AABB(this->GetCollider(), listUpdateObject.at(i).object->GetCollider());
 	
@@ -688,29 +700,11 @@ void Aladdin::UpdateCollision(DWORD dt)
 		switch (listUpdateObject.at(i).ene.SpawnObjectID)
 		{
 		case ObjectAndEnemies::GUARD1:
-			if (((Guard1*)listUpdateObject.at(i).object)->GetDie())
+			if (((Guard1*)listUpdateObject.at(i).object)->GetAttacking())
 			{
-				Grid::GetInstance()->SetisLifeListObject(i, false);
-			}
-			if (this->state->GetState() == StateAladdin::STATE_STAND_HIT ||
-				this->state->GetState() == StateAladdin::STATE_RUN_HIT)
-			{
-				//if (this->Attacking)
-				//{
-				//	((Guard1*)listUpdateObject.at(i).object)->SetGuard1HP(((Guard1*)listUpdateObject.at(i).object)->GetGuard1HP() - this->DmgAttack);
-				//}
-				//
-				//DebugOut(L"qweqw %d \n", ((Guard1*)listUpdateObject.at(i).object)->GetGuard1HP());
-				//
-				//if (((Guard1*)listUpdateObject.at(i).object)->GetGuard1HP() <= 0)
-				//{
-				//	Grid::GetInstance()->SetisLifeListObject(i, false);
-				//}
-
-				//if (((Guard1*)listUpdateObject.at(i).object)->GetDie())
-				//{
-				//	Grid::GetInstance()->SetisLifeListObject(i, false);
-				//}
+				this->AladdinHP = this->AladdinHP - ((Guard1*)listUpdateObject.at(i).object)->GetGuard1DmgAttack();
+				DebugOut(L"Aladdin HP :  %d \n", this->AladdinHP);
+				this->state->SetState(STATE_HURT);
 			}
 			break;
 		}

@@ -95,8 +95,6 @@ void Game::LoadResources()
 
 	if (NULL == viewport)
 		viewport = Viewport::GetInstance();
-
-	Guard1::LoadResources();
 }
 
 void Game::Update(DWORD dt)

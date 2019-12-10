@@ -28,18 +28,24 @@ public:
 
 	void SetCurFrame(int frame) { this->curFrame = frame; }
 
+	int GetCurFrame() {return  this->curFrame; }
+
 	void isSetFrame(bool isSet) { this->isSetCurentFrame = isSet; }
 
 	void isSetAniRunning(bool isSetRunning) { this->isAniRunning = isSetRunning; }
 
 	void isSetDoubleHit(bool isDoubleHit) { this->isDoubleHit = isDoubleHit; }
 
-	int GetCurFrame() { isSetCurentFrame = true; return curFrame; }
+	//int GetCurFrame() { isSetCurentFrame = true; return curFrame; }
 
 	bool IsDone() { return done; }
 
+	void SetIsDone(bool done) { this->done = done; }
+
 	void Reset() { curFrame = -1; }
+
 	void AddFrame(Sprite *sprite, DWORD time = 0);
+
 	void Render(SpriteData spriteData);
 };
 
