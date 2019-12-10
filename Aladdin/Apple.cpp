@@ -38,13 +38,14 @@ void Apple::LoadResources()
 	RECT* listSprite = loadTXT.LoadRect((char*)"Resource\\Character\\Apple.txt");
 	Sprite * aladdin2 = new Sprite(ALADDIN_TEXTURE_LOCATION, TEXTURE_TRANS_COLOR);
 
-	// Apple flying
+#pragma region Apple flying
 	Animation * anim = new Animation(100);
 	Sprite * apple_flying = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(apple_flying);
 	animations.push_back(anim);
+#pragma endregion
 
-	// Apple collision
+#pragma region Apple collision
 	anim = new Animation(100);
 	Sprite *apple_collision_1 = new Sprite(aladdin2->GetTexture(), listSprite[1], TEXTURE_TRANS_COLOR);
 	apple_collision_1->SetOffSetY(3);
@@ -66,16 +67,20 @@ void Apple::LoadResources()
 	apple_collision_5->SetOffSetY(20);
 	anim->AddFrame(apple_collision_5);
 	animations.push_back(anim);
+#pragma endregion
 
-	// Apple none
+#pragma region Apple none
 	anim = new Animation(100);
 	Sprite * apple_none = new Sprite(aladdin2->GetTexture(), listSprite[280], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(apple_none);
 	animations.push_back(anim);
+#pragma endregion
 }
 
 void Apple::Update(DWORD dt)
 {
+	//this->UpdateCollision(dt);
+
 	this->SetSpeedY(0);
 	Aladdin* aladdin = Aladdin::GetInstance();
 	AladdinState* aladdinState = AladdinState::GetInstance(aladdin);
@@ -128,6 +133,68 @@ void Apple::AppleFlying()
 			this->state = APPLE_BOOM;
 		}
 	}
+}
+
+void Apple::UpdateCollision(DWORD dt)
+{
+
+#pragma region Collision With Map
+	vector<ColliedEvent*> coEvents;
+	vector<ColliedEvent*> coEventsResult;
+	vector<TileObjectMap *> tiles = Grid::GetInstance()->GetNearbyObjectTiles();
+	coEvents.clear();
+
+	this->SetDt(dt);
+	this->UpdateObjectCollider();
+	this->collider.x += 5;
+	this->MapCollisions(tiles, coEvents);
+
+	//DebugOut(L"coEvents %d \n", coEvents.size());
+
+	if (coEvents.size() == 0)
+	{
+		//float moveX = trunc(this->GetSpeedX()* dt);
+		//float moveY = trunc(this->GetSpeedY()* dt);
+		//this->SetPositionX(this->GetPositionX() + moveX);
+		//this->SetPositionY(this->GetPositionY() + moveY);
+	}
+	else
+	{
+		float min_tx, min_ty, nx = 0, ny;
+
+		Collision::GetInstance()->GetNearestCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+
+		float moveX = min_tx * this->GetSpeedX() * dt + nx * 0.4;
+		float moveY = min_ty * this->GetSpeedY() * dt + ny * 0.4;
+
+		this->SetPositionX(this->GetPositionX() + moveX);
+		this->SetPositionY(this->GetPositionY() + moveY);
+
+		if (coEventsResult[0]->collisionID == ObjectType::BRICK)
+		{
+			DebugOut(L"adsadsda\n");
+		}
+	}
+	for (int i = 0; i < coEvents.size(); i++)
+		delete coEvents[i];
+#pragma endregion
+
+#pragma region Collison With Enemies
+	vector<OnUpdateObject> listUpdateObject = Grid::GetInstance()->GetListUpdateObject();
+
+	for (int i = 0; i < listUpdateObject.size(); i++)
+	{
+		if (!listUpdateObject.at(i).isGenerated || !listUpdateObject.at(i).isLife)
+			continue;
+
+		bool isCollide = Collision::GetInstance()->AABB(this->GetCollider(), listUpdateObject.at(i).object->GetCollider());
+
+		if (isCollide)
+		{
+			this->state = APPLE_BOOM;
+		}
+	}
+#pragma endregion
 }
 
 void Apple::Render()

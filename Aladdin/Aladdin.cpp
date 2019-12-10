@@ -631,7 +631,7 @@ void Aladdin::Update(DWORD dt)
 		this->SetPositionX(this->GetPositionX() + moveX);
 		this->SetPositionY(this->GetPositionY() + moveY);
 
-		if (coEventsResult[0]->collisionID == 1)
+		if (coEventsResult[0]->collisionID == ObjectType::BRICK)
 		{
 			if (ny == 1)
 			{
@@ -639,7 +639,7 @@ void Aladdin::Update(DWORD dt)
 			}
 		}
 
-		if (coEventsResult[0]->collisionID == 2)
+		if (coEventsResult[0]->collisionID == ObjectType::WALL)
 		{
 			if (nx == 1 || nx == -1)
 			{
@@ -648,7 +648,7 @@ void Aladdin::Update(DWORD dt)
 			}
 		}
 
-		if (coEventsResult[0]->collisionID == 3)
+		if (coEventsResult[0]->collisionID == ObjectType::THORN)
 		{
 			if (ny == 1)
 			{
@@ -664,7 +664,8 @@ void Aladdin::Update(DWORD dt)
 
 
 
-	apple->UpdateObjectCollider();
+	//apple->UpdateObjectCollider();
+	apple->UpdateCollision(dt);
 	apple->Update(dt);
 	state->Colision();
 	state->Update(dt);

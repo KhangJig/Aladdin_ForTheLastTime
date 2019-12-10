@@ -35,6 +35,8 @@ public:
 
 	void Update(DWORD dt);
 
+	void UpdateCollision(DWORD dt);
+
 	void Render();
 
 	float ParabolCurrentX(float posX, float posY, float currentX);

@@ -258,9 +258,10 @@ void Guard1::Render()
 
 void Guard1::UpdateCollision(DWORD dt)
 {
-	bool isCollide = Collision::GetInstance()->AABB(this->GetCollider(), Aladdin::GetInstance()->GetCollider());
+	bool isCollideAladdin = Collision::GetInstance()->AABB(this->GetCollider(), Aladdin::GetInstance()->GetCollider());
+	bool isCollideApple = Collision::GetInstance()->AABB(this->GetCollider(), Apple::GetInstance()->GetCollider());
 
-	if (isCollide) 
+	if (isCollideAladdin)
 	{
 		if (Aladdin::GetInstance()->GetAttacking())
 		{
@@ -274,6 +275,19 @@ void Guard1::UpdateCollision(DWORD dt)
 			{
 				this->state->SetState(GUARD1_DEAD);
 			}
+		}
+	}
+	if (isCollideApple)
+	{
+		this->SetGuard1HP(this->GetGuard1HP() - Aladdin::GetInstance()->GetDmgAttack());
+
+		if (this->GetGuard1HP() > 0)
+		{
+			this->state->SetState(GUARD1_HURT);
+		}
+		else
+		{
+			this->state->SetState(GUARD1_DEAD);
 		}
 	}
 }
