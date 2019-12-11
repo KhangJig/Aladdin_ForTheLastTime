@@ -172,6 +172,7 @@
     <ClCompile Include="EnemiesDeadEffect.cpp" />
     <ClCompile Include="Guard1.cpp" />
     <ClCompile Include="Guard1State.cpp" />
+    <ClCompile Include="HP.cpp" />
     <ClCompile Include="ItemEffect.cpp" />
     <ClCompile Include="Loadtxt.cpp" />
     <ClCompile Include="main.cpp" />
@@ -215,6 +216,7 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Guard1.h" />
     <ClInclude Include="Guard1State.h" />
+    <ClInclude Include="HP.h" />
     <ClInclude Include="ItemEffect.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Loadtxt.h" />

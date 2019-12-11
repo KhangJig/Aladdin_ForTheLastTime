@@ -43,6 +43,9 @@
     <Filter Include="GameObjects\Items">
       <UniqueIdentifier>{93629569-8208-4db2-81f4-96a779cb0716}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\GameMenu">
+      <UniqueIdentifier>{ef7012e9-1b0b-450a-b6a0-f793f0b5f78a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graphics.cpp">
@@ -134,6 +137,9 @@
     </ClCompile>
     <ClCompile Include="BrickObject.cpp">
       <Filter>GameObjects\DynamicObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="HP.cpp">
+      <Filter>GameObjects\GameMenu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +238,9 @@
     </ClInclude>
     <ClInclude Include="BrickObject.h">
       <Filter>GameObjects\DynamicObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="HP.h">
+      <Filter>GameObjects\GameMenu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

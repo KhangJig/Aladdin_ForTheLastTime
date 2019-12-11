@@ -685,6 +685,83 @@ void Aladdin::Update(DWORD dt)
 
 #pragma endregion
 
+#pragma region	Update HP Taskbar
+	if (this->AladdinHP == 500)
+	{
+		HP::GetInstance()->SetState(LV_TEN);
+	}
+	else
+	{
+		if (this->AladdinHP >= 450)
+		{
+			HP::GetInstance()->SetState(LV_NINE);
+		}
+		else
+		{
+			if (this->AladdinHP >= 400)
+			{
+				HP::GetInstance()->SetState(LV_EIGHT);
+			}
+			else
+			{
+				if (this->AladdinHP >= 350)
+				{
+					HP::GetInstance()->SetState(LV_SEVEN);
+				}
+				else
+				{
+					if (this->AladdinHP >= 300)
+					{
+						HP::GetInstance()->SetState(LV_SIX);
+					}
+					else
+					{
+						if (this->AladdinHP >= 250)
+						{
+							HP::GetInstance()->SetState(LV_FIVE);
+						}
+						else
+						{
+							if (this->AladdinHP >= 200)
+							{
+								HP::GetInstance()->SetState(LV_FOUR);
+							}
+							else
+							{
+								if (this->AladdinHP >= 150)
+								{
+									HP::GetInstance()->SetState(LV_THREE);
+								}
+								else
+								{
+									if (this->AladdinHP >= 100)
+									{
+										HP::GetInstance()->SetState(LV_TWO);
+									}
+									else
+									{
+										if (this->AladdinHP >= 50)
+										{
+											HP::GetInstance()->SetState(LV_ONE);
+										}
+										else
+										{
+											if (this->AladdinHP <= 0)
+											{
+												HP::GetInstance()->SetState(LV_ZERO);
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+#pragma endregion
+	
 	apple->Update(dt);
 	apple->UpdateCollision(tiles);
 	state->Colision();

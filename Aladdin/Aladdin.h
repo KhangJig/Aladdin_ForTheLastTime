@@ -6,6 +6,7 @@
 #include "State.h"
 #include "Apple.h"
 #include "ItemEffect.h"
+#include "HP.h"
 
 class AladdinState;
 class Aladdin : public GameObject

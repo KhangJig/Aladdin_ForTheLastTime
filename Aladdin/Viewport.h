@@ -21,6 +21,10 @@ public:
 
 	RECT GetRect();
 
+	int GetX() { return this->x; }
+
+	int GetY() { return this->y; }
+
 	void Reset();
 	void Update(DWORD dt);
 	bool IsObjectInCamera(GameObject *gameobject);

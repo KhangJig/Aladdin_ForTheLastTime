@@ -95,6 +95,9 @@ void Game::LoadResources()
 
 	if (NULL == viewport)
 		viewport = Viewport::GetInstance();
+
+	if (hp == NULL)
+		hp = HP::GetInstance();
 }
 
 void Game::Update(DWORD dt)
@@ -102,6 +105,7 @@ void Game::Update(DWORD dt)
 	keyboard->Update();
 	Grid::GetInstance()->Update(dt);
 	viewport->Update(dt);
+	hp->Update(dt);
 }
 
 void Game::Render()
@@ -117,6 +121,8 @@ void Game::Render()
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
 		Grid::GetInstance()->Render();
+
+		hp->Render();
 
 		spriteHandler->End();
 

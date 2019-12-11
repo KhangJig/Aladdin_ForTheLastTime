@@ -5,6 +5,7 @@
 #include "TileMap.h"
 #include "Grid.h"
 #include "Aladdin.h"
+#include "HP.h"
 
 #include <chrono>
 
@@ -24,6 +25,7 @@ class Game
 	Aladdin *aladdin;
 	Viewport *viewport;
 	TileMap *tileMap;
+	HP*hp;
 	Stage stage;
 
 public:

@@ -112,3 +112,6 @@ enum ObjectAndEnemies
 #define BALL_ITEM_HEIGHT 64
 #define BRICK_ITEM_WIDTH 31
 #define BRICK_ITEM_WIDTH 14
+
+// Game Menu
+#define HP_TEXTURE_LOCATION L"Resource\\Miscellaneous\\HP.png"
