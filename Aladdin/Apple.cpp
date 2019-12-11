@@ -149,17 +149,24 @@ void Apple::UpdateCollision(vector<TileObjectMap *> tiles)
 
 	for (int i = 0; i < listUpdateObject.size(); i++)
 	{
-		if (!listUpdateObject.at(i).isGenerated || !listUpdateObject.at(i).isLife)
-			continue;
-
-		bool isCollide = Collision::GetInstance()->AABB(this->GetCollider(), listUpdateObject.at(i).object->GetCollider());
-
-		if (isCollide)
+		if (listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::GUARD1 ||
+			listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::GUARD2 ||
+			listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::BOMBBER ||
+			listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::BAT ||
+			listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::WALL_BRICK)
 		{
-			appleEffect->SetPos(this->GetPositionX(), this->GetPositionY(), false);
-			this->state = APPLE_NONE;
-			this->SetSpeedX(0);
-			this->SetSpeedY(0);
+			if (!listUpdateObject.at(i).isGenerated || !listUpdateObject.at(i).isLife)
+				continue;
+
+			bool isCollide = Collision::GetInstance()->AABB(this->GetCollider(), listUpdateObject.at(i).object->GetCollider());
+
+			if (isCollide)
+			{
+				appleEffect->SetPos(this->GetPositionX(), this->GetPositionY(), false);
+				this->state = APPLE_NONE;
+				this->SetSpeedX(0);
+				this->SetSpeedY(0);
+			}
 		}
 	}
 #pragma endregion
