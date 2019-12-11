@@ -169,6 +169,7 @@
     <ClCompile Include="BrickObject.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="DiamondItem.cpp" />
+    <ClCompile Include="DiamondMenu.cpp" />
     <ClCompile Include="dxutil.cpp" />
     <ClCompile Include="EnemiesDeadEffect.cpp" />
     <ClCompile Include="Guard1.cpp" />
@@ -209,6 +210,7 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="DiamondItem.h" />
+    <ClInclude Include="DiamondMenu.h" />
     <ClInclude Include="dsutil.h" />
     <ClInclude Include="dxutil.h" />
     <ClInclude Include="EnemiesDeadEffect.h" />

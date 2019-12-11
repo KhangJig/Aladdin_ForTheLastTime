@@ -7,6 +7,8 @@
 #include "Apple.h"
 #include "ItemEffect.h"
 #include "HP.h"
+#include "AppleMenu.h"
+#include "DiamondMenu.h"
 
 class AladdinState;
 class Aladdin : public GameObject

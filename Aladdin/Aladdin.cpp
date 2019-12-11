@@ -763,6 +763,7 @@ void Aladdin::Update(DWORD dt)
 #pragma endregion
 	
 	AppleMenu::GetInstance()->SetNum(this->AppleNumber);
+	DiamondMenu::GetInstance()->SetNum(this->DiamondNumber);
 	apple->Update(dt);
 	apple->UpdateCollision(tiles);
 	state->Colision();
@@ -821,23 +822,33 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}break;
 		case ObjectAndEnemies::THORN:
 		{
-
+			DebugOut(L"Collision THORN \n");
+		}break;
+		case ObjectAndEnemies::BALL:
+		{
+			DebugOut(L"Collision BALL \n");
 		}break;
 		case ObjectAndEnemies::WALL_BRICK:
 		{
-
+			DebugOut(L"Collision BRICK \n");
 		}break;
 		case ObjectAndEnemies::APPLE:
 		{
 			Grid::GetInstance()->SetisLifeListObject(((AppleItem*)listUpdateObject.at(i).object)->GetID(), false);
 			itemEffect->SetPos(listUpdateObject.at(i).ene.x, listUpdateObject.at(i).ene.y, false);
-			this->AppleNumber++;
+			if (this->AppleNumber < 100)
+			{
+				this->AppleNumber++;
+			}
 		}break;
 		case ObjectAndEnemies::DIAMOND:
 		{
 			Grid::GetInstance()->SetisLifeListObject(((DiamondItem*)listUpdateObject.at(i).object)->GetID(), false);
 			itemEffect->SetPos(listUpdateObject.at(i).ene.x, listUpdateObject.at(i).ene.y, false);
-			this->DiamondNumber++;
+			if (this->DiamondNumber < 100)
+			{
+				this->DiamondNumber++;
+			}
 		}break;
 		case ObjectAndEnemies::BOTTLE:
 		{

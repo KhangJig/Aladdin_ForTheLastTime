@@ -144,6 +144,9 @@
     <ClCompile Include="AppleMenu.cpp">
       <Filter>GameObjects\GameMenu</Filter>
     </ClCompile>
+    <ClCompile Include="DiamondMenu.cpp">
+      <Filter>GameObjects\GameMenu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h">
@@ -246,6 +249,9 @@
       <Filter>GameObjects\GameMenu</Filter>
     </ClInclude>
     <ClInclude Include="AppleMenu.h">
+      <Filter>GameObjects\GameMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="DiamondMenu.h">
       <Filter>GameObjects\GameMenu</Filter>
     </ClInclude>
   </ItemGroup>
