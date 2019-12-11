@@ -58,7 +58,6 @@ void AladdinState::stateStanding()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
 	{
-
 		aladdin->SetAttacking(true);
 		this->SetState(STATE_STAND_HIT);
 		return;

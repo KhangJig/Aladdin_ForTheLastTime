@@ -162,8 +162,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Apple.cpp" />
+    <ClCompile Include="AppleEffect.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="dxutil.cpp" />
+    <ClCompile Include="EnemiesDeadEffect.cpp" />
     <ClCompile Include="Guard1.cpp" />
     <ClCompile Include="Guard1State.cpp" />
     <ClCompile Include="Loadtxt.cpp" />
@@ -189,12 +191,14 @@
     <ClInclude Include="Aladdin.h" />
     <ClInclude Include="AladdinState.h" />
     <ClInclude Include="Apple.h" />
+    <ClInclude Include="AppleEffect.h" />
     <ClInclude Include="CollideEvent.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="dsutil.h" />
     <ClInclude Include="dxutil.h" />
+    <ClInclude Include="EnemiesDeadEffect.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Graphics.h" />

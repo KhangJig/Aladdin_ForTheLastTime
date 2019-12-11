@@ -10,6 +10,9 @@
 
 #include "Guard1.h"
 
+#include "AppleEffect.h"
+#include "EnemiesDeadEffect.h"
+
 using namespace std;
 
 #define GRID_SIZE_BY_TILE (int)(GRID_SIZE / TILE_SIZE)

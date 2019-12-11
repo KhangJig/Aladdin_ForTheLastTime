@@ -134,9 +134,8 @@ void Guard1State::stateDead()
 	this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 	anim = guard1->GetAnimationsList()[GUARD1_DEAD];
 
-	if (anim->IsDone())
+	if (this->guard1->GetEnemiesDeadEffect()->GetHidden())
 	{
-		anim->SetIsDone(false);
 		this->guard1->SetDie(true);
 		Grid::GetInstance()->SetisLifeListObject(this->guard1->GetID(), false);
 		return;

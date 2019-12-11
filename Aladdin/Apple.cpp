@@ -30,6 +30,8 @@ Apple::Apple()
 	collider.height = APPLE_HEIGHT;
 
 	maxDistance = SCREEN_WIDTH / 2.5;
+
+	appleEffect = new AppleEffect(0, 0);
 }
 
 void Apple::LoadResources()
@@ -42,30 +44,6 @@ void Apple::LoadResources()
 	Animation * anim = new Animation(100);
 	Sprite * apple_flying = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(apple_flying);
-	animations.push_back(anim);
-#pragma endregion
-
-#pragma region Apple collision
-	anim = new Animation(100);
-	Sprite *apple_collision_1 = new Sprite(aladdin2->GetTexture(), listSprite[1], TEXTURE_TRANS_COLOR);
-	apple_collision_1->SetOffSetY(3);
-	anim->AddFrame(apple_collision_1);
-	Sprite * apple_collision_2 = new Sprite(aladdin2->GetTexture(), listSprite[2], TEXTURE_TRANS_COLOR);
-	apple_collision_2->SetOffSetX(6);
-	apple_collision_2->SetOffSetY(11);
-	anim->AddFrame(apple_collision_2);
-	Sprite * apple_collision_3 = new Sprite(aladdin2->GetTexture(), listSprite[3], TEXTURE_TRANS_COLOR);
-	apple_collision_3->SetOffSetX(10);
-	apple_collision_3->SetOffSetY(15);
-	anim->AddFrame(apple_collision_3);
-	Sprite * apple_collision_4 = new Sprite(aladdin2->GetTexture(), listSprite[4], TEXTURE_TRANS_COLOR);
-	apple_collision_4->SetOffSetX(11);
-	apple_collision_4->SetOffSetY(18);
-	anim->AddFrame(apple_collision_4);
-	Sprite * apple_collision_5 = new Sprite(aladdin2->GetTexture(), listSprite[5], TEXTURE_TRANS_COLOR);
-	apple_collision_5->SetOffSetX(10);
-	apple_collision_5->SetOffSetY(20);
-	anim->AddFrame(apple_collision_5);
 	animations.push_back(anim);
 #pragma endregion
 
@@ -135,48 +113,32 @@ void Apple::AppleFlying()
 	}
 }
 
-void Apple::UpdateCollision(DWORD dt)
+void Apple::UpdateCollision(vector<TileObjectMap *> tiles)
 {
 
 #pragma region Collision With Map
-	vector<ColliedEvent*> coEvents;
-	vector<ColliedEvent*> coEventsResult;
-	vector<TileObjectMap *> tiles = Grid::GetInstance()->GetNearbyObjectTiles();
-	coEvents.clear();
+	//vector<TileObjectMap *> tiles = Grid::GetInstance()->GetNearbyObjectTiles();
 
 	this->SetDt(dt);
 	this->UpdateObjectCollider();
 	this->collider.x += 5;
-	this->MapCollisions(tiles, coEvents);
+	Collider collider2;
 
-	//DebugOut(L"coEvents %d \n", coEvents.size());
-
-	if (coEvents.size() == 0)
+	for (int i = 0; i < tiles.size(); i++)
 	{
-		//float moveX = trunc(this->GetSpeedX()* dt);
-		//float moveY = trunc(this->GetSpeedY()* dt);
-		//this->SetPositionX(this->GetPositionX() + moveX);
-		//this->SetPositionY(this->GetPositionY() + moveY);
-	}
-	else
-	{
-		float min_tx, min_ty, nx = 0, ny;
-
-		Collision::GetInstance()->GetNearestCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
-
-		float moveX = min_tx * this->GetSpeedX() * dt + nx * 0.4;
-		float moveY = min_ty * this->GetSpeedY() * dt + ny * 0.4;
-
-		this->SetPositionX(this->GetPositionX() + moveX);
-		this->SetPositionY(this->GetPositionY() + moveY);
-
-		if (coEventsResult[0]->collisionID == ObjectType::BRICK)
+		collider2.x = tiles.at(i)->x;
+		collider2.y = tiles.at(i)->y;
+		collider2.width = tiles.at(i)->width;
+		collider2.height = tiles.at(i)->height;
+		bool isCollide2 = Collision::GetInstance()->AABB(this->GetCollider(), collider2);
+		if (isCollide2)
 		{
-			DebugOut(L"adsadsda\n");
+			appleEffect->SetPos(this->GetPositionX(), this->GetPositionY(), false);
+			this->state = APPLE_NONE;
+			this->SetSpeedX(0);
+			this->SetSpeedY(0);
 		}
 	}
-	for (int i = 0; i < coEvents.size(); i++)
-		delete coEvents[i];
 #pragma endregion
 
 #pragma region Collison With Enemies
@@ -191,7 +153,10 @@ void Apple::UpdateCollision(DWORD dt)
 
 		if (isCollide)
 		{
-			this->state = APPLE_BOOM;
+			appleEffect->SetPos(this->GetPositionX(), this->GetPositionY(), false);
+			this->state = APPLE_NONE;
+			this->SetSpeedX(0);
+			this->SetSpeedY(0);
 		}
 	}
 #pragma endregion
@@ -199,7 +164,6 @@ void Apple::UpdateCollision(DWORD dt)
 
 void Apple::Render()
 {
-	int state = this->state;
 	Aladdin * aladdin = Aladdin::GetInstance();
 	AladdinState * aladdinState = AladdinState::GetInstance(aladdin);
 
@@ -215,15 +179,15 @@ void Apple::Render()
 	spriteData.isLeft = aladdin->IsLeft();
 	spriteData.isFlipped = aladdin->IsFlipped();
 
-	switch (state)
+	switch (this->state)
 	{
 	case APPLE_NONE:
 	{
 		this->SetSpeedX(0);
 		this->SetSpeedY(0);
-		this->SetPositionX(0);
-		this->SetPositionY(0);
-		this->animations[2]->Render(spriteData);
+		this->SetPositionX(-100);
+		this->SetPositionY(-100);
+		this->animations[1]->Render(spriteData);
 	}
 	break;
 	case APPLE_FLYING:
@@ -233,19 +197,14 @@ void Apple::Render()
 	break;
 	case APPLE_BOOM:
 	{
-		this->animations[1]->Render(spriteData);
-		this->SetSpeedX(0);
-		this->SetSpeedY(0);
-		if (this->animations[1]->IsDone()) {
-			this->state = APPLE_NONE;
-			isStartThrow = true;
-			aladdin->SetIsApple(true);
-
-			this->animations[1]->Reset();
-		}
+		this->state = APPLE_NONE;
+		isStartThrow = true;
+		aladdin->SetIsApple(true);
 	}
 	break;
 	}
+
+	appleEffect->Render();
 }
 
 Apple::~Apple()

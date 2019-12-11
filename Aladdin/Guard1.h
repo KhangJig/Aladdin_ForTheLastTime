@@ -6,6 +6,7 @@
 #include "SpawnProjectTile.h"
 #include "State.h"
 #include "Guard1State.h"
+#include "EnemiesDeadEffect.h"
 
 class Guard1State;
 class Guard1 : public GameObject
@@ -15,6 +16,8 @@ class Guard1 : public GameObject
 	Guard1State *state;
 
 	static vector<Animation *> animations;
+
+	EnemiesDeadEffect *enemiesDeadEffect;
 
 	DWORD lastFrameTime;
 
@@ -54,6 +57,7 @@ public:
 	bool GetDie() { return this->Dead; }
 	void SetDie(bool die) { this->Dead = die; }
 	int GetCellID() { return this->CellID; }
+	EnemiesDeadEffect *GetEnemiesDeadEffect() { return this->enemiesDeadEffect; }
 #pragma endregion
 
 	void Update(DWORD dt) override;

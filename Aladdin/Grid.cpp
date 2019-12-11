@@ -17,6 +17,8 @@ Grid::Grid()
 	viewport = Viewport::GetInstance();
 
 	Guard1::LoadResources();
+	AppleEffect::LoadResources();
+	EnemiesDeadEffect::LoadResources();
 }
 
 void Grid::InitializeMapGrid(TileMap *tileMap)

@@ -34,6 +34,9 @@
     <Filter Include="GameObjects\Enemies\Guard1">
       <UniqueIdentifier>{a8598311-ebd2-4252-9983-5312b4221c72}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\Effects">
+      <UniqueIdentifier>{2dbf3e06-9089-4ec8-b68f-97e3b7b1ab1a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graphics.cpp">
@@ -101,6 +104,12 @@
     </ClCompile>
     <ClCompile Include="Guard1State.cpp">
       <Filter>GameObjects\Enemies\Guard1</Filter>
+    </ClCompile>
+    <ClCompile Include="AppleEffect.cpp">
+      <Filter>GameObjects\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemiesDeadEffect.cpp">
+      <Filter>GameObjects\Effects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +184,12 @@
     </ClInclude>
     <ClInclude Include="Guard1State.h">
       <Filter>GameObjects\Enemies\Guard1</Filter>
+    </ClInclude>
+    <ClInclude Include="AppleEffect.h">
+      <Filter>GameObjects\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemiesDeadEffect.h">
+      <Filter>GameObjects\Effects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,15 @@
 #pragma once
 #include "GameObject.h"
 #include "Debug.h"
+#include "AppleEffect.h"
 
 class Apple : public GameObject
 {
 	vector<Animation *> animations;
+
 	static Apple * __instance;
+
+	AppleEffect *appleEffect;
 
 	int state;
 
@@ -18,12 +22,12 @@ class Apple : public GameObject
 	float maxDistance;
 
 	float distance;
+
+	bool isFlying = false;
 public:
 	Apple();
 
-	bool isFlying = false;
-
-	bool IsFlying() { return this->isFlying; }
+	bool GetIsFlying() { return this->isFlying; }
 
 	void SetIsFlying(bool isFlying) { this->isFlying = isFlying; }
 
@@ -35,7 +39,7 @@ public:
 
 	void Update(DWORD dt);
 
-	void UpdateCollision(DWORD dt);
+	void UpdateCollision(vector<TileObjectMap *> tiles);
 
 	void Render();
 
