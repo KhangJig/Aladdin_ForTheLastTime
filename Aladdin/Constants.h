@@ -81,6 +81,7 @@ enum ObjectAndEnemies
 #define TEXTURE_TRANS_COLOR_3 D3DCOLOR_XRGB(120, 193, 152)
 #define TEXTURE_TRANS_COLOR_4 D3DCOLOR_XRGB(186, 254, 202)
 #define TEXTURE_TRANS_COLOR_5 D3DCOLOR_XRGB(248, 0, 248)
+#define TEXTURE_TRANS_COLOR_6 D3DCOLOR_XRGB(220, 84, 151)
 
 // Aladdin
 #define ALADDIN_TEXTURE_LOCATION L"Resource\\Character\\Aladdin_.png"
@@ -102,3 +103,12 @@ enum ObjectAndEnemies
 #define APPLE_ITEM_HEIGHT 11
 #define DIAMOND_ITEM_WIDTH 17
 #define DIAMOND_ITEM_HEIGHT 15
+
+// Map Objects
+#define MAPOBJECTS_TEXTURE_LOCATION L"Resource\\Background\\MapObjects.png"
+#define THORN_ITEM_WIDTH 23
+#define THORN_ITEM_HEIGHT 19
+#define BALL_ITEM_WIDTH 17
+#define BALL_ITEM_HEIGHT 64
+#define BRICK_ITEM_WIDTH 31
+#define BRICK_ITEM_WIDTH 14

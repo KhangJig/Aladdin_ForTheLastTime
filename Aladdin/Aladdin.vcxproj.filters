@@ -126,6 +126,15 @@
     <ClCompile Include="DiamondItem.cpp">
       <Filter>GameObjects\Items</Filter>
     </ClCompile>
+    <ClCompile Include="ThornObject.cpp">
+      <Filter>GameObjects\DynamicObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="BallObject.cpp">
+      <Filter>GameObjects\DynamicObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="BrickObject.cpp">
+      <Filter>GameObjects\DynamicObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h">
@@ -214,6 +223,15 @@
     </ClInclude>
     <ClInclude Include="DiamondItem.h">
       <Filter>GameObjects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="ThornObject.h">
+      <Filter>GameObjects\DynamicObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="BallObject.h">
+      <Filter>GameObjects\DynamicObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickObject.h">
+      <Filter>GameObjects\DynamicObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -18,12 +18,15 @@ Grid::Grid()
 
 	Guard1::LoadResources();
 	AppleItem::LoadResources();
+	DiamondItem::LoadResources();
 
+	ThornObject::LoadResources(); 
+	BallObject::LoadResources();
+	BrickObject::LoadResources();
 
 	AppleEffect::LoadResources();
 	EnemiesDeadEffect::LoadResources();
 	ItemEffect::LoadResources();
-	DiamondItem::LoadResources();
 }
 
 void Grid::InitializeMapGrid(TileMap *tileMap)
@@ -300,11 +303,18 @@ void Grid::Update(DWORD dt)
 					}break;
 					case ObjectAndEnemies::THORN:
 					{
-
+						listObject.at(i).object = new ThornObject(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
+						listObject.at(i).isGenerated = true;
+					}break;
+					case ObjectAndEnemies::BALL:
+					{
+						listObject.at(i).object = new BallObject(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
+						listObject.at(i).isGenerated = true;
 					}break;
 					case ObjectAndEnemies::WALL_BRICK:
 					{
-
+						listObject.at(i).object = new BrickObject(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
+						listObject.at(i).isGenerated = true;
 					}break;
 					case ObjectAndEnemies::APPLE:
 					{

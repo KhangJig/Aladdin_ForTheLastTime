@@ -12,6 +12,9 @@
 #include "AppleItem.h"
 #include "DiamondItem.h"
 
+#include "ThornObject.h"
+#include "BallObject.h"
+#include "BrickObject.h"
 
 #include "AppleEffect.h"
 #include "EnemiesDeadEffect.h"
