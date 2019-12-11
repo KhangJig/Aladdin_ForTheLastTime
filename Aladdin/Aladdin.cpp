@@ -762,6 +762,7 @@ void Aladdin::Update(DWORD dt)
 	}
 #pragma endregion
 	
+	AppleMenu::GetInstance()->SetNum(this->AppleNumber);
 	apple->Update(dt);
 	apple->UpdateCollision(tiles);
 	state->Colision();

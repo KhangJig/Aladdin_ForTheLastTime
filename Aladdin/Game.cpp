@@ -98,6 +98,9 @@ void Game::LoadResources()
 
 	if (hp == NULL)
 		hp = HP::GetInstance();
+
+	if (appleMenu == NULL)
+		appleMenu = AppleMenu::GetInstance();
 }
 
 void Game::Update(DWORD dt)
@@ -105,7 +108,9 @@ void Game::Update(DWORD dt)
 	keyboard->Update();
 	Grid::GetInstance()->Update(dt);
 	viewport->Update(dt);
+	
 	hp->Update(dt);
+	appleMenu->Update(dt);
 }
 
 void Game::Render()
@@ -123,6 +128,8 @@ void Game::Render()
 		Grid::GetInstance()->Render();
 
 		hp->Render();
+
+		appleMenu->Render();
 
 		spriteHandler->End();
 

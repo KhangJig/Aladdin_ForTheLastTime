@@ -15,7 +15,7 @@ BrickObject::BrickObject(int x, int y, int CellID, int id)
 	collider.vx = 0;
 	collider.vy = 0;
 	collider.width = BRICK_ITEM_WIDTH;
-	collider.height = BRICK_ITEM_WIDTH;
+	collider.height = BRICK_ITEM_HEIGHT;
 }
 
 void BrickObject::LoadResources()
@@ -57,7 +57,7 @@ void BrickObject::Render()
 	SpriteData spriteData;
 
 	spriteData.width = BRICK_ITEM_WIDTH;
-	spriteData.height = BRICK_ITEM_WIDTH;
+	spriteData.height = BRICK_ITEM_HEIGHT;
 	spriteData.x = this->x;
 	spriteData.y = this->y;
 
