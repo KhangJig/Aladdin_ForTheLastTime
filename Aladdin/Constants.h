@@ -20,7 +20,7 @@ enum ObjectType
 	DEFAULT,
 	BRICK,
 	WALL,
-	THORN
+	ROPE
 };
 
 enum EventCollison
@@ -28,17 +28,24 @@ enum EventCollison
 	EVENT_DEFAULT,
 	EVENT_BRICK,
 	EVENT_WALL,
-	EVENT_THORN,
-	EVENT_ROPE_SWING
+	EVENT_ROPE
 };
 
 enum ObjectAndEnemies
 {
 	NOTHING,
-	GUARD1,
+	GUARD1, // Enemies
 	GUARD2,
 	BOMBBER,
-
+	BAT,
+	THORN, 	// Objects
+	BALL,
+	WALL_BRICK,
+	APPLE, 	// Items
+	DIAMOND,
+	BOTTLE,
+	GENIE_FACE,
+	SHOP
 };
 
 // MAP
@@ -69,19 +76,27 @@ enum ObjectAndEnemies
 #define APPLE_FLYING 0
 #define APPLE_BANG 1
 
-#define ALADDIN_TEXTURE_LOCATION L"Resource\\Character\\Aladdin_.png"
-#define ALADDIN_TEXTURE_LOCATION2 L"Resource\\Character\\run-hit-n-throw.png"
 #define TEXTURE_TRANS_COLOR D3DCOLOR_XRGB(255, 0, 255)
 #define TEXTURE_TRANS_COLOR_2 D3DCOLOR_XRGB(106, 148, 189)
 #define TEXTURE_TRANS_COLOR_3 D3DCOLOR_XRGB(120, 193, 152)
 #define TEXTURE_TRANS_COLOR_4 D3DCOLOR_XRGB(186, 254, 202)
+#define TEXTURE_TRANS_COLOR_5 D3DCOLOR_XRGB(248, 0, 248)
+
+// Aladdin
+#define ALADDIN_TEXTURE_LOCATION L"Resource\\Character\\Aladdin_.png"
+#define ALADDIN_TEXTURE_LOCATION2 L"Resource\\Character\\run-hit-n-throw.png"
 #define ALADDIN_SPRITE_WIDTH 37
 #define ALADDIN_SPRITE_HEIGHT 49
 
-
+// Enemies
 #define ENEMIES_TEXTURE_DEAD  L"Resource\\Enemies\\EnemiesDead.png"
 #define GUARD_TEXTURE_LOCATION L"Resource\\Enemies\\Guards.png"
-// Guard1
+
 #define GUARD1_SPRITE_WIDTH 44
 #define GUARD1_SPRITE_HEIGHT 57
 #define GUARD1_WALK_SPEED 0.045f
+
+// Items
+#define ITEMS_TEXTURE_LOCATION L"Resource\\Miscellaneous\\Items.png"
+#define APPLE_ITEM_WIDTH 11
+#define APPLE_ITEM_HEIGHT 11

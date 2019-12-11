@@ -5,6 +5,7 @@
 #include "Game.h"
 #include "State.h"
 #include "Apple.h"
+#include "ItemEffect.h"
 
 class AladdinState;
 class Aladdin : public GameObject
@@ -17,7 +18,10 @@ class Aladdin : public GameObject
 
 	Apple *apple;
 
+	ItemEffect *itemEffect;
+
 	bool isGrounded = false;
+	bool isClimb = false;
 	static vector<Animation *> animations;
 	DWORD lastFrameTime;
 
@@ -44,6 +48,8 @@ public:
 	void SetLastFrameTime(DWORD lastFrameTime) { this->lastFrameTime = lastFrameTime; }
 	void SetIsGrounded(bool isGrounded) { this->isGrounded = isGrounded; }
 	bool GetIsGrounded() { return isGrounded; }
+	void SetIsClimb(bool isClimb) { this->isClimb = isClimb; }
+	bool GetIsClimb() { return this->isClimb; }
 
 	void SetPosAladdinThrowing(int x, int y) {
 		this->posXAladdinThrowing = x;

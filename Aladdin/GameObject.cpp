@@ -79,7 +79,7 @@ void GameObject::MapCollisions(vector<TileObjectMap *> &tiles, vector<ColliedEve
 				coEvents.push_back(new ColliedEvent(EventCollison::EVENT_WALL, time, normalX, normalY));
 			}
 		}
-		else if (tiles[i]->type == ObjectType::THORN)
+		else if (tiles[i]->type == ObjectType::ROPE)
 		{
 			float time;
 			float normalX;
@@ -89,7 +89,7 @@ void GameObject::MapCollisions(vector<TileObjectMap *> &tiles, vector<ColliedEve
 
 			if (time >= 0 && time < 1.0f && normalY == 1)
 			{
-				coEvents.push_back(new ColliedEvent(EventCollison::EVENT_THORN, time, normalX, normalY));
+				coEvents.push_back(new ColliedEvent(EventCollison::EVENT_ROPE, time, normalX, normalY));
 			}
 		}
 	}

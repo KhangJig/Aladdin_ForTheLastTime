@@ -628,6 +628,30 @@ void AladdinState::stateRunThrow()
 	}
 }
 
+// dang xu li
+void AladdinState::stateClimb()
+{
+	aladdin->SetSpeedY(0);
+	aladdin->SetSpeedX(0);
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_UP))
+	{
+		aladdin->SetSpeedY(0.175);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_DOWN))
+	{
+		aladdin->SetSpeedY(-0.175);
+		return;
+	}
+	if (!aladdin->GetIsClimb())
+	{
+		aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	}
+	// DebugOut(L"Aladdin %d %d \n", (int)this->aladdin->GetPositionX(), (int)this->aladdin->GetPositionY());
+}
+
 void AladdinState::KeyHandle()
 {
 }
@@ -655,13 +679,20 @@ void AladdinState::Colision()
 	// STATE_RUN_THROW,
 	if (!aladdin->GetIsGrounded())
 	{
-		if (this->GetState() == STATE_FALL)
+		if (aladdin->GetIsClimb())
 		{
-			this->stateFalling();
+			this->SetState(IDLE_CLIMB);
 		}
-		else if (this->GetState() == STATE_FALL_2)
+		else
 		{
-			this->stateFall2();
+			if (this->GetState() == STATE_FALL)
+			{
+				this->stateFalling();
+			}
+			else if (this->GetState() == STATE_FALL_2)
+			{
+				this->stateFall2();
+			}
 		}
 	}
 	else
@@ -780,6 +811,10 @@ void AladdinState::Update(DWORD dt)
 
 	case STATE_HURT:
 		this->stateHurt();
+		break;
+
+	case IDLE_CLIMB:
+		this->stateClimb();
 		break;
 
 	default:

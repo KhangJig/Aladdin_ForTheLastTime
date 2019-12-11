@@ -37,6 +37,12 @@
     <Filter Include="GameObjects\Effects">
       <UniqueIdentifier>{2dbf3e06-9089-4ec8-b68f-97e3b7b1ab1a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\DynamicObjects">
+      <UniqueIdentifier>{e3b3d929-4d7c-4ba8-9157-6185a48ebf96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Items">
+      <UniqueIdentifier>{93629569-8208-4db2-81f4-96a779cb0716}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graphics.cpp">
@@ -109,6 +115,12 @@
       <Filter>GameObjects\Effects</Filter>
     </ClCompile>
     <ClCompile Include="EnemiesDeadEffect.cpp">
+      <Filter>GameObjects\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="AppleItem.cpp">
+      <Filter>GameObjects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemEffect.cpp">
       <Filter>GameObjects\Effects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -189,6 +201,12 @@
       <Filter>GameObjects\Effects</Filter>
     </ClInclude>
     <ClInclude Include="EnemiesDeadEffect.h">
+      <Filter>GameObjects\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="AppleItem.h">
+      <Filter>GameObjects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemEffect.h">
       <Filter>GameObjects\Effects</Filter>
     </ClInclude>
   </ItemGroup>

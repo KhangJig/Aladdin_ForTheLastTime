@@ -18,6 +18,7 @@ Aladdin::Aladdin()
 	state = AladdinState::GetInstance(this);
 
 	apple = Apple::GetInstance();
+	itemEffect = new ItemEffect(-100, -100);
 	this->SetIsApple(true);
 
 	this->x = 50;
@@ -33,7 +34,7 @@ Aladdin::Aladdin()
 	collider.y = y;
 	collider.vx = 0;
 	collider.vy = 0;
-	collider.width = ALADDIN_SPRITE_WIDTH + 20;
+	collider.width = ALADDIN_SPRITE_WIDTH;
 	collider.height = ALADDIN_SPRITE_HEIGHT;
 }
 
@@ -605,6 +606,7 @@ void Aladdin::Update(DWORD dt)
 
 #pragma region	Collide with map
 	vector<TileObjectMap *> tiles = Grid::GetInstance()->GetNearbyObjectTiles();
+	vector<TileObjectMap *> tilesRope = Grid::GetInstance()->GetNearbyObjectTilesThorn();
 	coEvents.clear();
 
 
@@ -613,6 +615,34 @@ void Aladdin::Update(DWORD dt)
 	this->collider.x += 5;
 	this->MapCollisions(tiles, coEvents);
 
+#pragma region	ROPE
+	// Dang xu ly va cham day xich
+	//if (tilesRope.size() != 0)
+	//{
+	//	Collider a;
+	//	for (int i = 0; i < tilesRope.size(); i++)
+	//	{
+	//		a.x = tilesRope.at(i)->x;
+	//		a.y = tilesRope.at(i)->y;
+	//		a.width = tilesRope.at(i)->width;
+	//		a.height = tilesRope.at(i)->height;
+
+	//		if (Collision::GetInstance()->AABB(a, this->GetCollider()))
+	//		{
+	//			if (!this->GetIsGrounded())
+	//			{
+	//				this->SetIsClimb(true);
+	//			}
+	//		}
+	//		else
+	//		{
+	//			this->SetIsClimb(false);
+	//		}
+	//	}
+	//}
+#pragma endregion
+
+#pragma region	BRICK & WALL
 	if (coEvents.size() == 0)
 	{
 		float moveX = trunc(this->GetSpeedX()* dt);
@@ -631,7 +661,6 @@ void Aladdin::Update(DWORD dt)
 
 		this->SetPositionX(this->GetPositionX() + moveX);
 		this->SetPositionY(this->GetPositionY() + moveY);
-
 		if (coEventsResult[0]->collisionID == ObjectType::BRICK)
 		{
 			if (ny == 1)
@@ -648,18 +677,11 @@ void Aladdin::Update(DWORD dt)
 				this->SetIsGrounded(true);
 			}
 		}
-
-		if (coEventsResult[0]->collisionID == ObjectType::THORN)
-		{
-			if (ny == 1)
-			{
-				this->SetIsGrounded(false);
-				this->SetPositionX(this->GetPositionX() - 1);
-			}
-		}
 	}
 	for (int i = 0; i < coEvents.size(); i++)
 		delete coEvents[i];
+#pragma endregion
+
 #pragma endregion
 
 	apple->Update(dt);
@@ -698,13 +720,56 @@ void Aladdin::UpdateCollision(DWORD dt)
 		switch (listUpdateObject.at(i).ene.SpawnObjectID)
 		{
 		case ObjectAndEnemies::GUARD1:
+		{
 			if (((Guard1*)listUpdateObject.at(i).object)->GetAttacking())
 			{
 				this->AladdinHP = this->AladdinHP - ((Guard1*)listUpdateObject.at(i).object)->GetGuard1DmgAttack();
 				DebugOut(L"Aladdin HP :  %d \n", this->AladdinHP);
 				this->state->SetState(STATE_HURT);
 			}
-			break;
+		}break;
+		case ObjectAndEnemies::GUARD2:
+		{
+
+		}break;
+		case ObjectAndEnemies::BOMBBER:
+		{
+
+		}break;
+		case ObjectAndEnemies::BAT:
+		{
+
+		}break;
+		case ObjectAndEnemies::THORN:
+		{
+
+		}break;
+		case ObjectAndEnemies::WALL_BRICK:
+		{
+
+		}break;
+		case ObjectAndEnemies::APPLE:
+		{
+			Grid::GetInstance()->SetisLifeListObject(((AppleItem*)listUpdateObject.at(i).object)->GetID(), false);
+			itemEffect->SetPos(listUpdateObject.at(i).ene.x, listUpdateObject.at(i).ene.y, false);
+			this->AppleNumber++;
+		}break;
+		case ObjectAndEnemies::DIAMOND:
+		{
+
+		}break;
+		case ObjectAndEnemies::BOTTLE:
+		{
+
+		}break;
+		case ObjectAndEnemies::GENIE_FACE:
+		{
+
+		}break;
+		case ObjectAndEnemies::SHOP:
+		{
+
+		}break;
 		}
 	}
 }
@@ -713,4 +778,5 @@ void Aladdin::Render()
 {
 	state->Render();
 	apple->Render();
+	itemEffect->Render();
 }

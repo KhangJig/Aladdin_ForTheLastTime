@@ -17,8 +17,12 @@ Grid::Grid()
 	viewport = Viewport::GetInstance();
 
 	Guard1::LoadResources();
+	AppleItem::LoadResources();
+
+
 	AppleEffect::LoadResources();
 	EnemiesDeadEffect::LoadResources();
+	ItemEffect::LoadResources();
 }
 
 void Grid::InitializeMapGrid(TileMap *tileMap)
@@ -108,7 +112,25 @@ vector<TileObjectMap *> Grid::GetNearbyObjectTiles()
 	{
 		for (int y = 0; y < this->gridCell.at(*it).abc.size(); y++)
 		{
-			if (Viewport::GetInstance()->IsObjectInCamera2(&this->gridCell.at(*it).abc.at(y)))
+			if (Viewport::GetInstance()->IsObjectInCamera2(&this->gridCell.at(*it).abc.at(y)) && this->gridCell.at(*it).abc.at(y).type != ObjectType::ROPE)
+			{
+				nearbyTiles.push_back(&this->gridCell.at(*it).abc.at(y));
+			}
+		}
+	}
+
+
+	return nearbyTiles;
+}
+
+vector<TileObjectMap *> Grid::GetNearbyObjectTilesThorn()
+{
+	vector<TileObjectMap*> nearbyTiles;
+	for (set<int>::iterator it = this->listCellNow.begin(); it != this->listCellNow.end(); ++it)
+	{
+		for (int y = 0; y < this->gridCell.at(*it).abc.size(); y++)
+		{
+			if (Viewport::GetInstance()->IsObjectInCamera2(&this->gridCell.at(*it).abc.at(y)) && this->gridCell.at(*it).abc.at(y).type == ObjectType::ROPE)
 			{
 				nearbyTiles.push_back(&this->gridCell.at(*it).abc.at(y));
 			}
@@ -137,7 +159,11 @@ vector<TileObjectMap *> Grid::GetNearbyObjectTilesForEnemies(int CellID)
 
 void Grid::SpawnObject(ObjectnEnemies enemies)
 {
-	switch (enemies.SpawnObjectID)
+	OnUpdateObject temp;
+	temp.ene = enemies;
+
+	listObject.push_back(temp);
+	/*switch (enemies.SpawnObjectID)
 	{
 	case ObjectAndEnemies::GUARD1:
 		{
@@ -147,7 +173,51 @@ void Grid::SpawnObject(ObjectnEnemies enemies)
 			listObject.push_back(temp);
 		}
 	break;
-	}
+	case ObjectAndEnemies::GUARD2:
+	{
+
+	}break;
+	case ObjectAndEnemies::BOMBBER:
+	{
+
+	}break;
+	case ObjectAndEnemies::BAT:
+	{
+
+	}break;
+	case ObjectAndEnemies::THORN:
+	{
+
+	}break;
+	case ObjectAndEnemies::BALL:
+	{
+
+	}break;
+	case ObjectAndEnemies::WALL_BRICK:
+	{
+
+	}break;
+	case ObjectAndEnemies::APPLE:
+	{
+
+	}break;
+	case ObjectAndEnemies::DIAMOND:
+	{
+
+	}break;
+	case ObjectAndEnemies::BOTTLE:
+	{
+
+	}break;
+	case ObjectAndEnemies::GENIE_FACE:
+	{
+
+	}break;
+	case ObjectAndEnemies::SHOP:
+	{
+
+	}break;
+	}*/
 }
 
 bool Grid::CheckObjectInsideCamera(GameObject* object)
@@ -207,11 +277,58 @@ void Grid::Update(DWORD dt)
 			{
 				if (CheckObjectInsideCamera2(listObject.at(i).ene.x, listObject.at(i).ene.y))
 				{
-					DebugOut(L"Guard Created!\n");
-					if (listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::GUARD1)
+					switch (listObject.at(i).ene.SpawnObjectID)
 					{
+					case ObjectAndEnemies::GUARD1:
+					{
+						DebugOut(L"Guard 1 Created!\n");
 						listObject.at(i).object = new Guard1(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
 						listObject.at(i).isGenerated = true;
+					}break;
+					case ObjectAndEnemies::GUARD2:
+					{
+
+					}break;
+					case ObjectAndEnemies::BOMBBER:
+					{
+
+					}break;
+					case ObjectAndEnemies::BAT:
+					{
+
+					}break;
+					case ObjectAndEnemies::THORN:
+					{
+
+					}break;
+					case ObjectAndEnemies::WALL_BRICK:
+					{
+
+					}break;
+					case ObjectAndEnemies::APPLE:
+					{
+						DebugOut(L"Apple-items Created!\n");
+						listObject.at(i).object = new AppleItem(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
+						listObject.at(i).isGenerated = true;
+					}break;
+					case ObjectAndEnemies::DIAMOND:
+					{
+
+					}break;
+					case ObjectAndEnemies::BOTTLE:
+					{
+
+					}break;
+					case ObjectAndEnemies::GENIE_FACE:
+					{
+
+					}break;
+					case ObjectAndEnemies::SHOP:
+					{
+
+					}break;
+					default:
+						break;
 					}
 				}
 			}

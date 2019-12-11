@@ -9,9 +9,11 @@
 #include "Aladdin.h"
 
 #include "Guard1.h"
+#include "AppleItem.h"
 
 #include "AppleEffect.h"
 #include "EnemiesDeadEffect.h"
+#include "ItemEffect.h"
 
 using namespace std;
 
@@ -86,6 +88,8 @@ public:
 	vector<TileObjectMap> tileObjectMap22;
 
 	vector<TileObjectMap *> GetNearbyObjectTiles();
+
+	vector<TileObjectMap *> GetNearbyObjectTilesThorn();
 
 	vector<TileObjectMap *> GetNearbyObjectTilesForEnemies(int CellID);
 

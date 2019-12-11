@@ -133,10 +133,13 @@ void Apple::UpdateCollision(vector<TileObjectMap *> tiles)
 		bool isCollide2 = Collision::GetInstance()->AABB(this->GetCollider(), collider2);
 		if (isCollide2)
 		{
-			appleEffect->SetPos(this->GetPositionX(), this->GetPositionY(), false);
-			this->state = APPLE_NONE;
-			this->SetSpeedX(0);
-			this->SetSpeedY(0);
+			if (tiles.at(i)->type == ObjectType::BRICK || tiles.at(i)->type == ObjectType::WALL)
+			{
+				appleEffect->SetPos(this->GetPositionX(), this->GetPositionY(), false);
+				this->state = APPLE_NONE;
+				this->SetSpeedX(0);
+				this->SetSpeedY(0);
+			}
 		}
 	}
 #pragma endregion

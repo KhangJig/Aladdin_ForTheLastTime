@@ -124,7 +124,7 @@ void TileMap::LoadObjectMap(LPCWSTR filePath, int mapId)
 			}
 			if (stoi(data) == 3)
 			{
-				tilesObj.type = ObjectType::THORN;
+				tilesObj.type = ObjectType::ROPE;
 			}
 		}
 		break;
@@ -175,9 +175,32 @@ void TileMap::LoadEnemies(LPCWSTR filePath, int mapId)
 		{
 		case MAP_1_ID:
 		{
-			if (stoi(data) == 1)
+			switch (stoi(data))
 			{
-				enemies.SpawnObjectID = ObjectAndEnemies::GUARD1;
+			case 1:
+				enemies.SpawnObjectID = ObjectAndEnemies::GUARD1; break;
+			case 2:
+				enemies.SpawnObjectID = ObjectAndEnemies::GUARD2; break;
+			case 3:
+				enemies.SpawnObjectID = ObjectAndEnemies::BOMBBER; break;
+			case 4:
+				enemies.SpawnObjectID = ObjectAndEnemies::BAT; break;
+			case 5:
+				enemies.SpawnObjectID = ObjectAndEnemies::THORN; break;
+			case 6:
+				enemies.SpawnObjectID = ObjectAndEnemies::BALL; break;
+			case 7:
+				enemies.SpawnObjectID = ObjectAndEnemies::WALL_BRICK; break;
+			case 8:
+				enemies.SpawnObjectID = ObjectAndEnemies::APPLE; break;
+			case 9:
+				enemies.SpawnObjectID = ObjectAndEnemies::DIAMOND; break;
+			case 10:
+				enemies.SpawnObjectID = ObjectAndEnemies::BOTTLE; break;
+			case 11:
+				enemies.SpawnObjectID = ObjectAndEnemies::GENIE_FACE; break;
+			case 12:
+				enemies.SpawnObjectID = ObjectAndEnemies::SHOP; break;
 			}
 		}
 		break;
@@ -196,7 +219,6 @@ void TileMap::LoadEnemies(LPCWSTR filePath, int mapId)
 		enemies.y = stoi(data);
 
 		mapList[mapId].AddEnemiesAndObjects(enemies);
-		//this->AddEnemiesAndObjects(enemies);
 	}
 
 	tilesData.close();

@@ -26,6 +26,9 @@ enum StateAladdin
 	STATE_HURT,
 	STATE_RUN_HIT,
 	STATE_RUN_THROW,
+	IDLE_CLIMB,
+	STATE_CLIMB,
+	STATE_JUMP_CLIMB
 };
 
 class AladdinState : public State
@@ -69,6 +72,9 @@ public:
 	void stateHurt();
 	void stateRunHit();
 	void stateRunThrow();
+	void stateClimb();
+	void stateClimbing();
+	void stateJumpClimb();
 
 
 
