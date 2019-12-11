@@ -23,6 +23,7 @@ Aladdin::Aladdin()
 	this->x = 50;
 	this->y = 150;
 	this->AladdinHP = 500;
+	this->AppleNumber = 5;
 	this->DmgAttack = 20;
 	this->Attacking = false;
 	this->width = ALADDIN_SPRITE_WIDTH;

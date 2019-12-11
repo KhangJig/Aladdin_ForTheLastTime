@@ -30,8 +30,9 @@ class Aladdin : public GameObject
 	int posYAladdinThrowing;
 
 	int AladdinHP;
-	int DmgAttack;
+	int AppleNumber;
 
+	int DmgAttack;
 	bool Attacking;
 
 public:
@@ -53,6 +54,8 @@ public:
 	int GetPosYAladdinThrowing() { return this->posYAladdinThrowing; }
 	bool GetAttacking() { return this->Attacking; }
 	void SetAttacking(bool isAttack) { this->Attacking = isAttack; }
+	int GetAppleNumber() { return this->AppleNumber; }
+	void SetAppleNumber(int num) { this->AppleNumber = num; }
 
 	void SetIsApple(bool isApple) { this->isApple = isApple; }
 	bool GetisApple() { return isApple; }

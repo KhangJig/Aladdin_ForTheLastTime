@@ -65,16 +65,14 @@ void AladdinState::stateStanding()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_Z))
 	{
-		if (aladdin->GetisApple())
+		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_STAND_THROW);
 			aladdin->SetIsApple(false);
+			aladdin->SetAppleNumber(aladdin->GetAppleNumber() - 1);
 			return;
 		}
-
-		//this->SetState(STATE_STAND_THROW);
-		//return;
 	}
 
 	aladdin->SetSpeedX(0);
@@ -82,7 +80,6 @@ void AladdinState::stateStanding()
 	anim = aladdin->GetAnimationsList()[IDLE_STAND];
 }
 
-// con xu ly tiep
 void AladdinState::stateHeadUp()
 {
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) || Keyboard::GetInstance()->IsKeyDown(DIK_LEFT) ||
@@ -107,16 +104,14 @@ void AladdinState::stateHeadUp()
 	}
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_Z))
 	{
-		if (aladdin->GetisApple())
+		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_STAND_THROW);
 			aladdin->SetIsApple(false);
+			aladdin->SetAppleNumber(aladdin->GetAppleNumber() - 1);
 			return;
 		}
-
-		//this->SetState(STATE_STAND_THROW);
-		//return;
 	}
 
 	aladdin->SetSpeedX(0);
@@ -129,7 +124,6 @@ void AladdinState::stateHeadUp()
 	}
 }
 
-// con xu ly tiep
 void AladdinState::stateWalking()
 {
 
@@ -161,20 +155,16 @@ void AladdinState::stateWalking()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_Z))
 	{
-		if (aladdin->GetisApple())
+		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_RUN_THROW);
 			aladdin->SetIsApple(false);
+			aladdin->SetAppleNumber(aladdin->GetAppleNumber() - 1);
 			anim->isSetFrame(false);
 			anim->Reset();
 			return;
 		}
-
-		//this->SetState(STATE_JUMP_THROW);
-		//anim->isSetFrame(false);
-		//anim->Reset();
-		//return;
 	}
 
 	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
@@ -187,7 +177,6 @@ void AladdinState::stateWalking()
 	}
 }
 
-// con xu ly tiep
 void AladdinState::stateJumping()
 {
 	if ((!Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT)) || (this->startJumpY != NULL && (int)(aladdin->GetPositionY() - this->startJumpY) >= ALADDIN_JUMP_MAX))
@@ -209,20 +198,16 @@ void AladdinState::stateJumping()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_Z))
 	{
-		if (aladdin->GetisApple())
+		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_JUMP_THROW);
 			aladdin->SetIsApple(false);
+			aladdin->SetAppleNumber(aladdin->GetAppleNumber() - 1);
 			anim->isSetFrame(false);
 			anim->Reset();
 			return;
 		}
-
-		//this->SetState(STATE_JUMP_THROW);
-		//anim->isSetFrame(false);
-		//anim->Reset();
-		//return;
 	}
 
 	anim = aladdin->GetAnimationsList()[STATE_STAND_JUMP];
@@ -236,7 +221,6 @@ void AladdinState::stateJumping()
 	}
 }
 
-// con xu ly tiep
 void AladdinState::stateFalling()
 {
 	if ((int)aladdin->GetPositionY() == (int)this->startJumpY)
@@ -283,20 +267,16 @@ void AladdinState::stateSitting()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_Z))
 	{
-		if (aladdin->GetisApple())
+		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_SIT_THROW);
 			aladdin->SetIsApple(false);
+			aladdin->SetAppleNumber(aladdin->GetAppleNumber() - 1);
 			anim->isSetFrame(false);
 			anim->Reset();
 			return;
 		}
-
-		//this->SetState(STATE_SIT_THROW);
-		//anim->isSetFrame(false);
-		//anim->Reset();
-		//return;
 	}
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
@@ -349,20 +329,16 @@ void AladdinState::stateSittingIdle()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_Z))
 	{
-		if (aladdin->GetisApple())
+		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_SIT_THROW);
 			aladdin->SetIsApple(false);
+			aladdin->SetAppleNumber(aladdin->GetAppleNumber() - 1);
 			anim->isSetFrame(false);
 			anim->Reset();
 			return;
 		}
-
-		//this->SetState(STATE_SIT_THROW);
-		//anim->isSetFrame(false);
-		//anim->Reset();
-		//return;
 	}
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
@@ -474,20 +450,16 @@ void AladdinState::stateRunJump()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_Z))
 	{
-		if (aladdin->GetisApple())
+		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_JUMP_THROW);
 			aladdin->SetIsApple(false);
+			aladdin->SetAppleNumber(aladdin->GetAppleNumber() - 1);
 			anim->isSetFrame(false);
 			anim->Reset();
 			return;
 		}
-
-		//this->SetState(STATE_JUMP_THROW);
-		//anim->isSetFrame(false);
-		//anim->Reset();
-		//return;
 	}
 
 	if ((!Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT)) || (this->startJumpY != NULL && (int)(aladdin->GetPositionY() - this->startJumpY) >= ALADDIN_JUMP_MAX + 8))
@@ -519,20 +491,16 @@ void AladdinState::stateFall2()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_Z))
 	{
-		if (aladdin->GetisApple())
+		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_JUMP_THROW);
 			aladdin->SetIsApple(false);
+			aladdin->SetAppleNumber(aladdin->GetAppleNumber() - 1);
 			anim->isSetFrame(false);
 			anim->Reset();
 			return;
 		}
-
-		//this->SetState(STATE_JUMP_THROW);
-		//anim->isSetFrame(false);
-		//anim->Reset();
-		//return;
 	}
 
 	if ((!Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) && !Keyboard::GetInstance()->IsKeyDown(DIK_LEFT)) && ((int)aladdin->GetPositionY() == (int)this->startJumpY))
@@ -615,7 +583,6 @@ void AladdinState::stateHurt()
 	}
 }
 
-// con xu ly tiep
 void AladdinState::stateRunHit()
 {
 	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
@@ -639,7 +606,6 @@ void AladdinState::stateRunHit()
 	aladdin->SetAttacking(false);
 }
 
-// con xu ly tiep
 void AladdinState::stateRunThrow()
 {
 	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);

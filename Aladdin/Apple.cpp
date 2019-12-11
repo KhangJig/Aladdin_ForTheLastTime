@@ -107,7 +107,7 @@ void Apple::AppleFlying()
 	}
 	else
 	{
-		if (this->GetPositionY() < -5) {
+		if (this->GetPositionY() < aladdin->GetPositionY() - 80) {
 			this->state = APPLE_BOOM;
 		}
 	}
