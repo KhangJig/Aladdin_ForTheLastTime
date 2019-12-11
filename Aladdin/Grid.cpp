@@ -23,6 +23,7 @@ Grid::Grid()
 	AppleEffect::LoadResources();
 	EnemiesDeadEffect::LoadResources();
 	ItemEffect::LoadResources();
+	DiamondItem::LoadResources();
 }
 
 void Grid::InitializeMapGrid(TileMap *tileMap)
@@ -313,7 +314,9 @@ void Grid::Update(DWORD dt)
 					}break;
 					case ObjectAndEnemies::DIAMOND:
 					{
-
+						DebugOut(L"Apple-items Created!\n");
+						listObject.at(i).object = new DiamondItem(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
+						listObject.at(i).isGenerated = true;
 					}break;
 					case ObjectAndEnemies::BOTTLE:
 					{

@@ -100,3 +100,5 @@ enum ObjectAndEnemies
 #define ITEMS_TEXTURE_LOCATION L"Resource\\Miscellaneous\\Items.png"
 #define APPLE_ITEM_WIDTH 11
 #define APPLE_ITEM_HEIGHT 11
+#define DIAMOND_ITEM_WIDTH 17
+#define DIAMOND_ITEM_HEIGHT 15

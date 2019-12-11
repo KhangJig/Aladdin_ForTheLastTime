@@ -10,10 +10,13 @@
 
 #include "Guard1.h"
 #include "AppleItem.h"
+#include "DiamondItem.h"
+
 
 #include "AppleEffect.h"
 #include "EnemiesDeadEffect.h"
 #include "ItemEffect.h"
+
 
 using namespace std;
 

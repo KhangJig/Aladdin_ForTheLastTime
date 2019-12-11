@@ -25,6 +25,7 @@ Aladdin::Aladdin()
 	this->y = 150;
 	this->AladdinHP = 500;
 	this->AppleNumber = 5;
+	this->DiamondNumber = 0;
 	this->DmgAttack = 20;
 	this->Attacking = false;
 	this->width = ALADDIN_SPRITE_WIDTH;
@@ -756,7 +757,9 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}break;
 		case ObjectAndEnemies::DIAMOND:
 		{
-
+			Grid::GetInstance()->SetisLifeListObject(((DiamondItem*)listUpdateObject.at(i).object)->GetID(), false);
+			itemEffect->SetPos(listUpdateObject.at(i).ene.x, listUpdateObject.at(i).ene.y, false);
+			this->DiamondNumber++;
 		}break;
 		case ObjectAndEnemies::BOTTLE:
 		{
