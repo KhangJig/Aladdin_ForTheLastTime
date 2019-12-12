@@ -10,7 +10,6 @@ Guard1State *Guard1State::GetInstance(Guard1 *guard1)
 	return __instance;
 }
 
-
 Guard1State::Guard1State(Guard1 *guard1)
 {
 	this->guard1 = guard1;

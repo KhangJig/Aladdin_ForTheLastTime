@@ -11,6 +11,7 @@
 #include "Guard1.h"
 #include "AppleItem.h"
 #include "DiamondItem.h"
+#include "Jafar.h"
 
 #include "ThornObject.h"
 #include "BallObject.h"

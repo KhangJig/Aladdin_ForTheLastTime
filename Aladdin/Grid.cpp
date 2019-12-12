@@ -19,6 +19,7 @@ Grid::Grid()
 	Guard1::LoadResources();
 	AppleItem::LoadResources();
 	DiamondItem::LoadResources();
+	Jafar::LoadResources();
 
 	ThornObject::LoadResources(); 
 	BallObject::LoadResources();
@@ -287,6 +288,12 @@ void Grid::Update(DWORD dt)
 					{
 
 					}break;
+					case ObjectAndEnemies::JAFAR:
+					{
+						DebugOut(L"Jafar Created!\n");
+						listObject.at(i).object = new Jafar(listObject.at(i).ene.x, listObject.at(i).ene.y);
+						listObject.at(i).isGenerated = true;
+					}break;
 					default:
 						break;
 					}
@@ -332,7 +339,8 @@ void Grid::Render()
 			if (listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::GUARD1 ||
 				listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::GUARD2 ||
 				listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::BOMBBER ||
-				listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::BAT)
+				listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::BAT || 
+				listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::JAFAR)
 			{
 				listObject.at(i).object->Render();
 			}

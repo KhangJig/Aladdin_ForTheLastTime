@@ -46,6 +46,9 @@
     <Filter Include="GameObjects\GameMenu">
       <UniqueIdentifier>{ef7012e9-1b0b-450a-b6a0-f793f0b5f78a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\Boss">
+      <UniqueIdentifier>{3b22a4b5-2839-4d27-8e81-b2318d020d3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graphics.cpp">
@@ -149,6 +152,12 @@
     </ClCompile>
     <ClCompile Include="LifeMenu.cpp">
       <Filter>GameObjects\GameMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Jafar.cpp">
+      <Filter>GameObjects\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="JafarState.cpp">
+      <Filter>GameObjects\Boss</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +268,12 @@
     </ClInclude>
     <ClInclude Include="LifeMenu.h">
       <Filter>GameObjects\GameMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="Jafar.h">
+      <Filter>GameObjects\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="JafarState.h">
+      <Filter>GameObjects\Boss</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -166,6 +166,7 @@
     <ClCompile Include="AppleItem.cpp" />
     <ClCompile Include="AppleMenu.cpp" />
     <ClCompile Include="BallObject.cpp" />
+    <ClCompile Include="Jafar.cpp" />
     <ClCompile Include="BrickObject.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="DiamondItem.cpp" />
@@ -176,6 +177,7 @@
     <ClCompile Include="Guard1State.cpp" />
     <ClCompile Include="HP.cpp" />
     <ClCompile Include="ItemEffect.cpp" />
+    <ClCompile Include="JafarState.cpp" />
     <ClCompile Include="LifeMenu.cpp" />
     <ClCompile Include="Loadtxt.cpp" />
     <ClCompile Include="main.cpp" />
@@ -205,6 +207,7 @@
     <ClInclude Include="AppleItem.h" />
     <ClInclude Include="AppleMenu.h" />
     <ClInclude Include="BallObject.h" />
+    <ClInclude Include="Jafar.h" />
     <ClInclude Include="BrickObject.h" />
     <ClInclude Include="CollideEvent.h" />
     <ClInclude Include="Collision.h" />
@@ -223,6 +226,7 @@
     <ClInclude Include="Guard1State.h" />
     <ClInclude Include="HP.h" />
     <ClInclude Include="ItemEffect.h" />
+    <ClInclude Include="JafarState.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="LifeMenu.h" />
     <ClInclude Include="Loadtxt.h" />

@@ -153,7 +153,7 @@ void Apple::UpdateCollision(vector<TileObjectMap *> tiles)
 			listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::GUARD2 ||
 			listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::BOMBBER ||
 			listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::BAT ||
-			listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::WALL_BRICK)
+			listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::JAFAR)
 		{
 			if (!listUpdateObject.at(i).isGenerated || !listUpdateObject.at(i).isLife)
 				continue;

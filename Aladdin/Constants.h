@@ -45,7 +45,8 @@ enum ObjectAndEnemies
 	DIAMOND,
 	BOTTLE,
 	GENIE_FACE,
-	SHOP
+	SHOP,
+	JAFAR
 };
 
 // MAP
@@ -57,6 +58,7 @@ enum ObjectAndEnemies
 #define TILES_MATRIX_STAGE_2 L"Resource\\Background\\4x100\\bg-tiled-2.txt"
 #define TILES_SET_MATRIX_STAGE_2 L"Resource\\Background\\4x100\\bg-tiled-2.png"
 #define POSSISION_MAPOBJECT_2 L"Resource\\Background\\4x100\\ObjectMap-2.txt"
+#define POSSISION_ENEMIES_2 L"Resource\\Background\\4x100\\Enemies-2.txt"
 
 
 #define TILES_TRANSCOLOR D3DCOLOR_XRGB(255, 255,255)
@@ -82,6 +84,7 @@ enum ObjectAndEnemies
 #define TEXTURE_TRANS_COLOR_4 D3DCOLOR_XRGB(186, 254, 202)
 #define TEXTURE_TRANS_COLOR_5 D3DCOLOR_XRGB(248, 0, 248)
 #define TEXTURE_TRANS_COLOR_6 D3DCOLOR_XRGB(220, 84, 151)
+#define TEXTURE_TRANS_COLOR_7 D3DCOLOR_XRGB(186, 254, 202)
 
 // Aladdin
 #define ALADDIN_TEXTURE_LOCATION L"Resource\\Character\\Aladdin_.png"
@@ -96,6 +99,31 @@ enum ObjectAndEnemies
 #define GUARD1_SPRITE_WIDTH 44
 #define GUARD1_SPRITE_HEIGHT 57
 #define GUARD1_WALK_SPEED 0.045f
+
+// Jafar
+#define JAFAR_TEXTURE_SPRITE  L"Resource\\Boss\\Jafar.png"
+#define JAFAR_SPRITE_WIDTH 57
+#define JAFAR_SPRITE_HEIGHT 69
+
+// EFFECTS
+#define EFFECT_JAFAR_SPRITE_WIDTH 13
+#define EFFECT_JAFAR_SPRITE_HEIGHT 12
+
+// BULLET
+#define BULLET_JAFAR_SPRITE_WIDTH 27
+#define BULLET_JAFAR_SPRITE_HEIGHT 13
+
+// SNAKE
+#define SNAKE_SPRITE_WIDTH 69
+#define SNAKE_SPRITE_HEIGHT 81
+
+// FIRE 1
+#define FIRE1_SPRITE_WIDTH 24
+#define JFIRE1_SPRITE_HEIGHT 46
+
+// FIRE 2
+#define FIRE2_SPRITE_WIDTH 74
+#define JFIRE2_SPRITE_HEIGHT 49
 
 // Items
 #define ITEMS_TEXTURE_LOCATION L"Resource\\Miscellaneous\\Items.png"

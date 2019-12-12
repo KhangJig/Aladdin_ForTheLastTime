@@ -14,6 +14,7 @@ TileMap * TileMap::GetInstance()
 
 		_instance->LoadTilesData(TILES_MATRIX_STAGE_2, TILES_SET_MATRIX_STAGE_2, MAP_2_ID);
 		_instance->LoadObjectMap(POSSISION_MAPOBJECT_2, MAP_2_ID);
+		_instance->LoadEnemies(POSSISION_ENEMIES_2, MAP_2_ID);
 	}
 	return _instance;
 }
@@ -164,7 +165,9 @@ void TileMap::LoadEnemies(LPCWSTR filePath, int mapId)
 		case 11:
 			enemies.SpawnObjectID = ObjectAndEnemies::GENIE_FACE; break;
 		case 12:
-			enemies.SpawnObjectID = ObjectAndEnemies::SHOP; break;
+			enemies.SpawnObjectID = ObjectAndEnemies::SHOP; break;		
+		case 13:
+			enemies.SpawnObjectID = ObjectAndEnemies::JAFAR; break;
 		}
 
 		tilesData >> data;

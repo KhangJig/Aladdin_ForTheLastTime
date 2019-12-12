@@ -470,13 +470,13 @@ void Aladdin::LoadResources()
 #pragma region HURT
 	anim = new Animation(40);
 
-	Sprite * hurt_1 = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
+	Sprite * hurt_1 = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(hurt_1);
-	Sprite * hurt_2 = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
+	Sprite * hurt_2 = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(hurt_2);
-	Sprite * hurt_3 = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
+	Sprite * hurt_3 = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(hurt_3);
-	Sprite * hurt_4 = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
+	Sprite * hurt_4 = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(hurt_4);
 
 	animations.push_back(anim);
@@ -575,7 +575,7 @@ void Aladdin::Update(DWORD dt)
 		Game::GetInstance()->SetStage(STAGE_2);
 
 		this->SetPositionX(100);
-		this->SetPositionY(350);
+		this->SetPositionY(150);
 		Viewport::GetInstance()->Reset();
 
 		TileMap::GetInstance()->SetCurrentMap(STAGE_2);
@@ -782,16 +782,6 @@ void Aladdin::UpdateCollision(DWORD dt)
 		if (!listUpdateObject.at(i).isGenerated || !listUpdateObject.at(i).isLife)
 			continue;
 
-		if (listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::WALL_BRICK)
-		{
-			vector<ColliedEvent*> coEvents;
-			vector<TileObjectMap *> tiles;
-			this->SetDt(dt);
-			this->UpdateObjectCollider();
-			this->collider.x += 5;
-			this->MapCollisions(tiles, coEvents);
-		}
-
 		bool isCollide = Collision::GetInstance()->AABB(this->GetCollider(), listUpdateObject.at(i).object->GetCollider());
 	
 		if (!isCollide)
@@ -896,6 +886,10 @@ void Aladdin::UpdateCollision(DWORD dt)
 		case ObjectAndEnemies::SHOP:
 		{
 
+		}break;
+		case ObjectAndEnemies::JAFAR:
+		{
+			DebugOut(L"Aladdin touch Jafar\n");
 		}break;
 		}
 	}
