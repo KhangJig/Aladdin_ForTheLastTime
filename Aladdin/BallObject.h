@@ -21,6 +21,8 @@ public:
 
 	int GetCellID() { return this->CellID; }
 
+	vector<Animation *> GetAnimation() { return this->animations; }
+
 	static void LoadResources();
 
 	void Update(DWORD dt);

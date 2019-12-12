@@ -822,11 +822,23 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}break;
 		case ObjectAndEnemies::THORN:
 		{
-			DebugOut(L"Collision THORN \n");
+			int x = ((ThornObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame();
+			if (x == 6)
+			{
+				this->AladdinHP = this->AladdinHP - 1;
+				DebugOut(L"Aladdin HP :  %d \n", this->AladdinHP);
+				this->state->SetState(STATE_HURT);
+			}
 		}break;
 		case ObjectAndEnemies::BALL:
 		{
-			DebugOut(L"Collision BALL \n");
+			int x = ((BallObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame();
+			if (x == 9 || x == 19)
+			{
+				this->AladdinHP = this->AladdinHP - 1;
+				DebugOut(L"Aladdin HP :  %d \n", this->AladdinHP);
+				this->state->SetState(STATE_HURT);
+			}
 		}break;
 		case ObjectAndEnemies::WALL_BRICK:
 		{
