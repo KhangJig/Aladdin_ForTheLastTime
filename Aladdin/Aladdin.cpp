@@ -24,10 +24,11 @@ Aladdin::Aladdin()
 	this->x = 50;
 	this->y = 150;
 	this->AladdinHP = 500;
-	this->AppleNumber = 5;
+	this->AppleNumber = 15;
 	this->DiamondNumber = 0;
 	this->DmgAttack = 20;
 	this->Attacking = false;
+	this->JumpOnBrick = false;
 	this->width = ALADDIN_SPRITE_WIDTH;
 	this->height = ALADDIN_SPRITE_HEIGHT;
 
@@ -662,21 +663,25 @@ void Aladdin::Update(DWORD dt)
 
 		this->SetPositionX(this->GetPositionX() + moveX);
 		this->SetPositionY(this->GetPositionY() + moveY);
-		if (coEventsResult[0]->collisionID == ObjectType::BRICK)
+
+		switch (coEventsResult[0]->collisionID)
+		{
+		case ObjectType::BRICK:
 		{
 			if (ny == 1)
 			{
+				this->JumpOnBrick = false;
 				this->SetIsGrounded(true);
 			}
-		}
-
-		if (coEventsResult[0]->collisionID == ObjectType::WALL)
+		}break;
+		case ObjectType::WALL:
 		{
 			if (nx == 1 || nx == -1)
 			{
 				this->SetSpeedX(0);
 				this->SetIsGrounded(true);
 			}
+		}break;
 		}
 	}
 	for (int i = 0; i < coEvents.size(); i++)
@@ -792,6 +797,16 @@ void Aladdin::UpdateCollision(DWORD dt)
 		if (!listUpdateObject.at(i).isGenerated || !listUpdateObject.at(i).isLife)
 			continue;
 
+		if (listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::WALL_BRICK)
+		{
+			vector<ColliedEvent*> coEvents;
+			vector<TileObjectMap *> tiles;
+			this->SetDt(dt);
+			this->UpdateObjectCollider();
+			this->collider.x += 5;
+			this->MapCollisions(tiles, coEvents);
+		}
+
 		bool isCollide = Collision::GetInstance()->AABB(this->GetCollider(), listUpdateObject.at(i).object->GetCollider());
 	
 		if (!isCollide)
@@ -842,7 +857,30 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}break;
 		case ObjectAndEnemies::WALL_BRICK:
 		{
-			DebugOut(L"Collision BRICK \n");
+			if (this->JumpOnBrick)
+			{
+				if (((BrickObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 5 ||
+					((BrickObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 4)
+				{
+					if(this->GetPositionY() - ALADDIN_SPRITE_HEIGHT + 25 >= ((BrickObject*)listUpdateObject.at(i).object)->GetY() && !Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
+					{
+						this->state->SetState(STAND_ON_BRICK);
+						this->state->stateStandOnBrick();
+						this->SetPositionY(((BrickObject*)listUpdateObject.at(i).object)->GetY() + ALADDIN_SPRITE_HEIGHT -1);
+						this->SetIsGrounded(true);
+					}
+				}
+				else
+				{
+					if (this->state->GetState() == STAND_ON_BRICK)
+					{
+						this->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+						this->state->SetState(STATE_FALL);
+						this->state->stateFalling();
+					}
+				}
+			}
+
 		}break;
 		case ObjectAndEnemies::APPLE:
 		{

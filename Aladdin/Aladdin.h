@@ -43,6 +43,9 @@ class Aladdin : public GameObject
 	int DmgAttack;
 	bool Attacking;
 
+	bool JumpOnBrick;
+	bool OnBrick;
+
 public:
 	void LoadResources();
 
@@ -68,6 +71,10 @@ public:
 	void SetAppleNumber(int num) { this->AppleNumber = num; }
 	int GetDiamondNumber() { return this->DiamondNumber; }
 	void SetDiamondNumber(int num) { this->DiamondNumber = num; }
+	bool GetJumpOnBrick() { return this->JumpOnBrick; }
+	void SetJumpOnBrick(bool value) { this->JumpOnBrick = value; }
+	bool GetOnBrick() { return this->OnBrick; }
+	void SetOnBrick(bool value) { this->OnBrick = value; }
 
 	void SetIsApple(bool isApple) { this->isApple = isApple; }
 	bool GetisApple() { return isApple; }

@@ -32,6 +32,7 @@ void AladdinState::stateStanding()
 {
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT) && (!Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) && !Keyboard::GetInstance()->IsKeyDown(DIK_LEFT)))
 	{
+		this->aladdin->SetJumpOnBrick(true);
 		startJumpY = aladdin->GetPositionY();
 		aladdin->SetSpeedY(ALADDIN_JUMP_SPEED_Y);
 		this->SetState(STATE_STAND_JUMP);
@@ -99,6 +100,7 @@ void AladdinState::stateHeadUp()
 	}
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
 	{
+		this->aladdin->SetJumpOnBrick(true);
 		this->SetState(STATE_STAND_JUMP);
 		return;
 	}
@@ -138,6 +140,7 @@ void AladdinState::stateWalking()
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
 	{
 		anim->Reset();
+		this->aladdin->SetJumpOnBrick(true);
 		startJumpY = aladdin->GetPositionY();
 		aladdin->SetSpeedY(ALADDIN_JUMP_SPEED_Y);
 		this->SetState(STATE_RUN_JUMP);
@@ -181,6 +184,7 @@ void AladdinState::stateJumping()
 {
 	if ((!Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT)) || (this->startJumpY != NULL && (int)(aladdin->GetPositionY() - this->startJumpY) >= ALADDIN_JUMP_MAX))
 	{
+		this->aladdin->SetJumpOnBrick(true);
 		aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 		anim->Reset();
 		this->SetState(STATE_FALL);
@@ -259,6 +263,7 @@ void AladdinState::stateSitting()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
 	{
+		this->aladdin->SetJumpOnBrick(true);
 		this->SetState(STATE_STAND_JUMP);
 		anim->isSetFrame(false);
 		anim->Reset();
@@ -321,6 +326,7 @@ void AladdinState::stateSittingIdle()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
 	{
+		this->aladdin->SetJumpOnBrick(true);
 		this->SetState(STATE_STAND_JUMP);
 		anim->isSetFrame(false);
 		anim->Reset();
@@ -464,6 +470,7 @@ void AladdinState::stateRunJump()
 
 	if ((!Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT)) || (this->startJumpY != NULL && (int)(aladdin->GetPositionY() - this->startJumpY) >= ALADDIN_JUMP_MAX + 8))
 	{
+		this->aladdin->SetJumpOnBrick(true);
 		aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 		this->SetState(STATE_FALL_2);
 		anim->isSetFrame(false);
@@ -634,22 +641,75 @@ void AladdinState::stateClimb()
 	aladdin->SetSpeedY(0);
 	aladdin->SetSpeedX(0);
 
+	//if (Keyboard::GetInstance()->IsKeyDown(DIK_UP))
+	//{
+	//	aladdin->SetSpeedY(0.175);
+	//	return;
+	//}
+
+	//if (Keyboard::GetInstance()->IsKeyDown(DIK_DOWN))
+	//{
+	//	aladdin->SetSpeedY(-0.175);
+	//	return;
+	//}
+	//if (!aladdin->GetIsClimb())
+	//{
+	//	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	//}
+	// DebugOut(L"Aladdin %d %d \n", (int)this->aladdin->GetPositionX(), (int)this->aladdin->GetPositionY());
+}
+
+void AladdinState::stateStandOnBrick()
+{
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT) && (!Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) && !Keyboard::GetInstance()->IsKeyDown(DIK_LEFT)))
+	{
+		this->aladdin->SetJumpOnBrick(true);
+		startJumpY = aladdin->GetPositionY();
+		aladdin->SetSpeedY(ALADDIN_JUMP_SPEED_Y);
+		this->SetState(STATE_STAND_JUMP);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) || Keyboard::GetInstance()->IsKeyDown(DIK_LEFT))
+	{
+		this->SetState(STATE_RUN);
+		return;
+	}
+
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_UP))
 	{
-		aladdin->SetSpeedY(0.175);
+		this->SetState(STATE_HEAD_UP);
 		return;
 	}
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_DOWN))
 	{
-		aladdin->SetSpeedY(-0.175);
+		this->SetState(STATE_SIT);
 		return;
 	}
-	if (!aladdin->GetIsClimb())
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
 	{
-		aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+		aladdin->SetAttacking(true);
+		this->SetState(STATE_STAND_HIT);
+		return;
 	}
-	// DebugOut(L"Aladdin %d %d \n", (int)this->aladdin->GetPositionX(), (int)this->aladdin->GetPositionY());
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_Z))
+	{
+		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
+		{
+			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
+			this->SetState(STATE_STAND_THROW);
+			aladdin->SetIsApple(false);
+			aladdin->SetAppleNumber(aladdin->GetAppleNumber() - 1);
+			return;
+		}
+	}
+
+	aladdin->SetSpeedX(0);
+	aladdin->SetSpeedY(0);
+	anim = aladdin->GetAnimationsList()[IDLE_STAND];
 }
 
 void AladdinState::KeyHandle()
@@ -694,6 +754,12 @@ void AladdinState::Colision()
 				this->stateFall2();
 			}
 		}
+		if (this->GetState() == IDLE_STAND)
+		{
+			aladdin->SetJumpOnBrick(true);
+			this->SetState(STATE_FALL);
+			this->stateFalling();
+		}
 	}
 	else
 	{
@@ -705,7 +771,6 @@ void AladdinState::Colision()
 				this->stateStanding();
 			}
 		}
-
 	}
 
 	aladdin->SetIsGrounded(false);
@@ -815,6 +880,10 @@ void AladdinState::Update(DWORD dt)
 
 	case IDLE_CLIMB:
 		this->stateClimb();
+		break;
+
+	case STAND_ON_BRICK:
+		this->stateStandOnBrick();
 		break;
 
 	default:

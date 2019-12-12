@@ -17,9 +17,15 @@ public:
 
 	void SetPos(int x, int y) { this->x = x; this->y = y; }
 
+	int GetX() { return this->x; }
+
+	int GetY() { return this->y; }
+
 	int GetID() { return this->id; }
 
 	int GetCellID() { return this->CellID; }
+
+	vector<Animation *> GetAnimation() { return this->animations; }
 
 	static void LoadResources();
 
