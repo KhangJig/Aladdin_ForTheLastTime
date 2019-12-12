@@ -51,8 +51,8 @@ enum ObjectAndEnemies
 // MAP
 #define TILES_MATRIX_STAGE_1 L"Resource\\Background\\4x100\\bg-tiled.txt"
 #define TILES_SET_MATRIX_STAGE_1 L"Resource\\Background\\4x100\\bg-tiled.png"
-#define POSSISION_MAPOBJECT_1 L"Resource\\Background\\4x100-GridCell\\ObjectMap.txt"
-#define POSSISION_ENEMIES_1 L"Resource\\Background\\4x100-GridCell\\Enemies.txt"
+#define POSSISION_MAPOBJECT_1 L"Resource\\Background\\4x100\\ObjectMap.txt"
+#define POSSISION_ENEMIES_1 L"Resource\\Background\\4x100\\Enemies.txt"
 
 #define TILES_MATRIX_STAGE_2 L"Resource\\Background\\4x100\\bg-tiled-2.txt"
 #define TILES_SET_MATRIX_STAGE_2 L"Resource\\Background\\4x100\\bg-tiled-2.png"

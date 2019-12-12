@@ -76,25 +76,6 @@ void TileMap::LoadTilesData(LPCWSTR filePath, LPCWSTR tileSetLocation, int mapId
 
 }
 
-void TileMap::LoadSpawnData(LPCWSTR filePath, int mapId)
-{
-	ifstream tilesData;
-	tilesData.open(filePath);
-
-	string data;
-
-	tilesData >> data;
-
-	//for (int y = mapList[mapId].height - 1; y >= 0; y--)
-	//	for (int x = 0; x < mapList[mapId].size; x++)
-	//	{
-	//		tilesData >> data;
-	//		(mapList[mapId].tiles + x + y * mapList[mapId].size)->SpawnObjectID = stoi(data);
-	//	}
-
-	tilesData.close();
-}
-
 void TileMap::LoadObjectMap(LPCWSTR filePath, int mapId)
 {
 	ifstream tilesData;
@@ -108,29 +89,19 @@ void TileMap::LoadObjectMap(LPCWSTR filePath, int mapId)
 
 	for (int i = 0; i < lenght ; i++)
 	{
-
 		tilesData >> data;
-		switch (mapId)
-		{
-		case MAP_1_ID:
-		{
-			if (stoi(data) == 1)
-			{
-				tilesObj.type = ObjectType::BRICK;
-			}
-			if (stoi(data) == 2)
-			{
-				tilesObj.type = ObjectType::WALL;
-			}
-			if (stoi(data) == 3)
-			{
-				tilesObj.type = ObjectType::ROPE;
-			}
-		}
-		break;
 
-		default:
-			break;
+		if (stoi(data) == 1)
+		{
+			tilesObj.type = ObjectType::BRICK;
+		}
+		if (stoi(data) == 2)
+		{
+			tilesObj.type = ObjectType::WALL;
+		}
+		if (stoi(data) == 3)
+		{
+			tilesObj.type = ObjectType::ROPE;
 		}
 
 		tilesData >> data;
@@ -149,9 +120,6 @@ void TileMap::LoadObjectMap(LPCWSTR filePath, int mapId)
 		tilesObj.height = stoi(data);
 
 		mapList[mapId].AddTileObjectMap(tilesObj);
-
-		//this->AddTileObjectMap(tilesObj);
-		// DebugOut(L"id x y w h %d %d %d %d %d \n", tilesObj.GridCellID, tilesObj.x, tilesObj.y, tilesObj.width, tilesObj.height);
 	}
 
 	tilesData.close();
@@ -171,42 +139,32 @@ void TileMap::LoadEnemies(LPCWSTR filePath, int mapId)
 	{
 		tilesData >> data;
 
-		switch (mapId)
+		switch (stoi(data))
 		{
-		case MAP_1_ID:
-		{
-			switch (stoi(data))
-			{
-			case 1:
-				enemies.SpawnObjectID = ObjectAndEnemies::GUARD1; break;
-			case 2:
-				enemies.SpawnObjectID = ObjectAndEnemies::GUARD2; break;
-			case 3:
-				enemies.SpawnObjectID = ObjectAndEnemies::BOMBBER; break;
-			case 4:
-				enemies.SpawnObjectID = ObjectAndEnemies::BAT; break;
-			case 5:
-				enemies.SpawnObjectID = ObjectAndEnemies::THORN; break;
-			case 6:
-				enemies.SpawnObjectID = ObjectAndEnemies::BALL; break;
-			case 7:
-				enemies.SpawnObjectID = ObjectAndEnemies::WALL_BRICK; break;
-			case 8:
-				enemies.SpawnObjectID = ObjectAndEnemies::APPLE; break;
-			case 9:
-				enemies.SpawnObjectID = ObjectAndEnemies::DIAMOND; break;
-			case 10:
-				enemies.SpawnObjectID = ObjectAndEnemies::BOTTLE; break;
-			case 11:
-				enemies.SpawnObjectID = ObjectAndEnemies::GENIE_FACE; break;
-			case 12:
-				enemies.SpawnObjectID = ObjectAndEnemies::SHOP; break;
-			}
-		}
-		break;
-
-		default:
-			break;
+		case 1:
+			enemies.SpawnObjectID = ObjectAndEnemies::GUARD1; break;
+		case 2:
+			enemies.SpawnObjectID = ObjectAndEnemies::GUARD2; break;
+		case 3:
+			enemies.SpawnObjectID = ObjectAndEnemies::BOMBBER; break;
+		case 4:
+			enemies.SpawnObjectID = ObjectAndEnemies::BAT; break;
+		case 5:
+			enemies.SpawnObjectID = ObjectAndEnemies::THORN; break;
+		case 6:
+			enemies.SpawnObjectID = ObjectAndEnemies::BALL; break;
+		case 7:
+			enemies.SpawnObjectID = ObjectAndEnemies::WALL_BRICK; break;
+		case 8:
+			enemies.SpawnObjectID = ObjectAndEnemies::APPLE; break;
+		case 9:
+			enemies.SpawnObjectID = ObjectAndEnemies::DIAMOND; break;
+		case 10:
+			enemies.SpawnObjectID = ObjectAndEnemies::BOTTLE; break;
+		case 11:
+			enemies.SpawnObjectID = ObjectAndEnemies::GENIE_FACE; break;
+		case 12:
+			enemies.SpawnObjectID = ObjectAndEnemies::SHOP; break;
 		}
 
 		tilesData >> data;

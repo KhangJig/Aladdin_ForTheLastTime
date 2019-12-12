@@ -82,7 +82,6 @@ private:
 	vector <MapPack> mapList;
 
 	void LoadTilesData(LPCWSTR filePath, LPCWSTR tileSetLocation, int mapId);
-	void LoadSpawnData(LPCWSTR filePath, int mapId);
 	void LoadObjectMap(LPCWSTR filePath, int mapId);
 	void LoadEnemies(LPCWSTR filePath, int mapId);
 

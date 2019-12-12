@@ -577,10 +577,10 @@ void Aladdin::Update(DWORD dt)
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_F1))
 	{
-		Grid::GetInstance()->DisableAllObject();
+		//Grid::GetInstance()->DisableAllObject();
 		Game::GetInstance()->SetStage(STAGE_1);
 
-		this->SetPositionX(50);
+		this->SetPositionX(100);
 		this->SetPositionY(150);
 		Viewport::GetInstance()->Reset();
 
@@ -589,7 +589,7 @@ void Aladdin::Update(DWORD dt)
 	}
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_F2))
 	{
-		Grid::GetInstance()->DisableAllObject();
+		//Grid::GetInstance()->DisableAllObject();
 		Game::GetInstance()->SetStage(STAGE_2);
 
 		this->SetPositionX(100);

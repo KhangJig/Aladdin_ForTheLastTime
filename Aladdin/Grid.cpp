@@ -31,6 +31,8 @@ Grid::Grid()
 
 void Grid::InitializeMapGrid(TileMap *tileMap)
 {
+	this->gridCell.clear();
+	this->listObject.clear();
 	mapSize = tileMap->currentMap->size / 3;
 
 	listCell = new GridData[mapSize*mapSize];
@@ -165,63 +167,7 @@ void Grid::SpawnObject(ObjectnEnemies enemies)
 {
 	OnUpdateObject temp;
 	temp.ene = enemies;
-
 	listObject.push_back(temp);
-	/*switch (enemies.SpawnObjectID)
-	{
-	case ObjectAndEnemies::GUARD1:
-		{
-			OnUpdateObject temp;
-			temp.ene = enemies;
-
-			listObject.push_back(temp);
-		}
-	break;
-	case ObjectAndEnemies::GUARD2:
-	{
-
-	}break;
-	case ObjectAndEnemies::BOMBBER:
-	{
-
-	}break;
-	case ObjectAndEnemies::BAT:
-	{
-
-	}break;
-	case ObjectAndEnemies::THORN:
-	{
-
-	}break;
-	case ObjectAndEnemies::BALL:
-	{
-
-	}break;
-	case ObjectAndEnemies::WALL_BRICK:
-	{
-
-	}break;
-	case ObjectAndEnemies::APPLE:
-	{
-
-	}break;
-	case ObjectAndEnemies::DIAMOND:
-	{
-
-	}break;
-	case ObjectAndEnemies::BOTTLE:
-	{
-
-	}break;
-	case ObjectAndEnemies::GENIE_FACE:
-	{
-
-	}break;
-	case ObjectAndEnemies::SHOP:
-	{
-
-	}break;
-	}*/
 }
 
 bool Grid::CheckObjectInsideCamera(GameObject* object)
@@ -268,7 +214,6 @@ bool Grid::OnCell(int id)
 
 void Grid::Update(DWORD dt)
 {
-
 	timeCount += dt;
 	aladdin->Update(dt);
 	aladdin->UpdateCollision(dt);
