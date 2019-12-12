@@ -176,6 +176,7 @@
     <ClCompile Include="Guard1State.cpp" />
     <ClCompile Include="HP.cpp" />
     <ClCompile Include="ItemEffect.cpp" />
+    <ClCompile Include="LifeMenu.cpp" />
     <ClCompile Include="Loadtxt.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Animation.cpp" />
@@ -223,6 +224,7 @@
     <ClInclude Include="HP.h" />
     <ClInclude Include="ItemEffect.h" />
     <ClInclude Include="Keyboard.h" />
+    <ClInclude Include="LifeMenu.h" />
     <ClInclude Include="Loadtxt.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="SpawnProjectTile.h" />

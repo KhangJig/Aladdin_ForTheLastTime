@@ -9,6 +9,7 @@
 #include "HP.h"
 #include "AppleMenu.h"
 #include "DiamondMenu.h"
+#include "LifeMenu.h"
 
 class AladdinState;
 class Aladdin : public GameObject
@@ -39,6 +40,7 @@ class Aladdin : public GameObject
 	int AladdinHP;
 	int AppleNumber;
 	int DiamondNumber;
+	int LifeNumber;
 
 	int DmgAttack;
 	bool Attacking;
@@ -65,6 +67,7 @@ public:
 
 	int GetPosXAladdinThrowing() { return this->posXAladdinThrowing; }
 	int GetPosYAladdinThrowing() { return this->posYAladdinThrowing; }
+
 	bool GetAttacking() { return this->Attacking; }
 	void SetAttacking(bool isAttack) { this->Attacking = isAttack; }
 	int GetAppleNumber() { return this->AppleNumber; }
@@ -75,6 +78,8 @@ public:
 	void SetJumpOnBrick(bool value) { this->JumpOnBrick = value; }
 	bool GetOnBrick() { return this->OnBrick; }
 	void SetOnBrick(bool value) { this->OnBrick = value; }
+	int GetLifeNumber() { return this->LifeNumber; }
+	void SetLifeNumber(int num) { this->LifeNumber = num; }
 
 	void SetIsApple(bool isApple) { this->isApple = isApple; }
 	bool GetisApple() { return isApple; }

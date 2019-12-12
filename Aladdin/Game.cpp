@@ -104,6 +104,9 @@ void Game::LoadResources()
 
 	if(diamondMenu == NULL)
 		diamondMenu = DiamondMenu::GetInstance();
+
+	if (lifeMenu == NULL)
+		lifeMenu = LifeMenu::GetInstance();
 }
 
 void Game::Update(DWORD dt)
@@ -115,6 +118,7 @@ void Game::Update(DWORD dt)
 	hp->Update(dt);
 	appleMenu->Update(dt);
 	diamondMenu->Update(dt);
+	lifeMenu->Update(dt);
 }
 
 void Game::Render()
@@ -136,6 +140,8 @@ void Game::Render()
 		appleMenu->Render();
 
 		diamondMenu->Render();
+
+		lifeMenu->Render();
 
 		spriteHandler->End();
 

@@ -1,17 +1,17 @@
-#include "DiamondMenu.h"
+#include "LifeMenu.h"
 #include "Guard1State.h"
 
-DiamondMenu *DiamondMenu::__instance = NULL;
-vector<Animation *> DiamondMenu::animations = vector<Animation *>();
+LifeMenu *LifeMenu::__instance = NULL;
+vector<Animation *> LifeMenu::animations = vector<Animation *>();
 
-DiamondMenu *DiamondMenu::GetInstance()
+LifeMenu *LifeMenu::GetInstance()
 {
 	if (__instance == NULL)
-		__instance = new DiamondMenu();
+		__instance = new LifeMenu();
 	return __instance;
 }
 
-DiamondMenu::DiamondMenu()
+LifeMenu::LifeMenu()
 {
 	this->LoadResources();
 	this->x = 0;
@@ -19,7 +19,7 @@ DiamondMenu::DiamondMenu()
 	this->num = 0;
 }
 
-void DiamondMenu::LoadResources()
+void LifeMenu::LoadResources()
 {
 	LoadTXT loadTXT;
 	RECT* listSprite = loadTXT.LoadRect((char*)"Resource\\Miscellaneous\\Text.txt");
@@ -149,20 +149,20 @@ void DiamondMenu::LoadResources()
 	Sprite * items = new Sprite(ITEMS_TEXTURE_LOCATION, TEXTURE_TRANS_COLOR_5);
 
 	anim = new Animation(100);
-	Sprite *apple = new Sprite(items->GetTexture(), listSprite[6], TEXTURE_TRANS_COLOR_5);
+	Sprite *apple = new Sprite(items->GetTexture(), listSprite[15], TEXTURE_TRANS_COLOR_5);
 	anim->AddFrame(apple);
 	animations.push_back(anim);
 
 
 }
 
-void DiamondMenu::Update(DWORD dt)
+void LifeMenu::Update(DWORD dt)
 {
-	this->x = Viewport::GetInstance()->GetX() + 225;
+	this->x = Viewport::GetInstance()->GetX() + 15;
 	this->y = Viewport::GetInstance()->GetY() - 200;
 }
 
-void DiamondMenu::Render()
+void LifeMenu::Render()
 {
 	SpriteData spriteData;
 
@@ -217,14 +217,14 @@ void DiamondMenu::Render()
 
 	spriteData.width = APPLE_ITEM_WIDTH;
 	spriteData.height = APPLE_ITEM_HEIGHT;
-	spriteData.x = this->x + 4;
+	spriteData.x = this->x + 2;
 	spriteData.y = this->y;
 
-	spriteData.scale = 1;
+	spriteData.scale = 0.75;
 	this->animations[20]->Render(spriteData);
 }
 
-DiamondMenu::~DiamondMenu()
+LifeMenu::~LifeMenu()
 {
 
 }

@@ -9,6 +9,7 @@
 #include "HP.h"
 #include "AppleMenu.h"
 #include "DiamondMenu.h"
+#include "LifeMenu.h"
 
 #include <chrono>
 
@@ -31,6 +32,7 @@ class Game
 	HP *hp;
 	AppleMenu *appleMenu;
 	DiamondMenu *diamondMenu;
+	LifeMenu *lifeMenu;
 	Stage stage;
 
 public:
