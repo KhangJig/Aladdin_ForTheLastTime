@@ -188,6 +188,12 @@ void TileMap::SetCurrentMap(int mapID)
 
 }
 
+MapPack TileMap::GetMap()
+{
+	return *currentMap;
+
+}
+
 void TileMap::soundLock(bool lock)
 {
 

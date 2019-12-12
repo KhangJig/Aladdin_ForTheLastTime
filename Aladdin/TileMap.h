@@ -92,6 +92,8 @@ public:
 
 	void SetCurrentMap(int mapID);
 
+	MapPack GetMap();
+
 	void Render(Tile* itile);
 
 	void soundLock(bool lock);

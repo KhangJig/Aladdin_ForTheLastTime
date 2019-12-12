@@ -33,6 +33,7 @@ Viewport *Viewport::GetInstance()
 		__instance = new Viewport();
 	return __instance;
 }
+
 void Viewport::Reset()
 {
 	width = SCREEN_WIDTH;
@@ -48,11 +49,20 @@ void Viewport::Reset()
 		y = 225;
 	}
 }
+
 void Viewport::Update(DWORD dt)
 {
 	Aladdin * aladdin = Aladdin::GetInstance();
 
-	int right = (int)(TileMap::GetInstance()->currentMap->size * 100 - SCREEN_WIDTH / 2) - 130;
+	int right = 0;
+	if (aladdin->GetLV() == 1)
+	{
+		right = (int)(TileMap::GetInstance()->currentMap->size * 100 - SCREEN_WIDTH / 2) - 130;
+	}
+	else
+	{
+		right = (int)(TileMap::GetInstance()->currentMap->size * 100 - SCREEN_WIDTH / 2) - 10;
+	}
 	int left = (int)SCREEN_WIDTH / 2;
 	int bottom = (int)(TileMap::GetInstance()->currentMap->height * 100 - SCREEN_HEIGHT / 2 );
 	int top = (int)SCREEN_HEIGHT / 2;

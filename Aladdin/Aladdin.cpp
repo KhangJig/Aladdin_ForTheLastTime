@@ -1,6 +1,7 @@
 ﻿#include "Aladdin.h"
 
 vector<Animation *> Aladdin::animations = vector<Animation *>();
+
 Aladdin *Aladdin::__instance = NULL;
 
 Aladdin *Aladdin::GetInstance()
@@ -28,6 +29,7 @@ Aladdin::Aladdin()
 	this->DiamondNumber = 0;
 	this->LifeNumber = 3;
 	this->DmgAttack = 20;
+	this->LV = 1;
 	this->Attacking = false;
 	this->JumpOnBrick = false;
 	this->width = ALADDIN_SPRITE_WIDTH;
@@ -555,29 +557,9 @@ void Aladdin::Update(DWORD dt)
 	//DebugOut(L"Aladdin %d %d \n", (int)this->GetPositionX(), (int)this->GetPositionY());
 	timeCount += dt;
 
-	if (this->GetSpeedX() > 0 && this->GetPositionX() > TileMap::GetInstance()->currentMap->size * 100 - 50)
-	{
-		if (Game::GetInstance()->GetStage() < 2)
-		{
-			Game::GetInstance()->SetStage(Game::GetInstance()->GetStage() + 1);
-			if (STAGE_2 == Game::GetInstance()->GetStage())
-			{
-				Grid::GetInstance()->DisableAllObject();
-
-				this->SetPositionX(280);
-				this->SetPositionY(900);
-				Viewport::GetInstance()->Reset();
-
-				TileMap::GetInstance()->SetCurrentMap(STAGE_2);
-				Grid::GetInstance()->InitializeMapGrid(TileMap::GetInstance());
-			}
-		}
-		else this->SetSpeedX(0);
-	}
-
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_F1))
 	{
-		//Grid::GetInstance()->DisableAllObject();
+		this->LV = 1;
 		Game::GetInstance()->SetStage(STAGE_1);
 
 		this->SetPositionX(100);
@@ -589,11 +571,11 @@ void Aladdin::Update(DWORD dt)
 	}
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_F2))
 	{
-		//Grid::GetInstance()->DisableAllObject();
+		this->LV = 2;
 		Game::GetInstance()->SetStage(STAGE_2);
 
 		this->SetPositionX(100);
-		this->SetPositionY(150);
+		this->SetPositionY(350);
 		Viewport::GetInstance()->Reset();
 
 		TileMap::GetInstance()->SetCurrentMap(STAGE_2);
@@ -609,6 +591,7 @@ void Aladdin::Update(DWORD dt)
 
 #pragma region	Collide with map
 	vector<TileObjectMap *> tiles = Grid::GetInstance()->GetNearbyObjectTiles();
+
 	vector<TileObjectMap *> tilesRope = Grid::GetInstance()->GetNearbyObjectTilesThorn();
 	coEvents.clear();
 

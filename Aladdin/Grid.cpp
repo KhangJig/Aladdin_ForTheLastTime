@@ -33,9 +33,11 @@ void Grid::InitializeMapGrid(TileMap *tileMap)
 {
 	this->gridCell.clear();
 	this->listObject.clear();
+
 	mapSize = tileMap->currentMap->size / 3;
 
 	listCell = new GridData[mapSize*mapSize];
+
 	Tile* tempTile;
 
 	for (int y = 0; y < mapSize; y++)
