@@ -381,7 +381,22 @@ void Grid::Render()
 	for (int i = 0; i < listObject.size(); i++)
 	{
 		if (listObject.at(i).isGenerated && listObject.at(i).isLife)
-			listObject.at(i).object->Render();
+		{
+			if (listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::GUARD1 ||
+				listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::GUARD2 ||
+				listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::BOMBBER ||
+				listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::BAT)
+			{
+				listObject.at(i).object->Render();
+			}
+			else
+			{
+				if (CheckObjectInsideCamera2(listObject.at(i).ene.x, listObject.at(i).ene.y))
+				{
+					listObject.at(i).object->Render();
+				}
+			}
+		}
 	}
 
 	aladdin->Render();
