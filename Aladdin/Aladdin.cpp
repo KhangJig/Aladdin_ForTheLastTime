@@ -32,6 +32,7 @@ Aladdin::Aladdin()
 	this->LV = 1;
 	this->Attacking = false;
 	this->JumpOnBrick = false;
+	this->JumpOnRope = false;
 	this->width = ALADDIN_SPRITE_WIDTH;
 	this->height = ALADDIN_SPRITE_HEIGHT;
 
@@ -482,6 +483,70 @@ void Aladdin::LoadResources()
 	animations.push_back(anim);
 #pragma endregion
 
+#pragma region IDLE CLIMB
+	anim = new Animation(100);
+
+	Sprite * climb_idle = new Sprite(aladdin2->GetTexture(), listSprite[163], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_idle);
+
+	animations.push_back(anim);
+#pragma endregion
+
+#pragma region CLIMB HURT
+	anim = new Animation(100);
+
+	Sprite * climb_hurt= new Sprite(aladdin2->GetTexture(), listSprite[163], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_hurt);
+
+	animations.push_back(anim);
+#pragma endregion
+
+#pragma region CLIMB JUMP
+	anim = new Animation(100);
+
+	Sprite * climb_jump= new Sprite(aladdin2->GetTexture(), listSprite[163], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_jump);
+
+	animations.push_back(anim);
+#pragma endregion
+
+#pragma region CLIMB FALL
+	anim = new Animation(100);
+
+	Sprite * climb_fall = new Sprite(aladdin2->GetTexture(), listSprite[163], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_fall);
+
+	animations.push_back(anim);
+#pragma endregion
+
+#pragma region CLIMBING
+	anim = new Animation(100);
+
+	Sprite * climbing = new Sprite(aladdin2->GetTexture(), listSprite[163], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climbing);
+
+	animations.push_back(anim);
+#pragma endregion
+
+#pragma region CLIMB HIT
+	anim = new Animation(100);
+
+	Sprite * climb_hit = new Sprite(aladdin2->GetTexture(), listSprite[163], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_hit);
+
+	animations.push_back(anim);
+#pragma endregion
+
+#pragma region CLIMB THROW
+	anim = new Animation(100);
+
+	Sprite * climb_throw = new Sprite(aladdin2->GetTexture(), listSprite[163], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_throw);
+
+	animations.push_back(anim);
+#pragma endregion
+
+
 	listSprite = loadTXT.LoadRect((char*)"Resource\\Character\\run-hit-n-throw.txt");
 	Sprite * aladdin3 = new Sprite(ALADDIN_TEXTURE_LOCATION2, TEXTURE_TRANS_COLOR_2);
 
@@ -547,8 +612,8 @@ void Aladdin::LoadResources()
 
 void Aladdin::Reset()
 {
-	this->SetPositionX(200);
-	this->SetPositionY(200);
+	this->SetPositionX(50);
+	this->SetPositionY(120);
 	Viewport::GetInstance()->Reset();
 }
 
@@ -606,30 +671,39 @@ void Aladdin::Update(DWORD dt)
 	this->MapCollisions(tiles, coEvents);
 
 #pragma region	ROPE
-	// Dang xu ly va cham day xich
-	//if (tilesRope.size() != 0)
-	//{
-	//	Collider a;
-	//	for (int i = 0; i < tilesRope.size(); i++)
-	//	{
-	//		a.x = tilesRope.at(i)->x;
-	//		a.y = tilesRope.at(i)->y;
-	//		a.width = tilesRope.at(i)->width;
-	//		a.height = tilesRope.at(i)->height;
+	//  Dang xu ly va cham day xich
+	if (tilesRope.size() != 0)
+	{
+		Collider a;
+		for (int i = 0; i < tilesRope.size(); i++)
+		{
+			a.x = tilesRope.at(i)->x;
+			a.y = tilesRope.at(i)->y;
+			a.width = tilesRope.at(i)->width;
+			a.height = tilesRope.at(i)->height;
 
-	//		if (Collision::GetInstance()->AABB(a, this->GetCollider()))
-	//		{
-	//			if (!this->GetIsGrounded())
-	//			{
-	//				this->SetIsClimb(true);
-	//			}
-	//		}
-	//		else
-	//		{
-	//			this->SetIsClimb(false);
-	//		}
-	//	}
-	//}
+			if (Collision::GetInstance()->AABB(a, this->GetCollider()) && !Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
+			{
+				//if (this->GetPositionY() <= tilesRope.at(i)->y + tilesRope.at(i)->height)
+				//{
+					if (!this->GetIsGrounded() && !this->GetIsClimb() && !this->GetJumpOnRope())
+					{
+						this->SetIsClimb(true);
+					}
+				//}
+				//else
+				//{
+				//	this->SetIsClimb(true);
+				//	this->SetSpeedY(0);
+				//}
+			}
+			else
+			{
+				this->SetIsClimb(false);
+				this->SetJumpOnRope(false);
+			}
+		}
+	}
 #pragma endregion
 
 #pragma region	BRICK & WALL
@@ -660,6 +734,7 @@ void Aladdin::Update(DWORD dt)
 			{
 				this->JumpOnBrick = false;
 				this->SetIsGrounded(true);
+				this->SetIsClimb(false);
 			}
 		}break;
 		case ObjectType::WALL:

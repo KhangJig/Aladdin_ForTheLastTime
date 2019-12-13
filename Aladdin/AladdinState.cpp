@@ -526,7 +526,7 @@ void AladdinState::stateFall2()
 			aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 			anim->isSetFrame(false);
 			anim->Reset();
-			return;
+return;
 		}
 	}
 }
@@ -590,6 +590,81 @@ void AladdinState::stateHurt()
 	}
 }
 
+// dang xu li
+void AladdinState::stateClimb()
+{
+	aladdin->SetSpeedY(0);
+	aladdin->SetSpeedX(0);
+	startJumpY = aladdin->GetPositionY();
+	anim = aladdin->GetAnimationsList()[IDLE_CLIMB];
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
+	{
+		this->SetState(STATE_CLIMB_JUMP);
+		aladdin->SetSpeedY(ALADDIN_JUMP_SPEED_Y);
+		this->aladdin->SetIsClimb(false);
+		this->aladdin->SetJumpOnRope(true);
+		return;
+	}
+}
+
+void AladdinState::stateClimbHurt()
+{
+	anim = aladdin->GetAnimationsList()[STATE_CLIMB_HURT];
+}
+
+void AladdinState::stateClimbJump()
+{
+	//if ((!Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT)) || (this->startJumpY != NULL && (int)(aladdin->GetPositionY() - this->startJumpY) >= ALADDIN_JUMP_MAX))
+	//{
+	//	this->aladdin->SetJumpOnBrick(true);
+	//	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	//	anim->Reset();
+	//	this->SetState(STATE_FALL);
+	//	return;
+	//}
+	//if (Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
+	//{
+	//	if (this->startJumpY != NULL && (int)(aladdin->GetPositionY() - this->startJumpY) >= ALADDIN_JUMP_MAX)
+	//	{
+	//		this->aladdin->SetJumpOnBrick(true);
+	//		anim->Reset();
+	//		this->SetState(IDLE_CLIMB);
+	//		return;
+	//	}
+	//}
+	anim = aladdin->GetAnimationsList()[STATE_CLIMB_JUMP];
+
+	if (anim->IsDone())
+	{
+		this->aladdin->SetJumpOnBrick(false);
+		anim->Reset();
+		this->SetState(IDLE_CLIMB);
+		return;
+	}
+}
+
+void AladdinState::stateClimbFall()
+{
+	anim = aladdin->GetAnimationsList()[STATE_CLIMB_FALL];
+}
+
+void AladdinState::stateClimbing()
+{
+	anim = aladdin->GetAnimationsList()[STATE_CLIMBING];
+}
+
+void AladdinState::stateClimbHit()
+{
+	anim = aladdin->GetAnimationsList()[STATE_CLIMB_HIT];
+}
+
+void AladdinState::stateClimbThrow()
+{
+	anim = aladdin->GetAnimationsList()[STATE_CLIMB_THROW];
+}
+// ...
+
 void AladdinState::stateRunHit()
 {
 	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
@@ -633,30 +708,6 @@ void AladdinState::stateRunThrow()
 			return;
 		}
 	}
-}
-
-// dang xu li
-void AladdinState::stateClimb()
-{
-	aladdin->SetSpeedY(0);
-	aladdin->SetSpeedX(0);
-
-	//if (Keyboard::GetInstance()->IsKeyDown(DIK_UP))
-	//{
-	//	aladdin->SetSpeedY(0.175);
-	//	return;
-	//}
-
-	//if (Keyboard::GetInstance()->IsKeyDown(DIK_DOWN))
-	//{
-	//	aladdin->SetSpeedY(-0.175);
-	//	return;
-	//}
-	//if (!aladdin->GetIsClimb())
-	//{
-	//	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
-	//}
-	// DebugOut(L"Aladdin %d %d \n", (int)this->aladdin->GetPositionX(), (int)this->aladdin->GetPositionY());
 }
 
 void AladdinState::stateStandOnBrick()
@@ -838,12 +889,12 @@ void AladdinState::Update(DWORD dt)
 		this->stateStandThrow();
 		break;
 
-	case STATE_SIT_HIT:
-		this->stateSitHit();
-		break;
-
 	case STATE_SIT_THROW:
 		this->stateSitThrow();
+		break;
+
+	case STATE_SIT_HIT:
+		this->stateSitHit();
 		break;
 
 	case STATE_RUN_JUMP:
@@ -854,24 +905,16 @@ void AladdinState::Update(DWORD dt)
 		this->stateFall2();
 		break;
 
-	case STATE_JUMP_HIT:
-		this->stateJumpHit();
-		break;
-
 	case STATE_JUMP_THROW:
 		this->stateJumpThrow();
 		break;
 
+	case STATE_JUMP_HIT:
+		this->stateJumpHit();
+		break;
+
 	case STATE_DOUBLE_HIT:
 		this->stateDoubleHit();
-		break;
-
-	case STATE_RUN_HIT:
-		this->stateRunHit();
-		break;
-
-	case STATE_RUN_THROW:
-		this->stateRunThrow();
 		break;
 
 	case STATE_HURT:
@@ -880,6 +923,38 @@ void AladdinState::Update(DWORD dt)
 
 	case IDLE_CLIMB:
 		this->stateClimb();
+		break;
+
+	case STATE_CLIMB_HURT:
+		this->stateClimbHurt();
+		break;
+
+	case STATE_CLIMB_JUMP:
+		this->stateClimbJump();
+		break;
+
+	case STATE_CLIMB_FALL:
+		this->stateClimbFall();
+		break;
+
+	case STATE_CLIMBING:
+		this->stateClimbing();
+		break;
+
+	case STATE_CLIMB_HIT:
+		this->stateClimbHit();
+		break;
+
+	case STATE_CLIMB_THROW:
+		this->stateClimbThrow();
+		break;
+
+	case STATE_RUN_HIT:
+		this->stateRunHit();
+		break;
+
+	case STATE_RUN_THROW:
+		this->stateRunThrow();
 		break;
 
 	case STAND_ON_BRICK:

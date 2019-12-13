@@ -47,6 +47,7 @@ class Aladdin : public GameObject
 
 	bool JumpOnBrick;
 	bool OnBrick;
+	bool JumpOnRope;
 
 	int LV;
 
@@ -84,6 +85,8 @@ public:
 	void SetLifeNumber(int num) { this->LifeNumber = num; }
 	int GetLV() { return this->LV; }
 	void SetLV(int num) { this->LV = num; }
+	bool GetJumpOnRope() { return this->JumpOnRope; }
+	void SetJumpOnRope(bool value) { this->JumpOnRope = value; }
 
 	void SetIsApple(bool isApple) { this->isApple = isApple; }
 	bool GetisApple() { return isApple; }

@@ -24,11 +24,15 @@ enum StateAladdin
 	STATE_JUMP_HIT,
 	STATE_DOUBLE_HIT,
 	STATE_HURT,
+	IDLE_CLIMB,
+	STATE_CLIMB_HURT,
+	STATE_CLIMB_JUMP,
+	STATE_CLIMB_FALL,
+	STATE_CLIMBING,
+	STATE_CLIMB_HIT,
+	STATE_CLIMB_THROW,
 	STATE_RUN_HIT,
 	STATE_RUN_THROW,
-	IDLE_CLIMB,
-	STATE_CLIMB,
-	STATE_JUMP_CLIMB,
 	STAND_ON_BRICK
 };
 
@@ -71,11 +75,15 @@ public:
 	void stateJumpThrow();
 	void stateDoubleHit();
 	void stateHurt();
+	void stateClimb();
+	void stateClimbHurt();
+	void stateClimbJump();
+	void stateClimbFall();
+	void stateClimbing();
+	void stateClimbHit();
+	void stateClimbThrow();
 	void stateRunHit();
 	void stateRunThrow();
-	void stateClimb();
-	void stateClimbing();
-	void stateJumpClimb();
 	void stateStandOnBrick();
 
 
