@@ -45,6 +45,9 @@ Aladdin::Aladdin()
 	collider.vy = 0;
 	collider.width = ALADDIN_SPRITE_WIDTH;
 	collider.height = ALADDIN_SPRITE_HEIGHT;
+
+	theme1 = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_A_WHOLE_NEW_WORLD);
+	Sound::GetInstance()->PlaySound(theme1);
 }
 
 void Aladdin::LoadResources()

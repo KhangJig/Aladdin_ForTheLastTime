@@ -22,7 +22,9 @@ void Game::Init()
 	keyboard = Keyboard::GetInstance();
 	keyboard->InitKeyboard(hWnd);
 
-	//this->stage = STAGE_1;
+	sound = Sound::GetInstance();
+	sound->Init_DirectSound(hWnd);
+
 	LoadResources();
 	DebugOut(L"[INFO] InitGame done;\n");
 }

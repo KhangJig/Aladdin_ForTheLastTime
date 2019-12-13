@@ -4,6 +4,7 @@
 #include "Keyboard.h"
 #include "TileMap.h"
 #include "Grid.h"
+#include "Sound.h"
 #include "Aladdin.h"
 
 #include "HP.h"
@@ -29,6 +30,7 @@ class Game
 	Aladdin *aladdin;
 	Viewport *viewport;
 	TileMap *tileMap;
+	Sound *sound;
 	HP *hp;
 	AppleMenu *appleMenu;
 	DiamondMenu *diamondMenu;

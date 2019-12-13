@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "AladdinState.h"
 #include "Constants.h"
+#include "Sound.h"
 #include "Game.h"
 #include "State.h"
 #include "Apple.h"
@@ -23,6 +24,9 @@ class Aladdin : public GameObject
 	Apple *apple;
 
 	ItemEffect *itemEffect;
+
+	GSound* theme1;
+	GSound* theme2;
 
 	bool isGrounded = false;
 	bool isClimb = false;
