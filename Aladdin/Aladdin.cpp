@@ -759,7 +759,7 @@ void Aladdin::Update(DWORD dt)
 	state->Colision();
 	state->Update(dt);
 
-#pragma region Set new area when aladdin is attacking
+#pragma region Set new area collision when Aladdin's attacking
 	if (this->GetAttacking())
 	{
 		if (this->isLeft)
