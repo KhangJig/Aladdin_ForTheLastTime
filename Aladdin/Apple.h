@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Debug.h"
+#include "Sound.h"
 #include "AppleEffect.h"
 
 class Apple : public GameObject
@@ -10,6 +11,8 @@ class Apple : public GameObject
 	static Apple * __instance;
 
 	AppleEffect *appleEffect;
+
+	GSound * appleSplat;
 
 	int state;
 

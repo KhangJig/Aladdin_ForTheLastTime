@@ -46,7 +46,25 @@ Aladdin::Aladdin()
 	collider.width = ALADDIN_SPRITE_WIDTH;
 	collider.height = ALADDIN_SPRITE_HEIGHT;
 
-	theme1 = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_A_WHOLE_NEW_WORLD);
+	this->theme1 = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_A_WHOLE_NEW_WORLD);
+	this->theme2 = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_THEMES);
+
+	this->aladdinHurt = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_ALADDIN_HURT);
+	this->aladdinOof = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_ALADDIN_OOF);
+	this->aladdinPush = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_ALADDIN_PUSH);
+	this->bodyCrunch = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_BODY_CRUNCH);
+
+	this->highSword = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_HIGH_SWORD);
+	this->lowSword = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_LOW_SWORD);
+	this->throwApple = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_OBJECT_THROW);
+
+	this->bonesTinkle = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_BONES_TINKLE);
+	this->boxingBell = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_BOXING_BELL);
+	this->cashRegister = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_CASH_RES3);
+
+	this->appleCollect = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_APPLE_COLLECT);
+	this->gemCollect = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_GEM_COLLECT);
+
 	Sound::GetInstance()->PlaySound(theme1);
 }
 
@@ -677,6 +695,9 @@ void Aladdin::Update(DWORD dt)
 
 		TileMap::GetInstance()->SetCurrentMap(STAGE_1);
 		Grid::GetInstance()->InitializeMapGrid(TileMap::GetInstance());
+
+		Sound::GetInstance()->StopSound(theme2);
+		Sound::GetInstance()->PlaySound(theme1);
 	}
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_F2))
 	{
@@ -689,6 +710,9 @@ void Aladdin::Update(DWORD dt)
 
 		TileMap::GetInstance()->SetCurrentMap(STAGE_2);
 		Grid::GetInstance()->InitializeMapGrid(TileMap::GetInstance());
+
+		Sound::GetInstance()->StopSound(theme1);
+		Sound::GetInstance()->PlaySound(theme2);
 	}
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_F3))
 	{
@@ -955,6 +979,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 				this->AladdinHP = this->AladdinHP - ((Guard1*)listUpdateObject.at(i).object)->GetGuard1DmgAttack();
 				DebugOut(L"Aladdin HP :  %d \n", this->AladdinHP);
 				this->state->SetState(STATE_HURT);
+				Sound::GetInstance()->PlaySound(aladdinHurt);
 			}
 		}break;
 		case ObjectAndEnemies::GUARD2:
@@ -971,12 +996,13 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}break;
 		case ObjectAndEnemies::THORN:
 		{
-			int x = ((ThornObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame();
-			if (x == 5)
+			int x = ((ThornObject*)listUpdateObject.at(i).object)->GetAnimation()[1]->GetCurFrame();
+			if (x == 3)
 			{
-				this->AladdinHP = this->AladdinHP - 1;
+				this->AladdinHP = this->AladdinHP - 4;
 				DebugOut(L"Aladdin HP :  %d \n", this->AladdinHP);
 				this->state->SetState(STATE_HURT);
+				Sound::GetInstance()->PlaySound(aladdinHurt);
 			}
 		}break;
 		case ObjectAndEnemies::BALL:
@@ -987,6 +1013,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 				this->AladdinHP = this->AladdinHP - 1;
 				DebugOut(L"Aladdin HP :  %d \n", this->AladdinHP);
 				this->state->SetState(STATE_HURT);
+				Sound::GetInstance()->PlaySound(aladdinHurt);
 			}
 		}break;
 		case ObjectAndEnemies::WALL_BRICK:
@@ -1020,6 +1047,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 		{
 			Grid::GetInstance()->SetisLifeListObject(((AppleItem*)listUpdateObject.at(i).object)->GetID(), false);
 			itemEffect->SetPos(listUpdateObject.at(i).ene.x, listUpdateObject.at(i).ene.y, false);
+			Sound::GetInstance()->PlaySound(appleCollect);
 			if (this->AppleNumber < 100)
 			{
 				this->AppleNumber++;
@@ -1029,6 +1057,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 		{
 			Grid::GetInstance()->SetisLifeListObject(((DiamondItem*)listUpdateObject.at(i).object)->GetID(), false);
 			itemEffect->SetPos(listUpdateObject.at(i).ene.x, listUpdateObject.at(i).ene.y, false);
+			Sound::GetInstance()->PlaySound(gemCollect);
 			if (this->DiamondNumber < 100)
 			{
 				this->DiamondNumber++;

@@ -28,6 +28,21 @@ class Aladdin : public GameObject
 	GSound* theme1;
 	GSound* theme2;
 
+	GSound* aladdinHurt;
+	GSound* aladdinOof;
+	GSound* aladdinPush;
+	GSound* bodyCrunch;
+	GSound* bonesTinkle;
+	GSound* boxingBell;
+	GSound* cashRegister;
+
+	GSound* appleCollect;
+	GSound* gemCollect;
+
+	GSound* highSword;
+	GSound* lowSword;
+	GSound* throwApple;
+
 	bool isGrounded = false;
 	bool isClimb = false;
 	static vector<Animation *> animations;
@@ -100,6 +115,9 @@ public:
 	void SetOnTopRope(bool value) { this->OnTopRope = value; }
 	bool GetOnBotRope() { return this->OnBotRope; }
 	void SetOnBotRope(bool value) { this->OnBotRope = value; }
+	GSound *GetSoundHighSword() { return this->highSword; }
+	GSound *GetSoundLowSword() { return this->lowSword; }
+	GSound *GetSoundThrowApple() { return this->throwApple; }
 
 	void SetIsApple(bool isApple) { this->isApple = isApple; }
 	bool GetisApple() { return isApple; }

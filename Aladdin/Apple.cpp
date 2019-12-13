@@ -32,6 +32,8 @@ Apple::Apple()
 	maxDistance = SCREEN_WIDTH / 2.5;
 
 	appleEffect = new AppleEffect(0, 0);
+
+	this->appleSplat = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_APPLE_SPLAT);
 }
 
 void Apple::LoadResources()
@@ -135,6 +137,7 @@ void Apple::UpdateCollision(vector<TileObjectMap *> tiles)
 		{
 			if (tiles.at(i)->type == ObjectType::BRICK || tiles.at(i)->type == ObjectType::WALL)
 			{
+				Sound::GetInstance()->PlaySound(appleSplat);
 				appleEffect->SetPos(this->GetPositionX(), this->GetPositionY(), false);
 				this->state = APPLE_NONE;
 				this->SetSpeedX(0);

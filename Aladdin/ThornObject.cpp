@@ -10,12 +10,15 @@ ThornObject::ThornObject(int x, int y, int CellID, int id)
 	this->CellID = CellID;
 	this->id = id;
 
-	collider.x = x;
+	collider.x = x + 10;
 	collider.y = y;
 	collider.vx = 0;
 	collider.vy = 0;
+	this->state = ThornState::ThornState1;
 	collider.width = THORN_ITEM_WIDTH;
 	collider.height = THORN_ITEM_HEIGHT;
+
+	this->soundAction = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_OBJECT_THROW);
 }
 
 void ThornObject::LoadResources()
@@ -24,9 +27,12 @@ void ThornObject::LoadResources()
 	RECT* listSprite = loadTXT.LoadRect((char*)"Resource\\Background\\MapObjects.txt");
 	Sprite * items = new Sprite(MAPOBJECTS_TEXTURE_LOCATION, TEXTURE_TRANS_COLOR_6);
 
-	Animation * anim = new Animation(700);
-	Sprite *thorn_1 = new Sprite(items->GetTexture(), listSprite[5], TEXTURE_TRANS_COLOR_6);
-	anim->AddFrame(thorn_1);
+	Animation * anim = new Animation(3000);
+	Sprite *thorn_idle_1 = new Sprite(items->GetTexture(), listSprite[5], TEXTURE_TRANS_COLOR_6);
+	anim->AddFrame(thorn_idle_1);
+	animations.push_back(anim);
+
+	anim = new Animation(60);
 	Sprite *thorn_2 = new Sprite(items->GetTexture(), listSprite[6], TEXTURE_TRANS_COLOR_6);
 	anim->AddFrame(thorn_2);
 	Sprite *thorn_3 = new Sprite(items->GetTexture(), listSprite[7], TEXTURE_TRANS_COLOR_6);
@@ -36,18 +42,18 @@ void ThornObject::LoadResources()
 	Sprite *thorn_5 = new Sprite(items->GetTexture(), listSprite[9], TEXTURE_TRANS_COLOR_6);
 	anim->AddFrame(thorn_5);
 	Sprite *thorn_6 = new Sprite(items->GetTexture(), listSprite[10], TEXTURE_TRANS_COLOR_6);
-	anim->AddFrame(thorn_6);
-	Sprite *thorn_7 = new Sprite(items->GetTexture(), listSprite[9], TEXTURE_TRANS_COLOR_6);
-	anim->AddFrame(thorn_7);
-	Sprite *thorn_8 = new Sprite(items->GetTexture(), listSprite[8], TEXTURE_TRANS_COLOR_6);
-	anim->AddFrame(thorn_8);
-	Sprite *thorn_9 = new Sprite(items->GetTexture(), listSprite[7], TEXTURE_TRANS_COLOR_6);
-	anim->AddFrame(thorn_9);
-	Sprite *thorn_10 = new Sprite(items->GetTexture(), listSprite[6], TEXTURE_TRANS_COLOR_6);
-	anim->AddFrame(thorn_10);
-	Sprite *thorn_11 = new Sprite(items->GetTexture(), listSprite[5], TEXTURE_TRANS_COLOR_6);
-	anim->AddFrame(thorn_11);
+	animations.push_back(anim);
 
+	anim = new Animation(400);
+	Sprite *thorn_back_2 = new Sprite(items->GetTexture(), listSprite[10], TEXTURE_TRANS_COLOR_6);
+	anim->AddFrame(thorn_back_2);
+	Sprite *thorn_back_3 = new Sprite(items->GetTexture(), listSprite[9], TEXTURE_TRANS_COLOR_6);
+	anim->AddFrame(thorn_back_3);
+	Sprite *thorn_back_4 = new Sprite(items->GetTexture(), listSprite[8], TEXTURE_TRANS_COLOR_6);
+	anim->AddFrame(thorn_back_4);
+	Sprite *thorn_back_5 = new Sprite(items->GetTexture(), listSprite[7], TEXTURE_TRANS_COLOR_6);
+	anim->AddFrame(thorn_back_5);
+	Sprite *thorn_back_6 = new Sprite(items->GetTexture(), listSprite[6], TEXTURE_TRANS_COLOR_6);
 	animations.push_back(anim);
 }
 
@@ -70,7 +76,34 @@ void ThornObject::Render()
 	spriteData.isLeft = true;
 	spriteData.isFlipped = false;
 
-	this->animations[0]->Render(spriteData);
+	switch (this->state)
+	{
+	case ThornState::ThornState1:
+	{
+		this->animations[ThornState::ThornState1]->Render(spriteData);
+		if (this->animations[ThornState::ThornState1]->IsDone())
+		{
+			Sound::GetInstance()->PlaySound(soundAction);
+			this->state = ThornState::ThornState2;
+		}
+	}break;
+	case ThornState::ThornState2: 
+	{
+		this->animations[ThornState::ThornState2]->Render(spriteData);
+		if (this->animations[ThornState::ThornState2]->IsDone())
+		{
+			this->state = ThornState::ThornState3;
+		}
+	}break;
+	case ThornState::ThornState3:
+	{
+		this->animations[ThornState::ThornState3]->Render(spriteData);
+		if (this->animations[ThornState::ThornState3]->IsDone())
+		{
+			this->state = ThornState::ThornState1;
+		}
+	}break;
+	}
 }
 
 ThornObject::~ThornObject()

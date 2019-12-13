@@ -149,7 +149,8 @@ enum ObjectAndEnemies
 #define TEXT_ITEM_HEIGHT 13
 
 //SOUND
-#define SOUND_ALADDIN_HURT L"Resource\\Sounds\\Aladdin Hurt.wav"
+#define SOUND_OBJECT_THROW L"Resource\\Sounds\\Object Throw.wav"
+#define SOUND_ALADDIN_HURT L"Resource\\Sounds\\AladdinHurt.wav"
 #define SOUND_ALADDIN_OOF L"Resource\\Sounds\\Aladdin Oof.wav"
 #define SOUND_ALADDIN_PUSH L"Resource\\Sounds\\Aladdin Push.wav"
 #define SOUND_APPLE_COLLECT L"Resource\\Sounds\\Apple Collect.wav"
@@ -178,5 +179,5 @@ enum ObjectAndEnemies
 #define SOUND_JAFAR_TRACTOR L"Resource\\Sounds\\Jafar Tractor.wav"
 #define SOUND_HIGH_SWORD L"Resource\\Sounds\\High Sword.wav"
 #define SOUND_LOW_SWORD L"Resource\\Sounds\\Low Sword.wav"
-#define SOUND_THEMES L"Resource\\Sounds\\BackGround.wav"
+#define SOUND_THEMES L"Resource\\Sounds\\Themes.wav"
 #define SOUND_A_WHOLE_NEW_WORLD L"Resource\\Sounds\\AWholeNewWorld.wav"

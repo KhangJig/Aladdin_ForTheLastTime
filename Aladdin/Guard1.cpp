@@ -31,6 +31,12 @@ Guard1::Guard1(float x, float y, int CellID, int id)
 	this->Dead = false;
 
 	enemiesDeadEffect = new EnemiesDeadEffect(0, 0);
+
+	this->guardHit = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_GUARD_HIT_2);
+
+	this->guardHurt = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_GUARDS_PANTS);
+
+	this->headBop = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_HEAD_BOP);
 }
 
 void Guard1::LoadResources()
@@ -239,6 +245,7 @@ void Guard1::UpdateCollision(DWORD dt)
 
 			if (this->GetGuard1HP() > 0)
 			{
+				Sound::GetInstance()->PlaySound(guardHurt);
 				this->state->SetState(GUARD1_HURT);
 			}
 			else
@@ -254,6 +261,7 @@ void Guard1::UpdateCollision(DWORD dt)
 
 		if (this->GetGuard1HP() > 0)
 		{
+			Sound::GetInstance()->PlaySound(headBop);
 			this->state->SetState(GUARD1_HURT);
 		}
 		else

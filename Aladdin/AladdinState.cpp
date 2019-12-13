@@ -59,6 +59,7 @@ void AladdinState::stateStanding()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
 	{
+		Sound::GetInstance()->PlaySound(this->aladdin->GetSoundHighSword());
 		aladdin->SetAttacking(true);
 		this->SetState(STATE_STAND_HIT);
 		return;
@@ -68,6 +69,7 @@ void AladdinState::stateStanding()
 	{
 		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
+			Sound::GetInstance()->PlaySound(this->aladdin->GetSoundThrowApple());
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_STAND_THROW);
 			aladdin->SetIsApple(false);
@@ -108,6 +110,7 @@ void AladdinState::stateHeadUp()
 	{
 		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
+			Sound::GetInstance()->PlaySound(this->aladdin->GetSoundThrowApple());
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_STAND_THROW);
 			aladdin->SetIsApple(false);
@@ -149,6 +152,7 @@ void AladdinState::stateWalking()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
 	{
+		Sound::GetInstance()->PlaySound(this->aladdin->GetSoundHighSword());
 		aladdin->SetAttacking(true);
 		this->SetState(STATE_RUN_HIT);
 		anim->isSetFrame(false);
@@ -160,6 +164,7 @@ void AladdinState::stateWalking()
 	{
 		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
+			Sound::GetInstance()->PlaySound(this->aladdin->GetSoundThrowApple());
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_RUN_THROW);
 			aladdin->SetIsApple(false);
@@ -193,6 +198,7 @@ void AladdinState::stateJumping()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
 	{
+		Sound::GetInstance()->PlaySound(this->aladdin->GetSoundHighSword());
 		aladdin->SetAttacking(true);
 		this->SetState(STATE_JUMP_HIT);
 		anim->isSetFrame(false);
@@ -204,6 +210,7 @@ void AladdinState::stateJumping()
 	{
 		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
+			Sound::GetInstance()->PlaySound(this->aladdin->GetSoundThrowApple());
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_JUMP_THROW);
 			aladdin->SetIsApple(false);
@@ -274,6 +281,7 @@ void AladdinState::stateSitting()
 	{
 		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
+			Sound::GetInstance()->PlaySound(this->aladdin->GetSoundThrowApple());
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_SIT_THROW);
 			aladdin->SetIsApple(false);
@@ -286,6 +294,7 @@ void AladdinState::stateSitting()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
 	{
+		Sound::GetInstance()->PlaySound(this->aladdin->GetSoundLowSword());
 		aladdin->SetAttacking(true);
 		this->SetState(STATE_SIT_HIT);
 		anim->isSetFrame(false);
@@ -337,6 +346,7 @@ void AladdinState::stateSittingIdle()
 	{
 		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
+			Sound::GetInstance()->PlaySound(this->aladdin->GetSoundThrowApple());
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_SIT_THROW);
 			aladdin->SetIsApple(false);
@@ -349,6 +359,7 @@ void AladdinState::stateSittingIdle()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
 	{
+		Sound::GetInstance()->PlaySound(this->aladdin->GetSoundLowSword());
 		aladdin->SetAttacking(true);
 		this->SetState(STATE_SIT_HIT);
 		anim->isSetFrame(false);
@@ -447,6 +458,7 @@ void AladdinState::stateRunJump()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
 	{
+		Sound::GetInstance()->PlaySound(this->aladdin->GetSoundHighSword());
 		aladdin->SetAttacking(true);
 		this->SetState(STATE_JUMP_HIT);
 		anim->isSetFrame(false);
@@ -458,6 +470,7 @@ void AladdinState::stateRunJump()
 	{
 		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
+			Sound::GetInstance()->PlaySound(this->aladdin->GetSoundThrowApple());
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_JUMP_THROW);
 			aladdin->SetIsApple(false);
@@ -489,6 +502,7 @@ void AladdinState::stateFall2()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
 	{
+		Sound::GetInstance()->PlaySound(this->aladdin->GetSoundHighSword());
 		aladdin->SetAttacking(true);
 		this->SetState(STATE_JUMP_HIT);
 		anim->isSetFrame(false);
@@ -500,6 +514,7 @@ void AladdinState::stateFall2()
 	{
 		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
+			Sound::GetInstance()->PlaySound(this->aladdin->GetSoundThrowApple());
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_JUMP_THROW);
 			aladdin->SetIsApple(false);
@@ -560,6 +575,7 @@ void AladdinState::stateJumpThrow()
 
 void AladdinState::stateDoubleHit()
 {
+	Sound::GetInstance()->PlaySound(this->aladdin->GetSoundHighSword());
 	aladdin->SetSpeedX(0);
 	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 	anim = aladdin->GetAnimationsList()[STATE_DOUBLE_HIT];
@@ -612,6 +628,7 @@ void AladdinState::stateClimb()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
 	{
+		Sound::GetInstance()->PlaySound(this->aladdin->GetSoundHighSword());
 		this->aladdin->SetIsClimb(false);
 		this->aladdin->SetJumpOnRope(false);
 		aladdin->SetSpeedY(0);
@@ -623,6 +640,7 @@ void AladdinState::stateClimb()
 	{
 		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
+			Sound::GetInstance()->PlaySound(this->aladdin->GetSoundThrowApple());
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_CLIMB_THROW);
 			aladdin->SetIsApple(false);
@@ -785,6 +803,7 @@ void AladdinState::stateStandOnBrick()
 
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
 	{
+		Sound::GetInstance()->PlaySound(this->aladdin->GetSoundHighSword());
 		aladdin->SetAttacking(true);
 		this->SetState(STATE_STAND_HIT);
 		return;
@@ -794,6 +813,7 @@ void AladdinState::stateStandOnBrick()
 	{
 		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
 		{
+			Sound::GetInstance()->PlaySound(this->aladdin->GetSoundThrowApple());
 			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
 			this->SetState(STATE_STAND_THROW);
 			aladdin->SetIsApple(false);

@@ -2,6 +2,7 @@
 #include "Debug.h"
 #include "GameObject.h"
 #include "Constants.h"
+#include "Sound.h"
 #include "Game.h"
 #include "SpawnProjectTile.h"
 #include "State.h"
@@ -18,6 +19,12 @@ class Guard1 : public GameObject
 	static vector<Animation *> animations;
 
 	EnemiesDeadEffect *enemiesDeadEffect;
+
+	GSound *guardHit;
+
+	GSound *guardHurt;
+
+	GSound *headBop;
 
 	DWORD lastFrameTime;
 
@@ -58,6 +65,7 @@ public:
 	void SetDie(bool die) { this->Dead = die; }
 	int GetCellID() { return this->CellID; }
 	EnemiesDeadEffect *GetEnemiesDeadEffect() { return this->enemiesDeadEffect; }
+	GSound *GetSoundGuardHit() { return this->guardHit; }
 #pragma endregion
 
 	void Update(DWORD dt) override;
