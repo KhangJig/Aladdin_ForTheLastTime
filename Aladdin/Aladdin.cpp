@@ -557,6 +557,8 @@ void Aladdin::Update(DWORD dt)
 	//DebugOut(L"Aladdin %d %d \n", (int)this->GetPositionX(), (int)this->GetPositionY());
 	timeCount += dt;
 
+#pragma region	Shortcut Keys
+
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_F1))
 	{
 		this->LV = 1;
@@ -586,19 +588,21 @@ void Aladdin::Update(DWORD dt)
 		trueImortal = !trueImortal;
 	}
 
+#pragma endregion
+
+#pragma region	Collide with map
+
 	vector<ColliedEvent*> coEvents;
 	vector<ColliedEvent*> coEventsResult;
 
-#pragma region	Collide with map
 	vector<TileObjectMap *> tiles = Grid::GetInstance()->GetNearbyObjectTiles();
 
 	vector<TileObjectMap *> tilesRope = Grid::GetInstance()->GetNearbyObjectTilesThorn();
 	coEvents.clear();
 
-
 	this->SetDt(dt);
 	this->UpdateObjectCollider();
-	this->collider.x += 5;
+	this->isLeft ? this->collider.x = x - 10 : this->collider.x = x;
 	this->MapCollisions(tiles, coEvents);
 
 #pragma region	ROPE
@@ -675,6 +679,7 @@ void Aladdin::Update(DWORD dt)
 #pragma endregion
 
 #pragma region	Update HP Taskbar
+	
 	if (this->AladdinHP == 500)
 	{
 		HP::GetInstance()->SetState(LV_TEN);
@@ -749,6 +754,7 @@ void Aladdin::Update(DWORD dt)
 			}
 		}
 	}
+
 #pragma endregion
 	
 	AppleMenu::GetInstance()->SetNum(this->AppleNumber);
@@ -759,20 +765,20 @@ void Aladdin::Update(DWORD dt)
 	state->Colision();
 	state->Update(dt);
 
-#pragma region Set new area collision when Aladdin's attacking
+#pragma region Set new area collision when Aladdin is attacking
+
 	if (this->GetAttacking())
 	{
 		if (this->isLeft)
-			collider.x = x - 35;
-		collider.width = ALADDIN_SPRITE_WIDTH + 35;
-		collider.width = ALADDIN_SPRITE_HEIGHT + 10;
+			this->collider.x = x - 35;
+		this->collider.width = ALADDIN_SPRITE_WIDTH + 35;
 	}
 	else
 	{
-		collider.x = x;
-		collider.width = ALADDIN_SPRITE_WIDTH;
-		collider.width = ALADDIN_SPRITE_HEIGHT;
+		this->collider.width = ALADDIN_SPRITE_WIDTH;
+		this->collider.x = x;
 	}
+
 #pragma endregion
 
 }
@@ -830,7 +836,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 		case ObjectAndEnemies::THORN:
 		{
 			int x = ((ThornObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame();
-			if (x == 6)
+			if (x == 5)
 			{
 				this->AladdinHP = this->AladdinHP - 1;
 				DebugOut(L"Aladdin HP :  %d \n", this->AladdinHP);

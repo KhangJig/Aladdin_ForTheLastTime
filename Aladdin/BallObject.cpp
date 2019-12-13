@@ -14,7 +14,7 @@ BallObject::BallObject(int x, int y, int CellID, int id)
 	collider.y = y;
 	collider.vx = 0;
 	collider.vy = 0;
-	collider.width = BALL_ITEM_WIDTH;
+	collider.width = BALL_ITEM_WIDTH + 10;
 	collider.height = BALL_ITEM_HEIGHT;
 }
 
