@@ -33,6 +33,9 @@ Aladdin::Aladdin()
 	this->Attacking = false;
 	this->JumpOnBrick = false;
 	this->JumpOnRope = false;
+	this->OnCollisonRope = false;
+	this->OnTopRope= false;
+	this->OnBotRope = false;
 	this->width = ALADDIN_SPRITE_WIDTH;
 	this->height = ALADDIN_SPRITE_HEIGHT;
 
@@ -495,8 +498,14 @@ void Aladdin::LoadResources()
 #pragma region CLIMB HURT
 	anim = new Animation(100);
 
-	Sprite * climb_hurt= new Sprite(aladdin2->GetTexture(), listSprite[163], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(climb_hurt);
+	Sprite * climb_hurt_1 = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_hurt_1);
+	Sprite * climb_hurt_2 = new Sprite(aladdin2->GetTexture(), listSprite[163], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_hurt_2);
+	Sprite * climb_hurt_3 = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_hurt_3);
+	Sprite * climb_hurt_4 = new Sprite(aladdin2->GetTexture(), listSprite[163], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_hurt_4);
 
 	animations.push_back(anim);
 #pragma endregion
@@ -504,8 +513,16 @@ void Aladdin::LoadResources()
 #pragma region CLIMB JUMP
 	anim = new Animation(100);
 
-	Sprite * climb_jump= new Sprite(aladdin2->GetTexture(), listSprite[163], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(climb_jump);
+	Sprite * climb_jump_1 = new Sprite(aladdin2->GetTexture(), listSprite[200], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_jump_1);
+	Sprite * climb_jump_2 = new Sprite(aladdin2->GetTexture(), listSprite[201], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_jump_2);
+	Sprite * climb_jump_3 = new Sprite(aladdin2->GetTexture(), listSprite[202], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_jump_3);
+	Sprite * climb_jump_4 = new Sprite(aladdin2->GetTexture(), listSprite[203], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_jump_4);
+	Sprite * climb_jump_5 = new Sprite(aladdin2->GetTexture(), listSprite[204], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_jump_5);
 
 	animations.push_back(anim);
 #pragma endregion
@@ -513,8 +530,14 @@ void Aladdin::LoadResources()
 #pragma region CLIMB FALL
 	anim = new Animation(100);
 
-	Sprite * climb_fall = new Sprite(aladdin2->GetTexture(), listSprite[163], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(climb_fall);
+	Sprite * climb_fall_1 = new Sprite(aladdin2->GetTexture(), listSprite[205], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_fall_1);
+	Sprite * climb_fall_2 = new Sprite(aladdin2->GetTexture(), listSprite[206], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_fall_2);
+	Sprite * climb_fall_3 = new Sprite(aladdin2->GetTexture(), listSprite[207], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_fall_3);
+	Sprite * climb_fall_4 = new Sprite(aladdin2->GetTexture(), listSprite[208], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climb_fall_4);
 
 	animations.push_back(anim);
 #pragma endregion
@@ -522,8 +545,24 @@ void Aladdin::LoadResources()
 #pragma region CLIMBING
 	anim = new Animation(100);
 
-	Sprite * climbing = new Sprite(aladdin2->GetTexture(), listSprite[163], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(climbing);
+	Sprite * climbing_1 = new Sprite(aladdin2->GetTexture(), listSprite[164], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climbing_1);
+	Sprite * climbing_2 = new Sprite(aladdin2->GetTexture(), listSprite[165], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climbing_2);
+	Sprite * climbing_3 = new Sprite(aladdin2->GetTexture(), listSprite[166], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climbing_3);
+	Sprite * climbing_4 = new Sprite(aladdin2->GetTexture(), listSprite[167], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climbing_4);
+	Sprite * climbing_5 = new Sprite(aladdin2->GetTexture(), listSprite[168], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climbing_5);
+	Sprite * climbing_6 = new Sprite(aladdin2->GetTexture(), listSprite[169], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climbing_6);
+	Sprite * climbing_7 = new Sprite(aladdin2->GetTexture(), listSprite[170], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climbing_7);
+	Sprite * climbing_8 = new Sprite(aladdin2->GetTexture(), listSprite[171], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climbing_8);
+	Sprite * climbing_9 = new Sprite(aladdin2->GetTexture(), listSprite[172], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(climbing_9);
 
 	animations.push_back(anim);
 #pragma endregion
@@ -670,42 +709,6 @@ void Aladdin::Update(DWORD dt)
 	this->isLeft ? this->collider.x = x - 10 : this->collider.x = x;
 	this->MapCollisions(tiles, coEvents);
 
-#pragma region	ROPE
-	//  Dang xu ly va cham day xich
-	if (tilesRope.size() != 0)
-	{
-		Collider a;
-		for (int i = 0; i < tilesRope.size(); i++)
-		{
-			a.x = tilesRope.at(i)->x;
-			a.y = tilesRope.at(i)->y;
-			a.width = tilesRope.at(i)->width;
-			a.height = tilesRope.at(i)->height;
-
-			if (Collision::GetInstance()->AABB(a, this->GetCollider()) && !Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
-			{
-				//if (this->GetPositionY() <= tilesRope.at(i)->y + tilesRope.at(i)->height)
-				//{
-					if (!this->GetIsGrounded() && !this->GetIsClimb() && !this->GetJumpOnRope())
-					{
-						this->SetIsClimb(true);
-					}
-				//}
-				//else
-				//{
-				//	this->SetIsClimb(true);
-				//	this->SetSpeedY(0);
-				//}
-			}
-			else
-			{
-				this->SetIsClimb(false);
-				this->SetJumpOnRope(false);
-			}
-		}
-	}
-#pragma endregion
-
 #pragma region	BRICK & WALL
 	if (coEvents.size() == 0)
 	{
@@ -732,9 +735,12 @@ void Aladdin::Update(DWORD dt)
 		{
 			if (ny == 1)
 			{
-				this->JumpOnBrick = false;
-				this->SetIsGrounded(true);
 				this->SetIsClimb(false);
+				this->SetOnTopRope(false);
+				this->SetOnBotRope(false);
+				this->SetJumpOnRope(false);
+				this->SetJumpOnBrick(false);
+				this->SetIsGrounded(true);
 			}
 		}break;
 		case ObjectType::WALL:
@@ -749,6 +755,58 @@ void Aladdin::Update(DWORD dt)
 	}
 	for (int i = 0; i < coEvents.size(); i++)
 		delete coEvents[i];
+#pragma endregion
+
+
+#pragma region	ROPE
+
+	if (tilesRope.size() != 0)
+	{
+		Collider a;
+		for (int i = 0; i < tilesRope.size(); i++)
+		{
+			a.x = tilesRope.at(i)->x;
+			a.y = tilesRope.at(i)->y;
+			a.width = tilesRope.at(i)->width;
+			a.height = tilesRope.at(i)->height;
+
+			if (Collision::GetInstance()->AABB(a, this->GetCollider()) && !Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
+			{
+				this->SetOnCollisonRope(true);
+
+				if (!this->GetIsGrounded() && !this->GetIsClimb() && !this->GetJumpOnRope())
+				{
+					this->SetIsClimb(true);
+					this->SetPositionX(tilesRope.at(i)->x + tilesRope.at(i)->width / 2 - ALADDIN_SPRITE_WIDTH / 2);
+				}
+				if (this->GetIsClimb())
+				{
+					if (this->GetPositionY() - 30 >= tilesRope.at(i)->y)
+					{
+						this->SetOnTopRope(true);
+						this->SetJumpOnRope(true);
+					}
+					else if (this->GetPositionY() - 47 <= tilesRope.at(i)->y - tilesRope.at(i)->height)
+					{
+						this->SetOnBotRope(true);
+					}
+					else
+					{
+						this->SetOnTopRope(false);
+						this->SetOnBotRope(false);
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		this->SetIsClimb(false);
+		this->SetOnTopRope(false);
+		this->SetOnBotRope(false);
+		this->SetJumpOnRope(false);
+		this->SetOnCollisonRope(false);
+	}
 #pragma endregion
 
 #pragma endregion
