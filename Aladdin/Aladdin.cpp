@@ -889,7 +889,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}break;
 		case ObjectAndEnemies::JAFAR:
 		{
-			DebugOut(L"Aladdin touch Jafar\n");
+			//DebugOut(L"Aladdin touch Jafar\n");
 		}break;
 		}
 	}

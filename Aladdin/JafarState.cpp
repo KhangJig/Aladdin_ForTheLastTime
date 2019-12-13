@@ -13,7 +13,7 @@ JafarState *JafarState::GetInstance(Jafar *jafar)
 JafarState::JafarState(Jafar *jafar)
 {
 	this->jafar = jafar;
-	this->stateJafar = JAFAR_HIT;
+	this->stateJafar = JAFAR_IDLE;
 	this->jafar->SetSpeedX(0);
 	this->jafar->SetSpeedY(0);
 }
@@ -31,6 +31,11 @@ void JafarState::SetState(StateJafar state)
 void JafarState::stateJafarIdle()
 {
 	anim = jafar->GetAnimationsList()[JAFAR_IDLE];
+	if (abs(this->jafar->GetX() - Aladdin::GetInstance()->GetPositionX()) <= 600)
+	{
+		this->SetState(JAFAR_HIT);
+		return;
+	}
 }
 
 void JafarState::stateJafarHurt()
@@ -38,7 +43,7 @@ void JafarState::stateJafarHurt()
 	anim = jafar->GetAnimationsList()[JAFAR_HURT];
 	if (this->anim->IsDone())
 	{
-		this->SetState(JAFAR_HIT);
+		this->SetState(JAFAR_IDLE);
 		return;
 	}
 }
@@ -46,26 +51,46 @@ void JafarState::stateJafarHurt()
 void JafarState::stateJafarHit()
 {
 	anim = jafar->GetAnimationsList()[JAFAR_HIT];
+	if (abs(this->jafar->GetX() - Aladdin::GetInstance()->GetPositionX()) > 600)
+	{
+		this->SetState(JAFAR_IDLE);
+		return;
+	}
 }
 
 void JafarState::stateSnakeIdle()
 {
-
+	anim = jafar->GetAnimationsList()[SNAKE_IDLE];
+	if (abs(this->jafar->GetX() - Aladdin::GetInstance()->GetPositionX()) <= 700)
+	{
+		this->SetState(SNAKE_HIT);
+		return;
+	}
 }
 
 void JafarState::stateSnakeHurt()
 {
-
+	anim = jafar->GetAnimationsList()[SNAKE_HURT];
+	if (this->anim->IsDone())
+	{
+		this->SetState(SNAKE_IDLE);
+		return;
+	}
 }
 
 void JafarState::stateSnakeHit()
 {
-
+	anim = jafar->GetAnimationsList()[SNAKE_HIT];
+	if (abs(this->jafar->GetX() - Aladdin::GetInstance()->GetPositionX()) > 700)
+	{
+		this->SetState(SNAKE_IDLE);
+		return;
+	}
 }
 
 void JafarState::stateDead() 
 {
-
+	// Dead
 }
 
 void JafarState::Colision()
@@ -119,8 +144,8 @@ void JafarState::Render()
 	SpriteData spriteData;
 	if (this->jafar != NULL)
 	{
-		spriteData.width = JAFAR_SPRITE_WIDTH;
-		spriteData.height = JAFAR_SPRITE_HEIGHT;
+		spriteData.width = this->jafar->GetSnakePower() ? SNAKE_SPRITE_WIDTH : JAFAR_SPRITE_WIDTH;
+		spriteData.height = this->jafar->GetSnakePower() ? SNAKE_SPRITE_HEIGHT : JAFAR_SPRITE_HEIGHT;
 		spriteData.x = jafar->GetX();
 		spriteData.y = jafar->GetY();
 		spriteData.scale = 1;

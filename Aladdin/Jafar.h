@@ -18,6 +18,7 @@ class Jafar : public GameObject
 	int HP;
 	int Dmg;
 
+	bool SnakePower;
 public:
 
 	Jafar(int x, int y);
@@ -30,6 +31,8 @@ public:
 	int GetHP() { return this->HP; }
 	void SetDmg(int dmg) { this->Dmg = dmg; }
 	int GetDmg() { return this->Dmg; }
+	void SetSnakePower(int power) { this->SnakePower = power; }
+	bool GetSnakePower() { return this->SnakePower; }
 
 	static void LoadResources();
 
