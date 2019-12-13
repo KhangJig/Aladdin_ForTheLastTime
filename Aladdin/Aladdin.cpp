@@ -758,6 +758,23 @@ void Aladdin::Update(DWORD dt)
 	apple->UpdateCollision(tiles);
 	state->Colision();
 	state->Update(dt);
+
+#pragma region Set new area when aladdin is attacking
+	if (this->GetAttacking())
+	{
+		if (this->isLeft)
+			collider.x = x - 35;
+		collider.width = ALADDIN_SPRITE_WIDTH + 35;
+		collider.width = ALADDIN_SPRITE_HEIGHT + 10;
+	}
+	else
+	{
+		collider.x = x;
+		collider.width = ALADDIN_SPRITE_WIDTH;
+		collider.width = ALADDIN_SPRITE_HEIGHT;
+	}
+#pragma endregion
+
 }
 
 void Aladdin::UpdateCollision(DWORD dt)
