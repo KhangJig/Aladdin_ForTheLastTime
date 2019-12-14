@@ -9,9 +9,11 @@
 #include "Aladdin.h"
 
 #include "Guard1.h"
+#include "Jafar.h"
+
 #include "AppleItem.h"
 #include "DiamondItem.h"
-#include "Jafar.h"
+#include "GenieFaceItem.h"
 
 #include "ThornObject.h"
 #include "BallObject.h"

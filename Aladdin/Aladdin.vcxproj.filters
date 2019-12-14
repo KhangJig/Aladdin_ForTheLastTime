@@ -162,6 +162,9 @@
     <ClCompile Include="BrickInObject.cpp">
       <Filter>GameObjects\DynamicObjects</Filter>
     </ClCompile>
+    <ClCompile Include="GenieFaceItem.cpp">
+      <Filter>GameObjects\Items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h">
@@ -280,6 +283,9 @@
     </ClInclude>
     <ClInclude Include="BrickInObject.h">
       <Filter>GameObjects\DynamicObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GenieFaceItem.h">
+      <Filter>GameObjects\Items</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

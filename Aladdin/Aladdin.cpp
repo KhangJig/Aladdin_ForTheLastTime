@@ -1100,6 +1100,12 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}break;
 		case ObjectAndEnemies::GENIE_FACE:
 		{
+			Sound::GetInstance()->PlaySound(appleCollect);
+			Grid::GetInstance()->SetisLifeListObject(((GenieFaceItem*)listUpdateObject.at(i).object)->GetID(), false);
+			itemEffect->SetPos(listUpdateObject.at(i).ene.x, listUpdateObject.at(i).ene.y, false);
+		}break;
+		case ObjectAndEnemies::EXTRA_HEART:
+		{
 
 		}break;
 		case ObjectAndEnemies::SHOP:

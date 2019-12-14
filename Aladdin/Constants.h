@@ -46,6 +46,7 @@ enum ObjectAndEnemies
 	DIAMOND,
 	BOTTLE,
 	GENIE_FACE,
+	EXTRA_HEART,
 	SHOP,
 	JAFAR
 };
@@ -133,6 +134,8 @@ enum ObjectAndEnemies
 #define APPLE_ITEM_HEIGHT 11
 #define DIAMOND_ITEM_WIDTH 17
 #define DIAMOND_ITEM_HEIGHT 15
+#define GENIE_FACE_ITEM_WIDTH 38
+#define GENIE_FACE_ITEM_HEIGHT 49
 
 // Map Objects
 #define MAPOBJECTS_TEXTURE_LOCATION L"Resource\\Background\\MapObjects.png"

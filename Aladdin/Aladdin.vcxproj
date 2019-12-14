@@ -167,6 +167,7 @@
     <ClCompile Include="AppleMenu.cpp" />
     <ClCompile Include="BallObject.cpp" />
     <ClCompile Include="BrickOutObject.cpp" />
+    <ClCompile Include="GenieFaceItem.cpp" />
     <ClCompile Include="Jafar.cpp" />
     <ClCompile Include="BrickInObject.cpp" />
     <ClCompile Include="Debug.cpp" />
@@ -209,6 +210,7 @@
     <ClInclude Include="AppleMenu.h" />
     <ClInclude Include="BallObject.h" />
     <ClInclude Include="BrickOutObject.h" />
+    <ClInclude Include="GenieFaceItem.h" />
     <ClInclude Include="Jafar.h" />
     <ClInclude Include="BrickInObject.h" />
     <ClInclude Include="CollideEvent.h" />
