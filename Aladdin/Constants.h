@@ -136,6 +136,8 @@ enum ObjectAndEnemies
 #define DIAMOND_ITEM_HEIGHT 15
 #define GENIE_FACE_ITEM_WIDTH 38
 #define GENIE_FACE_ITEM_HEIGHT 49
+#define EXTRA_HEART_ITEM_WIDTH 19
+#define EXTRA_HEART_ITEM_HEIGHT 23
 
 // Map Objects
 #define MAPOBJECTS_TEXTURE_LOCATION L"Resource\\Background\\MapObjects.png"

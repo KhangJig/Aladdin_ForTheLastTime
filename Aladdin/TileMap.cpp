@@ -167,9 +167,9 @@ void TileMap::LoadEnemies(LPCWSTR filePath, int mapId)
 		case 12:
 			enemies.SpawnObjectID = ObjectAndEnemies::GENIE_FACE; break;
 		case 13:
-			enemies.SpawnObjectID = ObjectAndEnemies::SHOP; break;
-		case 14:
 			enemies.SpawnObjectID = ObjectAndEnemies::EXTRA_HEART; break;
+		case 14:
+			enemies.SpawnObjectID = ObjectAndEnemies::SHOP; break;
 		case 15:
 			enemies.SpawnObjectID = ObjectAndEnemies::JAFAR; break;
 		}
