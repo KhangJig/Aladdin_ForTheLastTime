@@ -1016,20 +1016,49 @@ void Aladdin::UpdateCollision(DWORD dt)
 				Sound::GetInstance()->PlaySound(aladdinHurt);
 			}
 		}break;
-		case ObjectAndEnemies::WALL_BRICK:
+		case ObjectAndEnemies::BRICK_IN:
 		{
 			if (this->JumpOnBrick)
 			{
-				if (((BrickObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 2 ||
-					((BrickObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 3 ||
-					((BrickObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 4 ||
-					((BrickObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 5 )
+				if (((BrickInObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 2 ||
+					((BrickInObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 3 ||
+					((BrickInObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 4 ||
+					((BrickInObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 5 )
 				{
-					if(this->GetPositionY() - ALADDIN_SPRITE_HEIGHT + 25 >= ((BrickObject*)listUpdateObject.at(i).object)->GetY() && !Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
+					if(this->GetPositionY() - ALADDIN_SPRITE_HEIGHT + 25 >= ((BrickInObject*)listUpdateObject.at(i).object)->GetY() && !Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
 					{
 						this->state->SetState(STAND_ON_BRICK);
 						this->state->stateStandOnBrick();
-						this->SetPositionY(((BrickObject*)listUpdateObject.at(i).object)->GetY() + ALADDIN_SPRITE_HEIGHT -1);
+						this->SetPositionY(((BrickInObject*)listUpdateObject.at(i).object)->GetY() + ALADDIN_SPRITE_HEIGHT -1);
+						this->SetIsGrounded(true);
+					}
+				}
+				else
+				{
+					if (this->state->GetState() == STAND_ON_BRICK)
+					{
+						this->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+						this->state->SetState(STATE_FALL);
+						this->state->stateFalling();
+					}
+				}
+			}
+
+		}break;
+		case ObjectAndEnemies::BRICK_OUT:
+		{
+			if (this->JumpOnBrick)
+			{
+				if (((BrickOutObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 0 ||
+					((BrickOutObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 1 ||
+					((BrickOutObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 7 ||
+					((BrickOutObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 8)
+				{
+					if (this->GetPositionY() - ALADDIN_SPRITE_HEIGHT + 25 >= ((BrickOutObject*)listUpdateObject.at(i).object)->GetY() && !Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
+					{
+						this->state->SetState(STAND_ON_BRICK);
+						this->state->stateStandOnBrick();
+						this->SetPositionY(((BrickOutObject*)listUpdateObject.at(i).object)->GetY() + ALADDIN_SPRITE_HEIGHT - 1);
 						this->SetIsGrounded(true);
 					}
 				}

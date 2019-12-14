@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "Debug.h"
 
-class BrickObject : public GameObject
+class BrickInObject : public GameObject
 {
 	static vector<Animation *> animations;
 
@@ -13,7 +13,7 @@ class BrickObject : public GameObject
 	int id;
 
 public:
-	BrickObject(int x, int y, int CellID, int id);
+	BrickInObject(int x, int y, int CellID, int id);
 
 	void SetPos(int x, int y) { this->x = x; this->y = y; }
 
@@ -33,5 +33,5 @@ public:
 
 	void Render();
 
-	~BrickObject();
+	~BrickInObject();
 };

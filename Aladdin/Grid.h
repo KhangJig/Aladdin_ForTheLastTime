@@ -15,7 +15,8 @@
 
 #include "ThornObject.h"
 #include "BallObject.h"
-#include "BrickObject.h"
+#include "BrickInObject.h"
+#include "BrickOutObject.h"
 
 #include "AppleEffect.h"
 #include "EnemiesDeadEffect.h"

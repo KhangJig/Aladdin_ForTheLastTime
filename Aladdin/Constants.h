@@ -40,7 +40,8 @@ enum ObjectAndEnemies
 	BAT,
 	THORN, 	// Objects
 	BALL,
-	WALL_BRICK,
+	BRICK_IN,
+	BRICK_OUT,
 	APPLE, 	// Items
 	DIAMOND,
 	BOTTLE,

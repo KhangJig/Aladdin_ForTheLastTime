@@ -1,9 +1,9 @@
-#include "BrickObject.h"
+#include "BrickInObject.h"
 #include "Guard1State.h"
 
-vector<Animation *> BrickObject::animations = vector<Animation *>();
+vector<Animation *> BrickInObject::animations = vector<Animation *>();
 
-BrickObject::BrickObject(int x, int y, int CellID, int id)
+BrickInObject::BrickInObject(int x, int y, int CellID, int id)
 {
 	this->x = x;
 	this->y = y;
@@ -18,7 +18,7 @@ BrickObject::BrickObject(int x, int y, int CellID, int id)
 	collider.height = BRICK_ITEM_HEIGHT;
 }
 
-void BrickObject::LoadResources(RECT* listSprite, Sprite * items)
+void BrickInObject::LoadResources(RECT* listSprite, Sprite * items)
 {
 	Animation * anim = new Animation(700);
 	Sprite *brick_1 = new Sprite(items->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR_6);
@@ -43,12 +43,12 @@ void BrickObject::LoadResources(RECT* listSprite, Sprite * items)
 	animations.push_back(anim);
 }
 
-void BrickObject::Update(DWORD dt)
+void BrickInObject::Update(DWORD dt)
 {
 
 }
 
-void BrickObject::Render()
+void BrickInObject::Render()
 {
 	SpriteData spriteData;
 
@@ -65,7 +65,7 @@ void BrickObject::Render()
 	this->animations[0]->Render(spriteData);
 }
 
-BrickObject::~BrickObject()
+BrickInObject::~BrickInObject()
 {
 
 }

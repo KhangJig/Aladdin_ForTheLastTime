@@ -28,7 +28,8 @@ Grid::Grid()
 
 	ThornObject::LoadResources(listSprite, sprites);
 	BallObject::LoadResources(listSprite, sprites);
-	BrickObject::LoadResources(listSprite, sprites);
+	BrickInObject::LoadResources(listSprite, sprites);
+	BrickOutObject::LoadResources(listSprite, sprites);
 
 	AppleEffect::LoadResources();
 	EnemiesDeadEffect::LoadResources();
@@ -267,9 +268,14 @@ void Grid::Update(DWORD dt)
 						listObject.at(i).object = new BallObject(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
 						listObject.at(i).isGenerated = true;
 					}break;
-					case ObjectAndEnemies::WALL_BRICK:
+					case ObjectAndEnemies::BRICK_IN:
 					{
-						listObject.at(i).object = new BrickObject(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
+						listObject.at(i).object = new BrickInObject(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
+						listObject.at(i).isGenerated = true;
+					}break;
+					case ObjectAndEnemies::BRICK_OUT:
+					{
+						listObject.at(i).object = new BrickOutObject(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
 						listObject.at(i).isGenerated = true;
 					}break;
 					case ObjectAndEnemies::APPLE:

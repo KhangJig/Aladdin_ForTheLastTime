@@ -138,9 +138,6 @@
     <ClCompile Include="BallObject.cpp">
       <Filter>GameObjects\DynamicObjects</Filter>
     </ClCompile>
-    <ClCompile Include="BrickObject.cpp">
-      <Filter>GameObjects\DynamicObjects</Filter>
-    </ClCompile>
     <ClCompile Include="HP.cpp">
       <Filter>GameObjects\GameMenu</Filter>
     </ClCompile>
@@ -158,6 +155,12 @@
     </ClCompile>
     <ClCompile Include="JafarState.cpp">
       <Filter>GameObjects\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="BrickOutObject.cpp">
+      <Filter>GameObjects\DynamicObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="BrickInObject.cpp">
+      <Filter>GameObjects\DynamicObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -254,9 +257,6 @@
     <ClInclude Include="BallObject.h">
       <Filter>GameObjects\DynamicObjects</Filter>
     </ClInclude>
-    <ClInclude Include="BrickObject.h">
-      <Filter>GameObjects\DynamicObjects</Filter>
-    </ClInclude>
     <ClInclude Include="HP.h">
       <Filter>GameObjects\GameMenu</Filter>
     </ClInclude>
@@ -274,6 +274,12 @@
     </ClInclude>
     <ClInclude Include="JafarState.h">
       <Filter>GameObjects\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickOutObject.h">
+      <Filter>GameObjects\DynamicObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickInObject.h">
+      <Filter>GameObjects\DynamicObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

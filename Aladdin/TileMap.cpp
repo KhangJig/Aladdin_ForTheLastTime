@@ -155,18 +155,20 @@ void TileMap::LoadEnemies(LPCWSTR filePath, int mapId)
 		case 6:
 			enemies.SpawnObjectID = ObjectAndEnemies::BALL; break;
 		case 7:
-			enemies.SpawnObjectID = ObjectAndEnemies::WALL_BRICK; break;
+			enemies.SpawnObjectID = ObjectAndEnemies::BRICK_IN; break; 
 		case 8:
-			enemies.SpawnObjectID = ObjectAndEnemies::APPLE; break;
+			enemies.SpawnObjectID = ObjectAndEnemies::BRICK_OUT; break;
 		case 9:
-			enemies.SpawnObjectID = ObjectAndEnemies::DIAMOND; break;
+			enemies.SpawnObjectID = ObjectAndEnemies::APPLE; break;
 		case 10:
-			enemies.SpawnObjectID = ObjectAndEnemies::BOTTLE; break;
+			enemies.SpawnObjectID = ObjectAndEnemies::DIAMOND; break;
 		case 11:
-			enemies.SpawnObjectID = ObjectAndEnemies::GENIE_FACE; break;
+			enemies.SpawnObjectID = ObjectAndEnemies::BOTTLE; break;
 		case 12:
-			enemies.SpawnObjectID = ObjectAndEnemies::SHOP; break;		
+			enemies.SpawnObjectID = ObjectAndEnemies::GENIE_FACE; break;
 		case 13:
+			enemies.SpawnObjectID = ObjectAndEnemies::SHOP; break;		
+		case 14:
 			enemies.SpawnObjectID = ObjectAndEnemies::JAFAR; break;
 		}
 
