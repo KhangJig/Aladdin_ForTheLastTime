@@ -740,6 +740,19 @@ void AladdinState::stateDead()
 			this->aladdin->ResetHP();
 			this->aladdin->ResetPosisionAladdin();
 			this->aladdin->ResetPosisionCamera();
+			this->SetState(STATE_GENERIC);
+			return;
+		}
+	}
+}
+
+void AladdinState::stateGeneric()
+{
+	anim = aladdin->GetAnimationsList()[STATE_GENERIC];
+	if (this->anim->IsDone())
+	{
+		if (this->aladdin->GetLifeNumber() > 0)
+		{
 			this->SetState(IDLE_STAND);
 			return;
 		}
@@ -1031,6 +1044,10 @@ void AladdinState::Update(DWORD dt)
 
 	case STATE_DEAD:
 		this->stateDead();
+		break;
+
+	case STATE_GENERIC:
+		this->stateGeneric();
 		break;
 
 	case STATE_RUN_HIT:

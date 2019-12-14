@@ -32,6 +32,7 @@ enum StateAladdin
 	STATE_CLIMB_HIT,
 	STATE_CLIMB_THROW,
 	STATE_DEAD,
+	STATE_GENERIC,
 	STATE_RUN_HIT,
 	STATE_RUN_THROW,
 	STAND_ON_BRICK
@@ -84,6 +85,7 @@ public:
 	void stateClimbHit();
 	void stateClimbThrow();
 	void stateDead();
+	void stateGeneric();
 	void stateRunHit();
 	void stateRunThrow();
 	void stateStandOnBrick();

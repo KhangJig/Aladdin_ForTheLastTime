@@ -611,8 +611,8 @@ void Aladdin::LoadResources()
 	animations.push_back(anim);
 #pragma endregion
 
-#pragma region CLIMB DEAD
-	anim = new Animation(100);
+#pragma region DEAD
+	anim = new Animation(200);
 
 	Sprite * dead_1 = new Sprite(aladdin2->GetTexture(), listSprite[215], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(dead_1);
@@ -644,6 +644,40 @@ void Aladdin::LoadResources()
 	animations.push_back(anim);
 #pragma endregion
 
+#pragma region GENERIC
+	anim = new Animation(100);
+
+	Sprite * generic_1 = new Sprite(aladdin2->GetTexture(), listSprite[243], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(generic_1);
+	Sprite * generic_2 = new Sprite(aladdin2->GetTexture(), listSprite[244], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(generic_2);
+	Sprite * generic_3 = new Sprite(aladdin2->GetTexture(), listSprite[245], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(generic_3);
+	Sprite * generic_4 = new Sprite(aladdin2->GetTexture(), listSprite[246], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(generic_4);
+	Sprite * generic_5 = new Sprite(aladdin2->GetTexture(), listSprite[247], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(generic_5);
+	Sprite * generic_6 = new Sprite(aladdin2->GetTexture(), listSprite[248], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(generic_6);
+	Sprite * generic_7 = new Sprite(aladdin2->GetTexture(), listSprite[249], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(generic_7);
+	Sprite * generic_8 = new Sprite(aladdin2->GetTexture(), listSprite[250], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(generic_8);
+	Sprite * generic_9 = new Sprite(aladdin2->GetTexture(), listSprite[251], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(generic_9);
+	Sprite * generic_10 = new Sprite(aladdin2->GetTexture(), listSprite[252], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(generic_10);
+	Sprite * generic_11 = new Sprite(aladdin2->GetTexture(), listSprite[253], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(generic_11);
+	Sprite * generic_12 = new Sprite(aladdin2->GetTexture(), listSprite[254], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(generic_12);
+	Sprite * generic_13 = new Sprite(aladdin2->GetTexture(), listSprite[255], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(generic_13);
+	Sprite * generic_14 = new Sprite(aladdin2->GetTexture(), listSprite[256], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(generic_14);
+
+	animations.push_back(anim);
+#pragma endregion
 
 	listSprite = loadTXT.LoadRect((char*)"Resource\\Character\\run-hit-n-throw.txt");
 	Sprite * aladdin3 = new Sprite(ALADDIN_TEXTURE_LOCATION2, TEXTURE_TRANS_COLOR_2);
@@ -1141,7 +1175,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 		{
 			if (!((BottleItem*)listUpdateObject.at(i).object)->GetCheck())
 			{
-				this->GeneratePosX = this->GetPositionX();
+				this->GeneratePosX = this->GetPositionX() + BOTTLE_ITEM_WIDTH / 2;
 				this->GeneratePosY = this->GetPositionY();
 				this->GeneratePosCameraX = Viewport::GetInstance()->GetX();
 				this->GeneratePosCameraY = Viewport::GetInstance()->GetY();
