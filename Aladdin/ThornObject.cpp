@@ -23,7 +23,7 @@ ThornObject::ThornObject(int x, int y, int CellID, int id)
 
 void ThornObject::LoadResources(RECT* listSprite, Sprite * items)
 {
-	Animation * anim = new Animation(3000);
+	Animation * anim = new Animation(200);
 	Sprite *thorn_idle_1 = new Sprite(items->GetTexture(), listSprite[5], TEXTURE_TRANS_COLOR_6);
 	anim->AddFrame(thorn_idle_1);
 	animations.push_back(anim);
