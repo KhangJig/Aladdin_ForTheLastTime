@@ -1078,7 +1078,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 		{
 			Sound::GetInstance()->PlaySound(appleCollect);
 			Grid::GetInstance()->SetisLifeListObject(((AppleItem*)listUpdateObject.at(i).object)->GetID(), false);
-			itemEffect->SetPos(listUpdateObject.at(i).ene.x, listUpdateObject.at(i).ene.y, false);
+			itemEffect->SetPos(listUpdateObject.at(i).ene.x + APPLE_ITEM_WIDTH / 2, listUpdateObject.at(i).ene.y, false);
 			if (this->AppleNumber < 100)
 			{
 				this->AppleNumber++;
@@ -1087,7 +1087,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 		case ObjectAndEnemies::DIAMOND:
 		{
 			Grid::GetInstance()->SetisLifeListObject(((DiamondItem*)listUpdateObject.at(i).object)->GetID(), false);
-			itemEffect->SetPos(listUpdateObject.at(i).ene.x, listUpdateObject.at(i).ene.y, false);
+			itemEffect->SetPos(listUpdateObject.at(i).ene.x + DIAMOND_ITEM_WIDTH / 2, listUpdateObject.at(i).ene.y, false);
 			Sound::GetInstance()->PlaySound(gemCollect);
 			if (this->DiamondNumber < 100)
 			{
@@ -1100,20 +1100,24 @@ void Aladdin::UpdateCollision(DWORD dt)
 			{
 				((BottleItem*)listUpdateObject.at(i).object)->SetCheck(true);
 				Sound::GetInstance()->PlaySound(appleCollect);
-				itemEffect->SetPos(listUpdateObject.at(i).ene.x, listUpdateObject.at(i).ene.y, false);
+				itemEffect->SetPos(listUpdateObject.at(i).ene.x + BOTTLE_ITEM_WIDTH / 2, listUpdateObject.at(i).ene.y, false);
 			}
 		}break;
 		case ObjectAndEnemies::GENIE_FACE:
 		{
 			Sound::GetInstance()->PlaySound(appleCollect);
 			Grid::GetInstance()->SetisLifeListObject(((GenieFaceItem*)listUpdateObject.at(i).object)->GetID(), false);
-			itemEffect->SetPos(listUpdateObject.at(i).ene.x, listUpdateObject.at(i).ene.y, false);
+			itemEffect->SetPos(listUpdateObject.at(i).ene.x + GENIE_FACE_ITEM_WIDTH / 2, listUpdateObject.at(i).ene.y, false);
 		}break;
 		case ObjectAndEnemies::EXTRA_HEART:
 		{
 			Sound::GetInstance()->PlaySound(appleCollect);
 			Grid::GetInstance()->SetisLifeListObject(((ExtraHeartItem*)listUpdateObject.at(i).object)->GetID(), false);
-			itemEffect->SetPos(listUpdateObject.at(i).ene.x, listUpdateObject.at(i).ene.y, false);
+			itemEffect->SetPos(listUpdateObject.at(i).ene.x + EXTRA_HEART_ITEM_WIDTH / 2, listUpdateObject.at(i).ene.y, false);
+			if (this->LifeNumber < 100)
+			{
+				this->LifeNumber++;
+			}
 		}break;
 		case ObjectAndEnemies::SHOP:
 		{

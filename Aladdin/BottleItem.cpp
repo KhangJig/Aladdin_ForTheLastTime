@@ -32,27 +32,36 @@ void BottleItem::LoadResources(RECT* listSprite, Sprite * items)
 	Sprite *bottle_active_1 = new Sprite(items->GetTexture(), listSprite[35], TEXTURE_TRANS_COLOR_5);
 	anim->AddFrame(bottle_active_1);
 	Sprite *bottle_active_2 = new Sprite(items->GetTexture(), listSprite[36], TEXTURE_TRANS_COLOR_5);
+	bottle_active_2->SetOffSetX(2);
 	anim->AddFrame(bottle_active_2);
 	Sprite *bottle_active_3 = new Sprite(items->GetTexture(), listSprite[37], TEXTURE_TRANS_COLOR_5);
+	bottle_active_3->SetOffSetX(6);
 	anim->AddFrame(bottle_active_3);
 	Sprite *bottle_active_4 = new Sprite(items->GetTexture(), listSprite[38], TEXTURE_TRANS_COLOR_5);
 	anim->AddFrame(bottle_active_4);
 	Sprite *bottle_active_5 = new Sprite(items->GetTexture(), listSprite[39], TEXTURE_TRANS_COLOR_5);
+	bottle_active_5->SetOffSetX(2);
 	anim->AddFrame(bottle_active_5);
 	Sprite *bottle_active_6 = new Sprite(items->GetTexture(), listSprite[40], TEXTURE_TRANS_COLOR_5);
+	bottle_active_6->SetOffSetX(5);
 	anim->AddFrame(bottle_active_6);
 	Sprite *bottle_active_7 = new Sprite(items->GetTexture(), listSprite[41], TEXTURE_TRANS_COLOR_5);
+	bottle_active_7->SetOffSetX(2);
 	anim->AddFrame(bottle_active_7);
 	Sprite *bottle_active_8 = new Sprite(items->GetTexture(), listSprite[42], TEXTURE_TRANS_COLOR_5);
+	bottle_active_8->SetOffSetX(2);
 	anim->AddFrame(bottle_active_8);
 	Sprite *bottle_active_9 = new Sprite(items->GetTexture(), listSprite[43], TEXTURE_TRANS_COLOR_5);
+	bottle_active_9->SetOffSetX(3);
 	anim->AddFrame(bottle_active_9);
 	Sprite *bottle_active_10 = new Sprite(items->GetTexture(), listSprite[44], TEXTURE_TRANS_COLOR_5);
+	bottle_active_10->SetOffSetX(2);
 	anim->AddFrame(bottle_active_10);
 	animations.push_back(anim);
 
 	anim = new Animation(1000);
 	Sprite *bottle_actived = new Sprite(items->GetTexture(), listSprite[44], TEXTURE_TRANS_COLOR_5);
+	bottle_actived->SetOffSetX(2);
 	anim->AddFrame(bottle_actived);
 
 	animations.push_back(anim);

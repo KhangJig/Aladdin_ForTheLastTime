@@ -46,12 +46,15 @@ void GenieFaceItem::LoadResources(RECT* listSprite, Sprite * items)
 	anim->AddFrame(genie_face_7);
 	animations.push_back(anim);
 
-	anim = new Animation(270);
+	anim = new Animation(150);
 	Sprite *genie2_face_2 = new Sprite(items->GetTexture(), listSprite[3], TEXTURE_TRANS_COLOR_5);
+	genie2_face_2->SetOffSetX(2);
 	anim->AddFrame(genie2_face_2);
 	Sprite *genie2_face_3 = new Sprite(items->GetTexture(), listSprite[4], TEXTURE_TRANS_COLOR_5);
+	genie2_face_3->SetOffSetX(2);
 	anim->AddFrame(genie2_face_3);
 	Sprite *genie2_face_4 = new Sprite(items->GetTexture(), listSprite[5], TEXTURE_TRANS_COLOR_5);
+	genie2_face_4->SetOffSetX(5);
 	anim->AddFrame(genie2_face_4);
 	animations.push_back(anim);
 }

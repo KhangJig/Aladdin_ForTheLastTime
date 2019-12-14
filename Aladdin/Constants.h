@@ -141,6 +141,11 @@ enum ObjectAndEnemies
 #define BOTTLE_ITEM_WIDTH 19
 #define BOTTLE_ITEM_HEIGHT 32
 
+// Peddler Shop
+#define PEDDLER_SHOP_TEXTURE_LOCATION L"Resource\\Miscellaneous\\Peddler.png"
+#define PEDDLER_SHOP_WIDTH 135
+#define PEDDLER_SHOP_HEIGHT 74
+
 // Map Objects
 #define MAPOBJECTS_TEXTURE_LOCATION L"Resource\\Background\\MapObjects.png"
 #define THORN_ITEM_WIDTH 23
