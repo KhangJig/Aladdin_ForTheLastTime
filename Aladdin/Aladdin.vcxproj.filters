@@ -192,6 +192,12 @@
     <ClCompile Include="Skeleton.cpp">
       <Filter>GameObjects\Enemies\Skeleton</Filter>
     </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>GameObjects\Enemies\Bat</Filter>
+    </ClCompile>
+    <ClCompile Include="BatState.cpp">
+      <Filter>GameObjects\Enemies\Bat</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h">
@@ -331,6 +337,12 @@
     </ClInclude>
     <ClInclude Include="Skeleton.h">
       <Filter>GameObjects\Enemies\Skeleton</Filter>
+    </ClInclude>
+    <ClInclude Include="BatState.h">
+      <Filter>GameObjects\Enemies\Bat</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat.h">
+      <Filter>GameObjects\Enemies\Bat</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

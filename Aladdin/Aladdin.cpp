@@ -740,6 +740,13 @@ void Aladdin::LoadResources()
 
 	animations.push_back(anim);
 #pragma endregion
+
+#pragma region NONE
+	anim = new Animation(80);
+	Sprite * none = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(none);
+	animations.push_back(anim);
+#pragma endregion
 }
 
 void Aladdin::Reset()
@@ -1075,7 +1082,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}break;
 		case ObjectAndEnemies::BAT:
 		{
-
+			DebugOut(L"ASDASDASDA\n");
 		}break;
 		case ObjectAndEnemies::THORN:
 		{

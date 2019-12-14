@@ -748,14 +748,18 @@ void AladdinState::stateDead()
 
 void AladdinState::stateGeneric()
 {
-	anim = aladdin->GetAnimationsList()[STATE_GENERIC];
-	if (this->anim->IsDone())
+	if (this->aladdin->GetLifeNumber() > 0)
 	{
-		if (this->aladdin->GetLifeNumber() > 0)
+		anim = aladdin->GetAnimationsList()[STATE_GENERIC];
+		if (this->anim->IsDone())
 		{
 			this->SetState(IDLE_STAND);
 			return;
 		}
+	}
+	else 
+	{
+		anim = aladdin->GetAnimationsList()[NONE];
 	}
 }
 

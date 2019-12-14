@@ -111,6 +111,12 @@ enum ObjectAndEnemies
 #define SKELETON_SPRITE_WIDTH 44
 #define SKELETON_SPRITE_HEIGHT 52
 
+#define BAT_SPRITE_WIDTH 23
+#define BAT_SPRITE_HEIGHT 14
+#define BAT_SPEED_X 0.025f
+#define BAT_SPEED_Y 0.175f
+#define BAT_DIE_BY_APPLE 0.45f
+
 // Jafar
 #define JAFAR_TEXTURE_SPRITE  L"Resource\\Boss\\Jafar.png"
 #define JAFAR_SPRITE_WIDTH 57

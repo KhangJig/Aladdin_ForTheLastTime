@@ -11,6 +11,7 @@
 #include "Guard1.h"
 #include "Guard2.h"
 #include "Skeleton.h"
+#include "Bat.h"
 #include "Jafar.h"
 
 #include "AppleItem.h"

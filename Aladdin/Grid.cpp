@@ -41,6 +41,7 @@ Grid::Grid()
 	Guard1::LoadResources();
 	Guard2::LoadResources();
 	Skeleton::LoadResources();
+	Bat::LoadResources();
 	Jafar::LoadResources();
 }
 
@@ -265,7 +266,9 @@ void Grid::Update(DWORD dt)
 					}break;
 					case ObjectAndEnemies::BAT:
 					{
-
+						DebugOut(L"Bat Created!\n");
+						listObject.at(i).object = new Bat(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
+						listObject.at(i).isGenerated = true;
 					}break;
 					case ObjectAndEnemies::THORN:
 					{

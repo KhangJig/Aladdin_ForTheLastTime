@@ -35,7 +35,8 @@ enum StateAladdin
 	STATE_GENERIC,
 	STATE_RUN_HIT,
 	STATE_RUN_THROW,
-	STAND_ON_BRICK
+	STAND_ON_BRICK,
+	NONE
 };
 
 class AladdinState : public State

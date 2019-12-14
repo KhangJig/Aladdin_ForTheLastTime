@@ -166,6 +166,8 @@
     <ClCompile Include="AppleItem.cpp" />
     <ClCompile Include="AppleMenu.cpp" />
     <ClCompile Include="BallObject.cpp" />
+    <ClCompile Include="Bat.cpp" />
+    <ClCompile Include="BatState.cpp" />
     <ClCompile Include="BottleItem.cpp" />
     <ClCompile Include="BrickOutObject.cpp" />
     <ClCompile Include="ExtraHeartItem.cpp" />
@@ -215,6 +217,8 @@
     <ClInclude Include="AppleItem.h" />
     <ClInclude Include="AppleMenu.h" />
     <ClInclude Include="BallObject.h" />
+    <ClInclude Include="Bat.h" />
+    <ClInclude Include="BatState.h" />
     <ClInclude Include="BottleItem.h" />
     <ClInclude Include="BrickOutObject.h" />
     <ClInclude Include="ExtraHeartItem.h" />
