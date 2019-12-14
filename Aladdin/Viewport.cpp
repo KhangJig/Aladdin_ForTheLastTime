@@ -49,6 +49,14 @@ void Viewport::Reset()
 		y = 225;
 	}
 }
+void Viewport::ResetPosision(int x, int y)
+{
+	width = SCREEN_WIDTH;
+	height = SCREEN_HEIGHT;
+
+	this->x = x;
+	this->y = y;
+}
 
 void Viewport::Update(DWORD dt)
 {

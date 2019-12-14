@@ -71,6 +71,11 @@ class Aladdin : public GameObject
 	bool OnTopRope;
 	bool OnBotRope;
 
+	int GeneratePosX;
+	int GeneratePosY;
+	int GeneratePosCameraX;
+	int GeneratePosCameraY;
+
 	int LV;
 
 public:
@@ -130,6 +135,21 @@ public:
 
 	int GetAladdinHP() { return this->AladdinHP; }
 	int GetDmgAttack() { return this->DmgAttack; }
+
+	void ResetHP() { this->AladdinHP = 500; }
+	void ResetSettings() 
+	{
+		this->Attacking = false;
+		this->JumpOnBrick = false;
+		this->JumpOnRope = false;
+		this->OnCollisonRope = false;
+		this->OnTopRope = false;
+		this->OnBotRope = false;
+		this->isApple = false;
+	}
+
+	void ResetPosisionAladdin() { this->x = this->GeneratePosX; this->y = this->GeneratePosY; }
+	void ResetPosisionCamera() { Viewport::GetInstance()->ResetPosision(this->GeneratePosCameraX, this->GeneratePosCameraY); }
 
 	void SetAladdinHP(int hp) { this->AladdinHP = hp; }
 	void SetDmgAttack(int dmg) { this->DmgAttack = dmg; }

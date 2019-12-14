@@ -45,9 +45,12 @@ void Guard1State::stateIdle()
 		}
 		if (abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) <= 50 )
 		{
-			Sound::GetInstance()->PlaySound(this->guard1->GetSoundGuardHit());
-			anim->Reset();
-			this->SetState(GUARD1_HIT);
+			if (Aladdin::GetInstance()->GetAladdinHP() > 0)
+			{
+				Sound::GetInstance()->PlaySound(this->guard1->GetSoundGuardHit());
+				anim->Reset();
+				this->SetState(GUARD1_HIT);
+			}
 			return;
 		}
 	}
@@ -92,9 +95,12 @@ void Guard1State::stateWalking()
 
 	if (abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) < 50 )
 	{
-		Sound::GetInstance()->PlaySound(this->guard1->GetSoundGuardHit());
-		anim->Reset();
-		this->SetState(GUARD1_HIT);
+		if (Aladdin::GetInstance()->GetAladdinHP() > 0)
+		{
+			Sound::GetInstance()->PlaySound(this->guard1->GetSoundGuardHit());
+			anim->Reset();
+			this->SetState(GUARD1_HIT);
+		}
 		return;
 	}
 }

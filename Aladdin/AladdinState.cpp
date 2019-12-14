@@ -727,6 +727,25 @@ void AladdinState::stateClimbThrow()
 }
 // ...
 
+void AladdinState::stateDead()
+{
+	this->aladdin->SetSpeedX(0);
+	this->aladdin->SetSpeedY(0);
+	anim = aladdin->GetAnimationsList()[STATE_DEAD];
+	if (this->anim->IsDone())
+	{
+		if (this->aladdin->GetLifeNumber() > 0)
+		{
+			this->aladdin->SetLifeNumber(this->aladdin->GetLifeNumber() - 1);
+			this->aladdin->ResetHP();
+			this->aladdin->ResetPosisionAladdin();
+			this->aladdin->ResetPosisionCamera();
+			this->SetState(IDLE_STAND);
+			return;
+		}
+	}
+}
+
 void AladdinState::stateRunHit()
 {
 	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
@@ -1008,6 +1027,10 @@ void AladdinState::Update(DWORD dt)
 
 	case STATE_CLIMB_THROW:
 		this->stateClimbThrow();
+		break;
+
+	case STATE_DEAD:
+		this->stateDead();
 		break;
 
 	case STATE_RUN_HIT:

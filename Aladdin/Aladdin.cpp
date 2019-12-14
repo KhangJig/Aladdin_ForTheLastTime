@@ -25,7 +25,7 @@ Aladdin::Aladdin()
 	this->x = 50;
 	this->y = 150;
 	this->AladdinHP = 500;
-	this->AppleNumber = 15;
+	this->AppleNumber = 10;
 	this->DiamondNumber = 0;
 	this->LifeNumber = 3;
 	this->DmgAttack = 20;
@@ -38,6 +38,11 @@ Aladdin::Aladdin()
 	this->OnBotRope = false;
 	this->width = ALADDIN_SPRITE_WIDTH;
 	this->height = ALADDIN_SPRITE_HEIGHT;
+
+	this->GeneratePosX = 50;
+	this->GeneratePosY = 150;
+	this->GeneratePosCameraX = Viewport::GetInstance()->GetX();
+	this->GeneratePosCameraY = Viewport::GetInstance()->GetY();
 
 	collider.x = x;
 	collider.y = y;
@@ -606,6 +611,39 @@ void Aladdin::LoadResources()
 	animations.push_back(anim);
 #pragma endregion
 
+#pragma region CLIMB DEAD
+	anim = new Animation(100);
+
+	Sprite * dead_1 = new Sprite(aladdin2->GetTexture(), listSprite[215], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(dead_1);
+	Sprite * dead_2 = new Sprite(aladdin2->GetTexture(), listSprite[216], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(dead_2);
+	Sprite * dead_3 = new Sprite(aladdin2->GetTexture(), listSprite[217], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(dead_3);
+	Sprite * dead_4 = new Sprite(aladdin2->GetTexture(), listSprite[218], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(dead_4);
+	Sprite * dead_5 = new Sprite(aladdin2->GetTexture(), listSprite[219], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(dead_5);
+	Sprite * dead_6 = new Sprite(aladdin2->GetTexture(), listSprite[220], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(dead_6);
+	Sprite * dead_7 = new Sprite(aladdin2->GetTexture(), listSprite[221], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(dead_7);
+	Sprite * dead_8 = new Sprite(aladdin2->GetTexture(), listSprite[222], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(dead_8);
+	Sprite * dead_9 = new Sprite(aladdin2->GetTexture(), listSprite[223], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(dead_9);
+	Sprite * dead_10 = new Sprite(aladdin2->GetTexture(), listSprite[224], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(dead_10);
+	Sprite * dead_11 = new Sprite(aladdin2->GetTexture(), listSprite[225], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(dead_11);
+	Sprite * dead_12 = new Sprite(aladdin2->GetTexture(), listSprite[226], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(dead_12);
+	Sprite * dead_13 = new Sprite(aladdin2->GetTexture(), listSprite[227], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(dead_13);
+
+	animations.push_back(anim);
+#pragma endregion
+
 
 	listSprite = loadTXT.LoadRect((char*)"Resource\\Character\\run-hit-n-throw.txt");
 	Sprite * aladdin3 = new Sprite(ALADDIN_TEXTURE_LOCATION2, TEXTURE_TRANS_COLOR_2);
@@ -674,6 +712,7 @@ void Aladdin::Reset()
 {
 	this->SetPositionX(50);
 	this->SetPositionY(120);
+	this->ResetSettings();
 	Viewport::GetInstance()->Reset();
 }
 
@@ -705,7 +744,11 @@ void Aladdin::Update(DWORD dt)
 		Game::GetInstance()->SetStage(STAGE_2);
 
 		this->SetPositionX(100);
-		this->SetPositionY(150);
+		this->SetPositionY(150);		
+		this->GeneratePosX = 100;
+		this->GeneratePosY = 150;
+		this->GeneratePosCameraX = Viewport::GetInstance()->GetX();
+		this->GeneratePosCameraY = Viewport::GetInstance()->GetY();
 		Viewport::GetInstance()->Reset();
 
 		TileMap::GetInstance()->SetCurrentMap(STAGE_2);
@@ -1098,6 +1141,11 @@ void Aladdin::UpdateCollision(DWORD dt)
 		{
 			if (!((BottleItem*)listUpdateObject.at(i).object)->GetCheck())
 			{
+				this->GeneratePosX = this->GetPositionX();
+				this->GeneratePosY = this->GetPositionY();
+				this->GeneratePosCameraX = Viewport::GetInstance()->GetX();
+				this->GeneratePosCameraY = Viewport::GetInstance()->GetY();
+
 				((BottleItem*)listUpdateObject.at(i).object)->SetCheck(true);
 				Sound::GetInstance()->PlaySound(appleCollect);
 				itemEffect->SetPos(listUpdateObject.at(i).ene.x + BOTTLE_ITEM_WIDTH / 2, listUpdateObject.at(i).ene.y, false);
@@ -1128,6 +1176,10 @@ void Aladdin::UpdateCollision(DWORD dt)
 			//DebugOut(L"Aladdin touch Jafar\n");
 		}break;
 		}
+	}
+	if (this->AladdinHP <= 0)
+	{
+		this->state->SetState(STATE_DEAD);
 	}
 }
 

@@ -9,15 +9,19 @@ struct TileObjectMap;
 class Viewport
 {
 	static Viewport *__instance;
+
 	Viewport();
+
 	int width;
+
 	int height;
+
 	int x;
+
 	int y;
 
 public:
 	static Viewport *GetInstance();
-	~Viewport();
 
 	RECT GetRect();
 
@@ -26,8 +30,16 @@ public:
 	int GetY() { return this->y; }
 
 	void Reset();
+
+	void ResetPosision(int x, int y);
+
 	void Update(DWORD dt);
+
 	bool IsObjectInCamera(GameObject *gameobject);
+
 	bool IsObjectInCamera2(TileObjectMap* tile);
+
 	void SetRenderData(D3DXVECTOR2 &center, D3DXVECTOR2 &translate, D3DXVECTOR2 &scaling);
+
+	~Viewport();
 };
