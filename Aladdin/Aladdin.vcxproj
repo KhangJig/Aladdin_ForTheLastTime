@@ -170,6 +170,8 @@
     <ClCompile Include="BrickOutObject.cpp" />
     <ClCompile Include="ExtraHeartItem.cpp" />
     <ClCompile Include="GenieFaceItem.cpp" />
+    <ClCompile Include="Guard2.cpp" />
+    <ClCompile Include="Guard2State.cpp" />
     <ClCompile Include="Jafar.cpp" />
     <ClCompile Include="BrickInObject.cpp" />
     <ClCompile Include="Debug.cpp" />
@@ -194,6 +196,8 @@
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="KeyBoard.cpp" />
+    <ClCompile Include="Skeleton.cpp" />
+    <ClCompile Include="SkeletonState.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="SpawnProjectTile.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -215,6 +219,8 @@
     <ClInclude Include="BrickOutObject.h" />
     <ClInclude Include="ExtraHeartItem.h" />
     <ClInclude Include="GenieFaceItem.h" />
+    <ClInclude Include="Guard2.h" />
+    <ClInclude Include="Guard2State.h" />
     <ClInclude Include="Jafar.h" />
     <ClInclude Include="BrickInObject.h" />
     <ClInclude Include="CollideEvent.h" />
@@ -238,6 +244,8 @@
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="LifeMenu.h" />
     <ClInclude Include="Loadtxt.h" />
+    <ClInclude Include="Skeleton.h" />
+    <ClInclude Include="SkeletonState.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="SpawnProjectTile.h" />
     <ClInclude Include="Sprite.h" />

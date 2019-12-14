@@ -39,6 +39,8 @@ Grid::Grid()
 	ItemEffect::LoadResources();
 
 	Guard1::LoadResources();
+	Guard2::LoadResources();
+	Skeleton::LoadResources();
 	Jafar::LoadResources();
 }
 
@@ -251,11 +253,15 @@ void Grid::Update(DWORD dt)
 					}break;
 					case ObjectAndEnemies::GUARD2:
 					{
-
+						DebugOut(L"Guard 2 Created!\n");
+						listObject.at(i).object = new Guard2(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
+						listObject.at(i).isGenerated = true;
 					}break;
-					case ObjectAndEnemies::BOMBBER:
+					case ObjectAndEnemies::SKELETON:
 					{
-
+						DebugOut(L"Skeleton Created!\n");
+						listObject.at(i).object = new Skeleton(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
+						listObject.at(i).isGenerated = true;
 					}break;
 					case ObjectAndEnemies::BAT:
 					{
@@ -365,7 +371,7 @@ void Grid::Render()
 		{
 			if (listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::GUARD1 ||
 				listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::GUARD2 ||
-				listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::BOMBBER ||
+				listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::SKELETON ||
 				listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::BAT || 
 				listObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::JAFAR)
 			{

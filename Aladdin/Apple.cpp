@@ -154,7 +154,7 @@ void Apple::UpdateCollision(vector<TileObjectMap *> tiles)
 	{
 		if (listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::GUARD1 ||
 			listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::GUARD2 ||
-			listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::BOMBBER ||
+			listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::SKELETON ||
 			listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::BAT ||
 			listUpdateObject.at(i).ene.SpawnObjectID == ObjectAndEnemies::JAFAR)
 		{

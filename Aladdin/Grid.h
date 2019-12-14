@@ -9,6 +9,8 @@
 #include "Aladdin.h"
 
 #include "Guard1.h"
+#include "Guard2.h"
+#include "Skeleton.h"
 #include "Jafar.h"
 
 #include "AppleItem.h"

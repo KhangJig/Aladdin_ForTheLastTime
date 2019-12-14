@@ -147,7 +147,7 @@ void TileMap::LoadEnemies(LPCWSTR filePath, int mapId)
 		case 2:
 			enemies.SpawnObjectID = ObjectAndEnemies::GUARD2; break;
 		case 3:
-			enemies.SpawnObjectID = ObjectAndEnemies::BOMBBER; break;
+			enemies.SpawnObjectID = ObjectAndEnemies::SKELETON; break;
 		case 4:
 			enemies.SpawnObjectID = ObjectAndEnemies::BAT; break;
 		case 5:

@@ -159,7 +159,7 @@ void Guard1::LoadResources()
 #pragma region DEAD
 	anim = new Animation(80);
 
-	Sprite * guard1_dead_1 = new Sprite(guard1->GetTexture(), listSprite[113], TEXTURE_TRANS_COLOR_3);
+	Sprite * guard1_dead_1 = new Sprite(guard1->GetTexture(), listSprite[54], TEXTURE_TRANS_COLOR_3);
 	anim->AddFrame(guard1_dead_1);
 
 	animations.push_back(anim);

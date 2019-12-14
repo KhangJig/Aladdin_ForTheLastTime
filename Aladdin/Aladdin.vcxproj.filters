@@ -49,6 +49,15 @@
     <Filter Include="GameObjects\Boss">
       <UniqueIdentifier>{3b22a4b5-2839-4d27-8e81-b2318d020d3d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\Enemies\Guard2">
+      <UniqueIdentifier>{14c8265c-2196-4b87-aa43-419a75dca224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Enemies\Bat">
+      <UniqueIdentifier>{291b98b3-f65b-42c9-ba6b-952a18e77f43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Enemies\Skeleton">
+      <UniqueIdentifier>{aef57634-46f9-4a0b-97b6-5eb6c809641d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graphics.cpp">
@@ -170,6 +179,18 @@
     </ClCompile>
     <ClCompile Include="BottleItem.cpp">
       <Filter>GameObjects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Guard2State.cpp">
+      <Filter>GameObjects\Enemies\Guard2</Filter>
+    </ClCompile>
+    <ClCompile Include="Guard2.cpp">
+      <Filter>GameObjects\Enemies\Guard2</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeletonState.cpp">
+      <Filter>GameObjects\Enemies\Skeleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>GameObjects\Enemies\Skeleton</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -298,6 +319,18 @@
     </ClInclude>
     <ClInclude Include="BottleItem.h">
       <Filter>GameObjects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Guard2State.h">
+      <Filter>GameObjects\Enemies\Guard2</Filter>
+    </ClInclude>
+    <ClInclude Include="Guard2.h">
+      <Filter>GameObjects\Enemies\Guard2</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeletonState.h">
+      <Filter>GameObjects\Enemies\Skeleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>GameObjects\Enemies\Skeleton</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

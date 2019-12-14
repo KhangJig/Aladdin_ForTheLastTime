@@ -36,7 +36,7 @@ enum ObjectAndEnemies
 	NOTHING,
 	GUARD1, // Enemies
 	GUARD2,
-	BOMBBER,
+	SKELETON,
 	BAT,
 	THORN, 	// Objects
 	BALL,
@@ -97,10 +97,19 @@ enum ObjectAndEnemies
 // Enemies
 #define ENEMIES_TEXTURE_DEAD  L"Resource\\Enemies\\EnemiesDead.png"
 #define GUARD_TEXTURE_LOCATION L"Resource\\Enemies\\Guards.png"
+#define SKELETON_TEXTURE_LOCATION  L"Resource\\Enemies\\Skeleton.png"
+#define BAT_TEXTURE_LOCATION L"Resource\\Enemies\\Bat.png"
 
 #define GUARD1_SPRITE_WIDTH 44
 #define GUARD1_SPRITE_HEIGHT 57
 #define GUARD1_WALK_SPEED 0.045f
+
+#define GUARD2_SPRITE_WIDTH 44
+#define GUARD2_SPRITE_HEIGHT 52
+#define GUARD2_WALK_SPEED 0.045f
+
+#define SKELETON_SPRITE_WIDTH 44
+#define SKELETON_SPRITE_HEIGHT 52
 
 // Jafar
 #define JAFAR_TEXTURE_SPRITE  L"Resource\\Boss\\Jafar.png"

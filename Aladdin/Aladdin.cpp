@@ -1061,9 +1061,15 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}break;
 		case ObjectAndEnemies::GUARD2:
 		{
-
+			if (((Guard2*)listUpdateObject.at(i).object)->GetAttacking())
+			{
+				this->AladdinHP = this->AladdinHP - ((Guard2*)listUpdateObject.at(i).object)->GetGuard2DmgAttack();
+				DebugOut(L"Aladdin HP :  %d \n", this->AladdinHP);
+				this->state->SetState(STATE_HURT);
+				Sound::GetInstance()->PlaySound(aladdinHurt);
+			}
 		}break;
-		case ObjectAndEnemies::BOMBBER:
+		case ObjectAndEnemies::SKELETON:
 		{
 
 		}break;
