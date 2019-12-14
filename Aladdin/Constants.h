@@ -203,3 +203,6 @@ enum ObjectAndEnemies
 #define SOUND_LOW_SWORD L"Resource\\Sounds\\Low Sword.wav"
 #define SOUND_THEMES L"Resource\\Sounds\\Themes.wav"
 #define SOUND_A_WHOLE_NEW_WORLD L"Resource\\Sounds\\AWholeNewWorld.wav"
+#define SOUND_SKELETON_FIRE L"Resource\\Sounds\\Skeleton (PSG Only).wav"
+#define SOUND_SKELETON_BOOM L"Resource\\Sounds\\Skeleton (Sample Only).wav"
+#define SOUND_SKELETON_FIREnBOOM L"Resource\\Sounds\\Skeleton.wav"

@@ -77,7 +77,6 @@ void Guard1State::stateWalking()
 
 	if (Aladdin::GetInstance()->GetPositionX() < this->guard1->GetPositionX())
 	{
-
 		this->guard1->SetSpeedX(-GUARD1_WALK_SPEED);
 	}
 	else

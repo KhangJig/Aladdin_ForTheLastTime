@@ -46,8 +46,14 @@ void SkeletonState::stateStand()
 {
 	anim = skeleton->GetAnimationsList()[SKELETON_STAND];
 
+	if (this->anim->GetCurFrame() >= 10)
+	{
+		Sound::GetInstance()->PlaySound(this->skeleton->GetSoundSkeletonFire());
+	}
+
 	if (this->anim->IsDone())
 	{
+		Sound::GetInstance()->PlaySound(this->skeleton->GetSoundSkeletonBoom());
 		this->SetState(SKELETON_BOOM);
 		return;
 	}

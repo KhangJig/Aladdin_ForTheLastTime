@@ -25,6 +25,12 @@ Skeleton::Skeleton(float x, float y, int CellID, int id)
 	collider.height = SKELETON_SPRITE_HEIGHT;
 
 	enemiesDeadEffect = new EnemiesDeadEffect(0, 0);
+
+	this->skeletonFire = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_SKELETON_FIRE);
+
+	this->skeletonBoom = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_SKELETON_BOOM);
+
+	this->fireAndBoom = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_SKELETON_FIREnBOOM);
 }
 
 void Skeleton::LoadResources()

@@ -28,6 +28,12 @@ class Skeleton : public GameObject
 
 	int id;
 
+	GSound *skeletonFire;
+
+	GSound *skeletonBoom;
+
+	GSound *fireAndBoom;
+
 public:
 	Skeleton(float x, float y, int CellID, int temp);
 
@@ -43,6 +49,9 @@ public:
 	vector<Animation *> GetAnimationsList() { return animations; }
 	int GetCellID() { return this->CellID; }
 	EnemiesDeadEffect *GetEnemiesDeadEffect() { return this->enemiesDeadEffect; }
+	GSound *GetSoundSkeletonFire() { return this->skeletonFire; }
+	GSound *GetSoundSkeletonBoom() { return this->skeletonBoom; }
+	GSound *GetSoundSkeletonFirenBoom() { return this->fireAndBoom; }
 #pragma endregion
 
 	void Update(DWORD dt) override;
