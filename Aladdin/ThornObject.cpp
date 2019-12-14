@@ -21,12 +21,8 @@ ThornObject::ThornObject(int x, int y, int CellID, int id)
 	this->soundAction = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_OBJECT_THROW);
 }
 
-void ThornObject::LoadResources()
+void ThornObject::LoadResources(RECT* listSprite, Sprite * items)
 {
-	LoadTXT loadTXT;
-	RECT* listSprite = loadTXT.LoadRect((char*)"Resource\\Background\\MapObjects.txt");
-	Sprite * items = new Sprite(MAPOBJECTS_TEXTURE_LOCATION, TEXTURE_TRANS_COLOR_6);
-
 	Animation * anim = new Animation(3000);
 	Sprite *thorn_idle_1 = new Sprite(items->GetTexture(), listSprite[5], TEXTURE_TRANS_COLOR_6);
 	anim->AddFrame(thorn_idle_1);

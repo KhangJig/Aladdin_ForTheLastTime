@@ -21,7 +21,7 @@ public:
 
 	int GetCellID() { return this->CellID; }
 
-	static void LoadResources();
+	static void LoadResources(RECT* listSprite, Sprite * items);
 
 	void Update(DWORD dt);
 

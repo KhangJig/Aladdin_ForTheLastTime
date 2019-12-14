@@ -16,18 +16,26 @@ Grid::Grid()
 	aladdin = Aladdin::GetInstance();
 	viewport = Viewport::GetInstance();
 
-	Guard1::LoadResources();
-	AppleItem::LoadResources();
-	DiamondItem::LoadResources();
-	Jafar::LoadResources();
+	LoadTXT loadTXT;
+	RECT* listSprite = loadTXT.LoadRect((char*)"Resource\\Miscellaneous\\Items.txt");
+	Sprite * sprites = new Sprite(ITEMS_TEXTURE_LOCATION, TEXTURE_TRANS_COLOR_5);
 
-	ThornObject::LoadResources(); 
-	BallObject::LoadResources();
-	BrickObject::LoadResources();
+	AppleItem::LoadResources(listSprite, sprites);
+	DiamondItem::LoadResources(listSprite, sprites);
+
+	listSprite = loadTXT.LoadRect((char*)"Resource\\Background\\MapObjects.txt");
+	sprites = new Sprite(MAPOBJECTS_TEXTURE_LOCATION, TEXTURE_TRANS_COLOR_6);
+
+	ThornObject::LoadResources(listSprite, sprites);
+	BallObject::LoadResources(listSprite, sprites);
+	BrickObject::LoadResources(listSprite, sprites);
 
 	AppleEffect::LoadResources();
 	EnemiesDeadEffect::LoadResources();
 	ItemEffect::LoadResources();
+
+	Guard1::LoadResources();
+	Jafar::LoadResources();
 }
 
 void Grid::InitializeMapGrid(TileMap *tileMap)

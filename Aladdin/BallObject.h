@@ -23,7 +23,7 @@ public:
 
 	vector<Animation *> GetAnimation() { return this->animations; }
 
-	static void LoadResources();
+	static void LoadResources(RECT* listSprite, Sprite * items);
 
 	void Update(DWORD dt);
 

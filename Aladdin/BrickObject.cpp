@@ -18,12 +18,8 @@ BrickObject::BrickObject(int x, int y, int CellID, int id)
 	collider.height = BRICK_ITEM_HEIGHT;
 }
 
-void BrickObject::LoadResources()
+void BrickObject::LoadResources(RECT* listSprite, Sprite * items)
 {
-	LoadTXT loadTXT;
-	RECT* listSprite = loadTXT.LoadRect((char*)"Resource\\Background\\MapObjects.txt");
-	Sprite * items = new Sprite(MAPOBJECTS_TEXTURE_LOCATION, TEXTURE_TRANS_COLOR_6);
-
 	Animation * anim = new Animation(700);
 	Sprite *brick_1 = new Sprite(items->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR_6);
 	anim->AddFrame(brick_1);

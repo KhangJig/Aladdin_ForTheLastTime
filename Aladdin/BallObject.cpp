@@ -18,12 +18,8 @@ BallObject::BallObject(int x, int y, int CellID, int id)
 	collider.height = BALL_ITEM_HEIGHT;
 }
 
-void BallObject::LoadResources()
+void BallObject::LoadResources(RECT* listSprite, Sprite * items)
 {
-	LoadTXT loadTXT;
-	RECT* listSprite = loadTXT.LoadRect((char*)"Resource\\Background\\MapObjects.txt");
-	Sprite * items = new Sprite(MAPOBJECTS_TEXTURE_LOCATION, TEXTURE_TRANS_COLOR_6);
-
 	Animation * anim = new Animation(100);
 	Sprite *ball_1 = new Sprite(items->GetTexture(), listSprite[11], TEXTURE_TRANS_COLOR_6);
 	anim->AddFrame(ball_1);

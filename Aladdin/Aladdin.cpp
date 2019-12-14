@@ -1020,8 +1020,10 @@ void Aladdin::UpdateCollision(DWORD dt)
 		{
 			if (this->JumpOnBrick)
 			{
-				if (((BrickObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 5 ||
-					((BrickObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 4)
+				if (((BrickObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 2 ||
+					((BrickObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 3 ||
+					((BrickObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 4 ||
+					((BrickObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame() == 5 )
 				{
 					if(this->GetPositionY() - ALADDIN_SPRITE_HEIGHT + 25 >= ((BrickObject*)listUpdateObject.at(i).object)->GetY() && !Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT))
 					{
@@ -1045,9 +1047,9 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}break;
 		case ObjectAndEnemies::APPLE:
 		{
+			Sound::GetInstance()->PlaySound(appleCollect);
 			Grid::GetInstance()->SetisLifeListObject(((AppleItem*)listUpdateObject.at(i).object)->GetID(), false);
 			itemEffect->SetPos(listUpdateObject.at(i).ene.x, listUpdateObject.at(i).ene.y, false);
-			Sound::GetInstance()->PlaySound(appleCollect);
 			if (this->AppleNumber < 100)
 			{
 				this->AppleNumber++;

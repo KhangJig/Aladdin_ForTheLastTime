@@ -18,12 +18,8 @@ DiamondItem::DiamondItem(int x, int y, int CellID, int id)
 	collider.height = DIAMOND_ITEM_HEIGHT;
 }
 
-void DiamondItem::LoadResources()
+void DiamondItem::LoadResources(RECT* listSprite, Sprite * items)
 {
-	LoadTXT loadTXT;
-	RECT* listSprite = loadTXT.LoadRect((char*)"Resource\\Miscellaneous\\Items.txt");
-	Sprite * items = new Sprite(ITEMS_TEXTURE_LOCATION, TEXTURE_TRANS_COLOR_5);
-
 	Animation * anim = new Animation(100);
 	Sprite *diamond_1 = new Sprite(items->GetTexture(), listSprite[6], TEXTURE_TRANS_COLOR_5);
 	anim->AddFrame(diamond_1);

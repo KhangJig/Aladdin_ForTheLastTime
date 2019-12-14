@@ -179,49 +179,53 @@ void DiamondMenu::Render()
 	int dv = this->num % 10;
 	int hc = this->num / 10;
 
-	if (this->num < 10)
+	if (this->num > 0)
 	{
-		hc = dv;
-	}
-
-	switch (hc)
-	{
-	case 0: this->animations[0]->Render(spriteData); break;
-	case 1: this->animations[1]->Render(spriteData); break;
-	case 2: this->animations[2]->Render(spriteData); break;
-	case 3: this->animations[3]->Render(spriteData); break;
-	case 4: this->animations[4]->Render(spriteData); break;
-	case 5: this->animations[5]->Render(spriteData); break;
-	case 6: this->animations[6]->Render(spriteData); break;
-	case 7: this->animations[7]->Render(spriteData); break;
-	case 8: this->animations[8]->Render(spriteData); break;
-	case 9: this->animations[9]->Render(spriteData); break;
-	}
-
-	if (this->num >= 10)
-	{
-		switch (dv)
+		if (this->num < 10)
 		{
-		case 0: this->animations[10]->Render(spriteData); break;
-		case 1: this->animations[11]->Render(spriteData); break;
-		case 2: this->animations[12]->Render(spriteData); break;
-		case 3: this->animations[13]->Render(spriteData); break;
-		case 4: this->animations[14]->Render(spriteData); break;
-		case 5: this->animations[15]->Render(spriteData); break;
-		case 6: this->animations[16]->Render(spriteData); break;
-		case 7: this->animations[17]->Render(spriteData); break;
-		case 8: this->animations[18]->Render(spriteData); break;
-		case 9: this->animations[19]->Render(spriteData); break;
+			hc = dv;
 		}
+
+		switch (hc)
+		{
+		case 0: this->animations[0]->Render(spriteData); break;
+		case 1: this->animations[1]->Render(spriteData); break;
+		case 2: this->animations[2]->Render(spriteData); break;
+		case 3: this->animations[3]->Render(spriteData); break;
+		case 4: this->animations[4]->Render(spriteData); break;
+		case 5: this->animations[5]->Render(spriteData); break;
+		case 6: this->animations[6]->Render(spriteData); break;
+		case 7: this->animations[7]->Render(spriteData); break;
+		case 8: this->animations[8]->Render(spriteData); break;
+		case 9: this->animations[9]->Render(spriteData); break;
+		}
+
+		if (this->num >= 10)
+		{
+			switch (dv)
+			{
+			case 0: this->animations[10]->Render(spriteData); break;
+			case 1: this->animations[11]->Render(spriteData); break;
+			case 2: this->animations[12]->Render(spriteData); break;
+			case 3: this->animations[13]->Render(spriteData); break;
+			case 4: this->animations[14]->Render(spriteData); break;
+			case 5: this->animations[15]->Render(spriteData); break;
+			case 6: this->animations[16]->Render(spriteData); break;
+			case 7: this->animations[17]->Render(spriteData); break;
+			case 8: this->animations[18]->Render(spriteData); break;
+			case 9: this->animations[19]->Render(spriteData); break;
+			}
+		}
+
+		spriteData.width = APPLE_ITEM_WIDTH;
+		spriteData.height = APPLE_ITEM_HEIGHT;
+		spriteData.x = this->x + 4;
+		spriteData.y = this->y;
+
+		spriteData.scale = 1;
+
+		this->animations[20]->Render(spriteData);
 	}
-
-	spriteData.width = APPLE_ITEM_WIDTH;
-	spriteData.height = APPLE_ITEM_HEIGHT;
-	spriteData.x = this->x + 4;
-	spriteData.y = this->y;
-
-	spriteData.scale = 1;
-	this->animations[20]->Render(spriteData);
 }
 
 DiamondMenu::~DiamondMenu()

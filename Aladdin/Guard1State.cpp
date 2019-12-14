@@ -131,7 +131,8 @@ void Guard1State::stateHit()
 
 void Guard1State::stateDead() 
 {
-	this->guard1->SetSpeedX(0);
+	this->guard1->SetSpeedX(0); 
+	this->guard1->SetAttacking(false);
 	this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 	anim = guard1->GetAnimationsList()[GUARD1_DEAD];
 

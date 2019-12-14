@@ -221,6 +221,22 @@ void Guard1::Update(DWORD dt)
 
 	state->Colision();
 	state->Update(dt);
+
+#pragma region Set new area collision when Guard1 is attacking
+
+	if (this->GetAttacking())
+	{
+		if (this->isLeft)
+			this->collider.x = x - 35;
+		this->collider.width = GUARD1_SPRITE_WIDTH + 35;
+	}
+	else
+	{
+		this->collider.width = GUARD1_SPRITE_WIDTH;
+		this->collider.x = x;
+	}
+
+#pragma endregion
 }
 
 void Guard1::Render()
