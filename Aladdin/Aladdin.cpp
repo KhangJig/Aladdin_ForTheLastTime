@@ -1096,7 +1096,12 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}break;
 		case ObjectAndEnemies::BOTTLE:
 		{
-
+			if (!((BottleItem*)listUpdateObject.at(i).object)->GetCheck())
+			{
+				((BottleItem*)listUpdateObject.at(i).object)->SetCheck(true);
+				Sound::GetInstance()->PlaySound(appleCollect);
+				itemEffect->SetPos(listUpdateObject.at(i).ene.x, listUpdateObject.at(i).ene.y, false);
+			}
 		}break;
 		case ObjectAndEnemies::GENIE_FACE:
 		{

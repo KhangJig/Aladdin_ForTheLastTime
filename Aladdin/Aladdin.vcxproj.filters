@@ -168,6 +168,9 @@
     <ClCompile Include="ExtraHeartItem.cpp">
       <Filter>GameObjects\Items</Filter>
     </ClCompile>
+    <ClCompile Include="BottleItem.cpp">
+      <Filter>GameObjects\Items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h">
@@ -291,6 +294,9 @@
       <Filter>GameObjects\Items</Filter>
     </ClInclude>
     <ClInclude Include="ExtraHeartItem.h">
+      <Filter>GameObjects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="BottleItem.h">
       <Filter>GameObjects\Items</Filter>
     </ClInclude>
   </ItemGroup>

@@ -166,6 +166,7 @@
     <ClCompile Include="AppleItem.cpp" />
     <ClCompile Include="AppleMenu.cpp" />
     <ClCompile Include="BallObject.cpp" />
+    <ClCompile Include="BottleItem.cpp" />
     <ClCompile Include="BrickOutObject.cpp" />
     <ClCompile Include="ExtraHeartItem.cpp" />
     <ClCompile Include="GenieFaceItem.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="AppleItem.h" />
     <ClInclude Include="AppleMenu.h" />
     <ClInclude Include="BallObject.h" />
+    <ClInclude Include="BottleItem.h" />
     <ClInclude Include="BrickOutObject.h" />
     <ClInclude Include="ExtraHeartItem.h" />
     <ClInclude Include="GenieFaceItem.h" />

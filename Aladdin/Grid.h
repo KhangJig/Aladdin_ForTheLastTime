@@ -15,6 +15,7 @@
 #include "DiamondItem.h"
 #include "GenieFaceItem.h"
 #include "ExtraHeartItem.h"
+#include "BottleItem.h"
 
 #include "ThornObject.h"
 #include "BallObject.h"

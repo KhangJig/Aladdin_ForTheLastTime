@@ -24,6 +24,7 @@ Grid::Grid()
 	DiamondItem::LoadResources(listSprite, sprites);
 	GenieFaceItem::LoadResources(listSprite, sprites);
 	ExtraHeartItem::LoadResources(listSprite, sprites);
+	BottleItem::LoadResources(listSprite, sprites);
 
 	listSprite = loadTXT.LoadRect((char*)"Resource\\Background\\MapObjects.txt");
 	sprites = new Sprite(MAPOBJECTS_TEXTURE_LOCATION, TEXTURE_TRANS_COLOR_6);
@@ -294,7 +295,9 @@ void Grid::Update(DWORD dt)
 					}break;
 					case ObjectAndEnemies::BOTTLE:
 					{
-
+						DebugOut(L"Bottle-items Created!\n");
+						listObject.at(i).object = new BottleItem(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
+						listObject.at(i).isGenerated = true;
 					}break;
 					case ObjectAndEnemies::GENIE_FACE:
 					{
