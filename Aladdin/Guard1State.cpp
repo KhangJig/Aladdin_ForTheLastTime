@@ -14,7 +14,7 @@ Guard1State::Guard1State(Guard1 *guard1)
 {
 	this->guard1 = guard1;
 	this->stateGuard1 = GUARD1_IDLE;
-	this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	//this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 }
 
 StateGuard1 Guard1State::GetState()
@@ -31,7 +31,7 @@ void Guard1State::stateIdle()
 {
 	anim = guard1->GetAnimationsList()[GUARD1_IDLE];
 	this->guard1->SetSpeedX(0);
-	this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	//this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 	this->guard1->SetAttacking(false);
 
 	if (abs(Aladdin::GetInstance()->GetPositionY() - this->guard1->GetPositionY()) <= 50)
@@ -60,7 +60,7 @@ void Guard1State::stateHurting()
 {
 	anim = guard1->GetAnimationsList()[GUARD1_HURT];
 	this->guard1->SetSpeedX(0);
-	this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	//this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 
 	if (anim->IsDone())
 	{
@@ -72,7 +72,7 @@ void Guard1State::stateHurting()
 
 void Guard1State::stateWalking()
 {
-	this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	//this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 	anim = guard1->GetAnimationsList()[GUARD1_WALK];
 
 	if (Aladdin::GetInstance()->GetPositionX() < this->guard1->GetPositionX())
@@ -107,7 +107,7 @@ void Guard1State::stateWalking()
 void Guard1State::stateHit()
 {
 	this->guard1->SetSpeedX(0);
-	this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	//this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 	anim = guard1->GetAnimationsList()[GUARD1_HIT];
 
 	if (abs(Aladdin::GetInstance()->GetPositionY() - this->guard1->GetPositionY()) > 50 
@@ -138,7 +138,7 @@ void Guard1State::stateDead()
 {
 	this->guard1->SetSpeedX(0); 
 	this->guard1->SetAttacking(false);
-	this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	//this->guard1->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 	anim = guard1->GetAnimationsList()[GUARD1_DEAD];
 
 	if (this->guard1->GetEnemiesDeadEffect()->GetHidden())

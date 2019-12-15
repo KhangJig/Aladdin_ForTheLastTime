@@ -135,46 +135,51 @@ void Guard2::Update(DWORD dt)
 	else
 		this->setIsLeft(false);
 
-	vector<ColliedEvent*> coEvents;
-	vector<ColliedEvent*> coEventsResult;
+	this->SetPositionX((float)(this->GetPositionX() + this->GetSpeedX()* dt));
+	this->SetPositionY((float)(this->GetPositionY() + this->GetSpeedY()* dt));
+	this->collider.x = this->GetPositionX();
+	this->collider.y = this->GetPositionY();
 
 #pragma region	Collide with map
-	vector<TileObjectMap *> tiles = Grid::GetInstance()->GetNearbyObjectTilesForEnemies(this->GetCellID());
+	//vector<ColliedEvent*> coEvents;
+	//vector<ColliedEvent*> coEventsResult;
 
-	coEvents.clear();
-	this->SetDt(dt);
-	this->UpdateObjectCollider();
-	this->MapCollisions(tiles, coEvents);
+	//vector<TileObjectMap *> tiles = Grid::GetInstance()->GetNearbyObjectTilesForEnemies(this->GetCellID());
 
-	if (coEvents.size() == 0)
-	{
-		float moveX = trunc(this->GetSpeedX()* dt);
-		float moveY = trunc(this->GetSpeedY()* dt);
-		this->SetPositionX(this->GetPositionX() + moveX);
-		this->SetPositionY(this->GetPositionY() + moveY);
-	}
-	else
-	{
-		float min_tx, min_ty, nx = 0, ny;
+	//coEvents.clear();
+	//this->SetDt(dt);
+	//this->UpdateObjectCollider();
+	//this->MapCollisions(tiles, coEvents);
 
-		Collision::GetInstance()->GetNearestCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+	//if (coEvents.size() == 0)
+	//{
+	//	float moveX = trunc(this->GetSpeedX()* dt);
+	//	float moveY = trunc(this->GetSpeedY()* dt);
+	//	this->SetPositionX(this->GetPositionX() + moveX);
+	//	this->SetPositionY(this->GetPositionY() + moveY);
+	//}
+	//else
+	//{
+	//	float min_tx, min_ty, nx = 0, ny;
 
-		float moveX = min_tx * this->GetSpeedX() * dt + nx * 0.4;
-		float moveY = min_ty * this->GetSpeedY() * dt + ny * 0.4;
+	//	Collision::GetInstance()->GetNearestCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
 
-		this->SetPositionX(this->GetPositionX() + moveX);
-		this->SetPositionY(this->GetPositionY() + moveY);
+	//	float moveX = min_tx * this->GetSpeedX() * dt + nx * 0.4;
+	//	float moveY = min_ty * this->GetSpeedY() * dt + ny * 0.4;
 
-		if (coEventsResult[0]->collisionID == 1)
-		{
-			if (ny == 1)
-			{
-				this->isOnGround = true;
-			}
-		}
-	}
-	for (int i = 0; i < coEvents.size(); i++)
-		delete coEvents[i];
+	//	this->SetPositionX(this->GetPositionX() + moveX);
+	//	this->SetPositionY(this->GetPositionY() + moveY);
+
+	//	if (coEventsResult[0]->collisionID == 1)
+	//	{
+	//		if (ny == 1)
+	//		{
+	//			this->isOnGround = true;
+	//		}
+	//	}
+	//}
+	//for (int i = 0; i < coEvents.size(); i++)
+	//	delete coEvents[i];
 #pragma endregion
 
 	state->Colision();
