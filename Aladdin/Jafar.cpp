@@ -2,7 +2,7 @@
 
 vector<Animation *> Jafar::animations = vector<Animation *>();
 
-Jafar::Jafar(int x, int y)
+Jafar::Jafar(int x, int y, int CellID, int id)
 {
 	this->state = new JafarState(this);
 
@@ -14,6 +14,9 @@ Jafar::Jafar(int x, int y)
 	this->HP = JAFAR_HP;
 	this->Dmg = JAFAR_DAMAGE;
 	this->SnakePower = false;
+
+	this->CellID = CellID;
+	this->id = id;
 
 	collider.x = x;
 	collider.y = y;
@@ -154,6 +157,14 @@ void Jafar::LoadResources()
 
 	animations.push_back(anim);
 #pragma endregion
+
+#pragma region NONE
+	anim = new Animation(140);
+	Sprite *none = new Sprite(jafar->GetTexture(), listSprite[38], TEXTURE_TRANS_COLOR_7);
+	anim->AddFrame(none);
+
+	animations.push_back(anim);
+#pragma endregion
 }
 
 void Jafar::Update(DWORD dt)
@@ -203,7 +214,7 @@ void Jafar::Update(DWORD dt)
 			}
 			else
 			{
-				//DEAD
+				this->state->SetState(JAFAR_DEAD);
 			}
 		}
 	}

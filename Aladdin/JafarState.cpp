@@ -90,7 +90,17 @@ void JafarState::stateSnakeHit()
 
 void JafarState::stateDead() 
 {
-	// Dead
+	this->anim = jafar->GetAnimationsList()[JAFAR_DEAD];
+	if (this->anim->IsDone())
+	{
+		Grid::GetInstance()->SetisLifeListObject(this->jafar->GetID(), false);
+		Aladdin::GetInstance()->SetScoreNumber(Aladdin::GetInstance()->GetScoreNumber() + JAFAR_POINT);
+		if (Aladdin::GetInstance()->GetScoreNumber() > ALADDIN_DEFAULT_MAXS_SCORE) 
+		{
+			Aladdin::GetInstance()->SetScoreNumber(ALADDIN_DEFAULT_MAXS_SCORE);
+		}
+		return;
+	}
 }
 
 void JafarState::Colision()

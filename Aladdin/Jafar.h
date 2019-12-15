@@ -16,17 +16,24 @@ class Jafar : public GameObject
 	int x, y;
 
 	int HP;
+
 	int Dmg;
+
+	int CellID;
+
+	int id;
 
 	bool SnakePower;
 public:
 
-	Jafar(int x, int y);
+	Jafar(int x, int y, int CellID, int id);
 
 	void SetPos(int x, int y) { this->x = x; this->y = y; }
 
 	int GetX() { return x; }
 	int GetY() { return y; }
+	int GetID() { return this->id; }
+	int GetCellID() { return this->CellID; }
 	void SetHP(int hp) { this->HP = hp; }
 	int GetHP() { return this->HP; }
 	void SetDmg(int dmg) { this->Dmg = dmg; }

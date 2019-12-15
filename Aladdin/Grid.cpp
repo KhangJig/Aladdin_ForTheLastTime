@@ -327,7 +327,7 @@ void Grid::Update(DWORD dt)
 					case ObjectAndEnemies::JAFAR:
 					{
 						//DebugOut(L"Jafar Created!\n");
-						listObject.at(i).object = new Jafar(listObject.at(i).ene.x, listObject.at(i).ene.y);
+						listObject.at(i).object = new Jafar(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
 						listObject.at(i).isGenerated = true;
 					}break;
 					default:

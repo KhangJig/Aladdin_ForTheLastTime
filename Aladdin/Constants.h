@@ -104,6 +104,7 @@ enum ObjectAndEnemies
 #define ALADDIN_DEFAULT_HEART 3
 #define ALADDIN_DEFAULT_MAX_HEART 100
 #define ALADDIN_DEFAULT_SCORE 0
+#define ALADDIN_DEFAULT_MAXS_SCORE 99999
 
 // Enemies
 #define ENEMIES_TEXTURE_DEAD  L"Resource\\Enemies\\EnemiesDead.png"
