@@ -135,6 +135,7 @@ void Guard2State::stateHit()
 	}
 }
 
+
 void Guard2State::stateDead() 
 {
 	this->guard2->SetSpeedX(0); 
