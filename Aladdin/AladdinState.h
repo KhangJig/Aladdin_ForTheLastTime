@@ -32,11 +32,11 @@ enum StateAladdin
 	STATE_CLIMB_HIT,
 	STATE_CLIMB_THROW,
 	STATE_DEAD,
-	STATE_GENERIC,
+	STATE_GENESIS,
+	NONE,
 	STATE_RUN_HIT,
 	STATE_RUN_THROW,
 	STAND_ON_BRICK,
-	NONE
 };
 
 class AladdinState : public State
@@ -86,7 +86,7 @@ public:
 	void stateClimbHit();
 	void stateClimbThrow();
 	void stateDead();
-	void stateGeneric();
+	void stateGenesis();
 	void stateRunHit();
 	void stateRunThrow();
 	void stateStandOnBrick();

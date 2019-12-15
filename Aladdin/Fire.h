@@ -25,6 +25,8 @@ public:
 
 	void Update(DWORD dt);
 
+	void UpdateCollision(DWORD dt);
+
 	void Render();
 
 	~Fire();

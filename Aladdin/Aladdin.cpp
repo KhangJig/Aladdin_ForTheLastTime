@@ -645,38 +645,45 @@ void Aladdin::LoadResources()
 	animations.push_back(anim);
 #pragma endregion
 
-#pragma region GENERIC
+#pragma region GENESIS
 	anim = new Animation(100);
 
-	Sprite * generic_1 = new Sprite(aladdin2->GetTexture(), listSprite[243], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(generic_1);
-	Sprite * generic_2 = new Sprite(aladdin2->GetTexture(), listSprite[244], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(generic_2);
-	Sprite * generic_3 = new Sprite(aladdin2->GetTexture(), listSprite[245], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(generic_3);
-	Sprite * generic_4 = new Sprite(aladdin2->GetTexture(), listSprite[246], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(generic_4);
-	Sprite * generic_5 = new Sprite(aladdin2->GetTexture(), listSprite[247], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(generic_5);
-	Sprite * generic_6 = new Sprite(aladdin2->GetTexture(), listSprite[248], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(generic_6);
-	Sprite * generic_7 = new Sprite(aladdin2->GetTexture(), listSprite[249], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(generic_7);
-	Sprite * generic_8 = new Sprite(aladdin2->GetTexture(), listSprite[250], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(generic_8);
-	Sprite * generic_9 = new Sprite(aladdin2->GetTexture(), listSprite[251], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(generic_9);
-	Sprite * generic_10 = new Sprite(aladdin2->GetTexture(), listSprite[252], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(generic_10);
-	Sprite * generic_11 = new Sprite(aladdin2->GetTexture(), listSprite[253], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(generic_11);
-	Sprite * generic_12 = new Sprite(aladdin2->GetTexture(), listSprite[254], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(generic_12);
-	Sprite * generic_13 = new Sprite(aladdin2->GetTexture(), listSprite[255], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(generic_13);
-	Sprite * generic_14 = new Sprite(aladdin2->GetTexture(), listSprite[256], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(generic_14);
+	Sprite * genesis_1 = new Sprite(aladdin2->GetTexture(), listSprite[243], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(genesis_1);
+	Sprite * genesis_2 = new Sprite(aladdin2->GetTexture(), listSprite[244], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(genesis_2);
+	Sprite * genesis_3 = new Sprite(aladdin2->GetTexture(), listSprite[245], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(genesis_3);
+	Sprite * genesis_4 = new Sprite(aladdin2->GetTexture(), listSprite[246], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(genesis_4);
+	Sprite * genesis_5 = new Sprite(aladdin2->GetTexture(), listSprite[247], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(genesis_5);
+	Sprite * genesis_6 = new Sprite(aladdin2->GetTexture(), listSprite[248], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(genesis_6);
+	Sprite * genesis_7 = new Sprite(aladdin2->GetTexture(), listSprite[249], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(genesis_7);
+	Sprite * genesis_8 = new Sprite(aladdin2->GetTexture(), listSprite[250], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(genesis_8);
+	Sprite * genesis_9 = new Sprite(aladdin2->GetTexture(), listSprite[251], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(genesis_9);
+	Sprite * genesis_10 = new Sprite(aladdin2->GetTexture(), listSprite[252], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(genesis_10);
+	Sprite * genesis_11 = new Sprite(aladdin2->GetTexture(), listSprite[253], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(genesis_11);
+	Sprite * genesis_12 = new Sprite(aladdin2->GetTexture(), listSprite[254], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(genesis_12);
+	Sprite * genesis_13 = new Sprite(aladdin2->GetTexture(), listSprite[255], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(genesis_13);
+	Sprite * genesis_14 = new Sprite(aladdin2->GetTexture(), listSprite[256], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(genesis_14);
 
+	animations.push_back(anim);
+#pragma endregion
+
+#pragma region NONE
+	anim = new Animation(80);
+	Sprite * none = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(none);
 	animations.push_back(anim);
 #pragma endregion
 
@@ -739,13 +746,6 @@ void Aladdin::LoadResources()
 	run_hit_6->SetOffSetY(2);
 	anim->AddFrame(run_hit_6);
 
-	animations.push_back(anim);
-#pragma endregion
-
-#pragma region NONE
-	anim = new Animation(80);
-	Sprite * none = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
-	anim->AddFrame(none);
 	animations.push_back(anim);
 #pragma endregion
 }
@@ -1123,7 +1123,10 @@ void Aladdin::UpdateCollision(DWORD dt)
 				this->AladdinHP = this->AladdinHP - THORN_DAMAGE_BY_TIME;
 				DebugOut(L"Aladdin HP :  %d \n", this->AladdinHP);
 				this->state->SetState(STATE_HURT);
-				Sound::GetInstance()->PlaySound(aladdinHurt);
+				if (this->AladdinHP > 0)
+				{
+					Sound::GetInstance()->PlaySound(aladdinHurt);
+				}
 			}
 		}break;
 		case ObjectAndEnemies::BALL:
@@ -1134,7 +1137,10 @@ void Aladdin::UpdateCollision(DWORD dt)
 				this->AladdinHP = this->AladdinHP - BALL_DAMAGE_BY_TIME;
 				DebugOut(L"Aladdin HP :  %d \n", this->AladdinHP);
 				this->state->SetState(STATE_HURT);
-				Sound::GetInstance()->PlaySound(aladdinHurt);
+				if (this->AladdinHP > 0)
+				{
+					Sound::GetInstance()->PlaySound(aladdinHurt);
+				}
 			}
 		}break;
 		case ObjectAndEnemies::BRICK_IN:

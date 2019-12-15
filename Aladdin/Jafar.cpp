@@ -102,11 +102,11 @@ void Jafar::LoadResources()
 
 #pragma region SNAKE HURT
 	anim = new Animation(80);
-	Sprite *snake_hurt_0 = new Sprite(jafar->GetTexture(), listSprite[37], TEXTURE_TRANS_COLOR_7);
+	Sprite *snake_hurt_0 = new Sprite(jafar->GetTexture(), listSprite[38], TEXTURE_TRANS_COLOR_7);
 	anim->AddFrame(snake_hurt_0);
 	Sprite *snake_hurt_1 = new Sprite(jafar->GetTexture(), listSprite[13], TEXTURE_TRANS_COLOR_7);
 	anim->AddFrame(snake_hurt_1);
-	Sprite *snake_hurt_2 = new Sprite(jafar->GetTexture(), listSprite[37], TEXTURE_TRANS_COLOR_7);
+	Sprite *snake_hurt_2 = new Sprite(jafar->GetTexture(), listSprite[38], TEXTURE_TRANS_COLOR_7);
 	anim->AddFrame(snake_hurt_2);
 	Sprite *snake_hurt_3 = new Sprite(jafar->GetTexture(), listSprite[13], TEXTURE_TRANS_COLOR_7);
 	anim->AddFrame(snake_hurt_3);
@@ -194,7 +194,7 @@ void Jafar::Update(DWORD dt)
 			DebugOut(L"HP Jafar : %d \n", this->GetHP());
 			if (this->GetHP() > 0)
 			{
-				if (this->GetHP() >= CHANGING_POINT)
+				/*if (this->GetHP() >= CHANGING_POINT)
 				{
 					this->state->SetState(JAFAR_HURT);
 				}
@@ -203,6 +203,18 @@ void Jafar::Update(DWORD dt)
 					this->state->SetState(SNAKE_HURT);
 				}
 				else
+				{
+					this->state->SetState(SNAKE_IDLE);
+					this->SnakePower = true;
+					this->Dmg = SNAKE_DAMAGE;
+
+					this->width = SNAKE_SPRITE_WIDTH;
+					this->height = SNAKE_SPRITE_HEIGHT;
+					collider.width = SNAKE_SPRITE_WIDTH;
+					collider.height = SNAKE_SPRITE_HEIGHT;
+				}*/
+				
+				if (this->GetHP() < CHANGING_POINT && !this->SnakePower)
 				{
 					this->state->SetState(SNAKE_IDLE);
 					this->SnakePower = true;
@@ -226,7 +238,7 @@ void Jafar::Update(DWORD dt)
 		DebugOut(L"HP Jafar : %d \n", this->GetHP());
 		if (this->GetHP() > 0)
 		{
-			if (this->GetHP() >= CHANGING_POINT)
+			/*if (this->GetHP() >= CHANGING_POINT)
 			{
 				this->state->SetState(JAFAR_HURT);
 			}
@@ -235,6 +247,18 @@ void Jafar::Update(DWORD dt)
 				this->state->SetState(SNAKE_HURT);
 			}
 			else
+			{
+				this->state->SetState(SNAKE_IDLE);
+				this->SnakePower = true;
+				this->Dmg = SNAKE_DAMAGE;
+
+				this->width = SNAKE_SPRITE_WIDTH;
+				this->height = SNAKE_SPRITE_HEIGHT;
+				collider.width = SNAKE_SPRITE_WIDTH;
+				collider.height = SNAKE_SPRITE_HEIGHT;
+			}*/
+		
+			if (this->GetHP() < CHANGING_POINT && !this->SnakePower)
 			{
 				this->state->SetState(SNAKE_IDLE);
 				this->SnakePower = true;

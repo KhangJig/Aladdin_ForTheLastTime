@@ -21,31 +21,61 @@ Fire::Fire(float x, float y, bool direction)
 
 void Fire::LoadResources(RECT* listSprite, Sprite * items)
 {
-	Animation * anim = new Animation(100);
-	Sprite *fire = new Sprite(items->GetTexture(), listSprite[36], TEXTURE_TRANS_COLOR_5);
+	Sprite *fire;
+	Animation * anim = new Animation(80);
+	//fire = new Sprite(items->GetTexture(), listSprite[30], TEXTURE_TRANS_COLOR_5);
+	//anim->AddFrame(fire);
+	//fire = new Sprite(items->GetTexture(), listSprite[31], TEXTURE_TRANS_COLOR_5);
+	//anim->AddFrame(fire);
+	//fire = new Sprite(items->GetTexture(), listSprite[32], TEXTURE_TRANS_COLOR_5);
+	//anim->AddFrame(fire);
+	//fire = new Sprite(items->GetTexture(), listSprite[33], TEXTURE_TRANS_COLOR_5);
+	//anim->AddFrame(fire);
+	//fire = new Sprite(items->GetTexture(), listSprite[34], TEXTURE_TRANS_COLOR_5);
+	//anim->AddFrame(fire);
+	//fire = new Sprite(items->GetTexture(), listSprite[35], TEXTURE_TRANS_COLOR_5);
+	//anim->AddFrame(fire);
+	fire = new Sprite(items->GetTexture(), listSprite[36], TEXTURE_TRANS_COLOR_5);
 	anim->AddFrame(fire);
-	Sprite *fire2 = new Sprite(items->GetTexture(), listSprite[37], TEXTURE_TRANS_COLOR_5);
-	anim->AddFrame(fire2);
-	Sprite *fire3 = new Sprite(items->GetTexture(), listSprite[38], TEXTURE_TRANS_COLOR_5);
-	anim->AddFrame(fire3);
+	fire = new Sprite(items->GetTexture(), listSprite[37], TEXTURE_TRANS_COLOR_5);
+	anim->AddFrame(fire);
 	animations.push_back(anim);
 }
 
 void Fire::Update(DWORD dt)
 {
+	this->UpdateCollision(dt);
 	if (this->Direction)
 	{
 		this->setIsLeft(false);
 		this->SetSpeedX(JFIRE2_SPEED);
+		collider.x = x - 10;
 	}
 	else
 	{
 		this->setIsLeft(true);
 		this->SetSpeedX(-JFIRE2_SPEED);
+		collider.x = x + 49;
 	}
 
 	this->SetPositionX((float)(this->GetPositionX() + this->GetSpeedX()* dt));
 	this->collider.x = this->GetPositionX();
+}
+
+void Fire::UpdateCollision(DWORD dt)
+{
+	bool isCollideAladdin = Collision::GetInstance()->AABB(this->GetCollider(), Aladdin::GetInstance()->GetCollider());
+
+	if (isCollideAladdin)
+	{
+		Aladdin::GetInstance()->SetAladdinHP(Aladdin::GetInstance()->GetAladdinHP() - 1);
+
+		if (Aladdin::GetInstance()->GetAladdinHP() > 0)
+		{
+			Aladdin::GetInstance()->GetState()->SetState(STATE_HURT);
+			Aladdin::GetInstance()->SetAttacking(false);
+		}
+	}
 }
 
 void Fire::Render()

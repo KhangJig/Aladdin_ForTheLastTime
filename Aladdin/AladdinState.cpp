@@ -734,30 +734,29 @@ void AladdinState::stateDead()
 	anim = aladdin->GetAnimationsList()[STATE_DEAD];
 	if (this->anim->IsDone())
 	{
-		if (this->aladdin->GetLifeNumber() > 0)
-		{
-			this->aladdin->SetLifeNumber(this->aladdin->GetLifeNumber() - 1);
-			this->aladdin->ResetHP();
-			this->aladdin->ResetPosisionAladdin();
-			this->aladdin->ResetPosisionCamera();
-			this->SetState(STATE_GENERIC);
-			return;
-		}
+		this->aladdin->SetLifeNumber(this->aladdin->GetLifeNumber() - 1);
+		this->aladdin->ResetHP();
+		this->aladdin->ResetPosisionAladdin();
+		this->aladdin->ResetPosisionCamera();
+		this->SetState(STATE_GENESIS);
+		return;
 	}
 }
 
-void AladdinState::stateGeneric()
+void AladdinState::stateGenesis()
 {
-	if (this->aladdin->GetLifeNumber() > 0)
+	this->aladdin->SetSpeedX(0);
+	this->aladdin->SetSpeedY(0);
+	if (this->aladdin->GetLifeNumber() >= 0)
 	{
-		anim = aladdin->GetAnimationsList()[STATE_GENERIC];
+		anim = aladdin->GetAnimationsList()[STATE_GENESIS];
 		if (this->anim->IsDone())
 		{
 			this->SetState(IDLE_STAND);
 			return;
 		}
 	}
-	else 
+	else
 	{
 		anim = aladdin->GetAnimationsList()[NONE];
 	}
@@ -1050,8 +1049,8 @@ void AladdinState::Update(DWORD dt)
 		this->stateDead();
 		break;
 
-	case STATE_GENERIC:
-		this->stateGeneric();
+	case STATE_GENESIS:
+		this->stateGenesis();
 		break;
 
 	case STATE_RUN_HIT:

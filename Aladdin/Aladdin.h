@@ -19,7 +19,9 @@ class Aladdin : public GameObject
 	Aladdin();
 
 	static Aladdin *__instance;
+
 	State  *stateApple;
+
 	AladdinState *state;
 
 	Apple *apple;
@@ -158,6 +160,9 @@ public:
 
 	void SetAladdinHP(int hp) { this->AladdinHP = hp; }
 	void SetDmgAttack(int dmg) { this->DmgAttack = dmg; }
+
+	void SetState(AladdinState *state) { this->state = state; }
+	AladdinState *GetState() { return this->state; }
 
 	void Reset();
 
