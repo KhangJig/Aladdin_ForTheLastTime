@@ -24,11 +24,11 @@ Guard1::Guard1(float x, float y, int CellID, int id)
 	this->CellID = CellID;
 	this->id = id;
 
-	this->disable = false;
-	this->Guard1HP = 50;
-	this->Guard1Dmg = 20;
+	this->Guard1HP = GUARD1_HP;
+	this->Guard1Dmg = GUARD1_DAMAGE;
 	this->Attacking = false;
 	this->Dead = false;
+	this->disable = false;
 
 	enemiesDeadEffect = new EnemiesDeadEffect(0, 0);
 

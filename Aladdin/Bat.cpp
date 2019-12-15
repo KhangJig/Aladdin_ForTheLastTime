@@ -14,10 +14,9 @@ Bat::Bat(float x, float y, int CellID, int id)
 	this->CellID = CellID;
 	this->id = id;
 
+	this->BatHP = BAT_HP;
+	this->Dmg = BAT_DAMAGE;
 	this->disable = false;
-	this->BatHP = 50;
-	this->SetSpeedX(0);
-	this->SetSpeedY(0);
 
 	collider.x = x;
 	collider.y = y;

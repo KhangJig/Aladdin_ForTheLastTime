@@ -15,7 +15,7 @@ Skeleton::Skeleton(float x, float y, int CellID, int id)
 	this->id = id;
 
 	this->disable = false;
-	this->SkeletonHP = 50;
+	this->SkeletonHP = SKELETON_HP;
 
 	collider.x = x;
 	collider.y = y;

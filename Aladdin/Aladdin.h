@@ -141,7 +141,7 @@ public:
 	int GetScoreNumber() { return this->ScoreNumber; }
 	int SetScoreNumber(int num) { this->ScoreNumber = num; }
 
-	void ResetHP() { this->AladdinHP = 500; }
+	void ResetHP() { this->AladdinHP = ALADDIN_DEFAULT_HP; }
 	void ResetSettings() 
 	{
 		this->Attacking = false;

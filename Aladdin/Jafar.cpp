@@ -11,8 +11,8 @@ Jafar::Jafar(int x, int y)
 	this->width = JAFAR_SPRITE_WIDTH;
 	this->height = JAFAR_SPRITE_HEIGHT;
 
-	this->HP = 1000;
-	this->Dmg = 50;
+	this->HP = JAFAR_HP;
+	this->Dmg = JAFAR_DAMAGE;
 	this->SnakePower = false;
 
 	collider.x = x;
@@ -181,11 +181,11 @@ void Jafar::Update(DWORD dt)
 			DebugOut(L"HP Jafar : %d \n", this->GetHP());
 			if (this->GetHP() > 0)
 			{
-				if (this->GetHP() >= 300)
+				if (this->GetHP() >= CHANGING_POINT)
 				{
 					this->state->SetState(JAFAR_HURT);
 				}
-				else if (this->GetHP() < 300 || this->SnakePower)
+				else if (this->GetHP() < CHANGING_POINT || this->SnakePower)
 				{
 					this->state->SetState(SNAKE_HURT);
 				}
@@ -193,7 +193,7 @@ void Jafar::Update(DWORD dt)
 				{
 					this->state->SetState(SNAKE_IDLE);
 					this->SnakePower = true;
-					this->Dmg += 20;
+					this->Dmg = SNAKE_DAMAGE;
 
 					this->width = SNAKE_SPRITE_WIDTH;
 					this->height = SNAKE_SPRITE_HEIGHT;
@@ -213,11 +213,11 @@ void Jafar::Update(DWORD dt)
 		DebugOut(L"HP Jafar : %d \n", this->GetHP());
 		if (this->GetHP() > 0)
 		{
-			if (this->GetHP() >= 300)
+			if (this->GetHP() >= CHANGING_POINT)
 			{
 				this->state->SetState(JAFAR_HURT);
 			}
-			else if (this->GetHP() < 300 || this->SnakePower)
+			else if (this->GetHP() < CHANGING_POINT || this->SnakePower)
 			{
 				this->state->SetState(SNAKE_HURT);
 			}
@@ -225,7 +225,7 @@ void Jafar::Update(DWORD dt)
 			{
 				this->state->SetState(SNAKE_IDLE);
 				this->SnakePower = true;
-				this->Dmg += 20;
+				this->Dmg = SNAKE_DAMAGE;
 
 				this->width = SNAKE_SPRITE_WIDTH;
 				this->height = SNAKE_SPRITE_HEIGHT;

@@ -24,12 +24,12 @@ Aladdin::Aladdin()
 
 	this->x = 50;
 	this->y = 150;
-	this->AladdinHP = 500;
-	this->AppleNumber = 10;
-	this->DiamondNumber = 0;
-	this->LifeNumber = 3;
-	this->ScoreNumber = 10;
-	this->DmgAttack = 20;
+	this->AladdinHP = ALADDIN_DEFAULT_HP;
+	this->AppleNumber = ALADDIN_DEFAULT_APPLE;
+	this->DiamondNumber = ALADDIN_DEFAULT_DIAMOND;
+	this->LifeNumber = ALADDIN_DEFAULT_HEART;
+	this->ScoreNumber = ALADDIN_DEFAULT_SCORE;
+	this->DmgAttack = ALADDIN_DAMAGE;
 	this->LV = 1;
 	this->Attacking = false;
 	this->JumpOnBrick = false;
@@ -1108,7 +1108,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 			int x = ((ThornObject*)listUpdateObject.at(i).object)->GetAnimation()[1]->GetCurFrame();
 			if (x == 3)
 			{
-				this->AladdinHP = this->AladdinHP - 4;
+				this->AladdinHP = this->AladdinHP - THORN_DAMAGE_BY_TIME;
 				DebugOut(L"Aladdin HP :  %d \n", this->AladdinHP);
 				this->state->SetState(STATE_HURT);
 				Sound::GetInstance()->PlaySound(aladdinHurt);
@@ -1119,7 +1119,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 			int x = ((BallObject*)listUpdateObject.at(i).object)->GetAnimation()[0]->GetCurFrame();
 			if (x == 9 || x == 19)
 			{
-				this->AladdinHP = this->AladdinHP - 1;
+				this->AladdinHP = this->AladdinHP - BALL_DAMAGE_BY_TIME;
 				DebugOut(L"Aladdin HP :  %d \n", this->AladdinHP);
 				this->state->SetState(STATE_HURT);
 				Sound::GetInstance()->PlaySound(aladdinHurt);
@@ -1188,7 +1188,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 			Sound::GetInstance()->PlaySound(appleCollect);
 			Grid::GetInstance()->SetisLifeListObject(((AppleItem*)listUpdateObject.at(i).object)->GetID(), false);
 			itemEffect->SetPos(listUpdateObject.at(i).ene.x + APPLE_ITEM_WIDTH / 2, listUpdateObject.at(i).ene.y, false);
-			if (this->AppleNumber < 100)
+			if (this->AppleNumber < ALADDIN_DEFAULT_MAX_APPLE)
 			{
 				this->AppleNumber++;
 			}
@@ -1198,7 +1198,8 @@ void Aladdin::UpdateCollision(DWORD dt)
 			Grid::GetInstance()->SetisLifeListObject(((DiamondItem*)listUpdateObject.at(i).object)->GetID(), false);
 			itemEffect->SetPos(listUpdateObject.at(i).ene.x + DIAMOND_ITEM_WIDTH / 2, listUpdateObject.at(i).ene.y, false);
 			Sound::GetInstance()->PlaySound(gemCollect);
-			if (this->DiamondNumber < 100)
+			this->ScoreNumber += DIAMOND_ITEM_POINT;
+			if (this->DiamondNumber < ALADDIN_DEFAULT_MAX_DIAMOND)
 			{
 				this->DiamondNumber++;
 			}
@@ -1220,15 +1221,17 @@ void Aladdin::UpdateCollision(DWORD dt)
 		case ObjectAndEnemies::GENIE_FACE:
 		{
 			Sound::GetInstance()->PlaySound(appleCollect);
+			this->ScoreNumber += GENIE_FACE_POINT;
 			Grid::GetInstance()->SetisLifeListObject(((GenieFaceItem*)listUpdateObject.at(i).object)->GetID(), false);
 			itemEffect->SetPos(listUpdateObject.at(i).ene.x + GENIE_FACE_ITEM_WIDTH / 2, listUpdateObject.at(i).ene.y, false);
 		}break;
 		case ObjectAndEnemies::EXTRA_HEART:
 		{
 			Sound::GetInstance()->PlaySound(appleCollect);
+			this->ScoreNumber += EXTRA_HEART_ITEM_POINT;
 			Grid::GetInstance()->SetisLifeListObject(((ExtraHeartItem*)listUpdateObject.at(i).object)->GetID(), false);
 			itemEffect->SetPos(listUpdateObject.at(i).ene.x + EXTRA_HEART_ITEM_WIDTH / 2, listUpdateObject.at(i).ene.y, false);
-			if (this->LifeNumber < 100)
+			if (this->LifeNumber < ALADDIN_DEFAULT_MAX_HEART)
 			{
 				this->LifeNumber++;
 			}

@@ -26,6 +26,8 @@ class Bat : public GameObject
 
 	int BatHP;
 
+	int Dmg;
+
 	int id;
 
 public:
@@ -42,6 +44,8 @@ public:
 	void SetColliderDemension(float width, float height) { this->collider.width = width; this->collider.height = height; }
 	vector<Animation *> GetAnimationsList() { return animations; }
 	int GetCellID() { return this->CellID; }
+	int GetDmg() { return this->Dmg; }
+	void SetDmg(int num) { this->Dmg = num; }
 	EnemiesDeadEffect *GetEnemiesDeadEffect() { return this->enemiesDeadEffect; }
 #pragma endregion
 
