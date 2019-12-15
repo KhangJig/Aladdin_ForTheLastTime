@@ -28,6 +28,7 @@ Aladdin::Aladdin()
 	this->AppleNumber = 10;
 	this->DiamondNumber = 0;
 	this->LifeNumber = 3;
+	this->ScoreNumber = 10;
 	this->DmgAttack = 20;
 	this->LV = 1;
 	this->Attacking = false;
@@ -1021,6 +1022,7 @@ void Aladdin::Update(DWORD dt)
 	AppleMenu::GetInstance()->SetNum(this->AppleNumber);
 	DiamondMenu::GetInstance()->SetNum(this->DiamondNumber);
 	LifeMenu::GetInstance()->SetNum(this->LifeNumber);
+	Score::GetInstance()->SetNum(this->ScoreNumber);
 	apple->Update(dt);
 	apple->UpdateCollision(tiles);
 	state->Colision();

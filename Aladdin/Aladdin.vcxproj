@@ -198,6 +198,7 @@
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="KeyBoard.cpp" />
+    <ClCompile Include="Score.cpp" />
     <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="SkeletonState.cpp" />
     <ClCompile Include="Sound.cpp" />
@@ -248,6 +249,7 @@
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="LifeMenu.h" />
     <ClInclude Include="Loadtxt.h" />
+    <ClInclude Include="Score.h" />
     <ClInclude Include="Skeleton.h" />
     <ClInclude Include="SkeletonState.h" />
     <ClInclude Include="Sound.h" />

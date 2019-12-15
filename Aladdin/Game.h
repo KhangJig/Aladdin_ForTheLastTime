@@ -11,6 +11,7 @@
 #include "AppleMenu.h"
 #include "DiamondMenu.h"
 #include "LifeMenu.h"
+#include "Score.h"
 
 #include <chrono>
 
@@ -35,6 +36,7 @@ class Game
 	AppleMenu *appleMenu;
 	DiamondMenu *diamondMenu;
 	LifeMenu *lifeMenu;
+	Score *score;
 	Stage stage;
 
 public:

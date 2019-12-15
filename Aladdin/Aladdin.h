@@ -11,6 +11,7 @@
 #include "AppleMenu.h"
 #include "DiamondMenu.h"
 #include "LifeMenu.h"
+#include "Score.h"
 
 class AladdinState;
 class Aladdin : public GameObject
@@ -60,6 +61,7 @@ class Aladdin : public GameObject
 	int AppleNumber;
 	int DiamondNumber;
 	int LifeNumber;
+	int ScoreNumber;
 
 	int DmgAttack;
 	bool Attacking;
@@ -135,6 +137,9 @@ public:
 
 	int GetAladdinHP() { return this->AladdinHP; }
 	int GetDmgAttack() { return this->DmgAttack; }
+
+	int GetScoreNumber() { return this->ScoreNumber; }
+	int SetScoreNumber(int num) { this->ScoreNumber = num; }
 
 	void ResetHP() { this->AladdinHP = 500; }
 	void ResetSettings() 

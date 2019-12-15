@@ -107,7 +107,7 @@ void HP::LoadResources()
 void HP::Update(DWORD dt)
 {
 	this->x = Viewport::GetInstance()->GetX() + 20;
-	this->y = Viewport::GetInstance()->GetY() - 20;
+	this->y = Viewport::GetInstance()->GetY() - 17;
 }
 
 void HP::Render()
