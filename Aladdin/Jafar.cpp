@@ -57,7 +57,7 @@ void Jafar::LoadResources()
 #pragma endregion
 
 #pragma region JAFAR HIT
-	anim = new Animation(140);
+	anim = new Animation(200);
 	Sprite *jafar_1 = new Sprite(jafar->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR_7);
 	anim->AddFrame(jafar_1);
 	Sprite *jafar_2 = new Sprite(jafar->GetTexture(), listSprite[1], TEXTURE_TRANS_COLOR_7);
@@ -115,7 +115,7 @@ void Jafar::LoadResources()
 #pragma endregion
 
 #pragma region SNAKE HIT
-	anim = new Animation(140);
+	anim = new Animation(250);
 	Sprite *snake_hit_1 = new Sprite(jafar->GetTexture(), listSprite[8], TEXTURE_TRANS_COLOR_7);
 	snake_hit_1->SetOffSetX(-31);
 	snake_hit_1->SetOffSetY(-25);
@@ -165,6 +165,8 @@ void Jafar::LoadResources()
 
 	animations.push_back(anim);
 #pragma endregion
+
+	Fire::LoadResources(listSprite, jafar);
 }
 
 void Jafar::Update(DWORD dt)
@@ -246,8 +248,13 @@ void Jafar::Update(DWORD dt)
 		}
 		else
 		{
-			//DEAD
+			this->state->SetState(JAFAR_DEAD);
 		}
+	}
+
+	for (int i = 0; i < this->listFire.size(); i++)
+	{
+		this->listFire.at(i)->Update(dt);
 	}
 
 	state->Colision();
@@ -259,12 +266,20 @@ void Jafar::Render()
 	if (this->disable)
 		return;
 
+	for (int i = 0; i < this->listFire.size(); i++)
+	{
+		if (abs(this->listFire.at(i)->GetPositionX() - this->GetX()) <= JFIRE2_RADIUS)
+		{
+			this->listFire.at(i)->Render();
+		}
+	}
+
 	state->Render();
 }
 
 void Jafar::OnCollision()
 {
-	((JafarState*)state)->timeCount = 0;
+
 }
 
 Jafar::~Jafar()

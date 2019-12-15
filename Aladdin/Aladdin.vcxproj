@@ -171,6 +171,7 @@
     <ClCompile Include="BottleItem.cpp" />
     <ClCompile Include="BrickOutObject.cpp" />
     <ClCompile Include="ExtraHeartItem.cpp" />
+    <ClCompile Include="Fire.cpp" />
     <ClCompile Include="GenieFaceItem.cpp" />
     <ClCompile Include="Guard2.cpp" />
     <ClCompile Include="Guard2State.cpp" />
@@ -223,6 +224,7 @@
     <ClInclude Include="BottleItem.h" />
     <ClInclude Include="BrickOutObject.h" />
     <ClInclude Include="ExtraHeartItem.h" />
+    <ClInclude Include="Fire.h" />
     <ClInclude Include="GenieFaceItem.h" />
     <ClInclude Include="Guard2.h" />
     <ClInclude Include="Guard2State.h" />

@@ -201,6 +201,9 @@
     <ClCompile Include="Score.cpp">
       <Filter>GameObjects\GameMenu</Filter>
     </ClCompile>
+    <ClCompile Include="Fire.cpp">
+      <Filter>GameObjects\Boss</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h">
@@ -349,6 +352,9 @@
     </ClInclude>
     <ClInclude Include="Score.h">
       <Filter>GameObjects\GameMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="Fire.h">
+      <Filter>GameObjects\Boss</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

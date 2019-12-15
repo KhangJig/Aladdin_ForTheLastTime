@@ -150,6 +150,7 @@ enum ObjectAndEnemies
 #define JAFAR_DAMAGE 60
 #define SNAKE_DAMAGE 75
 #define JAFAR_POINT 5000
+#define JAFAR_RADIUS 680
 
 // EFFECTS
 #define EFFECT_JAFAR_SPRITE_WIDTH 13
@@ -170,6 +171,8 @@ enum ObjectAndEnemies
 // FIRE 2
 #define FIRE2_SPRITE_WIDTH 74
 #define JFIRE2_SPRITE_HEIGHT 49
+#define JFIRE2_RADIUS 650
+#define JFIRE2_SPEED 0.105f
 
 // Items
 #define ITEMS_TEXTURE_LOCATION L"Resource\\Miscellaneous\\Items.png"

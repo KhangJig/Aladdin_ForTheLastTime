@@ -31,8 +31,11 @@ void JafarState::SetState(StateJafar state)
 void JafarState::stateJafarIdle()
 {
 	anim = jafar->GetAnimationsList()[JAFAR_IDLE];
-	if (abs(this->jafar->GetX() - Aladdin::GetInstance()->GetPositionX()) <= 600)
+	if (abs(this->jafar->GetX() - Aladdin::GetInstance()->GetPositionX()) <= JAFAR_RADIUS)
 	{
+		Fire* fire = new Fire(this->jafar->GetX(), this->jafar->GetY() - JAFAR_SPRITE_HEIGHT, this->jafar->IsLeft());
+		this->jafar->AddListFire(fire);
+
 		this->SetState(JAFAR_HIT);
 		return;
 	}
@@ -43,6 +46,7 @@ void JafarState::stateJafarHurt()
 	anim = jafar->GetAnimationsList()[JAFAR_HURT];
 	if (this->anim->IsDone())
 	{
+		anim->Reset();
 		this->SetState(JAFAR_IDLE);
 		return;
 	}
@@ -51,8 +55,9 @@ void JafarState::stateJafarHurt()
 void JafarState::stateJafarHit()
 {
 	anim = jafar->GetAnimationsList()[JAFAR_HIT];
-	if (abs(this->jafar->GetX() - Aladdin::GetInstance()->GetPositionX()) > 600)
+	if (anim->IsDone())
 	{
+		anim->Reset();
 		this->SetState(JAFAR_IDLE);
 		return;
 	}
@@ -61,8 +66,11 @@ void JafarState::stateJafarHit()
 void JafarState::stateSnakeIdle()
 {
 	anim = jafar->GetAnimationsList()[SNAKE_IDLE];
-	if (abs(this->jafar->GetX() - Aladdin::GetInstance()->GetPositionX()) <= 700)
+	if (abs(this->jafar->GetX() - Aladdin::GetInstance()->GetPositionX()) <= JAFAR_RADIUS)
 	{
+		Fire* fire = new Fire(this->jafar->GetX(), this->jafar->GetY() - JAFAR_SPRITE_HEIGHT, this->jafar->IsLeft());
+		this->jafar->AddListFire(fire);
+
 		this->SetState(SNAKE_HIT);
 		return;
 	}
@@ -73,6 +81,7 @@ void JafarState::stateSnakeHurt()
 	anim = jafar->GetAnimationsList()[SNAKE_HURT];
 	if (this->anim->IsDone())
 	{
+		anim->Reset();
 		this->SetState(SNAKE_IDLE);
 		return;
 	}
@@ -81,8 +90,9 @@ void JafarState::stateSnakeHurt()
 void JafarState::stateSnakeHit()
 {
 	anim = jafar->GetAnimationsList()[SNAKE_HIT];
-	if (abs(this->jafar->GetX() - Aladdin::GetInstance()->GetPositionX()) > 700)
+	if (this->anim->IsDone())
 	{
+		anim->Reset();
 		this->SetState(SNAKE_IDLE);
 		return;
 	}

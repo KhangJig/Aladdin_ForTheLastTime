@@ -5,6 +5,7 @@
 #include "Game.h"
 #include "State.h"
 #include "JafarState.h"
+#include "Fire.h"
 
 class JafarState;
 class Jafar : public GameObject
@@ -24,6 +25,8 @@ class Jafar : public GameObject
 	int id;
 
 	bool SnakePower;
+
+	vector <Fire*> listFire;
 public:
 
 	Jafar(int x, int y, int CellID, int id);
@@ -40,6 +43,8 @@ public:
 	int GetDmg() { return this->Dmg; }
 	void SetSnakePower(int power) { this->SnakePower = power; }
 	bool GetSnakePower() { return this->SnakePower; }
+	vector <Fire*> GetListFire(){ return this->listFire; }
+	void AddListFire(Fire *fire) { this->listFire.push_back(fire); }
 
 	static void LoadResources();
 
