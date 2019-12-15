@@ -856,11 +856,28 @@ void Aladdin::Update(DWORD dt)
 		}break;
 		case ObjectType::WALL:
 		{
-			if (nx == 1 || nx == -1)
-			{
-				this->SetSpeedX(0);
-				this->SetIsGrounded(true);
-			}
+			this->SetSpeedX(0);
+			this->SetIsGrounded(true);
+		}break;
+		case ObjectType::DOOR:
+		{
+			DebugOut(L"DOOR \n");
+			this->LV = 2;
+			Game::GetInstance()->SetStage(STAGE_2);
+
+			this->SetPositionX(100);
+			this->SetPositionY(150);
+			this->GeneratePosX = 100;
+			this->GeneratePosY = 150;
+			this->GeneratePosCameraX = Viewport::GetInstance()->GetX();
+			this->GeneratePosCameraY = Viewport::GetInstance()->GetY();
+			Viewport::GetInstance()->Reset();
+
+			TileMap::GetInstance()->SetCurrentMap(STAGE_2);
+			Grid::GetInstance()->InitializeMapGrid(TileMap::GetInstance());
+
+			Sound::GetInstance()->StopSound(theme1);
+			Sound::GetInstance()->PlaySound(theme2);
 		}break;
 		}
 	}

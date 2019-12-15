@@ -20,7 +20,8 @@ enum ObjectType
 	DEFAULT,
 	BRICK,
 	WALL,
-	ROPE
+	ROPE,
+	DOOR
 };
 
 enum EventCollison
@@ -28,7 +29,8 @@ enum EventCollison
 	EVENT_DEFAULT,
 	EVENT_BRICK,
 	EVENT_WALL,
-	EVENT_ROPE
+	EVENT_ROPE,
+	EVENT_DOOR
 };
 
 enum ObjectAndEnemies

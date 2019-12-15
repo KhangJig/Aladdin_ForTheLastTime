@@ -104,6 +104,10 @@ void TileMap::LoadObjectMap(LPCWSTR filePath, int mapId)
 		{
 			tilesObj.type = ObjectType::ROPE;
 		}
+		if (stoi(data) == 4)
+		{
+			tilesObj.type = ObjectType::DOOR;
+		}
 
 		tilesData >> data;
 		tilesObj.GridCellID = stoi(data);

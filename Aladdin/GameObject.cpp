@@ -92,6 +92,19 @@ void GameObject::MapCollisions(vector<TileObjectMap *> &tiles, vector<ColliedEve
 				coEvents.push_back(new ColliedEvent(EventCollison::EVENT_ROPE, time, normalX, normalY));
 			}
 		}
+		else if (tiles[i]->type == ObjectType::DOOR)
+		{
+			float time;
+			float normalX;
+			float normalY;
+
+			time = Collision::GetInstance()->SweptAABB(this->GetCollider(), tileCollider, normalX, normalY);
+
+			if (time >= 0 && time < 1.0f && normalY == 1)
+			{
+				coEvents.push_back(new ColliedEvent(EventCollison::EVENT_DOOR, time, normalX, normalY));
+			}
+		}
 	}
 }
 
