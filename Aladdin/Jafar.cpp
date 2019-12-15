@@ -44,11 +44,11 @@ void Jafar::LoadResources()
 
 #pragma region JAFAR HURT
 	anim = new Animation(80);
-	Sprite *jafar_hurt_0 = new Sprite(jafar->GetTexture(), listSprite[37], TEXTURE_TRANS_COLOR_7);
+	Sprite *jafar_hurt_0 = new Sprite(jafar->GetTexture(), listSprite[38], TEXTURE_TRANS_COLOR_7);
 	anim->AddFrame(jafar_hurt_0);
 	Sprite *jafar_hurt_1 = new Sprite(jafar->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR_7);
 	anim->AddFrame(jafar_hurt_1);
-	Sprite *jafar_hurt_2 = new Sprite(jafar->GetTexture(), listSprite[37], TEXTURE_TRANS_COLOR_7);
+	Sprite *jafar_hurt_2 = new Sprite(jafar->GetTexture(), listSprite[38], TEXTURE_TRANS_COLOR_7);
 	anim->AddFrame(jafar_hurt_2);
 	Sprite *jafar_hurt_3 = new Sprite(jafar->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR_7);
 	anim->AddFrame(jafar_hurt_3);
