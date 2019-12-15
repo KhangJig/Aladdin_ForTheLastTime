@@ -58,16 +58,25 @@ void Guard2::LoadResources()
 	anim = new Animation(100);
 
 	Sprite * guard2_hurt_2 = new Sprite(guard2->GetTexture(), listSprite[48], TEXTURE_TRANS_COLOR_3);
+	guard2_hurt_2->SetOffSetX(6);
+	guard2_hurt_2->SetOffSetY(-6);
 	anim->AddFrame(guard2_hurt_2);
 	Sprite * guard2_hurt_3 = new Sprite(guard2->GetTexture(), listSprite[49], TEXTURE_TRANS_COLOR_3);
+	guard2_hurt_3->SetOffSetX(2);
+	guard2_hurt_3->SetOffSetY(17);
 	anim->AddFrame(guard2_hurt_3);
 	Sprite * guard2_hurt_4 = new Sprite(guard2->GetTexture(), listSprite[50], TEXTURE_TRANS_COLOR_3);
+	guard2_hurt_4->SetOffSetX(4);
+	guard2_hurt_4->SetOffSetY(3);
 	anim->AddFrame(guard2_hurt_4);
 	Sprite * guard2_hurt_5 = new Sprite(guard2->GetTexture(), listSprite[51], TEXTURE_TRANS_COLOR_3);
+	guard2_hurt_5->SetOffSetX(4);
+	guard2_hurt_5->SetOffSetY(12);
 	anim->AddFrame(guard2_hurt_5);
 	Sprite * guard2_hurt_6 = new Sprite(guard2->GetTexture(), listSprite[52], TEXTURE_TRANS_COLOR_3);
+	guard2_hurt_6->SetOffSetX(2);
+	guard2_hurt_6->SetOffSetY(10);
 	anim->AddFrame(guard2_hurt_6);
-	Sprite * guard2_hurt_7 = new Sprite(guard2->GetTexture(), listSprite[53], TEXTURE_TRANS_COLOR_3);
 
 	animations.push_back(anim);
 #pragma endregion
@@ -76,20 +85,33 @@ void Guard2::LoadResources()
 	anim = new Animation(100);
 
 	Sprite * guard2_walking_1 = new Sprite(guard2->GetTexture(), listSprite[23], TEXTURE_TRANS_COLOR_3);
+	guard2_walking_1->SetOffSetX(10);
+	guard2_walking_1->SetOffSetY(-2);
 	anim->AddFrame(guard2_walking_1);
 	Sprite * guard2_walking_2 = new Sprite(guard2->GetTexture(), listSprite[24], TEXTURE_TRANS_COLOR_3);
+	guard2_walking_2->SetOffSetX(2);
 	anim->AddFrame(guard2_walking_2);
 	Sprite * guard2_walking_3 = new Sprite(guard2->GetTexture(), listSprite[25], TEXTURE_TRANS_COLOR_3);
+	guard2_walking_3->SetOffSetX(12);
+	guard2_walking_3->SetOffSetY(1);
 	anim->AddFrame(guard2_walking_3);
 	Sprite * guard2_walking_4 = new Sprite(guard2->GetTexture(), listSprite[26], TEXTURE_TRANS_COLOR_3);
+	guard2_walking_4->SetOffSetX(7);
 	anim->AddFrame(guard2_walking_4);
 	Sprite * guard2_walking_5 = new Sprite(guard2->GetTexture(), listSprite[27], TEXTURE_TRANS_COLOR_3);
+	guard2_walking_5->SetOffSetX(-8);
+	guard2_walking_5->SetOffSetY(-2);
 	anim->AddFrame(guard2_walking_5);
 	Sprite * guard2_walking_6 = new Sprite(guard2->GetTexture(), listSprite[28], TEXTURE_TRANS_COLOR_3);
+	guard2_walking_6->SetOffSetX(-4);
+	guard2_walking_6->SetOffSetY(-1);
 	anim->AddFrame(guard2_walking_6);
 	Sprite * guard2_walking_7 = new Sprite(guard2->GetTexture(), listSprite[29], TEXTURE_TRANS_COLOR_3);
+	guard2_walking_7->SetOffSetX(-2);
+	guard2_walking_7->SetOffSetY(2);
 	anim->AddFrame(guard2_walking_7);
 	Sprite * guard2_walking_8 = new Sprite(guard2->GetTexture(), listSprite[30], TEXTURE_TRANS_COLOR_3);
+	guard2_walking_8->SetOffSetX(4);
 	anim->AddFrame(guard2_walking_8);
 
 	animations.push_back(anim);
@@ -99,17 +121,25 @@ void Guard2::LoadResources()
 	anim = new Animation(120);
 
 	Sprite * guard2_hit_1 = new Sprite(guard2->GetTexture(), listSprite[43], TEXTURE_TRANS_COLOR_3);
+	guard2_hit_1->SetOffSetX(-15);
+	guard2_hit_1->SetOffSetY(6);
 	anim->AddFrame(guard2_hit_1);
 	Sprite * guard2_hit_2 = new Sprite(guard2->GetTexture(), listSprite[44], TEXTURE_TRANS_COLOR_3);
+	guard2_hit_2->SetOffSetX(-17);
+	guard2_hit_2->SetOffSetY(19);
 	anim->AddFrame(guard2_hit_2);
 	Sprite * guard2_hit_3 = new Sprite(guard2->GetTexture(), listSprite[45], TEXTURE_TRANS_COLOR_3);
+	guard2_hit_3->SetOffSetX(-16);
+	guard2_hit_3->SetOffSetY(12);
 	anim->AddFrame(guard2_hit_3);
 	Sprite * guard2_hit_4 = new Sprite(guard2->GetTexture(), listSprite[46], TEXTURE_TRANS_COLOR_3);
+	guard2_hit_4->SetOffSetX(52);
+	guard2_hit_4->SetOffSetY(2);
 	anim->AddFrame(guard2_hit_4);
 	Sprite * guard2_hit_5 = new Sprite(guard2->GetTexture(), listSprite[47], TEXTURE_TRANS_COLOR_3);
+	guard2_hit_5->SetOffSetX(33);
+	guard2_hit_5->SetOffSetY(19);
 	anim->AddFrame(guard2_hit_5);
-	Sprite * guard2_hit_6 = new Sprite(guard2->GetTexture(), listSprite[48], TEXTURE_TRANS_COLOR_3);
-	anim->AddFrame(guard2_hit_6);
 
 	animations.push_back(anim);
 #pragma endregion
