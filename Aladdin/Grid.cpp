@@ -248,25 +248,25 @@ void Grid::Update(DWORD dt)
 					{
 					case ObjectAndEnemies::GUARD1:
 					{
-						DebugOut(L"Guard 1 Created!\n");
+						//DebugOut(L"Guard 1 Created!\n");
 						listObject.at(i).object = new Guard1(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
 						listObject.at(i).isGenerated = true;
 					}break;
 					case ObjectAndEnemies::GUARD2:
 					{
-						DebugOut(L"Guard 2 Created!\n");
+						//DebugOut(L"Guard 2 Created!\n");
 						listObject.at(i).object = new Guard2(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
 						listObject.at(i).isGenerated = true;
 					}break;
 					case ObjectAndEnemies::SKELETON:
 					{
-						DebugOut(L"Skeleton Created!\n");
+						//DebugOut(L"Skeleton Created!\n");
 						listObject.at(i).object = new Skeleton(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
 						listObject.at(i).isGenerated = true;
 					}break;
 					case ObjectAndEnemies::BAT:
 					{
-						DebugOut(L"Bat Created!\n");
+						//DebugOut(L"Bat Created!\n");
 						listObject.at(i).object = new Bat(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
 						listObject.at(i).isGenerated = true;
 					}break;
@@ -292,31 +292,31 @@ void Grid::Update(DWORD dt)
 					}break;
 					case ObjectAndEnemies::APPLE:
 					{
-						DebugOut(L"Apple-items Created!\n");
+						//DebugOut(L"Apple-items Created!\n");
 						listObject.at(i).object = new AppleItem(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
 						listObject.at(i).isGenerated = true;
 					}break;
 					case ObjectAndEnemies::DIAMOND:
 					{
-						DebugOut(L"Apple-items Created!\n");
+						//DebugOut(L"Apple-items Created!\n");
 						listObject.at(i).object = new DiamondItem(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
 						listObject.at(i).isGenerated = true;
 					}break;
 					case ObjectAndEnemies::BOTTLE:
 					{
-						DebugOut(L"Bottle-items Created!\n");
+						//DebugOut(L"Bottle-items Created!\n");
 						listObject.at(i).object = new BottleItem(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
 						listObject.at(i).isGenerated = true;
 					}break;
 					case ObjectAndEnemies::GENIE_FACE:
 					{
-						DebugOut(L"GenieFace-items Created!\n");
+						//DebugOut(L"GenieFace-items Created!\n");
 						listObject.at(i).object = new GenieFaceItem(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
 						listObject.at(i).isGenerated = true;
 					}break;
 					case ObjectAndEnemies::EXTRA_HEART:
 					{
-						DebugOut(L"ExtraHeartItem-items Created!\n");
+						//DebugOut(L"ExtraHeartItem-items Created!\n");
 						listObject.at(i).object = new ExtraHeartItem(listObject.at(i).ene.x, listObject.at(i).ene.y, listObject.at(i).ene.CellID, i);
 						listObject.at(i).isGenerated = true;
 					}break;
@@ -326,7 +326,7 @@ void Grid::Update(DWORD dt)
 					}break;
 					case ObjectAndEnemies::JAFAR:
 					{
-						DebugOut(L"Jafar Created!\n");
+						//DebugOut(L"Jafar Created!\n");
 						listObject.at(i).object = new Jafar(listObject.at(i).ene.x, listObject.at(i).ene.y);
 						listObject.at(i).isGenerated = true;
 					}break;

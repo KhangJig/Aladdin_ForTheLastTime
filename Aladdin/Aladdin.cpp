@@ -1082,7 +1082,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}break;
 		case ObjectAndEnemies::BAT:
 		{
-			DebugOut(L"ASDASDASDA\n");
+
 		}break;
 		case ObjectAndEnemies::THORN:
 		{
