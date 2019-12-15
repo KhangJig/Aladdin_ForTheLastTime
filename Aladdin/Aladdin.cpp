@@ -821,7 +821,7 @@ void Aladdin::Update(DWORD dt)
 	this->isLeft ? this->collider.x = x - 10 : this->collider.x = x;
 	this->MapCollisions(tiles, coEvents);
 
-#pragma region	BRICK & WALL
+#pragma region	BRICK - WALL - DOOR
 	if (coEvents.size() == 0)
 	{
 		float moveX = trunc(this->GetSpeedX()* dt);
