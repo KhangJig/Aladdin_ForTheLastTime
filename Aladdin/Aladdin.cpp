@@ -1042,6 +1042,18 @@ void Aladdin::Update(DWORD dt)
 		this->collider.x = x;
 	}
 
+	if (this->state->GetState() == IDLE_SIT ||
+		this->state->GetState() == STATE_SIT_HIT ||
+		this->state->GetState() == STATE_SIT_THROW ||
+		this->state->GetState() == STATE_SIT)
+	{
+		this->collider.y = y - 35;
+	}
+	else
+	{
+		this->collider.y = y;
+	}
+
 #pragma endregion
 
 }
