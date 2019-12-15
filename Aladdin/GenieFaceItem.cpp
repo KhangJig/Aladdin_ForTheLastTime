@@ -63,7 +63,7 @@ void GenieFaceItem::Update(DWORD dt)
 {
 	if (!this->check)
 	{
-		if (abs(Aladdin::GetInstance()->GetPositionX() - this->x) <= 60 && abs(Aladdin::GetInstance()->GetPositionY() - this->y) <= 30)
+		if (abs(Aladdin::GetInstance()->GetPositionX() - this->x) <= 80 && abs(Aladdin::GetInstance()->GetPositionY() - this->y) <= 70)
 		{
 			this->state = GenieFaceState::GenieFace2;
 		}

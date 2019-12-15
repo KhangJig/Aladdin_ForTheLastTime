@@ -41,6 +41,9 @@ class Aladdin : public GameObject
 
 	GSound* appleCollect;
 	GSound* gemCollect;
+	GSound* extraHeart;
+	GSound* genieFumes;
+	GSound* comingOut;
 
 	GSound* highSword;
 	GSound* lowSword;
@@ -127,6 +130,7 @@ public:
 	GSound *GetSoundHighSword() { return this->highSword; }
 	GSound *GetSoundLowSword() { return this->lowSword; }
 	GSound *GetSoundThrowApple() { return this->throwApple; }
+	GSound *GetSoundComingOut() { return this->comingOut; }
 
 	void SetIsApple(bool isApple) { this->isApple = isApple; }
 	bool GetisApple() { return isApple; }

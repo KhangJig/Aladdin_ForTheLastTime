@@ -101,7 +101,7 @@ void JafarState::stateSnakeHit()
 void JafarState::stateDead() 
 {
 	this->anim = jafar->GetAnimationsList()[JAFAR_DEAD];
-	if (this->anim->IsDone())
+	if (this->jafar->GetEnemiesDeadEffect()->GetHidden())
 	{
 		Grid::GetInstance()->SetisLifeListObject(this->jafar->GetID(), false);
 		Aladdin::GetInstance()->SetScoreNumber(Aladdin::GetInstance()->GetScoreNumber() + JAFAR_POINT);

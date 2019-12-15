@@ -749,6 +749,7 @@ void AladdinState::stateGenesis()
 	this->aladdin->SetSpeedY(0);
 	if (this->aladdin->GetLifeNumber() >= 0)
 	{
+		Sound::GetInstance()->PlaySound(this->aladdin->GetSoundComingOut());
 		anim = aladdin->GetAnimationsList()[STATE_GENESIS];
 		if (this->anim->IsDone())
 		{

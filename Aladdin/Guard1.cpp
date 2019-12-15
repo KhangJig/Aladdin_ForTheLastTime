@@ -272,7 +272,7 @@ void Guard1::UpdateCollision(DWORD dt)
 			}
 			else
 			{
-				enemiesDeadEffect->SetPos(this->GetPositionX() + 20, this->GetPositionY(), false);
+				enemiesDeadEffect->SetPos(this->GetPositionX() + GUARD1_SPRITE_WIDTH / 2, this->GetPositionY() + GUARD1_SPRITE_HEIGHT / 2, false);
 				this->state->SetState(GUARD1_DEAD);
 			}
 		}
@@ -288,7 +288,7 @@ void Guard1::UpdateCollision(DWORD dt)
 		}
 		else
 		{
-			enemiesDeadEffect->SetPos(this->GetPositionX() + 20, this->GetPositionY(), false);
+			enemiesDeadEffect->SetPos(this->GetPositionX() + GUARD1_SPRITE_WIDTH / 2, this->GetPositionY() + GUARD1_SPRITE_HEIGHT / 2, false);
 			this->state->SetState(GUARD1_DEAD);
 		}
 	}

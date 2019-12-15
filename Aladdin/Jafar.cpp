@@ -25,6 +25,13 @@ Jafar::Jafar(int x, int y, int CellID, int id)
 	collider.width = JAFAR_SPRITE_WIDTH;
 	collider.height = JAFAR_SPRITE_HEIGHT;
 
+	enemiesDeadEffect = new EnemiesDeadEffect(0, 0);
+
+	this->jafarLaugh = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_JAFAR_LAUGH);
+	this->jafarSnake = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_JAFAR_SNAKE);
+
+	Sound::GetInstance()->PlaySound(jafarLaugh);
+
 	this->disable = false;
 }
 
@@ -228,6 +235,7 @@ void Jafar::Update(DWORD dt)
 			}
 			else
 			{
+				enemiesDeadEffect->SetPos(this->GetPositionX() + JAFAR_SPRITE_WIDTH / 2, this->GetPositionY(), false);
 				this->state->SetState(JAFAR_DEAD);
 			}
 		}
@@ -260,6 +268,8 @@ void Jafar::Update(DWORD dt)
 		
 			if (this->GetHP() < CHANGING_POINT && !this->SnakePower)
 			{
+				Sound::GetInstance()->PlaySound(jafarSnake);
+
 				this->state->SetState(SNAKE_IDLE);
 				this->SnakePower = true;
 				this->Dmg = SNAKE_DAMAGE;
@@ -272,7 +282,9 @@ void Jafar::Update(DWORD dt)
 		}
 		else
 		{
+			enemiesDeadEffect->SetPos(this->GetPositionX() + JAFAR_SPRITE_WIDTH / 2, this->GetPositionY(), false);
 			this->state->SetState(JAFAR_DEAD);
+
 		}
 	}
 
@@ -298,6 +310,7 @@ void Jafar::Render()
 		}
 	}
 
+	enemiesDeadEffect->Render();
 	state->Render();
 }
 

@@ -63,6 +63,8 @@ Aladdin::Aladdin()
 	this->highSword = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_HIGH_SWORD);
 	this->lowSword = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_LOW_SWORD);
 	this->throwApple = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_OBJECT_THROW);
+	this->genieFumes = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_GENIE_FUMES);
+	this->comingOut = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_COMING_OUT);
 
 	this->bonesTinkle = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_BONES_TINKLE);
 	this->boxingBell = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_BOXING_BELL);
@@ -70,6 +72,7 @@ Aladdin::Aladdin()
 
 	this->appleCollect = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_APPLE_COLLECT);
 	this->gemCollect = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_GEM_COLLECT);
+	this->extraHeart = Sound::GetInstance()->LoadSound((LPTSTR)SOUND_EXTRA_HEALTH);
 
 	Sound::GetInstance()->PlaySound(theme1);
 }
@@ -668,7 +671,7 @@ void Aladdin::LoadResources()
 #pragma endregion
 
 #pragma region GENESIS
-	anim = new Animation(100);
+	anim = new Animation(70);
 
 	Sprite * genesis_1 = new Sprite(aladdin2->GetTexture(), listSprite[243], TEXTURE_TRANS_COLOR);
 	genesis_1->SetOffSetX(10);
@@ -1258,7 +1261,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}break;
 		case ObjectAndEnemies::DIAMOND:
 		{
-			Sound::GetInstance()->PlaySound(appleCollect);
+			Sound::GetInstance()->PlaySound(gemCollect);
 			this->ScoreNumber += DIAMOND_ITEM_POINT;
 			if (this->ScoreNumber > ALADDIN_DEFAULT_MAXS_SCORE)
 			{
@@ -1281,13 +1284,13 @@ void Aladdin::UpdateCollision(DWORD dt)
 				this->GeneratePosCameraY = Viewport::GetInstance()->GetY();
 
 				((BottleItem*)listUpdateObject.at(i).object)->SetCheck(true);
-				Sound::GetInstance()->PlaySound(appleCollect);
+				Sound::GetInstance()->PlaySound(comingOut);
 				itemEffect->SetPos(listUpdateObject.at(i).ene.x + BOTTLE_ITEM_WIDTH / 2, listUpdateObject.at(i).ene.y, false);
 			}
 		}break;
 		case ObjectAndEnemies::GENIE_FACE:
 		{
-			Sound::GetInstance()->PlaySound(appleCollect);
+			Sound::GetInstance()->PlaySound(genieFumes);
 			this->ScoreNumber += GENIE_FACE_POINT;
 			if (this->ScoreNumber > ALADDIN_DEFAULT_MAXS_SCORE)
 			{
@@ -1298,7 +1301,7 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}break;
 		case ObjectAndEnemies::EXTRA_HEART:
 		{
-			Sound::GetInstance()->PlaySound(appleCollect);
+			Sound::GetInstance()->PlaySound(extraHeart);
 			this->ScoreNumber += EXTRA_HEART_ITEM_POINT;
 			if (this->ScoreNumber > ALADDIN_DEFAULT_MAXS_SCORE)
 			{

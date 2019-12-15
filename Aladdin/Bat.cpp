@@ -149,7 +149,7 @@ void Bat::UpdateCollision(DWORD dt)
 
 			if (this->GetBatHP() <= 0)
 			{
-				enemiesDeadEffect->SetPos(this->GetPositionX() + BAT_SPRITE_WIDTH / 2, this->GetPositionY(), false);
+				enemiesDeadEffect->SetPos(this->GetPositionX() + BAT_SPRITE_WIDTH, this->GetPositionY() + BAT_SPRITE_HEIGHT * 2, false);
 				this->state->SetState(BAT_BE_KILL_SWORD);
 			}
 		}

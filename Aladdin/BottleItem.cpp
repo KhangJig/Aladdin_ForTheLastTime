@@ -28,7 +28,7 @@ void BottleItem::LoadResources(RECT* listSprite, Sprite * items)
 	anim->AddFrame(bottle_idle);
 	animations.push_back(anim);
 
-	anim = new Animation(40);
+	anim = new Animation(50);
 	Sprite *bottle_active_1 = new Sprite(items->GetTexture(), listSprite[35], TEXTURE_TRANS_COLOR_5);
 	anim->AddFrame(bottle_active_1);
 	Sprite *bottle_active_2 = new Sprite(items->GetTexture(), listSprite[36], TEXTURE_TRANS_COLOR_5);

@@ -3,9 +3,11 @@
 #include "Debug.h"
 #include "Constants.h"
 #include "Game.h"
+#include "Sound.h"
 #include "State.h"
 #include "JafarState.h"
 #include "Fire.h"
+#include "EnemiesDeadEffect.h"
 
 class JafarState;
 class Jafar : public GameObject
@@ -27,6 +29,12 @@ class Jafar : public GameObject
 	bool SnakePower;
 
 	vector <Fire*> listFire;
+
+	EnemiesDeadEffect *enemiesDeadEffect;
+
+	GSound* jafarLaugh;
+	GSound* jafarSnake;
+
 public:
 
 	Jafar(int x, int y, int CellID, int id);
@@ -45,6 +53,7 @@ public:
 	bool GetSnakePower() { return this->SnakePower; }
 	vector <Fire*> GetListFire(){ return this->listFire; }
 	void AddListFire(Fire *fire) { this->listFire.push_back(fire); }
+	EnemiesDeadEffect *GetEnemiesDeadEffect() { return this->enemiesDeadEffect; }
 
 	static void LoadResources();
 
