@@ -16,6 +16,8 @@ AladdinState::AladdinState(Aladdin *aladdin)
 	this->stateAladdin = STATE_FALL;
 	this->aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 	this->startJumpY = 95;
+	this->CountLookAround = 0;
+	this->CountPlayWithApple = 0;
 }
 
 StateAladdin AladdinState::GetState()
@@ -81,6 +83,13 @@ void AladdinState::stateStanding()
 	aladdin->SetSpeedX(0);
 	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
 	anim = aladdin->GetAnimationsList()[IDLE_STAND];
+
+	if (anim->IsDone())
+	{
+		anim->Reset();
+		this->SetState(IDLE_LOOK_AROUND);
+		return;
+	}
 }
 
 void AladdinState::stateHeadUp()
@@ -749,8 +758,11 @@ void AladdinState::stateGenesis()
 	this->aladdin->SetSpeedY(0);
 	if (this->aladdin->GetLifeNumber() >= 0)
 	{
-		Sound::GetInstance()->PlaySound(this->aladdin->GetSoundComingOut());
 		anim = aladdin->GetAnimationsList()[STATE_GENESIS];
+		if (anim->GetCurFrame() == 0)
+		{
+			Sound::GetInstance()->PlaySound(this->aladdin->GetSoundComingOut());
+		}
 		if (this->anim->IsDone())
 		{
 			this->SetState(IDLE_STAND);
@@ -760,6 +772,209 @@ void AladdinState::stateGenesis()
 	else
 	{
 		anim = aladdin->GetAnimationsList()[NONE];
+	}
+}
+
+void AladdinState::stateIdleLookAround()
+{
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT) && (!Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) && !Keyboard::GetInstance()->IsKeyDown(DIK_LEFT)))
+	{
+		this->aladdin->SetJumpOnBrick(true);
+		startJumpY = aladdin->GetPositionY();
+		aladdin->SetSpeedY(ALADDIN_JUMP_SPEED_Y);
+		this->SetState(STATE_STAND_JUMP);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) || Keyboard::GetInstance()->IsKeyDown(DIK_LEFT))
+	{
+		this->SetState(STATE_RUN);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_UP))
+	{
+		this->SetState(STATE_HEAD_UP);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_DOWN))
+	{
+		this->SetState(STATE_SIT);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
+	{
+		Sound::GetInstance()->PlaySound(this->aladdin->GetSoundHighSword());
+		aladdin->SetAttacking(true);
+		this->SetState(STATE_STAND_HIT);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_Z))
+	{
+		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
+		{
+			Sound::GetInstance()->PlaySound(this->aladdin->GetSoundThrowApple());
+			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
+			this->SetState(STATE_STAND_THROW);
+			aladdin->SetIsApple(false);
+			aladdin->SetAppleNumber(aladdin->GetAppleNumber() - 1);
+			return;
+		}
+	}
+
+	this->CountPlayWithApple = 0;
+	aladdin->SetSpeedX(0);
+	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	anim = aladdin->GetAnimationsList()[IDLE_LOOK_AROUND];
+	if (anim->IsDone())
+	{
+		if (this->CountLookAround == 16)
+		{
+			anim->Reset();
+			this->SetState(IDLE_PLAY_WITH_APPLE_1);
+			return;
+		}
+		else
+		{
+			this->CountLookAround++;
+			anim->SetCurFrame(2);
+		}
+	}
+}
+
+void AladdinState::stateIdlePlayWithApple1()
+{
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT) && (!Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) && !Keyboard::GetInstance()->IsKeyDown(DIK_LEFT)))
+	{
+		this->aladdin->SetJumpOnBrick(true);
+		startJumpY = aladdin->GetPositionY();
+		aladdin->SetSpeedY(ALADDIN_JUMP_SPEED_Y);
+		this->SetState(STATE_STAND_JUMP);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) || Keyboard::GetInstance()->IsKeyDown(DIK_LEFT))
+	{
+		this->SetState(STATE_RUN);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_UP))
+	{
+		this->SetState(STATE_HEAD_UP);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_DOWN))
+	{
+		this->SetState(STATE_SIT);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
+	{
+		Sound::GetInstance()->PlaySound(this->aladdin->GetSoundHighSword());
+		aladdin->SetAttacking(true);
+		this->SetState(STATE_STAND_HIT);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_Z))
+	{
+		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
+		{
+			Sound::GetInstance()->PlaySound(this->aladdin->GetSoundThrowApple());
+			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
+			this->SetState(STATE_STAND_THROW);
+			aladdin->SetIsApple(false);
+			aladdin->SetAppleNumber(aladdin->GetAppleNumber() - 1);
+			return;
+		}
+	}
+
+	this->CountLookAround = 0;
+	aladdin->SetSpeedX(0);
+	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	this->anim = this->aladdin->GetAnimationsList()[IDLE_PLAY_WITH_APPLE_1];
+
+	if (this->anim->IsDone())
+	{
+		anim->Reset();
+		this->SetState(IDLE_PLAY_WITH_APPLE_2);
+		return;
+	}
+}
+
+void AladdinState::stateIdlePlayWithApple2()
+{
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_LSHIFT) && (!Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) && !Keyboard::GetInstance()->IsKeyDown(DIK_LEFT)))
+	{
+		this->aladdin->SetJumpOnBrick(true);
+		startJumpY = aladdin->GetPositionY();
+		aladdin->SetSpeedY(ALADDIN_JUMP_SPEED_Y);
+		this->SetState(STATE_STAND_JUMP);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) || Keyboard::GetInstance()->IsKeyDown(DIK_LEFT))
+	{
+		this->SetState(STATE_RUN);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_UP))
+	{
+		this->SetState(STATE_HEAD_UP);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_DOWN))
+	{
+		this->SetState(STATE_SIT);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_SPACE))
+	{
+		Sound::GetInstance()->PlaySound(this->aladdin->GetSoundHighSword());
+		aladdin->SetAttacking(true);
+		this->SetState(STATE_STAND_HIT);
+		return;
+	}
+
+	if (Keyboard::GetInstance()->IsKeyDown(DIK_Z))
+	{
+		if (aladdin->GetisApple() && aladdin->GetAppleNumber() > 0)
+		{
+			Sound::GetInstance()->PlaySound(this->aladdin->GetSoundThrowApple());
+			this->aladdin->SetPosAladdinThrowing(this->aladdin->GetPositionX(), this->aladdin->GetPositionY());
+			this->SetState(STATE_STAND_THROW);
+			aladdin->SetIsApple(false);
+			aladdin->SetAppleNumber(aladdin->GetAppleNumber() - 1);
+			return;
+		}
+	}
+
+	aladdin->SetSpeedX(0);
+	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	this->anim = this->aladdin->GetAnimationsList()[IDLE_PLAY_WITH_APPLE_2];
+
+	if (this->anim->IsDone())
+	{
+		if (this->CountPlayWithApple == 2)
+		{
+			anim->Reset();
+			this->SetState(IDLE_STAND);
+			return;
+		}
+		else
+		{
+			this->CountPlayWithApple++;
+		}
+
 	}
 }
 
@@ -1052,6 +1267,18 @@ void AladdinState::Update(DWORD dt)
 
 	case STATE_GENESIS:
 		this->stateGenesis();
+		break;
+
+	case IDLE_LOOK_AROUND:
+		this->stateIdleLookAround();
+		break;
+
+	case IDLE_PLAY_WITH_APPLE_1:
+		this->stateIdlePlayWithApple1();
+		break;
+
+	case IDLE_PLAY_WITH_APPLE_2:
+		this->stateIdlePlayWithApple2();
 		break;
 
 	case STATE_RUN_HIT:

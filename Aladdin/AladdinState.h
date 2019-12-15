@@ -33,6 +33,9 @@ enum StateAladdin
 	STATE_CLIMB_THROW,
 	STATE_DEAD,
 	STATE_GENESIS,
+	IDLE_LOOK_AROUND,
+	IDLE_PLAY_WITH_APPLE_1,
+	IDLE_PLAY_WITH_APPLE_2,
 	NONE,
 	STATE_RUN_HIT,
 	STATE_RUN_THROW,
@@ -48,6 +51,9 @@ protected:
 	Animation * anim;
 	RECT* listSprite;
 	float startJumpY;
+
+	int CountLookAround;
+	int CountPlayWithApple;
 
 public:
 	float timeCount;
@@ -87,6 +93,9 @@ public:
 	void stateClimbThrow();
 	void stateDead();
 	void stateGenesis();
+	void stateIdleLookAround();
+	void stateIdlePlayWithApple1();
+	void stateIdlePlayWithApple2();
 	void stateRunHit();
 	void stateRunThrow();
 	void stateStandOnBrick();

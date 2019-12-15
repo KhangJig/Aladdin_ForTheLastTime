@@ -84,10 +84,20 @@ void Aladdin::LoadResources()
 	Sprite * aladdin2 = new Sprite(ALADDIN_TEXTURE_LOCATION, TEXTURE_TRANS_COLOR);
 
 #pragma region STAND
-	Animation * anim = new Animation(150);
-	Sprite * stand = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
+	Animation * anim = new Animation(300);
+	Sprite * stand;
+	stand = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(stand);
-	
+	stand = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(stand);
+	stand = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(stand);
+	stand = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(stand);
+	stand = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(stand);
+	stand = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(stand);
 	animations.push_back(anim);
 #pragma endregion
 
@@ -671,7 +681,7 @@ void Aladdin::LoadResources()
 #pragma endregion
 
 #pragma region GENESIS
-	anim = new Animation(70);
+	anim = new Animation(60);
 
 	Sprite * genesis_1 = new Sprite(aladdin2->GetTexture(), listSprite[243], TEXTURE_TRANS_COLOR);
 	genesis_1->SetOffSetX(10);
@@ -724,6 +734,208 @@ void Aladdin::LoadResources()
 	genesis_14->SetOffSetX(13);
 	genesis_14->SetOffSetY(91);
 	anim->AddFrame(genesis_14);
+
+	animations.push_back(anim);
+#pragma endregion
+
+#pragma region LOOK AROUND
+	anim = new Animation(200);
+	Sprite * look_around;
+
+	look_around = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(look_around);
+	look_around = new Sprite(aladdin2->GetTexture(), listSprite[1], TEXTURE_TRANS_COLOR);
+	look_around->SetOffSetX(2);
+	look_around->SetOffSetY(-3);
+	anim->AddFrame(look_around);
+	look_around = new Sprite(aladdin2->GetTexture(), listSprite[2], TEXTURE_TRANS_COLOR);
+	look_around->SetOffSetY(2);
+	anim->AddFrame(look_around);
+	look_around = new Sprite(aladdin2->GetTexture(), listSprite[3], TEXTURE_TRANS_COLOR);
+	look_around->SetOffSetY(5);
+	anim->AddFrame(look_around);
+	look_around = new Sprite(aladdin2->GetTexture(), listSprite[3], TEXTURE_TRANS_COLOR);
+	look_around->SetOffSetY(5);
+	anim->AddFrame(look_around);
+	look_around = new Sprite(aladdin2->GetTexture(), listSprite[3], TEXTURE_TRANS_COLOR);
+	look_around->SetOffSetY(5);
+	anim->AddFrame(look_around);
+	look_around = new Sprite(aladdin2->GetTexture(), listSprite[3], TEXTURE_TRANS_COLOR);
+	look_around->SetOffSetY(5);
+	anim->AddFrame(look_around);
+	look_around = new Sprite(aladdin2->GetTexture(), listSprite[4], TEXTURE_TRANS_COLOR);
+	look_around->SetOffSetX(3);
+	look_around->SetOffSetY(1);
+	anim->AddFrame(look_around);
+	look_around = new Sprite(aladdin2->GetTexture(), listSprite[5], TEXTURE_TRANS_COLOR);
+	look_around->SetOffSetX(7);
+	look_around->SetOffSetY(1);
+	anim->AddFrame(look_around);
+	look_around = new Sprite(aladdin2->GetTexture(), listSprite[6], TEXTURE_TRANS_COLOR);
+	look_around->SetOffSetX(7);
+	look_around->SetOffSetY(3);
+	anim->AddFrame(look_around);
+	look_around = new Sprite(aladdin2->GetTexture(), listSprite[6], TEXTURE_TRANS_COLOR);
+	look_around->SetOffSetX(7);
+	look_around->SetOffSetY(3);
+	anim->AddFrame(look_around);
+	look_around = new Sprite(aladdin2->GetTexture(), listSprite[6], TEXTURE_TRANS_COLOR);
+	look_around->SetOffSetX(7);
+	look_around->SetOffSetY(3);
+	anim->AddFrame(look_around);
+	look_around = new Sprite(aladdin2->GetTexture(), listSprite[6], TEXTURE_TRANS_COLOR);
+	look_around->SetOffSetX(7);
+	look_around->SetOffSetY(3);
+	anim->AddFrame(look_around);
+	look_around = new Sprite(aladdin2->GetTexture(), listSprite[5], TEXTURE_TRANS_COLOR);
+	look_around->SetOffSetX(7);
+	look_around->SetOffSetY(1);
+	anim->AddFrame(look_around);
+	look_around = new Sprite(aladdin2->GetTexture(), listSprite[4], TEXTURE_TRANS_COLOR);
+	look_around->SetOffSetX(3);
+	look_around->SetOffSetY(1);
+	anim->AddFrame(look_around);
+
+	animations.push_back(anim);
+#pragma endregion
+
+#pragma region PLAY WITH APPLE 1
+	anim = new Animation(130);
+
+	Sprite * playing_with_apple_1_1 = new Sprite(aladdin2->GetTexture(), listSprite[7], TEXTURE_TRANS_COLOR);
+	playing_with_apple_1_1->SetOffSetY(2);
+	anim->AddFrame(playing_with_apple_1_1);
+	Sprite * playing_with_apple_1_2 = new Sprite(aladdin2->GetTexture(), listSprite[8], TEXTURE_TRANS_COLOR);
+	playing_with_apple_1_2->SetOffSetX(8);
+	playing_with_apple_1_2->SetOffSetY(3);
+	anim->AddFrame(playing_with_apple_1_2);
+	Sprite * playing_with_apple_1_3 = new Sprite(aladdin2->GetTexture(), listSprite[9], TEXTURE_TRANS_COLOR);
+	playing_with_apple_1_3->SetOffSetX(7);
+	playing_with_apple_1_3->SetOffSetY(4);
+	anim->AddFrame(playing_with_apple_1_3);
+	Sprite * playing_with_apple_1_4 = new Sprite(aladdin2->GetTexture(), listSprite[10], TEXTURE_TRANS_COLOR);
+	playing_with_apple_1_4->SetOffSetX(-8);
+	playing_with_apple_1_4->SetOffSetY(3);
+	anim->AddFrame(playing_with_apple_1_4);
+	Sprite * playing_with_apple_1_5 = new Sprite(aladdin2->GetTexture(), listSprite[11], TEXTURE_TRANS_COLOR);
+	playing_with_apple_1_5->SetOffSetX(-8);
+	playing_with_apple_1_5->SetOffSetY(3);
+	anim->AddFrame(playing_with_apple_1_5);
+	Sprite * playing_with_apple_1_6 = new Sprite(aladdin2->GetTexture(), listSprite[12], TEXTURE_TRANS_COLOR);
+	playing_with_apple_1_6->SetOffSetX(-8);
+	playing_with_apple_1_6->SetOffSetY(3);
+	anim->AddFrame(playing_with_apple_1_6);
+	Sprite * playing_with_apple_1_7 = new Sprite(aladdin2->GetTexture(), listSprite[13], TEXTURE_TRANS_COLOR);
+	playing_with_apple_1_7->SetOffSetX(-8);
+	playing_with_apple_1_7->SetOffSetY(3);
+	anim->AddFrame(playing_with_apple_1_7);
+	Sprite * playing_with_apple_1_8 = new Sprite(aladdin2->GetTexture(), listSprite[14], TEXTURE_TRANS_COLOR);
+	playing_with_apple_1_8->SetOffSetX(-8);
+	playing_with_apple_1_8->SetOffSetY(5);
+	anim->AddFrame(playing_with_apple_1_8);
+	Sprite * playing_with_apple_1_9 = new Sprite(aladdin2->GetTexture(), listSprite[15], TEXTURE_TRANS_COLOR);
+	playing_with_apple_1_9->SetOffSetX(-8);
+	playing_with_apple_1_9->SetOffSetY(22);
+	anim->AddFrame(playing_with_apple_1_9);
+	Sprite * playing_with_apple_1_10 = new Sprite(aladdin2->GetTexture(), listSprite[16], TEXTURE_TRANS_COLOR);
+	playing_with_apple_1_10->SetOffSetX(-8);
+	playing_with_apple_1_10->SetOffSetY(26);
+	anim->AddFrame(playing_with_apple_1_10);
+	Sprite * playing_with_apple_1_11 = new Sprite(aladdin2->GetTexture(), listSprite[17], TEXTURE_TRANS_COLOR);
+	playing_with_apple_1_11->SetOffSetX(-8);
+	playing_with_apple_1_11->SetOffSetY(21);
+	anim->AddFrame(playing_with_apple_1_11);
+	Sprite * playing_with_apple_1_12 = new Sprite(aladdin2->GetTexture(), listSprite[18], TEXTURE_TRANS_COLOR);
+	playing_with_apple_1_12->SetOffSetX(-8);
+	playing_with_apple_1_12->SetOffSetY(12);
+	anim->AddFrame(playing_with_apple_1_12);
+	Sprite * playing_with_apple_1_13 = new Sprite(aladdin2->GetTexture(), listSprite[19], TEXTURE_TRANS_COLOR);
+	playing_with_apple_1_13->SetOffSetX(-8);
+	playing_with_apple_1_13->SetOffSetY(4);
+	anim->AddFrame(playing_with_apple_1_13);
+	Sprite * playing_with_apple_1_14 = new Sprite(aladdin2->GetTexture(), listSprite[20], TEXTURE_TRANS_COLOR);
+	playing_with_apple_1_14->SetOffSetX(-8);
+	playing_with_apple_1_14->SetOffSetY(4);
+	anim->AddFrame(playing_with_apple_1_14);
+	Sprite * playing_with_apple_1_15 = new Sprite(aladdin2->GetTexture(), listSprite[21], TEXTURE_TRANS_COLOR);
+	playing_with_apple_1_15->SetOffSetX(-8);
+	playing_with_apple_1_15->SetOffSetY(3);
+	anim->AddFrame(playing_with_apple_1_15);
+
+	animations.push_back(anim);
+#pragma endregion
+
+#pragma region PLAY WITH APPLE 2
+	anim = new Animation(130);
+
+	Sprite * playing_with_apple_2_1 = new Sprite(aladdin2->GetTexture(), listSprite[22], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_1->SetOffSetX(-8);
+	playing_with_apple_2_1->SetOffSetY(3);
+	anim->AddFrame(playing_with_apple_2_1);
+	Sprite * playing_with_apple_2_2 = new Sprite(aladdin2->GetTexture(), listSprite[23], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_2->SetOffSetX(-8);
+	playing_with_apple_2_2->SetOffSetY(3);
+	anim->AddFrame(playing_with_apple_2_2);
+	Sprite * playing_with_apple_2_3 = new Sprite(aladdin2->GetTexture(), listSprite[24], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_3->SetOffSetX(-8);
+	playing_with_apple_2_3->SetOffSetY(5);
+	anim->AddFrame(playing_with_apple_2_3);
+	Sprite * playing_with_apple_2_4 = new Sprite(aladdin2->GetTexture(), listSprite[25], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_4->SetOffSetX(-8);
+	playing_with_apple_2_4->SetOffSetY(13);
+	anim->AddFrame(playing_with_apple_2_4);
+	Sprite * playing_with_apple_2_5 = new Sprite(aladdin2->GetTexture(), listSprite[26], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_5->SetOffSetX(-9);
+	playing_with_apple_2_5->SetOffSetY(17);
+	anim->AddFrame(playing_with_apple_2_5);
+	Sprite * playing_with_apple_2_6 = new Sprite(aladdin2->GetTexture(), listSprite[27], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_6->SetOffSetX(-9);
+	playing_with_apple_2_6->SetOffSetY(8);
+	anim->AddFrame(playing_with_apple_2_6);
+	Sprite * playing_with_apple_2_7 = new Sprite(aladdin2->GetTexture(), listSprite[28], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_7->SetOffSetX(-10);
+	playing_with_apple_2_7->SetOffSetY(-1);
+	anim->AddFrame(playing_with_apple_2_7);
+	Sprite * playing_with_apple_2_8 = new Sprite(aladdin2->GetTexture(), listSprite[29], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_8->SetOffSetX(-10);
+	playing_with_apple_2_8->SetOffSetY(-1);
+	anim->AddFrame(playing_with_apple_2_8);
+	Sprite * playing_with_apple_2_9 = new Sprite(aladdin2->GetTexture(), listSprite[30], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_9->SetOffSetX(-10);
+	playing_with_apple_2_9->SetOffSetY(-1);
+	anim->AddFrame(playing_with_apple_2_9);
+	Sprite * playing_with_apple_2_10 = new Sprite(aladdin2->GetTexture(), listSprite[31], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_10->SetOffSetX(-11);
+	playing_with_apple_2_10->SetOffSetY(10);
+	anim->AddFrame(playing_with_apple_2_10);
+	Sprite * playing_with_apple_2_11 = new Sprite(aladdin2->GetTexture(), listSprite[32], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_11->SetOffSetX(-12);
+	playing_with_apple_2_11->SetOffSetY(17);
+	anim->AddFrame(playing_with_apple_2_11);
+	Sprite * playing_with_apple_2_12 = new Sprite(aladdin2->GetTexture(), listSprite[33], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_12->SetOffSetX(-12);
+	playing_with_apple_2_12->SetOffSetY(24);
+	anim->AddFrame(playing_with_apple_2_12);
+	Sprite * playing_with_apple_2_13 = new Sprite(aladdin2->GetTexture(), listSprite[34], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_13->SetOffSetX(-10);
+	playing_with_apple_2_13->SetOffSetY(29);
+	anim->AddFrame(playing_with_apple_2_13);
+	Sprite * playing_with_apple_2_14 = new Sprite(aladdin2->GetTexture(), listSprite[35], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_14->SetOffSetX(-8);
+	playing_with_apple_2_14->SetOffSetY(12);
+	anim->AddFrame(playing_with_apple_2_14);
+	Sprite * playing_with_apple_2_15 = new Sprite(aladdin2->GetTexture(), listSprite[36], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_15->SetOffSetX(-8);
+	playing_with_apple_2_15->SetOffSetY(4);
+	anim->AddFrame(playing_with_apple_2_15);
+	Sprite * playing_with_apple_2_16 = new Sprite(aladdin2->GetTexture(), listSprite[37], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_16->SetOffSetX(-8);
+	playing_with_apple_2_16->SetOffSetY(4);
+	anim->AddFrame(playing_with_apple_2_16);
+	Sprite * playing_with_apple_2_17 = new Sprite(aladdin2->GetTexture(), listSprite[38], TEXTURE_TRANS_COLOR);
+	playing_with_apple_2_17->SetOffSetX(-8);
+	playing_with_apple_2_17->SetOffSetY(3);
+	anim->AddFrame(playing_with_apple_2_17);
 
 	animations.push_back(anim);
 #pragma endregion
@@ -818,6 +1030,7 @@ void Aladdin::Update(DWORD dt)
 		this->LV = 1;
 		Game::GetInstance()->SetStage(STAGE_1);
 
+		this->state->SetState(IDLE_STAND);
 		this->SetPositionX(100);
 		this->SetPositionY(150);
 		Viewport::GetInstance()->Reset();
@@ -833,6 +1046,7 @@ void Aladdin::Update(DWORD dt)
 		this->LV = 2;
 		Game::GetInstance()->SetStage(STAGE_2);
 
+		this->state->SetState(IDLE_STAND);
 		this->SetPositionX(100);
 		this->SetPositionY(150);		
 		this->GeneratePosX = 100;
