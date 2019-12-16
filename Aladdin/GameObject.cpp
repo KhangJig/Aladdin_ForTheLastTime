@@ -74,9 +74,12 @@ void GameObject::MapCollisions(vector<TileObjectMap *> &tiles, vector<ColliedEve
 
 			time = Collision::GetInstance()->SweptAABB(this->GetCollider(), tileCollider, normalX, normalY);
 
-			if (time >= 0 && time < 1.0f && normalY == 1)
+			if (time >= 0 && time < 1.0f)
 			{
-				coEvents.push_back(new ColliedEvent(EventCollison::EVENT_WALL, time, normalX, normalY));
+				if ((normalY == 1 && normalX == 0) || (normalY == 0 && normalX == 1) || (normalY == 0 && normalX == -1))
+				{
+					coEvents.push_back(new ColliedEvent(EventCollison::EVENT_WALL, time, normalX, normalY));
+				}
 			}
 		}
 		else if (tiles[i]->type == ObjectType::ROPE)

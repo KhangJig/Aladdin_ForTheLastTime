@@ -1129,13 +1129,33 @@ void AladdinState::Update(DWORD dt)
 	//Kiểm tra tốc độ trục X
 	if (Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT))
 	{
-		aladdin->setIsLeft(false);
-		aladdin->SetSpeedX(ALADDIN_WALK_SPEED * (aladdin->IsLeft() ? -1 : 1));
+		if (this->aladdin->GetBlockedByWall() && !this->aladdin->GetLeftWall())
+		{
+			this->aladdin->SetSpeedX(0);
+			//this->aladdin->SetIsGrounded(true);
+			this->aladdin->SetLeftWall(true);
+		}
+		else
+		{
+			this->aladdin->SetBlockedByWall(false);
+			aladdin->setIsLeft(false);
+			aladdin->SetSpeedX(ALADDIN_WALK_SPEED * (aladdin->IsLeft() ? -1 : 1));
+		}
 	}
 	else if (Keyboard::GetInstance()->IsKeyDown(DIK_LEFT))
 	{
-		aladdin->setIsLeft(true);
-		aladdin->SetSpeedX(ALADDIN_WALK_SPEED * (aladdin->IsLeft() ? -1 : 1));
+		if (this->aladdin->GetBlockedByWall() && this->aladdin->GetLeftWall())
+		{
+			this->aladdin->SetSpeedX(0);
+			//this->aladdin->SetIsGrounded(true);
+			this->aladdin->SetLeftWall(false);
+		}
+		else
+		{
+			this->aladdin->SetBlockedByWall(false);
+			aladdin->setIsLeft(true);
+			aladdin->SetSpeedX(ALADDIN_WALK_SPEED * (aladdin->IsLeft() ? -1 : 1));
+		}
 	}
 	else
 		aladdin->SetSpeedX(0);

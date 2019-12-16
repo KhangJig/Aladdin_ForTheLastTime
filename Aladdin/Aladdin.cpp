@@ -37,6 +37,8 @@ Aladdin::Aladdin()
 	this->OnCollisonRope = false;
 	this->OnTopRope= false;
 	this->OnBotRope = false;
+	this->BlockedByWall = false;
+	this->LeftWall = true;
 	this->width = ALADDIN_SPRITE_WIDTH;
 	this->height = ALADDIN_SPRITE_HEIGHT;
 
@@ -1119,8 +1121,16 @@ void Aladdin::Update(DWORD dt)
 		}break;
 		case ObjectType::WALL:
 		{
+			this->BlockedByWall = true;
 			this->SetSpeedX(0);
-			this->SetIsGrounded(true);
+			if (this->IsLeft())
+			{
+				this->LeftWall = true;
+			}
+			else
+			{
+				this->LeftWall = false;
+			}
 		}break;
 		case ObjectType::DOOR:
 		{

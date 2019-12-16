@@ -77,6 +77,8 @@ class Aladdin : public GameObject
 	bool OnCollisonRope;
 	bool OnTopRope;
 	bool OnBotRope;
+	bool BlockedByWall;
+	bool LeftWall;
 
 	int GeneratePosX;
 	int GeneratePosY;
@@ -134,6 +136,10 @@ public:
 
 	void SetIsApple(bool isApple) { this->isApple = isApple; }
 	bool GetisApple() { return isApple; }
+	bool GetBlockedByWall() { return this->BlockedByWall; }
+	void SetBlockedByWall(bool value) { this->BlockedByWall = value; }
+	bool GetLeftWall() { return this->LeftWall; }
+	void SetLeftWall(bool value) { this->LeftWall = value; }
 
 	void SetColliderDemension(float width, float height)
 	{
