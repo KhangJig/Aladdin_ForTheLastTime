@@ -28,6 +28,10 @@ class Skeleton : public GameObject
 
 	int id;
 
+	int Dmg;
+
+	bool Attacking;
+
 	GSound *skeletonFire;
 
 	GSound *skeletonBoom;
@@ -48,6 +52,10 @@ public:
 	void SetColliderDemension(float width, float height) { this->collider.width = width; this->collider.height = height; }
 	vector<Animation *> GetAnimationsList() { return animations; }
 	int GetCellID() { return this->CellID; }
+	bool GetAttacking() { return this->Attacking; }
+	void SetAttacking(bool value) { this->Attacking = value; }
+	int GetDmg() { return this->Dmg; }
+	void SetDmg(int num) { this->Dmg = num; }
 	EnemiesDeadEffect *GetEnemiesDeadEffect() { return this->enemiesDeadEffect; }
 	GSound *GetSoundSkeletonFire() { return this->skeletonFire; }
 	GSound *GetSoundSkeletonBoom() { return this->skeletonBoom; }

@@ -60,7 +60,7 @@ public:
 	void SetColliderDemension(float width, float height) { this->collider.width = width; this->collider.height = height; }
 	vector<Animation *> GetAnimationsList() { return animations; }
 	bool GetAttacking() { return this->Attacking; }
-	void SetAttacking(bool ReadyAttack) { this->Attacking = ReadyAttack; }
+	void SetAttacking(bool value) { this->Attacking = value; }
 	bool GetDie() { return this->Dead; }
 	void SetDie(bool die) { this->Dead = die; }
 	int GetCellID() { return this->CellID; }

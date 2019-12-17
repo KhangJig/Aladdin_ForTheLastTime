@@ -53,6 +53,7 @@ void SkeletonState::stateStand()
 
 	if (this->anim->IsDone())
 	{
+		this->skeleton->SetAttacking(true);
 		Sound::GetInstance()->PlaySound(this->skeleton->GetSoundSkeletonBoom());
 		this->SetState(SKELETON_BOOM);
 		return;
@@ -62,6 +63,7 @@ void SkeletonState::stateStand()
 void SkeletonState::stateBoom()
 {
 	anim = skeleton->GetAnimationsList()[SKELETON_BOOM];
+	this->skeleton->SetAttacking(false);
 	if (this->anim->IsDone())
 	{
 		this->SetState(SKELETON_DEAD);

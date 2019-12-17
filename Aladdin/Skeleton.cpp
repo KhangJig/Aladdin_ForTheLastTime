@@ -15,6 +15,8 @@ Skeleton::Skeleton(float x, float y, int CellID, int id)
 	this->id = id;
 
 	this->disable = false;
+	this->Attacking = false;
+	this->Dmg = SKELETON_DAMAGE;
 	this->SkeletonHP = SKELETON_HP;
 
 	collider.x = x;
