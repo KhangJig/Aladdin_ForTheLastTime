@@ -37,7 +37,7 @@ void Guard1State::stateIdle()
 	if (abs(Aladdin::GetInstance()->GetPositionY() - this->guard1->GetPositionY()) <= 50)
 	{
 		if (abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) >= 50
-			&& abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) <= 200)
+			&& abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) <= 100)
 		{
 			anim->Reset();
 			this->SetState(GUARD1_WALK);
@@ -85,7 +85,7 @@ void Guard1State::stateWalking()
 	}
 
 	if (abs(Aladdin::GetInstance()->GetPositionY() - this->guard1->GetPositionY()) > 50 
-		|| abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) > 200)
+		|| abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) > 100)
 	{
 		anim->Reset();
 		this->SetState(GUARD1_IDLE);
@@ -111,14 +111,14 @@ void Guard1State::stateHit()
 	anim = guard1->GetAnimationsList()[GUARD1_HIT];
 
 	if (abs(Aladdin::GetInstance()->GetPositionY() - this->guard1->GetPositionY()) > 50 
-		|| abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) > 200)
+		|| abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) > 100)
 	{
 		anim->Reset();
 		this->SetState(GUARD1_IDLE);
 		return;
 	}
 	if (abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) >= 50 
-		&& abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) <= 200)
+		&& abs(Aladdin::GetInstance()->GetPositionX() - this->guard1->GetPositionX()) <= 100)
 	{
 		anim->Reset();
 		this->SetState(GUARD1_WALK);

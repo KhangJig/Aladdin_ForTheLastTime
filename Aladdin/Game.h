@@ -5,6 +5,8 @@
 #include "TileMap.h"
 #include "Grid.h"
 #include "Sound.h"
+#include "Sense.h"
+
 #include "Aladdin.h"
 
 #include "HP.h"
@@ -29,6 +31,7 @@ class Game
 	Keyboard *keyboard;
 	Graphics *graphics;
 	Aladdin *aladdin;
+	Sense *sense;
 	Viewport *viewport;
 	TileMap *tileMap;
 	Sound *sound;

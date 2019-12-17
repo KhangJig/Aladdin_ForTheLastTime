@@ -36,6 +36,7 @@ enum StateAladdin
 	IDLE_LOOK_AROUND,
 	IDLE_PLAY_WITH_APPLE_1,
 	IDLE_PLAY_WITH_APPLE_2,
+	STATE_PUSH_WALL,
 	NONE,
 	STATE_RUN_HIT,
 	STATE_RUN_THROW,
@@ -96,6 +97,7 @@ public:
 	void stateIdleLookAround();
 	void stateIdlePlayWithApple1();
 	void stateIdlePlayWithApple2();
+	void statePushWall();
 	void stateRunHit();
 	void stateRunThrow();
 	void stateStandOnBrick();

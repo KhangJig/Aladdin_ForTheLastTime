@@ -15,6 +15,7 @@ Grid::Grid()
 {
 	aladdin = Aladdin::GetInstance();
 	viewport = Viewport::GetInstance();
+	sense = Sense::GetInstance();
 
 	LoadTXT loadTXT;
 	RECT* listSprite = loadTXT.LoadRect((char*)"Resource\\Miscellaneous\\Items.txt");
@@ -391,4 +392,9 @@ void Grid::Render()
 	}
 
 	aladdin->Render();
+
+	if (this->aladdin->GetLV() == 1)
+	{
+		sense->Render();
+	}
 }

@@ -98,6 +98,9 @@ void Game::LoadResources()
 	if (NULL == viewport)
 		viewport = Viewport::GetInstance();
 
+	if (sense == NULL)
+		sense = Sense::GetInstance();
+
 	if (hp == NULL)
 		hp = HP::GetInstance();
 

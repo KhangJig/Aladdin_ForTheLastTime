@@ -516,11 +516,11 @@ void Aladdin::LoadResources()
 #pragma region HURT
 	anim = new Animation(40);
 
-	Sprite * hurt_1 = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
+	Sprite * hurt_1 = new Sprite(aladdin2->GetTexture(), listSprite[296], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(hurt_1);
 	Sprite * hurt_2 = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(hurt_2);
-	Sprite * hurt_3 = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
+	Sprite * hurt_3 = new Sprite(aladdin2->GetTexture(), listSprite[296], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(hurt_3);
 	Sprite * hurt_4 = new Sprite(aladdin2->GetTexture(), listSprite[0], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(hurt_4);
@@ -540,11 +540,11 @@ void Aladdin::LoadResources()
 #pragma region CLIMB HURT
 	anim = new Animation(100);
 
-	Sprite * climb_hurt_1 = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
+	Sprite * climb_hurt_1 = new Sprite(aladdin2->GetTexture(), listSprite[296], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(climb_hurt_1);
 	Sprite * climb_hurt_2 = new Sprite(aladdin2->GetTexture(), listSprite[163], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(climb_hurt_2);
-	Sprite * climb_hurt_3 = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
+	Sprite * climb_hurt_3 = new Sprite(aladdin2->GetTexture(), listSprite[296], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(climb_hurt_3);
 	Sprite * climb_hurt_4 = new Sprite(aladdin2->GetTexture(), listSprite[163], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(climb_hurt_4);
@@ -942,9 +942,48 @@ void Aladdin::LoadResources()
 	animations.push_back(anim);
 #pragma endregion
 
+#pragma region PUSH WALL
+	anim = new Animation(100);
+	Sprite * push_wall_1 = new Sprite(aladdin2->GetTexture(), listSprite[286], TEXTURE_TRANS_COLOR);
+	anim->AddFrame(push_wall_1);
+	Sprite * push_wall_2 = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
+	push_wall_2->SetOffSetX(9);
+	push_wall_2->SetOffSetY(-2);
+	anim->AddFrame(push_wall_2);
+	Sprite * push_wall_3 = new Sprite(aladdin2->GetTexture(), listSprite[288], TEXTURE_TRANS_COLOR);
+	push_wall_3->SetOffSetX(14);
+	push_wall_3->SetOffSetY(-1);
+	anim->AddFrame(push_wall_3);
+	Sprite * push_wall_4 = new Sprite(aladdin2->GetTexture(), listSprite[289], TEXTURE_TRANS_COLOR);
+	push_wall_4->SetOffSetX(21);
+	push_wall_4->SetOffSetY(-2);
+	anim->AddFrame(push_wall_4);
+	Sprite * push_wall_5 = new Sprite(aladdin2->GetTexture(), listSprite[290], TEXTURE_TRANS_COLOR);
+	push_wall_5->SetOffSetX(16);
+	push_wall_5->SetOffSetY(-2);
+	anim->AddFrame(push_wall_5);
+	Sprite * push_wall_6 = new Sprite(aladdin2->GetTexture(), listSprite[291], TEXTURE_TRANS_COLOR);
+	push_wall_6->SetOffSetX(19);
+	push_wall_6->SetOffSetY(-2);
+	anim->AddFrame(push_wall_6);
+	Sprite * push_wall_7 = new Sprite(aladdin2->GetTexture(), listSprite[292], TEXTURE_TRANS_COLOR);
+	push_wall_7->SetOffSetX(25);
+	push_wall_7->SetOffSetY(-2);
+	anim->AddFrame(push_wall_7);
+	Sprite * push_wall_8 = new Sprite(aladdin2->GetTexture(), listSprite[293], TEXTURE_TRANS_COLOR);
+	push_wall_8->SetOffSetX(19);
+	push_wall_8->SetOffSetY(-2);
+	anim->AddFrame(push_wall_8);
+	Sprite * push_wall_9 = new Sprite(aladdin2->GetTexture(), listSprite[294], TEXTURE_TRANS_COLOR);
+	push_wall_9->SetOffSetX(19);
+	push_wall_9->SetOffSetY(-2);
+	anim->AddFrame(push_wall_9);
+	animations.push_back(anim);
+#pragma endregion
+
 #pragma region NONE
 	anim = new Animation(80);
-	Sprite * none = new Sprite(aladdin2->GetTexture(), listSprite[287], TEXTURE_TRANS_COLOR);
+	Sprite * none = new Sprite(aladdin2->GetTexture(), listSprite[295], TEXTURE_TRANS_COLOR);
 	anim->AddFrame(none);
 	animations.push_back(anim);
 #pragma endregion

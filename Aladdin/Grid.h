@@ -6,6 +6,7 @@
 #include "GameObject.h"
 #include "SpawnProjectTile.h"
 #include "Constants.h" 
+#include "Sense.h" 
 #include "Aladdin.h"
 
 #include "Guard1.h"
@@ -78,6 +79,8 @@ private:
 	Viewport* viewport;
 
 	Aladdin* aladdin;
+
+	Sense *sense;
 	
 	vector <OnUpdateObject> listObject;
 

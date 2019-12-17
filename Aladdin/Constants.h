@@ -64,6 +64,7 @@ enum ObjectAndEnemies
 #define POSSISION_MAPOBJECT_2 L"Resource\\Background\\4x100\\ObjectMap-2.txt"
 #define POSSISION_ENEMIES_2 L"Resource\\Background\\4x100\\Enemies-2.txt"
 
+#define SENSE_FRONT_MAP L"Resource\\Background\\Images\\map-front.png"
 
 #define TILES_TRANSCOLOR D3DCOLOR_XRGB(255, 255,255)
 
@@ -89,6 +90,7 @@ enum ObjectAndEnemies
 #define TEXTURE_TRANS_COLOR_5 D3DCOLOR_XRGB(248, 0, 248)
 #define TEXTURE_TRANS_COLOR_6 D3DCOLOR_XRGB(220, 84, 151)
 #define TEXTURE_TRANS_COLOR_7 D3DCOLOR_XRGB(186, 254, 202)
+#define TEXTURE_TRANS_COLOR_8 D3DCOLOR_XRGB(163, 73, 164)
 
 // Aladdin
 #define ALADDIN_TEXTURE_LOCATION L"Resource\\Character\\Aladdin_.png"

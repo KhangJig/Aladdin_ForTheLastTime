@@ -978,6 +978,25 @@ void AladdinState::stateIdlePlayWithApple2()
 	}
 }
 
+void AladdinState::statePushWall()
+{
+	if (!Keyboard::GetInstance()->IsKeyDown(DIK_RIGHT) && !Keyboard::GetInstance()->IsKeyDown(DIK_LEFT))
+	{
+		anim->Reset();
+		this->SetState(IDLE_STAND);
+		return;
+	}
+
+	aladdin->SetSpeedX(0);
+	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
+	this->anim = this->aladdin->GetAnimationsList()[STATE_PUSH_WALL];
+
+	if (this->anim->IsDone())
+	{
+		anim->SetCurFrame(1);
+	}
+}
+
 void AladdinState::stateRunHit()
 {
 	aladdin->SetSpeedY(-ALADDIN_JUMP_SPEED_Y);
@@ -1132,7 +1151,8 @@ void AladdinState::Update(DWORD dt)
 		if (this->aladdin->GetBlockedByWall() && !this->aladdin->GetLeftWall())
 		{
 			this->aladdin->SetSpeedX(0);
-			//this->aladdin->SetIsGrounded(true);
+			this->aladdin->SetIsGrounded(true);
+			//this->SetState(STATE_PUSH_WALL);
 			this->aladdin->SetLeftWall(true);
 		}
 		else
@@ -1147,7 +1167,8 @@ void AladdinState::Update(DWORD dt)
 		if (this->aladdin->GetBlockedByWall() && this->aladdin->GetLeftWall())
 		{
 			this->aladdin->SetSpeedX(0);
-			//this->aladdin->SetIsGrounded(true);
+			this->aladdin->SetIsGrounded(true);
+			//this->SetState(STATE_PUSH_WALL);
 			this->aladdin->SetLeftWall(false);
 		}
 		else
@@ -1158,7 +1179,9 @@ void AladdinState::Update(DWORD dt)
 		}
 	}
 	else
+	{
 		aladdin->SetSpeedX(0);
+	}
 	
 	if (this->aladdin->GetIsClimb())
 	{
@@ -1299,6 +1322,10 @@ void AladdinState::Update(DWORD dt)
 
 	case IDLE_PLAY_WITH_APPLE_2:
 		this->stateIdlePlayWithApple2();
+		break;
+
+	case STATE_PUSH_WALL:
+		this->statePushWall();
 		break;
 
 	case STATE_RUN_HIT:

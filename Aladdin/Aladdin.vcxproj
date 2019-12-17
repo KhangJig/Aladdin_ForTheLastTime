@@ -200,6 +200,7 @@
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="KeyBoard.cpp" />
     <ClCompile Include="Score.cpp" />
+    <ClCompile Include="Sense.cpp" />
     <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="SkeletonState.cpp" />
     <ClCompile Include="Sound.cpp" />
@@ -252,6 +253,7 @@
     <ClInclude Include="LifeMenu.h" />
     <ClInclude Include="Loadtxt.h" />
     <ClInclude Include="Score.h" />
+    <ClInclude Include="Sense.h" />
     <ClInclude Include="Skeleton.h" />
     <ClInclude Include="SkeletonState.h" />
     <ClInclude Include="Sound.h" />
