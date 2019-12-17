@@ -1424,7 +1424,13 @@ void Aladdin::UpdateCollision(DWORD dt)
 		}break;
 		case ObjectAndEnemies::BAT:
 		{
-
+			if (((Bat*)listUpdateObject.at(i).object)->GetReadyAttack())
+			{
+				this->AladdinHP = this->AladdinHP - ((Bat*)listUpdateObject.at(i).object)->GetDmg();
+				DebugOut(L"Aladdin HP :  %d \n", this->AladdinHP);
+				this->state->SetState(STATE_HURT);
+				Sound::GetInstance()->PlaySound(aladdinHurt);
+			}
 		}break;
 		case ObjectAndEnemies::THORN:
 		{

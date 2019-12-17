@@ -11,7 +11,8 @@ enum StateBat
 	BAT_START_FLY,
 	BAT_FLYING,
 	BAT_BE_KILL_APPLE,
-	BAT_BE_KILL_SWORD
+	BAT_BE_KILL_SWORD,
+	BAT_READY_ATTACK
 };
 
 class BatState : public State
@@ -35,6 +36,7 @@ public:
 	void stateIdle();
 	void stateStartFly();
 	void stateFlying();
+	void stateReadyAttack();
 	void stateBeKillApple();
 	void stateBeKillSword();
 

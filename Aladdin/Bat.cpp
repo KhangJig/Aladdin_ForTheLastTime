@@ -17,6 +17,7 @@ Bat::Bat(float x, float y, int CellID, int id)
 	this->BatHP = BAT_HP;
 	this->Dmg = BAT_DAMAGE;
 	this->disable = false;
+	this->ReadyAttack = true;
 
 	collider.x = x;
 	collider.y = y;
@@ -114,6 +115,16 @@ void Bat::LoadResources()
 
 void Bat::Update(DWORD dt)
 {
+	if (!this->ReadyAttack)
+	{
+		this->timeStop += dt;
+	}
+
+	if (this->GetPositionX() > Aladdin::GetInstance()->GetPositionX())
+		this->setIsLeft(true);
+	else
+		this->setIsLeft(false);
+
 	this->UpdateCollision(dt);
 	if (this->disable)
 		return;
@@ -132,6 +143,12 @@ void Bat::Render()
 	if (this->disable)
 		return;
 
+	if (this->timeStop > 5000)
+	{
+		this->ReadyAttack = true;
+		this->timeStop = 0;
+	}
+
 	state->Render();
 	enemiesDeadEffect->Render();
 }
@@ -140,6 +157,12 @@ void Bat::UpdateCollision(DWORD dt)
 {
 	bool isCollideAladdin = Collision::GetInstance()->AABB(this->GetCollider(), Aladdin::GetInstance()->GetCollider());
 	bool isCollideApple = Collision::GetInstance()->AABB(this->GetCollider(), Apple::GetInstance()->GetCollider());
+
+	if (this->ReadyAttack && isCollideAladdin)
+	{
+		this->ReadyAttack = false;
+		this->state->SetState(BAT_FLYING);
+	}
 
 	if (isCollideAladdin)
 	{

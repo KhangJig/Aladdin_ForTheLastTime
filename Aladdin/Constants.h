@@ -136,8 +136,10 @@ enum ObjectAndEnemies
 
 #define BAT_SPRITE_WIDTH 23
 #define BAT_SPRITE_HEIGHT 14
-#define BAT_SPEED_X 0.025f
-#define BAT_SPEED_Y 0.175f
+#define BAT_FLY_DOWN_SPEED_X 0.1f
+#define BAT_FLY_DOWN_SPEED_Y 0.175f
+#define BAT_FLY_UP_SPEED_X 0.015f
+#define BAT_FLY_UP_SPEED_Y 0.018f
 #define BAT_DIE_BY_APPLE 0.45f
 #define BAT_DAMAGE 35
 #define BAT_HP 20

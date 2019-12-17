@@ -48,34 +48,98 @@ void BatState::stateStartFly()
 
 	if (Aladdin::GetInstance()->GetPositionX() < this->bat->GetPositionX())
 	{
-		this->bat->SetSpeedX(BAT_SPEED_X);
+		this->bat->SetSpeedX(BAT_FLY_UP_SPEED_X);
 	}
 	else
 	{
-		this->bat->SetSpeedX(-BAT_SPEED_X);
+		this->bat->SetSpeedX(-BAT_FLY_UP_SPEED_X);
 	}
 
 	if (this->anim->IsDone())
 	{
 		this->anim->Reset();
-		this->SetState(BAT_FLYING);
+		this->SetState(BAT_READY_ATTACK);
 		return;
+	}
+}
+
+void BatState::stateReadyAttack()
+{
+	this->bat->SetSpeedX(0);
+	this->bat->SetSpeedY(0);
+	this->anim = bat->GetAnimationsList()[BAT_FLYING];
+
+	if (this->bat->GetReadyAttack() && Aladdin::GetInstance()->GetAladdinHP() > 0)
+	{
+		if (abs(Aladdin::GetInstance()->GetPositionY() - this->bat->GetPositionY()) <= 150)
+		{
+			if (abs(Aladdin::GetInstance()->GetPositionX() - this->bat->GetPositionX()) <= 120)
+			{
+				if (Aladdin::GetInstance()->GetPositionX() < this->bat->GetPositionX())
+				{
+					this->bat->SetSpeedX(-BAT_FLY_DOWN_SPEED_X);
+				}
+				else if (Aladdin::GetInstance()->GetPositionX() > this->bat->GetPositionX())
+				{
+					this->bat->SetSpeedX(BAT_FLY_DOWN_SPEED_X);
+				}
+				else
+				{
+					this->bat->SetSpeedX(0);
+				}
+
+				if (Aladdin::GetInstance()->GetPositionY() < this->bat->GetPositionY())
+				{
+					this->bat->SetSpeedY(-BAT_FLY_DOWN_SPEED_Y);
+				}
+				else if (Aladdin::GetInstance()->GetPositionY() > this->bat->GetPositionY())
+				{
+					this->bat->SetSpeedY(BAT_FLY_DOWN_SPEED_Y);
+				}
+				else
+				{
+					this->bat->SetSpeedY(0);
+				}
+
+				return;
+			}
+		}
 	}
 }
 
 void BatState::stateFlying()
 {
-	this->anim = bat->GetAnimationsList()[BAT_FLYING];
+	anim = bat->GetAnimationsList()[BAT_FLYING];
+	this->bat->SetSpeedY(BAT_FLY_UP_SPEED_Y);
+
+	if (this->anim->IsDone())
+	{
+		if (this->bat->IsLeft())
+		{
+			this->bat->SetSpeedX(BAT_FLY_UP_SPEED_X);
+		}
+		else
+		{
+			this->bat->SetSpeedX(-BAT_FLY_UP_SPEED_X);
+		}
+	}
+
+	if (this->bat->GetReadyAttack())
+	{
+		this->SetState(BAT_READY_ATTACK);
+		return;
+	}
 }
 
 void BatState::stateBeKillApple()
 {
 	this->bat->SetSpeedX(0);
-	this->bat->SetSpeedY(-BAT_SPEED_Y);
+	this->bat->SetSpeedY(-BAT_FLY_DOWN_SPEED_Y);
 	anim = bat->GetAnimationsList()[BAT_BE_KILL_APPLE];
 
 	if (this->anim->IsDone())
 	{
+		this->anim->Reset();
 		Grid::GetInstance()->SetisLifeListObject(this->bat->GetID(), false);
 		return;
 	}
@@ -123,6 +187,10 @@ void BatState::Update(DWORD dt)
 
 	case BAT_BE_KILL_SWORD:
 		this->stateBeKillSword();
+		break;
+
+	case BAT_READY_ATTACK:
+		this->stateReadyAttack();
 		break;
 
 	default:

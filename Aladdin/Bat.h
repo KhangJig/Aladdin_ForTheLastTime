@@ -30,6 +30,10 @@ class Bat : public GameObject
 
 	int id;
 
+	float timeStop;
+
+	bool ReadyAttack;
+
 public:
 	Bat(float x, float y, int CellID, int temp);
 
@@ -46,6 +50,8 @@ public:
 	int GetCellID() { return this->CellID; }
 	int GetDmg() { return this->Dmg; }
 	void SetDmg(int num) { this->Dmg = num; }
+	bool GetReadyAttack() { return this->ReadyAttack; }
+	void SetReadyAttack(bool value) { this->ReadyAttack = value; }
 	EnemiesDeadEffect *GetEnemiesDeadEffect() { return this->enemiesDeadEffect; }
 #pragma endregion
 
