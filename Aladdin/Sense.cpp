@@ -34,6 +34,13 @@ void Sense::LoadResources()
 	Sprite *sense = new Sprite(items->GetTexture(), *image, TEXTURE_TRANS_COLOR_8);
 	anim->AddFrame(sense);
 	animations.push_back(anim);
+
+	items = new Sprite(SENSE_FRONT_MAP_2, TEXTURE_TRANS_COLOR_8);
+
+	anim = new Animation(150);
+	sense = new Sprite(items->GetTexture(), *image, TEXTURE_TRANS_COLOR_8);
+	anim->AddFrame(sense);
+	animations.push_back(anim);
 }
 
 void Sense::Update(DWORD dt)
@@ -54,6 +61,7 @@ void Sense::Render()
 	spriteData.angle = 0;
 	spriteData.isLeft = true;
 
+	this->animations[1]->Render(spriteData);
 	this->animations[0]->Render(spriteData);
 }
 

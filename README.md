@@ -1,1 +1,3 @@
-# Aladdin_ForTheLastTime
+Usage :
++ install package : npm i
++ build : react-native run-android

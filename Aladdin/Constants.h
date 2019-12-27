@@ -65,6 +65,7 @@ enum ObjectAndEnemies
 #define POSSISION_ENEMIES_2 L"Resource\\Background\\4x100\\Enemies-2.txt"
 
 #define SENSE_FRONT_MAP L"Resource\\Background\\Images\\map-front.png"
+#define SENSE_FRONT_MAP_2 L"Resource\\Background\\Images\\map-front-2.png"
 
 #define TILES_TRANSCOLOR D3DCOLOR_XRGB(255, 255,255)
 
