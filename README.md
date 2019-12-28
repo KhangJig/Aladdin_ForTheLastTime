@@ -1,3 +1,1 @@
-Usage :
-+ install package : npm i
-+ build : react-native run-android
+DirectX 2D C++
